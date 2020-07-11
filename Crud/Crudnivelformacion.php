@@ -76,7 +76,6 @@ class CrudNivelformacion{
 		}
 		public function actualizar($nivelformacion1){
 			$db=Db::conectar();
-			$nivelformacion1=new Nivelformacion();
 			$actualizar=$db->prepare('UPDATE `nivelformacion`
 			SET
 			`nivelFormacionId` = :nivelFormacionId1,

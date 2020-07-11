@@ -17,16 +17,16 @@ function cargartabla(){
 
   function registro(){
 
-    var codigo=$('#codigo').val()
-    var nom=$('#idioma').val()
-    var etnia=$('#idiomaetnia').val()
+    var codigonivelFormacion=$('#codigonivelFormacion').val()
+    var nom=$('#nivelFormacion').val()
+    var nivel=$('#nivelInstruccion').val()
     $.ajax({
       type: 'POST',
       url: '../controladores/registrotabaNivelFormacion.php',
       data:{'id':null,
       'nom':nom,
-      'cod':codigo,
-      'etnia':etnia,
+      'cod':codigonivelFormacion,
+      'nivel':nivel,
       'actualizar':1,
       'eliminar':0,
       'opt':1}
@@ -41,16 +41,16 @@ function cargartabla(){
   }
   function actualizar(dato){
 
-    var codigo=$('#codigo'+dato).val()
-    var nom=$('#idioma'+dato).val()
-    var etnia=$('#idiomaetnia'+dato).val()
+    var codigonivelFormacion=$('#codigonivelFormacion'+dato).val()
+    var nom=$('#nivelFormacion'+dato).val()
+    var nivel=$('#nivelInstruccion'+dato).val()
     $.ajax({
       type: 'POST',
       url: '../controladores/registrotabaNivelFormacion.php',
       data:{'id':dato,
       'nom':nom,
-      'cod':codigo,
-      'etnia':etnia,
+      'cod':codigonivelFormacion,
+      'nivel':nivel,
       'actualizar':1,
       'eliminar':0,
       'opt':2}
@@ -64,16 +64,16 @@ function cargartabla(){
       })
     }
     function eliminar(dato){
-      var codigo=$('#codigo'+dato).val()
-      var nom=$('#idioma'+dato).val()
-      var etnia=$('#idiomaetnia'+dato).val()
+      var codigonivelFormacion=$('#codigonivelFormacion'+dato).val()
+      var nom=$('#nivelFormacion'+dato).val()
+      var nivel=$('#nivelInstruccion'+dato).val()
       $.ajax({
         type: 'POST',
         url: '../controladores/registrotabaNivelFormacion.php',
         data:{'id':dato,
         'nom':nom,
-        'cod':codigo,
-        'etnia':etnia,
+        'cod':codigonivelFormacion,
+        'nivel':nivel,
         'actualizar':1,
         'eliminar':0,
         'opt':0}

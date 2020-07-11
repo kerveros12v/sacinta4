@@ -1,30 +1,31 @@
 <?php
-require_once("../Crud/CrudIdiomas.php");
+require_once("../Crud/Crudnivelformacion.php");
 require_once("respuestasgenerales.php");
 session_start();
 
-use Clasesphp\Idiomas;
-use Crud\CrudIdiomas;
+use Clasesphp\Nivelformacion;
+use Crud\CrudNivelformacion;
 
-function opcionIdiomas()
+function opcionnivelFormacion()
 {
     try {
-        $datos = new Idiomas();
-        $crud = new CrudIdiomas();
+        $datos = new Nivelformacion();
+        $crud = new CrudNivelformacion();
 
-        $datos->set_ididiomaAncestral($_POST['id']);
-        $datos->set_idioma($_POST['nom']);
-        $datos->set_idiomasancestralcodigo($_POST['cod']);
-        $datos->set_idiomaetnia($_POST['etnia']);
-        $datos->set_idiomaancestralOculto($_POST['eliminar']);
-        $datos->set_idiomaancestralAccion($_POST['actualizar']);
-        $datos->set_idiomaancestralfecha(date("Y-m-d"));
-        $datos->set_idiomaancestraluser($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->set_nivelFormacionId($_POST['id']);
+        $datos->set_nivelFormacion($_POST['nom']);
+        $datos->set_codigonivelFormacion($_POST['cod']);
+        $datos->set_nivelInstruccion($_POST['nivel']);
+        $datos->set_nivelformacionOculto($_POST['eliminar']);
+        $datos->set_nivelformacionAccion($_POST['actualizar']);
+        $datos->set_nivelformacionfecha(date("Y-m-d"));
+        $datos->set_nivelformacionuser($_SESSION['tipouser'] . $_SESSION['user']);
+
         $opcion = $_POST['opt'];
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_ididiomaAncestral(null);
+                $datos->set_nivelFormacionId(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -33,7 +34,7 @@ function opcionIdiomas()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_ididiomaAncestral());
+                $crud->eliminar($datos->get_nivelFormacionId());
                 return (eliminarR());
             }
         }
@@ -42,4 +43,4 @@ function opcionIdiomas()
         return $th;
     }
 }
-echo opcionIdiomas();
+echo opcionnivelFormacion();
