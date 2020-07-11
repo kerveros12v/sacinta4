@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="../css/cssmatricula1.css"/>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="../js/ajaxsidioma.js"></script>
+<script type="text/javascript" src="../js/ajaxsnivelformacion.js"></script>
 </head>
 
 <body>
@@ -19,7 +19,7 @@
    <th>NIVEL DE INSTRUCCION</th>
    <th></th>
   </tr>
-  <tbody id="contenedorrecibepenciondiferenciada">
+  <tbody id="contenedornivelformacion">
   </tbody>
 </table>
 </body>
