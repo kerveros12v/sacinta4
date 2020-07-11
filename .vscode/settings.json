@@ -1,0 +1,9 @@
+{
+    "workbench.colorTheme": "Community Material Theme Darker",
+    "workbench.preferredDarkColorTheme": "Visual Studio Light",
+    "workbench.preferredHighContrastColorTheme": "Default Dark+",
+    "composer.executablePath": "/var/www/html/sacinta3/",
+    "composer.workingPath": "/var/www/html/sacinta3/",
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "editor.semanticHighlighting.enabled": false
+}

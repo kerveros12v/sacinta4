@@ -1,0 +1,19 @@
+{
+    "name": "intsuperior/sacinta3",
+    "description": "Sistema academico INT",
+    "type": "project",
+    "license": "free",
+    "authors": [
+        {
+            "name": "Vinueza Fernando",
+            "email": "kerveros12v@aol.com"
+        }
+    ],
+    "minimum-stability": "beta",
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.12",
+        "symfony/symfony": "~2.5",
+        "select2/select2": "^4.1@beta",
+        "twbs/bootstrap": "^4.4"
+    }
+}

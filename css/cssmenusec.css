@@ -1,0 +1,18 @@
+.sidebar_2 {
+    float: left;
+    display: block;
+    border: none;
+    width: 12%;
+
+}
+#contenedor1{
+    width: 87.5%;
+    height: 98%;
+    position: fixed;
+    top: 0%;
+    bottom: 0%;
+    left: 12.5%;
+    right: 1%;
+    border: none;
+
+}

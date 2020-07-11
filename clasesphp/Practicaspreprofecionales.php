@@ -1,0 +1,21 @@
+<?php
+namespace Clasesphp;
+
+class Practicaspreprofecionales
+{
+private $PracticasPreProfecionalesId;
+private $nroHorasPracticasPreprofesionalesPorPeriodo;
+private $entornoInstitucionalPracticasProfesionalesid;
+private $SectorEconomico_sectorEconomicoid;
+
+public function _construct(){}
+public function set_PracticasPreProfecionalesId($PracticasPreProfecionalesId){$this->PracticasPreProfecionalesId=$PracticasPreProfecionalesId;}
+public function get_PracticasPreProfecionalesId(){return $this->PracticasPreProfecionalesId;}
+public function set_nroHorasPracticasPreprofesionalesPorPeriodo($nroHorasPracticasPreprofesionalesPorPeriodo){$this->nroHorasPracticasPreprofesionalesPorPeriodo=$nroHorasPracticasPreprofesionalesPorPeriodo;}
+public function get_nroHorasPracticasPreprofesionalesPorPeriodo(){return $this->nroHorasPracticasPreprofesionalesPorPeriodo;}
+public function set_entornoInstitucionalPracticasProfesionalesid($entornoInstitucionalPracticasProfesionalesid){$this->entornoInstitucionalPracticasProfesionalesid=$entornoInstitucionalPracticasProfesionalesid;}
+public function get_entornoInstitucionalPracticasProfesionalesid(){return $this->entornoInstitucionalPracticasProfesionalesid;}
+public function set_SectorEconomico_sectorEconomicoid($SectorEconomico_sectorEconomicoid){$this->SectorEconomico_sectorEconomicoid=$SectorEconomico_sectorEconomicoid;}
+public function get_SectorEconomico_sectorEconomicoid(){return $this->SectorEconomico_sectorEconomicoid;}
+}
+?>
