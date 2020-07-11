@@ -30,6 +30,16 @@ class CrudNivelformacion{
 			}
 			return $listaNivelformacion;
 		}
+		public function nivelInstruccion(){
+			$db=Db::conectar();
+			$listaNivelformacion=null;
+			$select=$db->query("SELECT nivelInstruccion FROM nivelformacion group by nivelInstruccion;");
+
+			foreach($select->fetchAll() as $nivelformacion1){
+				$listaNivelformacion[]=$nivelformacion1['nivelInstruccion'];
+			}
+			return $listaNivelformacion;
+		}
 		    public function eliminar($id){
 			$db=Db::conectar();
 			$eliminar=$db->prepare('DELETE FROM nivelformacion WHERE nivelFormacionId=:id');
@@ -67,19 +77,55 @@ class CrudNivelformacion{
 		public function actualizar($nivelformacion1){
 			$db=Db::conectar();
 			$nivelformacion1=new Nivelformacion();
-			$actualizar=$db->prepare('UPDATE nivelformacion SET `nivelFormacionId`=:id,`codigonivelFormacion`=:codigonivelFormacion1,`nivelFormacion`=:nivelFormacion1 WHERE nivelFormacionId=:id');
-			$actualizar->bindValue('id',$nivelformacion1->get_nivelFormacionId());
+			$actualizar=$db->prepare('UPDATE `nivelformacion`
+			SET
+			`nivelFormacionId` = :nivelFormacionId1,
+			`codigonivelFormacion` = :codigonivelFormacion1,
+			`nivelFormacion` = :nivelFormacion1,
+			`nivelInstruccion` = :nivelInstruccion1,
+			`nivelformacionOculto` = :nivelformacionOculto1,
+			`nivelformacionAccion` = :nivelformacionAccion1,
+			`nivelformacionfecha` = :nivelformacionfecha1,
+			`nivelformacionuser` = :nivelformacionuser1
+			WHERE `nivelFormacionId` = :nivelFormacionId1;');
+			$actualizar->bindValue('nivelFormacionId1',$nivelformacion1->get_nivelFormacionId());
 			$actualizar->bindValue('codigonivelFormacion1',$nivelformacion1->get_codigonivelFormacion());
 			$actualizar->bindValue('nivelFormacion1',$nivelformacion1->get_nivelFormacion());
+			$actualizar->bindValue('nivelInstruccion1',$nivelformacion1->get_nivelInstruccion());
+			$actualizar->bindValue('nivelformacionOculto1',$nivelformacion1->get_nivelformacionOculto());
+			$actualizar->bindValue('nivelformacionAccion1',$nivelformacion1->get_nivelformacionAccion());
+			$actualizar->bindValue('nivelformacionfecha1',$nivelformacion1->get_nivelformacionfecha());
+			$actualizar->bindValue('nivelformacionuser1',$nivelformacion1->get_nivelformacionuser());
 			$actualizar->execute();
 		}
 		public function insertar($nivelformacion1){
 			$db=Db::conectar();
-			$insert=$db->prepare('INSERT INTO nivelformacion(nivelFormacionId, codigonivelFormacion1,nivelFormacion) VALUES (:id,:codigonivelFormacion1,:nivelFormacion1)');
-			//$insert->bindValue('id',$nivelformacion1->get_idColegios());
-			$insert->bindValue('id',$nivelformacion1->get_nivelFormacionId());
+			$insert=$db->prepare('INSERT INTO `nivelformacion`
+			(`nivelFormacionId`,
+			`codigonivelFormacion`,
+			`nivelFormacion`,
+			`nivelInstruccion`,
+			`nivelformacionOculto`,
+			`nivelformacionAccion`,
+			`nivelformacionfecha`,
+			`nivelformacionuser`)
+			VALUES
+			(:nivelFormacionId1,
+			:codigonivelFormacion1,
+			:nivelFormacion1,
+			:nivelInstruccion1,
+			:nivelformacionOculto1,
+			:nivelformacionAccion1,
+			:nivelformacionfecha1,
+			:nivelformacionuser1);');
+			$insert->bindValue('nivelFormacionId1',$nivelformacion1->get_nivelFormacionId());
 			$insert->bindValue('codigonivelFormacion1',$nivelformacion1->get_codigonivelFormacion());
 			$insert->bindValue('nivelFormacion1',$nivelformacion1->get_nivelFormacion());
+			$insert->bindValue('nivelInstruccion1',$nivelformacion1->get_nivelInstruccion());
+			$insert->bindValue('nivelformacionOculto1',$nivelformacion1->get_nivelformacionOculto());
+			$insert->bindValue('nivelformacionAccion1',$nivelformacion1->get_nivelformacionAccion());
+			$insert->bindValue('nivelformacionfecha1',$nivelformacion1->get_nivelformacionfecha());
+			$insert->bindValue('nivelformacionuser1',$nivelformacion1->get_nivelformacionuser());
 			$insert->execute();
 
 		}
