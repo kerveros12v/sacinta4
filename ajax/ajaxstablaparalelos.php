@@ -6,7 +6,7 @@ require_once("../controladores/respuestasgenerales.php");
 use Crud\CrudParalelo;
 
 session_start();
-function cargartablatipoSangre()
+function cargartablaparalelos()
 {
     $r="";
     $crud = new CrudParalelo();
@@ -49,7 +49,7 @@ function cargartablatipoSangre()
     return $r;
 }
 if ($_SESSION['user']!="") {
-    echo cargartablatipoSangre();
+    echo cargartablaparalelos();
 } else{
 	echo '<tr>
 		<td>
