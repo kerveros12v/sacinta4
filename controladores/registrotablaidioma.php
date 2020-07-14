@@ -1,10 +1,10 @@
 <?php
 require_once("../Crud/CrudIdiomas.php");
 require_once("respuestasgenerales.php");
-session_start();
-
 use Clasesphp\Idiomas;
 use Crud\CrudIdiomas;
+
+session_start();
 
 function opcionIdiomas()
 {

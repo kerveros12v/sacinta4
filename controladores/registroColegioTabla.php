@@ -2,10 +2,10 @@
 require_once("../Crud/CrudColegios.php");
 require_once("respuestasgenerales.php");
 
-session_start();
-
 use  Crud\CrudColegios;
 use  Clasesphp\Colegios;
+
+session_start();
 
 function opcioncolegios()
 {

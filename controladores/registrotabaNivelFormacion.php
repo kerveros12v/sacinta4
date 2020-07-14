@@ -1,10 +1,11 @@
 <?php
 require_once("../Crud/Crudnivelformacion.php");
 require_once("respuestasgenerales.php");
-session_start();
 
 use Clasesphp\Nivelformacion;
 use Crud\CrudNivelformacion;
+
+session_start();
 
 function opcionnivelFormacion()
 {

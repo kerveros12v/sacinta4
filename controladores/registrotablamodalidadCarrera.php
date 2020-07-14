@@ -8,8 +8,6 @@ use Crud\CrudModalidadcarreras;
 
 session_start();
 
-
-
 function opcionmodalidadCarrera()
 {
     try {

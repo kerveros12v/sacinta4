@@ -1,9 +1,9 @@
 <?php
 require_once("../Crud/CrudGeneros.php");
 require_once("respuestasgenerales.php");
-session_start();
 use Clasesphp\Generos;
 use Crud\CrudGeneros;
+session_start();
 function opcionGeneros()
 {
     try {

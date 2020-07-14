@@ -1,10 +1,12 @@
 <?php
+
+use Clasesphp\Discapacidad;
+use Crud\CrudDiscapacidad;
+
 require_once("../Crud/CrudDiscapacidad.php");
 require_once("respuestasgenerales.php");
 
 
-use Clasesphp\Discapacidad;
-use Crud\CrudDiscapacidad;
 
 session_start();
 

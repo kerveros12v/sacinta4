@@ -2,10 +2,10 @@
 require_once("../Crud/CrudCanton.php");
 require_once("respuestasgenerales.php");
 
-session_start();
-
 use  Crud\CrudCantones;
 use  Clasesphp\Cantones;
+
+session_start();
 
 function opcioncanton()
 {

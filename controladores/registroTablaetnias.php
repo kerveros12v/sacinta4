@@ -1,9 +1,9 @@
 <?php
 require_once("../Crud/CrudEtnia.php");
 require_once("respuestasgenerales.php");
-session_start();
 use Clasesphp\Etnias;
 use Crud\CrudEtnia;
+session_start();
 function opcionetnias()
 {
     try {

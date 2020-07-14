@@ -1,11 +1,11 @@
 <?php
 
-use Clasesphp\Parentescos;
-use Crud\CrudParentescos;
-
 require_once("../Crud/CrudParentesco.php");
 require_once("respuestasgenerales.php");
 
+
+use Clasesphp\Parentescos;
+use Crud\CrudParentescos;
 
 
 session_start();
