@@ -103,6 +103,14 @@ class CrudIngresosestudiante{
 			$insert->execute();
 
 		}
+		public function eliminar($id)
+	{
+		$db = Db::conectar();
+		$eliminar = $db->prepare('DELETE FROM `ingresosestudiante`
+		WHERE ingresosestudianteId=:id');
+		$eliminar->bindValue('id', $id);
+		$eliminar->execute();
+	}
 }
 
 ?>
