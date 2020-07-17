@@ -17,7 +17,7 @@ function opcionDiscapacidad()
         $crud = new CrudDiscapacidad();
 
         $datos->set_discapacidadId($_POST['id']);
-        $datos->set_discapacidad($_POST['nom']);
+        $datos->set_discapacidad(strtoupper($_POST['nom']));
         $datos->set_discapacidadcodigo($_POST['cod']);
         $datos->set_discapacidadOculto($_POST['eliminar']);
         $datos->set_discapacidadAccion($_POST['actualizar']);

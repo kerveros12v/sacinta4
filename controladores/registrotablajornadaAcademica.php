@@ -1,37 +1,35 @@
 <?php
 
-use Clasesphp\Discapacidad;
-use Crud\CrudDiscapacidad;
-
-require_once("../Crud/CrudDiscapacidad.php");
+require_once("../Crud/CrudJornadasAcademicas.php");
 require_once("respuestasgenerales.php");
 
 
+use Clasesphp\Jornadasacademicas;
+use Crud\CrudJornadasAcademicas;
 
 session_start();
 
 
 
-function opcionDiscapacidad()
+function opcionJornadasacademicas()
 {
     try {
-        $datos = new Discapacidad();
-        $crud = new CrudDiscapacidad();
+        $datos = new Jornadasacademicas();
+        $crud = new CrudJornadasAcademicas();
 
-        $datos->set_discapacidadId($_POST['id']);
-        $datos->set_discapacidad($_POST['nom']);
-        $datos->set_discapacidadcodigo($_POST['cod']);
-        $datos->set_discapacidadOculto($_POST['eliminar']);
-        $datos->set_discapacidadAccion($_POST['actualizar']);
-        $datos->set_discapacidadfecha(date("Y-m-d"));
-        $datos->set_discapacidaduser($_SESSION['tipouser'] . $_SESSION['user']);
-
+        $datos->set_JornadaAcademicaId($_POST['id']);
+        $datos->set_JornadaAcademica($_POST['nom']);
+        $datos->set_JornadaAcademicaCodigo($_POST['cod']);
+        $datos->set_jornadasacademicasOculto($_POST['eliminar']);
+        $datos->set_jornadasacademicasAccion($_POST['actualizar']);
+        $datos->set_jornadasacademicasfecha(date("Y-m-d"));
+        $datos->set_jornadasacademicasuser($_SESSION['tipouser'] . $_SESSION['user']);
         $opcion = $_POST['opt'];
 
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_discapacidadId(null);
+                $datos->set_JornadaAcademicaId(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -40,7 +38,7 @@ function opcionDiscapacidad()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_discapacidadId());
+                $crud->eliminar($datos->get_JornadaAcademicaId());
                 return (eliminarR());
             }
         }
@@ -49,4 +47,4 @@ function opcionDiscapacidad()
         return $th;
     }
 }
-echo opcionDiscapacidad();
+echo opcionJornadasacademicas();
