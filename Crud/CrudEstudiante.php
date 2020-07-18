@@ -23,7 +23,6 @@ class CrudEstudiantes
 		$select = $db->query("SELECT * FROM estudiantes");
 		foreach ($select->fetchAll() as $estudiantes1) {
 			$myestudiantes = new Estudiantes();
-			///
 			$myestudiantes->set_fktipodocumentoId($estudiantes1['fktipodocumentoId']);
 			$myestudiantes->set_numeroIdentificacion($estudiantes1['numeroIdentificacion']);
 			$myestudiantes->set_primerApellido($estudiantes1['primerApellido']);
@@ -89,7 +88,6 @@ class CrudEstudiantes
 		$estudiantes1 = $select->fetch();
 		$myestudiantes = new Estudiantes();
 		///--------------------------------------------------
-
 		$myestudiantes->set_fktipodocumentoId($estudiantes1['fktipodocumentoId']);
 		$myestudiantes->set_numeroIdentificacion($estudiantes1['numeroIdentificacion']);
 		$myestudiantes->set_primerApellido($estudiantes1['primerApellido']);
@@ -186,7 +184,6 @@ class CrudEstudiantes
 			$insert->bindValue('estudiantesuser1', $estudiantes1->get_estudiantesuser());
 
 			$insert->execute();
-			echo ("Insercion Correcta");
 
 	}
 
