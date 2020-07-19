@@ -4,11 +4,8 @@ namespace Clasesphp;
 
 class Bachilleratos
 {
-	private $bachilleratoId;
-	private $fkEstudiantesNumeroIdentificacion;
-	private $fkTiposBacilleratotiposBacilleratoId;
-	private $anioGraduacion;
-	private $colegiob;
+	private $bachilleratoId, $fkEstudiantesNumeroIdentificacion, $fkTiposBacilleratotiposBacilleratoId, $anioGraduacion, $colegios_idColegios, $bachilleratoOculto, $bachilleratoAccion, $bachilleratofecha, $bachilleratouser;
+
 	public function _construct()
 	{
 	}
@@ -44,17 +41,48 @@ class Bachilleratos
 	{
 		return $this->anioGraduacion;
 	}
-
-	public function set_colegio($colegiob)
+	public function set_colegios_idColegios($colegios_idColegios)
 	{
-		$this->colegiob = $colegiob;
+		$this->colegios_idColegios = $colegios_idColegios;
 	}
-	public function get_colegio()
+	public function get_colegios_idColegios()
 	{
-		return $this->colegiob;
+		return $this->colegios_idColegios;
+	}
+	public function set_bachilleratoOculto($bachilleratoOculto)
+	{
+		$this->bachilleratoOculto = $bachilleratoOculto;
+	}
+	public function get_bachilleratoOculto()
+	{
+		return $this->bachilleratoOculto;
+	}
+	public function set_bachilleratoAccion($bachilleratoAccion)
+	{
+		$this->bachilleratoAccion = $bachilleratoAccion;
+	}
+	public function get_bachilleratoAccion()
+	{
+		return $this->bachilleratoAccion;
+	}
+	public function set_bachilleratofecha($bachilleratofecha)
+	{
+		$this->bachilleratofecha = $bachilleratofecha;
+	}
+	public function get_bachilleratofecha()
+	{
+		return $this->bachilleratofecha;
+	}
+	public function set_bachilleratouser($bachilleratouser)
+	{
+		$this->bachilleratouser = $bachilleratouser;
+	}
+	public function get_bachilleratouser()
+	{
+		return $this->bachilleratouser;
 	}
 	public function __toString()
 	{
-		return ("bachilleratoId: {" . $this->bachilleratoId . "} fkEstudiantesNumeroIdentificacion: {" . $this->fkEstudiantesNumeroIdentificacion . "} fkTiposBacilleratotiposBacilleratoId: {" . $this->fkTiposBacilleratotiposBacilleratoId . "} anioGraduacion: {" . $this->anioGraduacion . "} colegiob: {" . $this->colegiob . "}");
+		return ("bachilleratoId: {" . $this->bachilleratoId . "} fkEstudiantesNumeroIdentificacion: {" . $this->fkEstudiantesNumeroIdentificacion . "} fkTiposBacilleratotiposBacilleratoId: {" . $this->fkTiposBacilleratotiposBacilleratoId . "} anioGraduacion: {" . $this->anioGraduacion . "} colegiob: {" . $this->colegios_idColegios. "}");
 	}
 }

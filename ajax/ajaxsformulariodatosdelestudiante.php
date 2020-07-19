@@ -12,11 +12,11 @@ require_once("ajaxsselectcanton.php");
 require_once("ajaxsselectcategoriamigratoria.php");
 require_once("ajaxsselectpueblo.php");
 require_once("ajaxsselectidiomaansestral.php");
-
+require_once("ajaxsselect2.php");
 
 
 session_start();
-$cedula=isset($_SESSION['est'])?$_SESSION['est']:"";
+
 function cargarformulario($cedula){
 
 
@@ -27,7 +27,7 @@ function cargarformulario($cedula){
 	}else{
 		echo "<script>console.log('No se pudo encontrar al estudiante".$cedula."')</script>";
 	}
-$r='
+$r=ajaxs_select2().'
 <td>
 	<table width=100%;>
 		<tr class="tabtitulos">
@@ -456,6 +456,7 @@ $r='
 return $r;
 }
 try{
+	$cedula=isset($_SESSION['est'])?$_SESSION['est']:"";
 	echo cargarformulario($cedula);
 }
 catch(\Throwable $e){

@@ -13,7 +13,7 @@ function opcionTipodocumento()
         $crud = new CrudPuebloNacionalidad();
 
         $datos->set_pueblonacionalidadId($_POST['id']);
-        $datos->set_pueblonacionalidad($_POST['nom']);
+        $datos->set_pueblonacionalidad(strtoupper($_POST['nom']));
         $datos->set_pueblonacionalidadescodigo($_POST['cod']);
         $datos->set_pueblonacionalidadOculto($_POST['eliminar']);
         $datos->set_pueblonacionalidadAccion($_POST['actualizar']);

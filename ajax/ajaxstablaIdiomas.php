@@ -9,7 +9,7 @@ use Crud\CrudIdiomas;
 session_start();
 function cargartablaidioma()
 {
-    $r="";
+    $r=ajaxs_select2();
     $crud = new CrudIdiomas();
     $r.= '
 <tr>

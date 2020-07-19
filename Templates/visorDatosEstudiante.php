@@ -4,9 +4,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <title>Datos del Estudiante</title>
-<link rel="stylesheet" type="text/css" href="../css/cssmenusec.css"/>
+<script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="../js/ajaxsestudiantelistado.js"></script>
+<script type="text/javascript" src="../js/ajaxsestudiantes.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/cssmenusec.css"/>
+<link rel="stylesheet" type="text/css" href="../css/cssmatricula1.css"/>
+<script type="text/javascript" src="../vendor/select2/select2/dist/js/select2.min.js"></script>
+<link href="../vendor/select2/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
@@ -14,7 +19,12 @@
   <ul id="nav1">
   </ul>
   </div>
- <iframe class ="contenedor1" id="contenedor1" name="contenedor1" border: none;"></iframe>
+ <div>
+ <table border="1">
+				<tr class="contenedordatos" id="contenedordatos"></tr>
+
+		</table>
+ </div>
 
 
 </body>

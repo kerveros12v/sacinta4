@@ -12,7 +12,7 @@ try {
     $lstpermisos = $crudpermisos->mostrarPermiso($a);
     $aux1 = 0;
     foreach ($lstpermisos as $key) {
-        if($crudpermisos->mostrardepartamentosparametro($key->get_codDepartamento())!=2)
+        if($crudpermisos->mostrardepartamentosparametro($key->get_codDepartamento())<2)
                 $lstdepartamentos[] = $key->get_departamentosSubdivision();
     }
     $unicosDepartamentos=array_unique($lstdepartamentos);
@@ -23,6 +23,7 @@ try {
             echo "<ul>";
             foreach ($lstpermisos as $dp) {
                 if ($lp1 == $dp->get_departamentosSubdivision()) {
+                    //echo"<script>console.log('".$dp->get_etiqueta()."');</scrit>";
                     echo ('<li><a href="' . $dp->get_url() . '" target="contenedor">' .$crudpermisos->mostrarDepartamento($dp->get_etiqueta() ) . '</a></li>');
                 }
             }
