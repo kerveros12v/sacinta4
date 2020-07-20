@@ -40,7 +40,7 @@ function cargarestudiantetitulotercernivel($cedula){
 return $r;
 }
 try{
-	$cedula=isset($_SESSION['est'])?$_SESSION['est']:"";
+	$cedula=isset($_SESSION['campbuscarest'])?$_SESSION['campbuscarest']:"";
 	echo cargarestudiantetitulotercernivel($cedula);
 }
 catch(\Exception $e ){

@@ -7,7 +7,7 @@ require_once("ajaxsselect2.php");
 
 session_start();
 $crud1=new \Crud\CrudPeriodoacademico();
-$cedula=isset($_SESSION['est'])?$cedula=$_SESSION['est']:"";
+$cedula=isset($_SESSION['campbuscarest'])?$_SESSION['campbuscarest']:"";
 $periodo=isset($_SESSION['periodo'])?$periodo=$crudperiodoaca->obtenerPeriodoacademico($_SESSION['periodo']):$periodo=$crud1->obtenerPeriodoAcademicoActual();
 
     function cargarContactoEmergencia($cedula,$periodo){

@@ -4,7 +4,8 @@ require_once("../controladores/respuestasgenerales.php");
 session_start();
 
 function opcionurlestudiantes(){
-    echo '..\Templates\visorDatosEstudiante.php';
+    $_SESSION['campbuscarest']=$_POST['id'];
+    echo '..\Templates\actualizarEstudiante.php';
 
 }
 if ($_SESSION['user']!="") {

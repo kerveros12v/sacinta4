@@ -12,7 +12,7 @@ use Crud\CrudCantones;
 use Crud\CrudColegios;
 
 session_start();
-$cedula=isset($_SESSION['est'])?$_SESSION['est']:"";
+$cedula=isset($_SESSION['campbuscarest'])?$_SESSION['campbuscarest']:"";
     function cargarBachilleratoEstudiantes($cedula){
         $crud=new CrudBachillerato();
         $crudcolegio=new CrudColegios();

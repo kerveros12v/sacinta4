@@ -456,7 +456,7 @@ $r=ajaxs_select2().'
 return $r;
 }
 try{
-	$cedula=isset($_SESSION['est'])?$_SESSION['est']:"";
+	$cedula=isset($_SESSION['campbuscarest'])?$_SESSION['campbuscarest']:"";
 	echo cargarformulario($cedula);
 }
 catch(\Throwable $e){

@@ -28,23 +28,16 @@ function cargartabla(){
         alert('Hubo un error al cargar de Perfiles')
       })
     }
-    function buscar(dato){
+    function actualizar(dato){
 
-        var cod= $('#paralelocodigo'+dato).val();
-        var nom=$('#paralelo'+dato).val();
+        var nom=dato;
         $.ajax({
           type: 'POST',
-          url: '../controladores/registrotablaParalelo.php',
-          data:{
-          'id':dato,
-          'cod':cod,
-          'nom':nom,
-          'eliminar':0,
-          'actualizar':1,
-          'opt':2}
+          url: '../ajax/ajaxsestudiantematriculaprint.php',
+          data:{'id':nom}
         })
         .done(function(cargar){
-          alert(cargar)
+          window.open(cargar,"_self")
        cargartabla()
         })
         .fail(function(){

@@ -25,6 +25,7 @@ try {
 			$_SESSION['est'] = $est2->get_numeroIdentificacion();
 			$_SESSION['tipouser'] = "est";
 			$_SESSION['acceso'] = $est2->get_accesodepartamento_codigo();
+			$_SESSION['campbuscarest']=$est2->get_numeroIdentificacion();
 			cargarplantilla();
 		}
 	}
