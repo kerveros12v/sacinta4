@@ -117,7 +117,7 @@ input[type="submit"] {
   margin: 29px 0 0 29px;
   position:relative;
   cursor:pointer;
-  border: none;  
+  border: none;
   background-color: #F00;
   background-image: linear-gradient(top#900,#C00);
   border-top-left-radius: 5px;
@@ -142,7 +142,6 @@ input[type="submit"]:active {
   top:3px;
   box-shadow: inset 0px 1px 0px #C00, 0px 2px 0px 0px #31524d, 0px 5px 3px #999;
 }
-//////
 section {
   counter-reset: total;
 }

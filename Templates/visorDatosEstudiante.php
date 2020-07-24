@@ -16,6 +16,9 @@
 
 <body>
   <div class="sidebar_2">
+  <div id="foto" name="foto">
+    <a href="#" onclick="cargafotoestudiante()">IMAGEN</a>
+  </div>
   <ul id="nav1">
   </ul>
   </div>

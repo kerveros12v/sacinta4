@@ -14,4 +14,7 @@ function tiempoExedido(){
 function optEliminar(){
     return 0;
 }
+function actualizarFoto(){
+    return "Imagen Subida Correctamente";
+}
 ?>

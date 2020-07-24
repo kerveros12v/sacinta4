@@ -271,7 +271,7 @@ class Estudiantes
 	{
 		return $this->estudiantesuser;
 	}
-	public function toString()
+	public function __toString()
 	{
 		return "fktipodocumentoId:{" . $this->fktipodocumentoId . "},numeroIdentificacion:{" . $this->numeroIdentificacion . "},primerApellido:{" . $this->primerApellido . "},segundoApellido:{" . $this->segundoApellido . "},primerNombre:{" . $this->primerNombre . "},segundoNombre:{" . $this->segundoNombre . "},fksexoId:{" . $this->fksexoId . "},fkGeneroId:{" . $this->fkGeneroId . "},fkEstadoCivilId:{" . $this->fkEstadoCivilId . "},fktEtniaId:{" . $this->fktEtniaId . "},fkPuebloNacionalidadId:{" . $this->fkPuebloNacionalidadId . "},fkTipoSangreId:{" . $this->fkTipoSangreId . "},fechaNacimiento:{" . $this->fechaNacimiento . "},fkPaisNacionalidadId:{" . $this->fkPaisNacionalidadId . "},fkProvinciaNacimientoId:{" . $this->fkProvinciaNacimientoId . "},fkCantonNacimientoId:{" . $this->fkCantonNacimientoId . "},correoElectronico:{" . $this->correoElectronico . "},numeroCelular:{" . $this->numeroCelular . "},numeroComvencional:{" . $this->numeroComvencional . "},usuarioEstudiantes:{" . $this->usuarioEstudiantes . "},passwordEstudiantes:{" . $this->passwordEstudiantes . "},categoriaMigratoria_categoriaMigratoriaId:{" . $this->categoriaMigratoria_categoriaMigratoriaId . "},idiomas:{" . $this->idiomas . "},accesodepartamento_codigo:{" . $this->accesodepartamento_codigo . "},estudiantesimg:{" . $this->estudiantesimg . "},estudiantesOculto:{" . $this->estudiantesOculto . "},estudiantesAccion:{" . $this->estudiantesAccion . "},estudiantesfecha:{" . $this->estudiantesfecha . "},estudiantesuser:{" . $this->estudiantesuser . "}";
 	}

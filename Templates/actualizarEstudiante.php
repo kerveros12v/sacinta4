@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	$_SESSION['est']=$_POST['ced'];
+	$_SESSION['campbuscarest']=$_POST['ced'];
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
@@ -33,7 +33,7 @@
 		<div class="sidebar2">
 			<ul class="nav">
 				<li>
-					  <a id="salir" onclick="salir()">Salir</a>
+					  <a id="salir" onclick="salirmatricula()">Salir</a>
 				</li>
 	  		</ul>
 		</div>

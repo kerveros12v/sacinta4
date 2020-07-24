@@ -25,7 +25,7 @@ function cargarformulario($cedula){
 	if($crud->existe($cedula)==true){
 		$dato=$crud->obtenerEstudiantes($cedula);
 	}else{
-		echo "<script>console.log('No se pudo encontrar al estudiante".$cedula."')</script>";
+		echo "<script>console.log('No se pudo encontrar al estudiante: ".$cedula."')</script>";
 	}
 $r=ajaxs_select2().'
 <td>
@@ -257,14 +257,14 @@ $r=ajaxs_select2().'
 							<table>
 								<tr>
 									<td>
-										<select  class="selector" id="paisNacionalidad" name="paisNacionalidad">
+										<select  class="selector" id="paisNacionalidad" name="paisNacionalidad" onchange="cargarProvinciasest1()">
 											'.cargarPais($dato->get_fkPaisNacionalidadId()).'
 										</select>
 									</td>
 								</tr>
 								<tr>
 									<th>
-										<label class="etiqueta1">PAIS DE NACIIENTO</label>
+										<label class="etiqueta1">PAIS DE NACIMIENTO</label>
 									</th>
 								</tr>
 							</table>
@@ -281,14 +281,14 @@ $r=ajaxs_select2().'
 							<table>
 								<tr>
 									<td>
-										<select class="selector"  name="provinciaNacionalidad" id="provinciaNacionalidad">
+										<select class="selector"  name="provinciaNacionalidad" id="provinciaNacionalidad" onchange="cargarCantonest1()"  >
 											'.cargarProvincias($dato->get_fkProvinciaNacimientoId()).'
 										</select>
 									</td>
 								</tr>
 								<tr>
 									<th>
-										<label class="etiqueta1">PROVINCIA DE NACIIENTO</label>
+										<label class="etiqueta1">PROVINCIA DE NACIMIENTO</label>
 									</th>
 								</tr>
 							</table>
@@ -304,7 +304,7 @@ $r=ajaxs_select2().'
 								</tr>
 								<tr>
 									<th>
-										<label class="etiqueta1">CANTON DE NACIIENTO</label>
+										<label class="etiqueta1">CANTON DE NACIMIENTO</label>
 									</th>
 								</tr>
 							</table>

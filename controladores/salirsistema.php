@@ -13,4 +13,4 @@ session_start();  // Iniciamos sesión
 if(count($_SESSION)>0)  {
   cierra_sesion();   // Cerramos la sesión y destruimos los datos
   $cerrada=true;
-} 
+}
