@@ -7,7 +7,10 @@ function cargartabladiscapacidad()
 {
     $r="";
     $crud = new CrudDiscapacidad();
+
+
     $r.= '
+
 <tr>
     <td>
 
@@ -17,6 +20,11 @@ function cargartabladiscapacidad()
     </td>
     <td>
         <input type="text" id="discapacidad" name="discapacidad"  value=""/>
+    </td>
+    <td>
+ <select class="selector"  id="discapacidadbool" name="discapacidadbool">
+    '.boolselect(1).'
+    </select>
     </td>
     <td>
         <input type="button" value="Guardar" id="btnguardar" class="btnunico" onclick="registro()">
@@ -35,6 +43,11 @@ function cargartabladiscapacidad()
         </td>
         <td>
             <input type="text" id="discapacidad' . $dato->get_discapacidadId() . '" name="discapacidad' . $dato->get_discapacidadId() . '"  value="' . $dato->get_discapacidad() . '"/>
+        </td>
+        <td>
+            <select class="selector"  id="discapacidadbool" name="discapacidadbool">
+                '.boolselect($dato->get_discapacidadbool()).'
+            </select>
         </td>
         <td class="unilinea">
         <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_discapacidadId() . ')">

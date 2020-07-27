@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+  cargarpaisest1();
   cargarFormulario();
   cargarDiscapaidadEstudiante();
   cargarResidenciaEstudiante();
@@ -10,7 +11,6 @@ $(document).ready(function(){
   cargarformMatricula();
   cargarformtrabajo();
   cargarmenu();
-
 });
 function salirmatricula(){
   $.ajax({

@@ -24,6 +24,7 @@ class CrudDiscapacidadesestudiantes
 
 		foreach ($select->fetchAll() as $discapacidadesestudiantes) {
 			$mydiscapacidadesestudiantes = new Discapacidadesestudiantes();
+			$mydiscapacidadesestudiantes->set_discapacidadesestudiantesid($discapacidadesestudiantes['discapacidadesestudiantesid']);
 			$mydiscapacidadesestudiantes->set_CarnetConadisId($discapacidadesestudiantes['CarnetConadisId']);
 			$mydiscapacidadesestudiantes->set_fkEstudiantesNumeroIdentificacion($discapacidadesestudiantes['fkEstudiantesNumeroIdentificacion']);
 			$mydiscapacidadesestudiantes->set_fkDiscapacidadDiscapacidadId($discapacidadesestudiantes['fkDiscapacidadDiscapacidadId']);
@@ -74,7 +75,7 @@ class CrudDiscapacidadesestudiantes
 		$select = $db->prepare("SELECT * FROM discapacidadesestudiantes where fkEstudiantesNumeroIdentificacion=:id");
 		$select->bindValue('id', $id);
 		$select->execute();
-		if ($select->fetch() == 0) return;
+		if ($select->fetch() == 0) return 0;
 		return 1;
 	}
 	public  function obtenerdiscapacidadesestudiantes($id, $periodo)
@@ -86,6 +87,7 @@ class CrudDiscapacidadesestudiantes
 		$select->execute();
 		$discapacidadesestudiantes = $select->fetch();
 		$mydiscapacidadesestudiantes = new Discapacidadesestudiantes();
+		$mydiscapacidadesestudiantes->set_discapacidadesestudiantesid($discapacidadesestudiantes['discapacidadesestudiantesid']);
 		$mydiscapacidadesestudiantes->set_CarnetConadisId($discapacidadesestudiantes['CarnetConadisId']);
 		$mydiscapacidadesestudiantes->set_fkEstudiantesNumeroIdentificacion($discapacidadesestudiantes['fkEstudiantesNumeroIdentificacion']);
 		$mydiscapacidadesestudiantes->set_fkDiscapacidadDiscapacidadId($discapacidadesestudiantes['fkDiscapacidadDiscapacidadId']);

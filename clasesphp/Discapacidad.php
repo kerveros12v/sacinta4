@@ -4,7 +4,9 @@ namespace Clasesphp;
 	class Discapacidad
 {
 	private $discapacidadId, $discapacidadcodigo, $discapacidad, $discapacidadOculto, $discapacidadAccion, $discapacidadfecha, $discapacidaduser;
-
+	private $discapacidadbool;
+	public function set_discapacidadbool($discapacidadbool){$this->discapacidadbool=$discapacidadbool;}
+	public function get_discapacidadbool(){return $this->discapacidadbool;}
 	public function set_discapacidadId($discapacidadId){$this->discapacidadId=$discapacidadId;}
 	public function set_discapacidad($discapacidad){$this->discapacidad=$discapacidad;}
 	public function get_discapacidadId(){return $this->discapacidadId;}

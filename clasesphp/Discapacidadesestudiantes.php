@@ -5,7 +5,17 @@ namespace Clasesphp;
 class Discapacidadesestudiantes
 {
 	private  $fkEstudiantesNumeroIdentificacion, $fkDiscapacidadDiscapacidadId, $fkTipoDiscapacidadTipoDiscapacidadId, $porcentajeDiscapacidad, $discapacidadestperiodo, $discapacidadesestudiantesOculto, $discapacidadesestudiantesAccion, $discapacidadesestudiantesfecha, $discapacidadesestudiantesuser;
-	private $carnetConadisId;
+	private $carnetConadisId,$discapacidadesestudiantesid;
+	public function set_discapacidadesestudiantesid($discapacidadesestudiantesid)
+	{
+		$this->discapacidadesestudiantesid = $discapacidadesestudiantesid;
+	}
+	public function get_discapacidadesestudiantesid()
+	{
+		return $this->discapacidadesestudiantesid;
+	}
+
+
 	public function set_discapacidadestperiodo($discapacidadestperiodo)
 	{
 		$this->discapacidadestperiodo = $discapacidadestperiodo;

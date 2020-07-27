@@ -1,7 +1,8 @@
 <?php
 require_once("../Crud/CrudEstudiante.php");
-
+require_once("../Crud/CrudPeriodoacademico.php");
 use \Crud\CrudEstudiantes;
+use \Crud\CrudPeriodoacademico;
 
 try {
 
@@ -9,7 +10,8 @@ try {
 	session_start();
 	$usuario_1 = $_POST['username'];
 	$clave_1 = $_POST['password'];
-
+	$crudperiodoactuallogin = new CrudPeriodoacademico();
+	$periodo=$crudperiodoactuallogin->obtenerPeriodoAcademicoActual();
 	////////////////////////////////////
 
 	$crudest1 = new CrudEstudiantes();
@@ -25,7 +27,9 @@ try {
 			$_SESSION['est'] = $est2->get_numeroIdentificacion();
 			$_SESSION['tipouser'] = "est";
 			$_SESSION['acceso'] = $est2->get_accesodepartamento_codigo();
-			$_SESSION['campbuscarest']=$est2->get_numeroIdentificacion();
+			$_SESSION['campbuscarest'] = $est2->get_numeroIdentificacion();
+			$_SESSION['peridoactual'] = $periodo->get_periodoacademicoId();
+			$_SESSION['campbuscarperiodo'] = $periodo->get_periodoacademicoId();
 			cargarplantilla();
 		}
 	}

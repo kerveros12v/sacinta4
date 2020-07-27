@@ -16,7 +16,9 @@ class CrudDiscapacidad{
 			$select=$db->query("SELECT * FROM `discapacidad`");
 
 			foreach($select->fetchAll() as $discapac1){
-		 		$mydiscapac= new Discapacidad();
+				 $mydiscapac= new Discapacidad();
+
+				 $mydiscapac->set_discapacidadbool($discapac1['discapacidadbool']);
 				$mydiscapac->set_discapacidadId($discapac1['discapacidadId']);
 				$mydiscapac->set_discapacidadcodigo($discapac1['discapacidadcodigo']);
 				$mydiscapac->set_discapacidad($discapac1['discapacidad']);
@@ -41,6 +43,7 @@ class CrudDiscapacidad{
 			$select->execute();
 			$discapac1=$select->fetch();
 			$mydiscapac= new Discapacidad();
+			$mydiscapac->set_discapacidadbool($discapac1['discapacidadbool']);
 			$mydiscapac->set_discapacidadId($discapac1['discapacidadId']);
 			$mydiscapac->set_discapacidadcodigo($discapac1['discapacidadcodigo']);
 			$mydiscapac->set_discapacidad($discapac1['discapacidad']);
@@ -69,6 +72,7 @@ class CrudDiscapacidad{
 			`discapacidadId` = :discapacidadId1,
 			`discapacidadcodigo` = :discapacidadcodigo1,
 			`discapacidad` = :discapacidad1,
+			`discapacidadbool` = :discapacidadbool1,
 			`discapacidadOculto` = :discapacidadOculto1,
 			`discapacidadAccion` = :discapacidadAccion1,
 			`discapacidadfecha` = :discapacidadfecha1,
@@ -77,6 +81,7 @@ class CrudDiscapacidad{
 			$actualizar->bindValue('discapacidadId1',$discapac1->get_discapacidadId());
 			$actualizar->bindValue('discapacidadcodigo1',$discapac1->get_discapacidadcodigo());
 			$actualizar->bindValue('discapacidad1',$discapac1->get_discapacidad());
+			$actualizar->bindValue('discapacidadbool1',$discapac1->get_discapacidadbool());
 			$actualizar->bindValue('discapacidadOculto1',$discapac1->get_discapacidadOculto());
 			$actualizar->bindValue('discapacidadAccion1',$discapac1->get_discapacidadAccion());
 			$actualizar->bindValue('discapacidadfecha1',$discapac1->get_discapacidadfecha());
@@ -89,6 +94,7 @@ class CrudDiscapacidad{
 			(`discapacidadId`,
 			`discapacidadcodigo`,
 			`discapacidad`,
+			`discapacidadbool`,
 			`discapacidadOculto`,
 			`discapacidadAccion`,
 			`discapacidadfecha`,
@@ -97,6 +103,7 @@ class CrudDiscapacidad{
 			(:discapacidadId1,
 			:discapacidadcodigo1,
 			:discapacidad1,
+			`discapacidadbool1`,
 			:discapacidadOculto1,
 			:discapacidadAccion1,
 			:discapacidadfecha1,
@@ -104,6 +111,7 @@ class CrudDiscapacidad{
 			$insert->bindValue('discapacidadId1',$discapac1->get_discapacidadId());
 			$insert->bindValue('discapacidadcodigo1',$discapac1->get_discapacidadcodigo());
 			$insert->bindValue('discapacidad1',$discapac1->get_discapacidad());
+			$insert->bindValue('discapacidadbool1',$discapac1->get_discapacidadbool());
 			$insert->bindValue('discapacidadOculto1',$discapac1->get_discapacidadOculto());
 			$insert->bindValue('discapacidadAccion1',$discapac1->get_discapacidadAccion());
 			$insert->bindValue('discapacidadfecha1',$discapac1->get_discapacidadfecha());
