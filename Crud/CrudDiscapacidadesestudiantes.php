@@ -45,18 +45,21 @@ class CrudDiscapacidadesestudiantes
 	{
 		$db = Db::conectar();
 		$actualizar = $db->prepare("UPDATE `discapacidadesestudiantes`
-			SET
-			`CarnetConadisId` = :CarnetConadisId1,
-			`fkEstudiantesNumeroIdentificacion` = :fkEstudiantesNumeroIdentificacion1,
-			`fkDiscapacidadDiscapacidadId` = :fkDiscapacidadDiscapacidadId1,
-			`fkTipoDiscapacidadTipoDiscapacidadId` = :fkTipoDiscapacidadTipoDiscapacidadId1,
-			`porcentajeDiscapacidad` = :porcentajeDiscapacidad1,
-			`discapacidadestperiodo` = :discapacidadestperiodo1,
-			`discapacidadesestudiantesOculto` = :discapacidadesestudiantesOculto1,
-			`discapacidadesestudiantesAccion` = :discapacidadesestudiantesAccion1,
-			`discapacidadesestudiantesfecha` = :discapacidadesestudiantesfecha1,
-			`discapacidadesestudiantesuser` = :discapacidadesestudiantesuser1
-			WHERE `CarnetConadisId` = :CarnetConadisId1;");
+		SET
+		`discapacidadesestudiantesid` = :discapacidadesestudiantesid1,
+		`CarnetConadisId` = :CarnetConadisId1,
+		`fkEstudiantesNumeroIdentificacion` = :fkEstudiantesNumeroIdentificacion1,
+		`fkDiscapacidadDiscapacidadId` = :fkDiscapacidadDiscapacidadId1,
+		`fkTipoDiscapacidadTipoDiscapacidadId` = :fkTipoDiscapacidadTipoDiscapacidadId1,
+		`porcentajeDiscapacidad` = :porcentajeDiscapacidad1,
+		`discapacidadestperiodo` = :discapacidadestperiodo1,
+		`discapacidadesestudiantesOculto` = :discapacidadesestudiantesOculto1,
+		`discapacidadesestudiantesAccion` = :discapacidadesestudiantesAccion1,
+		`discapacidadesestudiantesfecha` = :discapacidadesestudiantesfecha1,
+		`discapacidadesestudiantesuser` = :discapacidadesestudiantesuser1
+		WHERE `discapacidadesestudiantesid` = :discapacidadesestudiantesid1;");
+
+		$actualizar->bindValue('discapacidadesestudiantesid', $discapacidad->get_discapacidadesestudiantesid());
 		$actualizar->bindValue('CarnetConadisId1', $discapacidad->get_CarnetConadisId());
 		$actualizar->bindValue('fkEstudiantesNumeroIdentificacion1', $discapacidad->get_fkEstudiantesNumeroIdentificacion());
 		$actualizar->bindValue('fkDiscapacidadDiscapacidadId1', $discapacidad->get_fkDiscapacidadDiscapacidadId());
@@ -105,27 +108,30 @@ class CrudDiscapacidadesestudiantes
 	{
 		$db = Db::conectar();
 		$insert = $db->prepare("INSERT INTO `discapacidadesestudiantes`
-			(`CarnetConadisId`,
-			`fkEstudiantesNumeroIdentificacion`,
-			`fkDiscapacidadDiscapacidadId`,
-			`fkTipoDiscapacidadTipoDiscapacidadId`,
-			`porcentajeDiscapacidad`,
-			`discapacidadestperiodo`,
-			`discapacidadesestudiantesOculto`,
-			`discapacidadesestudiantesAccion`,
-			`discapacidadesestudiantesfecha`,
-			`discapacidadesestudiantesuser`)
-			VALUES
-			(:CarnetConadisId1,
-			:fkEstudiantesNumeroIdentificacion1,
-			:fkDiscapacidadDiscapacidadId1,
-			:fkTipoDiscapacidadTipoDiscapacidadId1,
-			:porcentajeDiscapacidad1,
-			:discapacidadestperiodo1,
-			:discapacidadesestudiantesOculto1,
-			:discapacidadesestudiantesAccion1,
-			:discapacidadesestudiantesfecha1,
-			:discapacidadesestudiantesuser1);");
+		(`discapacidadesestudiantesid`,
+		`CarnetConadisId`,
+		`fkEstudiantesNumeroIdentificacion`,
+		`fkDiscapacidadDiscapacidadId`,
+		`fkTipoDiscapacidadTipoDiscapacidadId`,
+		`porcentajeDiscapacidad`,
+		`discapacidadestperiodo`,
+		`discapacidadesestudiantesOculto`,
+		`discapacidadesestudiantesAccion`,
+		`discapacidadesestudiantesfecha`,
+		`discapacidadesestudiantesuser`)
+		VALUES
+		(:discapacidadesestudiantesid1,
+		:CarnetConadisId1,
+		:fkEstudiantesNumeroIdentificacion1,
+		:fkDiscapacidadDiscapacidadId1,
+		:fkTipoDiscapacidadTipoDiscapacidadId1,
+		:porcentajeDiscapacidad1,
+		:discapacidadestperiodo1,
+		:discapacidadesestudiantesOculto1,
+		:discapacidadesestudiantesAccion1,
+		:discapacidadesestudiantesfecha1,
+		:discapacidadesestudiantesuser1);");
+		$insert->bindValue('discapacidadesestudiantesid1', $discapacidad->get_discapacidadesestudiantesid());
 		$insert->bindValue('CarnetConadisId1', $discapacidad->get_CarnetConadisId());
 		$insert->bindValue('fkEstudiantesNumeroIdentificacion1', $discapacidad->get_fkEstudiantesNumeroIdentificacion());
 		$insert->bindValue('fkDiscapacidadDiscapacidadId1', $discapacidad->get_fkDiscapacidadDiscapacidadId());

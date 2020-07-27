@@ -49,7 +49,7 @@ function cargarformulariodiscapacidadestudiantes($cedula,$periodo){
                                 <table>
                                     <tr>
                                         <td>
-                                            <input type="text" id="CarnetConadisId" name="CarnetConadisId"  maxlength="10" value="'.$dato->get_CarnetConadisId().'" placeholder="Ingrese su N° Carnet"  required="required" />
+                                            <input type="text" id="CarnetConadisId" name="CarnetConadisId"  maxlength="10" class="light camptext1" value="'.$dato->get_CarnetConadisId().'" placeholder="N° Carnet"  required="required" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -63,7 +63,7 @@ function cargarformulariodiscapacidadestudiantes($cedula,$periodo){
                                 <table>
                                     <tr>
     		                            <td>
-                                            <select class="selector"  name="tipodiscapacidad" id="tipodiscapacidad">
+                                            <select class="selector"  name="fkTipoDiscapacidadTipoDiscapacidadId" id="fkTipoDiscapacidadTipoDiscapacidadId">
                                                 '.cargarTipoDiscapacidad($dato->get_fkTipoDiscapacidadTipoDiscapacidadId()).'
                                             </select>
                                         </td>
@@ -75,7 +75,24 @@ function cargarformulariodiscapacidadestudiantes($cedula,$periodo){
                                     </tr>
                                 </table>
                             </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                        <input type="text"  name="porcentajeDiscapacidad" id="porcentajeDiscapacidad" class="light camptext1" value="'.$dato->get_porcentajeDiscapacidad().'" placeholder="% discapacidad"  required="required" />
+
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <label class="etiqueta1">PORCENTAJE DE DISCAPACIDAD</label>
+                                        </th>
+                                    </tr>
+                                </table>
+                            </td>
                         </tr>
+
                     </table>
                 </td>
             </tr>

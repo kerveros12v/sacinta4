@@ -27,6 +27,7 @@ function salirmatricula(){
 function mostrarReporteMatricula(){
   //window.open("../reportes/formularioMatriculacionEstudiante.php?cedula="+$('#ced').val(), "Formulario de Matriculacion", "width=1000, height=1000")
   registrarEstudiante();
+  registrardisapacidadEstudiante();
     //window.Location('../reportes/formularioMatriculacionEstudiante.php','top', "Formulario de Matriculacion", "width=100%, height=100%,location=no");
 
 }
@@ -195,27 +196,7 @@ function registrarEstudiante(){
   var email1=$('#email1').val();
   var numcelular=$('#numcelular').val();
   var numconvenconal=$('#numconvenconal').val();
-  /*console.log("Datos enviados desde el cliente:\n tipodocumento : "+tipodocumento+"\n cedula : "+ced+
-  "\n apellidoEst : "+apellidoEst+
-  '\n apellidoEst2 : '  +apellidoEst2+
-  '\n nombreEst : '  +nombreEst+
-  '\n nombreEst2 : '  +nombreEst2+
-  '\n lstsexo : '  +lstsexo+
-  '\n lstgeneros : '  +lstgeneros+
-  '\n estadoCivil : '  +estadoCivil+
-  '\n lstsangre : '  +lstsangre+
-  '\n fechanaci : '  +fechanaci+
-  '\n paisNacionalidad : '  +paisNacionalidad+
-  '\n provinciaNacionalidad : '  +provinciaNacionalidad+
-  '\n cantonNacionalidad : '  +cantonNacionalidad+
-  '\n categoraMigratoria : '  +categoraMigratoria+
-  '\n etnia : '  +etnia+
-  '\n pueblonacionalidad : '  +pueblonacionalidad+
-  '\n lstidioma : '  +lstidioma+
-  '\n email1 : '  +email1+
-  '\n numcelular : '  +numcelular+
-  '\n numconvenconal : '  +numconvenconal);
-  */
+
   $.ajax({
     type: 'POST',
     url: '../controladores/registroEstudiante.php',
@@ -365,4 +346,30 @@ function cargarCantonest1() {
         alert('Hubo un error al cargar la lista de Provincias')
       })
 
+}
+function registrardisapacidadEstudiante(){
+  var CarnetConadisId=$('#CarnetConadisId').val();
+  var fkDiscapacidadDiscapacidadId=$('#fkDiscapacidadDiscapacidadId').val();
+  var fkTipoDiscapacidadTipoDiscapacidadId=$('#fkTipoDiscapacidadTipoDiscapacidadId').val();
+  var porcentajeDiscapacidad=$('#porcentajeDiscapacidad').val();
+
+  $.ajax({
+    type: 'POST',
+    url: '../controladores/registroDiscapacidadEstudiante.php',
+    data:{
+    'CarnetConadisId':CarnetConadisId,
+    'fkDiscapacidadDiscapacidadId':fkDiscapacidadDiscapacidadId,
+    'fkTipoDiscapacidadTipoDiscapacidadId':fkTipoDiscapacidadTipoDiscapacidadId,
+    'porcentajeDiscapacidad':porcentajeDiscapacidad,
+    'actualizar':0,
+    'eliminar':0,
+    'opt':1}
+  })
+  .done(function(cargar){
+    alert(cargar)
+    cargarFormulario()
+  })
+  .fail(function(){
+    alert('Hubo un error al cargar de Perfiles')
+  })
 }
