@@ -27,22 +27,25 @@ function opciondatosestudiante()
 	try {
 		$dato = new Discapacidadesestudiantes();
 		$crud = new CrudDiscapacidadesestudiantes();
-		//echo($_POST['campbuscarest']);
 		$opcion = $_POST['opt'];
 		if ($_SESSION['user'] != "" || $_SESSION['campbuscarest'] != "") {
 			if ($opcion == 1) {
 				$dato = $crud->obtenerdiscapacidadesestudiantes($_SESSION['campbuscarest'], $_SESSION['campbuscarperiodo']);
 				if ($dato->get_discapacidadesestudiantesid() != null) {
+					$opcion=2;
+				}else{
+					$dato = datosrecargadosdiscapacidadestudiante($dato);
+					//$crud->insertar($dato);
+					return $_SESSION['campbuscarest']; //(guardarR());
 				}
-				$dato = datosrecargadosdiscapacidadestudiante($dato);
-				$crud->insertar($dato);
-				return $_POST['campbuscarest']; //(guardarR());
+
+
 			}
 			if ($opcion == 2) {
 				$dato = $crud->obtenerdiscapacidadesestudiantes($_SESSION['campbuscarest'], $_SESSION['campbuscarperiodo']);
 				$dato = datosrecargadosdiscapacidadestudiante($dato);
 				$crud->actualizar($dato);
-				return $_POST['campbuscarest']; //(actualizarR());
+				return $_SESSION['campbuscarest']; //(actualizarR());
 			}
 
 			if ($opcion == optEliminar()) {

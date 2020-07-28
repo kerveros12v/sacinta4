@@ -107,6 +107,7 @@ class CrudDiscapacidadesestudiantes
 	public  function insertar($discapacidad)
 	{
 		$db = Db::conectar();
+
 		$insert = $db->prepare("INSERT INTO `discapacidadesestudiantes`
 		(`discapacidadesestudiantesid`,
 		`CarnetConadisId`,
