@@ -1,7 +1,14 @@
 <?php
+require_once("../Crud/CrudPeriodoacademico.php");
+
+use Crud\CrudPeriodoacademico;
 	session_start();
 	$_SESSION['campbuscarest']=$_POST['cedula'];
-	echo "<script> console.log('Formulario de Matriculacion : ".$_SESSION['campbuscarest']."'); </script>";
+if($_SESSION['campbuscarperiodo']==""){
+	$crudperiodoaca=new CrudPeriodoacademico();
+	$periodo1=$crudperiodoaca->obtenerPeriodoAcademicoActual();
+	$_SESSION['campbuscarperiodo']=$periodo1->get_periodoacademicoId();
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"

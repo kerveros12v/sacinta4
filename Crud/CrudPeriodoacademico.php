@@ -9,7 +9,6 @@ class CrudPeriodoacademico{
 		public function __construct(){
 			$db=Db::conectar();
 			$select=$db->query("SET NAMES 'utf8'");
-			echo"<script>console.log('Conexion establecida');</script>";
 			}
 
 		public  function mostrar(){

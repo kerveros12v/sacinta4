@@ -1,22 +1,27 @@
 <?php
-require_once("ajaxsselectdiscapacidad.php");
-require_once("ajaxsselecttipodiscapacidad.php");
+require_once("../clasesphp/Discapacidadesestudiantes.php");
 require_once("../Crud/CrudDiscapacidadesestudiantes.php");
 require_once("../Crud/CrudPeriodoacademico.php");
+require_once("ajaxsselectdiscapacidad.php");
+require_once("ajaxsselecttipodiscapacidad.php");
 require_once("ajaxsselect2.php");
 
+use Clasesphp\Discapacidadesestudiantes;
+use Crud\CrudDiscapacidadesestudiantes;
+use Crud\CrudPeriodoacademico;
+
 session_start();
-$crudperiodoaca=new \Crud\CrudPeriodoacademico();
+
+$crudperiodoaca=new CrudPeriodoacademico();
 $cedula=isset($_SESSION['campbuscarest'])?$_SESSION['campbuscarest']:"";
-$periodoacademico=isset($_SESSION['periodo'])?$crudperiodoaca->obtenerPeriodoacademico($_SESSION['periodo']):$crudperiodoaca->obtenerPeriodoAcademicoActual();
-echo "<script>console.log('".$cedula."')</script>";
-echo "<script>console.log('".$periodo."')</script>";
+$periodo1=$crudperiodoaca->obtenerPeriodoAcademicoActual();
 function cargarformulariodiscapacidadestudiantes($cedula,$periodo){
+    $crud=new CrudDiscapacidadesestudiantes();
+    $dato=new Discapacidadesestudiantes();
+    if($crud->existe($cedula,$periodo)==1){
+        $dato=$crud->obtenerdiscapacidadesestudiantes($cedula,$periodo);
+        }
 
-
-    $crud=new \Crud\CrudDiscapacidadesestudiantes();
-    $dato=new \Clasesphp\Discapacidadesestudiantes();
-    if($crud->existe($cedula)==1)$dato=$crud->obtenerdiscapacidadesestudiantes($cedula,$periodo);
     $r=ajaxs_select2();
     $r.='<td>
         <table width=100%>
@@ -99,6 +104,13 @@ function cargarformulariodiscapacidadestudiantes($cedula,$periodo){
         </table>
     </td>';
 return $r;
+
 }
-echo cargarformulariodiscapacidadestudiantes($cedula,$periodoacademico->get_periodoacademicoId());
+try{
+
+    echo cargarformulariodiscapacidadestudiantes($cedula,isset($_SESSION['campbuscarperiodo'])?$_SESSION['campbuscarperiodo']:$periodo1->get_periodoacademicoId());
+}
+catch(\Exception $e){
+echo "<script>console.log('".$e."');</script>";
+}
 ?>

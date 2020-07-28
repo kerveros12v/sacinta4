@@ -32,6 +32,7 @@ function opciondatosestudiante()
 			if ($opcion == 1) {
 				$dato = $crud->obtenerdiscapacidadesestudiantes($_SESSION['campbuscarest'], $_SESSION['campbuscarperiodo']);
 				if ($dato->get_discapacidadesestudiantesid() != null) {
+					echo("<script> console.log('Respuesta desde el registro(insrtar): ".$dato->__toString()."');</script>");
 					$opcion=2;
 				}else{
 					$dato = datosrecargadosdiscapacidadestudiante($dato);
@@ -44,6 +45,7 @@ function opciondatosestudiante()
 			if ($opcion == 2) {
 				$dato = $crud->obtenerdiscapacidadesestudiantes($_SESSION['campbuscarest'], $_SESSION['campbuscarperiodo']);
 				$dato = datosrecargadosdiscapacidadestudiante($dato);
+				echo("<script> console.log('Respuesta desde el registro(actualizar): ".$dato->__toString()."');</script>");
 				$crud->actualizar($dato);
 				return (actualizarR());
 			}
@@ -59,4 +61,7 @@ function opciondatosestudiante()
 		return $e;
 	}
 }
+$dato = new Discapacidadesestudiantes();
+$dato =datosrecargadosdiscapacidadestudiante($dato);
+//echo "<script> console.log('respuesta registro: ".$dato."')</script>";
 echo opciondatosestudiante();

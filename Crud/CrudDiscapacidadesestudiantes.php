@@ -4,7 +4,7 @@ namespace Crud;
 
 require_once("conexion.php");
 require_once("../clasesphp/Discapacidadesestudiantes.php");
-
+use Crud\Db;
 use Clasesphp\Discapacidadesestudiantes;
 
 class CrudDiscapacidadesestudiantes
@@ -59,7 +59,7 @@ class CrudDiscapacidadesestudiantes
 		`discapacidadesestudiantesuser` = :discapacidadesestudiantesuser1
 		WHERE `discapacidadesestudiantesid` = :discapacidadesestudiantesid1;");
 
-		$actualizar->bindValue('discapacidadesestudiantesid', $discapacidad->get_discapacidadesestudiantesid());
+		$actualizar->bindValue('discapacidadesestudiantesid1', $discapacidad->get_discapacidadesestudiantesid());
 		$actualizar->bindValue('CarnetConadisId1', $discapacidad->get_CarnetConadisId());
 		$actualizar->bindValue('fkEstudiantesNumeroIdentificacion1', $discapacidad->get_fkEstudiantesNumeroIdentificacion());
 		$actualizar->bindValue('fkDiscapacidadDiscapacidadId1', $discapacidad->get_fkDiscapacidadDiscapacidadId());
@@ -72,11 +72,12 @@ class CrudDiscapacidadesestudiantes
 		$actualizar->bindValue('discapacidadesestudiantesuser1', $discapacidad->get_discapacidadesestudiantesuser());
 		$actualizar->execute();
 	}
-	public  function existe($id)
+	public  function existe($id,$periodo)
 	{
 		$db = Db::conectar();
-		$select = $db->prepare("SELECT * FROM discapacidadesestudiantes where fkEstudiantesNumeroIdentificacion=:id");
+		$select = $db->prepare("SELECT * FROM discapacidadesestudiantes where fkEstudiantesNumeroIdentificacion=:id AND discapacidadestperiodo=:periodo;");
 		$select->bindValue('id', $id);
+		$select->bindValue('periodo', $periodo);
 		$select->execute();
 		if ($select->fetch() == 0) return 0;
 		return 1;
@@ -107,7 +108,7 @@ class CrudDiscapacidadesestudiantes
 	public  function insertar($discapacidad)
 	{
 		$db = Db::conectar();
- 	echo("<script> console.log('Respuesta desde el crud(insertar): ".$discapacidad->__toString()."');</script>");
+
 		$insert = $db->prepare("INSERT INTO `discapacidadesestudiantes`
 		(`discapacidadesestudiantesid`,
 		`CarnetConadisId`,
