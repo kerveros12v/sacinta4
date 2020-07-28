@@ -10,7 +10,7 @@ session_start();
 function datosrecargadosdiscapacidadestudiante($dato)
 {
 	$dato->set_CarnetConadisId($_POST['CarnetConadisId']);
-	$dato->set_fkEstudiantesNumeroIdentificacion($_POST['campbuscarest']);
+	$dato->set_fkEstudiantesNumeroIdentificacion($_SESSION['campbuscarest']);
 	$dato->set_fkDiscapacidadDiscapacidadId($_POST['fkDiscapacidadDiscapacidadId']);
 	$dato->set_fkTipoDiscapacidadTipoDiscapacidadId($_POST['fkTipoDiscapacidadTipoDiscapacidadId']);
 	$dato->set_porcentajeDiscapacidad($_POST['porcentajeDiscapacidad']);
@@ -35,8 +35,8 @@ function opciondatosestudiante()
 					$opcion=2;
 				}else{
 					$dato = datosrecargadosdiscapacidadestudiante($dato);
-					//$crud->insertar($dato);
-					return $_SESSION['campbuscarest']; //(guardarR());
+					$crud->insertar($dato);
+					return (guardarR());
 				}
 
 
@@ -45,7 +45,7 @@ function opciondatosestudiante()
 				$dato = $crud->obtenerdiscapacidadesestudiantes($_SESSION['campbuscarest'], $_SESSION['campbuscarperiodo']);
 				$dato = datosrecargadosdiscapacidadestudiante($dato);
 				$crud->actualizar($dato);
-				return $_SESSION['campbuscarest']; //(actualizarR());
+				return (actualizarR());
 			}
 
 			if ($opcion == optEliminar()) {

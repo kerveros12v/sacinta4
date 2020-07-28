@@ -5,7 +5,7 @@ namespace Clasesphp;
 class Discapacidadesestudiantes
 {
 	private  $fkEstudiantesNumeroIdentificacion, $fkDiscapacidadDiscapacidadId, $fkTipoDiscapacidadTipoDiscapacidadId, $porcentajeDiscapacidad, $discapacidadestperiodo, $discapacidadesestudiantesOculto, $discapacidadesestudiantesAccion, $discapacidadesestudiantesfecha, $discapacidadesestudiantesuser;
-	private $carnetConadisId,$discapacidadesestudiantesid;
+	private $carnetConadisId, $discapacidadesestudiantesid;
 	public function set_discapacidadesestudiantesid($discapacidadesestudiantesid)
 	{
 		$this->discapacidadesestudiantesid = $discapacidadesestudiantesid;
@@ -102,8 +102,14 @@ class Discapacidadesestudiantes
 	public function _construct()
 	{
 	}
-	public function toString()
+	public function __toString()
 	{
-		return ("carnetConadisId: {" . $this->carnetConadisId . "} fkEstudiantesNumeroIdentificacion: {" . $this->fkEstudiantesNumeroIdentificacion . "} fkDiscapacidadDiscapacidadId {" . $this->fkDiscapacidadDiscapacidadId . "} fkTipoDiscapacidadTipoDiscapacidadId: {" . $this->fkTipoDiscapacidadTipoDiscapacidadId . "} porcentajeDiscapacidad: {" . $this->porcentajeDiscapacidad . "} discapacidadestperiodo: {" . $this->discapacidadestperiodo . "}");
+		return ("discapacidadesestudiantesid:{".$this->discapacidadesestudiantesid.
+			"}carnetConadisId: {" . $this->carnetConadisId .
+			"} fkEstudiantesNumeroIdentificacion: {" . $this->fkEstudiantesNumeroIdentificacion .
+			"} fkDiscapacidadDiscapacidadId {" . $this->fkDiscapacidadDiscapacidadId .
+			"} fkTipoDiscapacidadTipoDiscapacidadId: {" . $this->fkTipoDiscapacidadTipoDiscapacidadId .
+			"} porcentajeDiscapacidad: {" . $this->porcentajeDiscapacidad .
+			"} discapacidadestperiodo: {" . $this->discapacidadestperiodo . "}");
 	}
 }

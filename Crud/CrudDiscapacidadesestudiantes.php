@@ -107,7 +107,7 @@ class CrudDiscapacidadesestudiantes
 	public  function insertar($discapacidad)
 	{
 		$db = Db::conectar();
-
+ 	echo("<script> console.log('Respuesta desde el crud(insertar): ".$discapacidad->__toString()."');</script>");
 		$insert = $db->prepare("INSERT INTO `discapacidadesestudiantes`
 		(`discapacidadesestudiantesid`,
 		`CarnetConadisId`,
