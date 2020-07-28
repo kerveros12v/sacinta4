@@ -15,13 +15,6 @@
 
 <body>
 <table class="ui-widget ui-widget-content" title="Perfiles Registradas Actualmente:">
-  <tr class="ui-widget-header">
-    <th></th>
-    <th>CODIGO</th>
-   <th >IDIOMA</th>
-   <th>ETNIA</th>
-   <th></th>
-  </tr>
   <tbody id="contenedorrecibepenciondiferenciada">
   </tbody>
 </table>

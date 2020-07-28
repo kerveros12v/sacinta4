@@ -17,6 +17,7 @@ function cargartabla(){
   function registro(){
     var cod= $('#tdcodigo').val();
     var nom=$('#tipoDiscapacidad').val();
+    var tipodiscapacidadbool=$('#tipodiscapacidadbool').val();
     $.ajax({
       type: 'POST',
       url: '../controladores/registrotablaTipodiscapacidaad.php',
@@ -24,6 +25,7 @@ function cargartabla(){
       'id':null,
       'cod':cod,
       'nom':nom,
+      'tipodiscapacidadbool':tipodiscapacidadbool,
       'eliminar':0,
       'actualizar':0,
       'opt':1}
@@ -40,6 +42,7 @@ function cargartabla(){
 
         var cod= $('#tdcodigo'+dato).val();
         var nom=$('#tipoDiscapacidad'+dato).val();
+        var tipodiscapacidadbool=$('#tipodiscapacidadbool'+dato).val();
         $.ajax({
           type: 'POST',
           url: '../controladores/registrotablaTipodiscapacidaad.php',
@@ -47,6 +50,7 @@ function cargartabla(){
           'id':dato,
           'cod':cod,
           'nom':nom,
+          'tipodiscapacidadbool':tipodiscapacidadbool,
           'eliminar':0,
           'actualizar':1,
           'opt':2}

@@ -7,9 +7,20 @@ class Tipodiscapacidad
 	private $tdcodigo,  $tdOculto, $tdAccion, $tdfecha, $tduser;
 	private $tipoDiscapacidadid;
 	private $tipoDiscapacidad;
+	private $tipodiscapacidadbool;
 	public function _construct()
 	{
 	}
+
+	public function set_tipodiscapacidadbool($tipodiscapacidadbool)
+	{
+		$this->tipodiscapacidadbool = $tipodiscapacidadbool;
+	}
+	public function get_tipodiscapacidadbool()
+	{
+		return $this->tipodiscapacidadbool;
+	}
+
 	public function set_tipoDiscapacidadid($tipoDiscapacidadid)
 	{
 		$this->tipoDiscapacidadid = $tipoDiscapacidadid;

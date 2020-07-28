@@ -30,6 +30,8 @@ class CrudTipoDiscapacidad
 			$mytipodiscapacidad->set_tdAccion($tipodiscapacidad['tdAccion']);
 			$mytipodiscapacidad->set_tdfecha($tipodiscapacidad['tdfecha']);
 			$mytipodiscapacidad->set_tduser($tipodiscapacidad['tduser']);
+			$mytipodiscapacidad->set_tipodiscapacidadbool($tipodiscapacidad['tipodiscapacidadbool']);
+
 
 			$listatipodiscapacidad[] = $mytipodiscapacidad;
 		}
@@ -57,6 +59,8 @@ class CrudTipoDiscapacidad
 		$mytipodiscapacidad->set_tdAccion($tipodiscapacidad['tdAccion']);
 		$mytipodiscapacidad->set_tdfecha($tipodiscapacidad['tdfecha']);
 		$mytipodiscapacidad->set_tduser($tipodiscapacidad['tduser']);
+		$mytipodiscapacidad->set_tipodiscapacidadbool($tipodiscapacidad['tipodiscapacidadbool']);
+
 		return $mytipodiscapacidad;
 	}
 	public function obtenerDato($id)
@@ -74,18 +78,20 @@ class CrudTipoDiscapacidad
 	{
 		$db = Db::conectar();
 		$actualizar = $db->prepare('UPDATE `tipodiscapacidad`
-			SET
-			`tipoDiscapacidadid` = :tipoDiscapacidadid1,
-			`tdcodigo` = :tdcodigo1,
-			`tipoDiscapacidad` = :tipoDiscapacidad1,
-			`tdOculto` = :tdOculto1,
-			`tdAccion` = :tdAccion1,
-			`tdfecha` = :tdfecha1,
-			`tduser` = :tduser1
-			WHERE `tipoDiscapacidadid` = :tipoDiscapacidadid1;');
+		SET
+		`tipoDiscapacidadid` = :tipoDiscapacidadid1,
+		`tdcodigo` = :tdcodigo1,
+		`tipoDiscapacidad` = :tipoDiscapacidad1,
+		`tipodiscapacidadbool` = :tipodiscapacidadbool1,
+		`tdOculto` = :tdOculto1,
+		`tdAccion` = :tdAccion1,
+		`tdfecha` = :tdfecha1,
+		`tduser` = :tduser1
+		WHERE `tipoDiscapacidadid` = :tipoDiscapacidadid1;');
 		$actualizar->bindValue('tipoDiscapacidadid1', $tipodiscapacidad->get_tipoDiscapacidadid());
 		$actualizar->bindValue('tdcodigo1', $tipodiscapacidad->get_tdcodigo());
 		$actualizar->bindValue('tipoDiscapacidad1', $tipodiscapacidad->get_tipoDiscapacidad());
+		$actualizar->bindValue('tipodiscapacidadbool1', $tipodiscapacidad->get_tipodiscapacidadbool());
 		$actualizar->bindValue('tdOculto1', $tipodiscapacidad->get_tdOculto());
 		$actualizar->bindValue('tdAccion1', $tipodiscapacidad->get_tdAccion());
 		$actualizar->bindValue('tdfecha1', $tipodiscapacidad->get_tdfecha());
@@ -96,24 +102,27 @@ class CrudTipoDiscapacidad
 	{
 		$db = Db::conectar();
 		$insert = $db->prepare('INSERT INTO `tipodiscapacidad`
-			(`tipoDiscapacidadid`,
-			`tdcodigo`,
-			`tipoDiscapacidad`,
-			`tdOculto`,
-			`tdAccion`,
-			`tdfecha`,
-			`tduser`)
-			VALUES
-			(:tipoDiscapacidadid1,
-			:tdcodigo1,
-			:tipoDiscapacidad1,
-			:tdOculto1,
-			:tdAccion1,
-			:tdfecha1,
-			:tduser1);');
+		(`tipoDiscapacidadid`,
+		`tdcodigo`,
+		`tipoDiscapacidad`,
+		`tipodiscapacidadbool`,
+		`tdOculto`,
+		`tdAccion`,
+		`tdfecha`,
+		`tduser`)
+		VALUES
+		(:tipoDiscapacidadid1,
+		:tdcodigo1,
+		:tipoDiscapacidad1,
+		:tipodiscapacidadbool1,
+		:tdOculto1,
+		:tdAccion1,
+		:tdfecha1,
+		:tduser1);');
 		$insert->bindValue('tipoDiscapacidadid1', $tipodiscapacidad->get_tipoDiscapacidadid());
 		$insert->bindValue('tdcodigo1', $tipodiscapacidad->get_tdcodigo());
 		$insert->bindValue('tipoDiscapacidad1', $tipodiscapacidad->get_tipoDiscapacidad());
+		$insert->bindValue('tipodiscapacidadbool1', $tipodiscapacidad->get_tipodiscapacidadbool());
 		$insert->bindValue('tdOculto1', $tipodiscapacidad->get_tdOculto());
 		$insert->bindValue('tdAccion1', $tipodiscapacidad->get_tdAccion());
 		$insert->bindValue('tdfecha1', $tipodiscapacidad->get_tdfecha());

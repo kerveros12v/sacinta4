@@ -8,6 +8,8 @@
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="../js/ajaxstipodiscapacidad.js"></script>
+<link href="../vendor/select2/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../vendor/select2/select2/dist/js/select2.min.js"></script>
 </head>
 
 <body>
@@ -16,8 +18,8 @@
     <th></th>
     <th>CODIGO</th>
    <th >TIPO DISCAPACIDAD</th>
+   <th>DISCAPACITADO</th>
    <th></th>
-
   </tr>
   <tbody id="contenedortipoDiscapacidad">
   </tbody>

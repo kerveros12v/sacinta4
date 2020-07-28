@@ -19,6 +19,7 @@ function opcionTipodocumento()
         $datos->set_tipoDiscapacidadid($_POST['id']);
         $datos->set_tipoDiscapacidad(strtoupper($_POST['nom']));
         $datos->set_tdcodigo($_POST['cod']);
+        $datos->set_tipodiscapacidadbool($_POST['tipodiscapacidadbool']);
         $datos->set_tdOculto($_POST['eliminar']);
         $datos->set_tdAccion($_POST['actualizar']);
         $datos->set_tdfecha(date("Y-m-d"));

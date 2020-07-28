@@ -9,37 +9,36 @@ use Crud\CrudIdiomas;
 session_start();
 function cargartablaidioma()
 {
-    $r=ajaxs_select2();
+
     $crud = new CrudIdiomas();
-    $r.= '
-<tr>
-    <td>
-
-    </td>
-    <td>
-        <input type="text" class="camptext1" id="codigo" name="codigo"  maxlength="10" value=""/>
-    </td>
-    <td>
-        <input type="text" id="idioma" name="idioma"  value=""/>
-    </td>
-    <td>
-    <select class="selector"  id="idiomaetnia" name="idiomaetnia">
-    '.cargarEtnia(-1).'
-    </select>
-</td>
-    <td>
-
-        <input type="button" value="Guardar" id="btnguardar" class="btnunico" onclick="registro()">
-    </td>
-</tr>
+    $r= '
+    <tr class="ui-widget-header">
+        <th>CODIGO</th>
+       <th>IDIOMA</th>
+       <th>ETNIA</th>
+       <th>'.ajaxs_select2().'</th>
+    </tr>
+    <tr>
+        <td>
+            <input type="text" class="camptext1" id="codigo" name="codigo"  maxlength="10" value=""/>
+        </td>
+        <td>
+            <input type="text" id="idioma" name="idioma"  value=""/>
+        </td>
+        <td>
+            <select class="selector"  id="idiomaetnia" name="idiomaetnia">
+                '.cargarEtnia(-1).'
+            </select>
+        </td>
+        <td>
+            <input type="button" value="Guardar" id="btnguardar" class="btnunico" onclick="registro()">
+        </td>
+    </tr>
 ';
 
     foreach ($crud->mostrar() as $dato) {
         $r .= '
     <tr>
-        <td>
-
-        </td>
         <td>
             <input type="text" class="camptext1" id="codigo' . $dato->get_ididiomaAncestral() . '" name="codigo' . $dato->get_ididiomaAncestral() . '"  maxlength="10" value="' . $dato->get_idiomasancestralcodigo() . '"/>
         </td>
