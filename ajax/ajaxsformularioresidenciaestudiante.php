@@ -27,7 +27,7 @@ function cargarresidenciaestudiante($cedula,$periodo){
                 <table>
                     <tr>
                         <td>
-                            <select class="selector"  id="paisRecidencia" name="paisRecidencia" readonly="readonly" >
+                            <select class="selector"  id="paisRecidencia" name="paisRecidencia" onchange="cargarProvinciasest2()">
                                 '.cargarPais($dato->get_paisResidencia()).'
                             </select>
                         </td>
@@ -48,7 +48,7 @@ function cargarresidenciaestudiante($cedula,$periodo){
                            <table>
                                 <tr>
                                     <td>
-                                        <select class="selector"  name="provinciaRecidencia" id="provinciaRecidencia" onchange="cargarProvinciasest2()">
+                                        <select class="selector"  name="provinciaRecidencia" id="provinciaRecidencia" onchange="cargarCantonest2()">
                                             '.cargarProvincias($dato->get_provinciaResidencia()).'
                                         </select>
                                     </td>
@@ -64,7 +64,7 @@ function cargarresidenciaestudiante($cedula,$periodo){
                             <table>
                                 <tr>
                                     <td>
-                                        <select class="selector"  name="cantonRecidencia" id="cantonRecidencia" onchange="cargarCantonest2()">
+                                        <select class="selector"  name="cantonRecidencia" id="cantonRecidencia" >
                                             '.cargarCanton($dato->get_cantonResidencia(),$dato->get_provinciaResidencia()).'
                                         </select>
                                     </td>

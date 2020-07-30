@@ -9,7 +9,7 @@ $(document).ready(function(){
   cargarformMatricula();
   cargarformtrabajo();
   cargarmenu();
-  cargarpaisest2();
+  //cargarpaisest2();
 });
 function salirmatricula(){
   $.ajax({
