@@ -14,7 +14,6 @@ class CrudResidenciaestudiantes{
 			$db=Db::conectar();
 			$listaresidenciaestudiantes=null;
 			$select=$db->query('SELECT * FROM residenciaestudiantes;');
-
 			foreach($select->fetchAll() as $residenciaestudiantes1){
 
 				$myresidenciaestudiantes= new Residenciaestudiantes();
@@ -74,19 +73,21 @@ class CrudResidenciaestudiantes{
 		}
 		public  function actualizar($residenciaestudiantes1){
 			$db=Db::conectar();
-			$actualizar=$db->prepare('UPDATE `residenciaestudiantes` SET `ResidenciaEstudiantesId`=:id,
-			`Estudiantes_numeroIdentificacion`=:num,
-			`paisResidencia`=:pais,
-			`provinciaResidencia`=:provincia,
-			`cantonResidencia`=:canton,
-			`direccionDomiciliariaResidencia`=:direccion,
-			`codigoPostal`=:codigop,
-			`periodo`=:per1,
-			`residenciaestudiantesOculto`=:oculto,
-			`residenciaestudiantesAccion`=:accion,
-			`residenciaestudiantesfecha`=:fecha,
-			`residenciaestudiantesuser`=:user
-			 WHERE Estudiantes_numeroIdentificacion=:id AND periodo=:per1');
+			$actualizar=$db->prepare('UPDATE `residenciaestudiantes`
+			SET
+			`ResidenciaEstudiantesId` = :ResidenciaEstudiantesId1,
+			`Estudiantes_numeroIdentificacion` = :Estudiantes_numeroIdentificacion1,
+			`paisResidencia` = :paisResidencia1,
+			`provinciaResidencia` = :provinciaResidencia1,
+			`cantonResidencia` = :cantonResidencia1,
+			`direccionDomiciliariaResidencia` = :direccionDomiciliariaResidencia1,
+			`codigoPostal` = :codigoPostal1,
+			`periodo` = :periodo1,
+			`residenciaestudiantesOculto` = :residenciaestudiantesOculto1,
+			`residenciaestudiantesAccion` = :residenciaestudiantesAccion1,
+			`residenciaestudiantesfecha` = :residenciaestudiantesfecha1,
+			`residenciaestudiantesuser` = :residenciaestudiantesuser1
+			WHERE `ResidenciaEstudiantesId` = :ResidenciaEstudiantesId1');
 			$actualizar->bindValue('id',$residenciaestudiantes1->get_residenciaEstudiantesId());
 			$actualizar->bindValue('num',$residenciaestudiantes1->get_estudiantes_numeroIdentificacion());
 			$actualizar->bindValue('pais',$residenciaestudiantes1->get_paisResidencia());
@@ -102,21 +103,20 @@ class CrudResidenciaestudiantes{
 			$actualizar->execute();
 		}
 		public  function insertar($residenciaestudiantes1){
-			//echo $residenciaestudiantes1->toString();
 			$db=Db::conectar();
-			$insert=$db->prepare('INSERT INTO residenciaestudiantes
-			(ResidenciaEstudiantesId,
-			Estudiantes_numeroIdentificacion,
-			paisResidencia,
-			provinciaResidencia,
-			cantonResidencia,
-			direccionDomiciliariaResidencia,
-			codigoPostal,
-			periodo,
-			residenciaestudiantesOculto,
-			residenciaestudiantesAccion,
-			residenciaestudiantesfecha,
-			residenciaestudiantesuser)
+			$insert=$db->prepare('INSERT INTO `residenciaestudiantes`
+			(`ResidenciaEstudiantesId`,
+			`Estudiantes_numeroIdentificacion`,
+			`paisResidencia`,
+			`provinciaResidencia`,
+			`cantonResidencia`,
+			`direccionDomiciliariaResidencia`,
+			`codigoPostal`,
+			`periodo`,
+			`residenciaestudiantesOculto`,
+			`residenciaestudiantesAccion`,
+			`residenciaestudiantesfecha`,
+			`residenciaestudiantesuser`)
 			VALUES
 			(:ResidenciaEstudiantesId1,
 			:Estudiantes_numeroIdentificacion1,
@@ -143,8 +143,6 @@ class CrudResidenciaestudiantes{
 			$insert->bindValue('residenciaestudiantesfecha1',$residenciaestudiantes1->get_residenciaestudiantesfecha());
 			$insert->bindValue('residenciaestudiantesuser1',$residenciaestudiantes1->get_residenciaestudiantesuser());
 			$insert->execute();
-
- //echo "Insert Completa";
 		}
 		public  function eliminar($id){
 			$db=Db::conectar();

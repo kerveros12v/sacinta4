@@ -257,7 +257,7 @@ $r=ajaxs_select2().'
 							<table>
 								<tr>
 									<td>
-										<select  class="selector" id="paisNacionalidad" name="paisNacionalidad" onchange="cargarProvinciasest1()">
+										<select  class="selector" id="paisNacionalidad" name="paisNacionalidad" >
 											'.cargarPais($dato->get_fkPaisNacionalidadId()).'
 										</select>
 									</td>

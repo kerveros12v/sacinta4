@@ -27,7 +27,7 @@ function cargarresidenciaestudiante($cedula,$periodo){
                 <table>
                     <tr>
                         <td>
-                            <select class="selector"  id="paisRecidencia" name="paisRecidencia" readonly="readonly">
+                            <select class="selector"  id="paisRecidencia" name="paisRecidencia" readonly="readonly" >
                                 '.cargarPais($dato->get_paisResidencia()).'
                             </select>
                         </td>
@@ -48,7 +48,7 @@ function cargarresidenciaestudiante($cedula,$periodo){
                            <table>
                                 <tr>
                                     <td>
-                                        <select class="selector"  name="provinciaRecidencia" id="provinciaRecidencia">
+                                        <select class="selector"  name="provinciaRecidencia" id="provinciaRecidencia" onchange="cargarProvinciasest2()">
                                             '.cargarProvincias($dato->get_provinciaResidencia()).'
                                         </select>
                                     </td>
@@ -64,7 +64,7 @@ function cargarresidenciaestudiante($cedula,$periodo){
                             <table>
                                 <tr>
                                     <td>
-                                        <select class="selector"  name="cantonRecidencia" id="cantonRecidencia">
+                                        <select class="selector"  name="cantonRecidencia" id="cantonRecidencia" onchange="cargarCantonest2()">
                                             '.cargarCanton($dato->get_cantonResidencia(),$dato->get_provinciaResidencia()).'
                                         </select>
                                     </td>
@@ -91,7 +91,7 @@ function cargarresidenciaestudiante($cedula,$periodo){
                                         <select class="selector"  name="parroquiaRecidencia" id="parroquiaRecidencia">
                                             '.cargarParroquia($dato->get_codigoPostal(),$dato->get_cantonResidencia()).'
                                         </select>
-                                    </td>
+                                     </td>
                                 </tr>
                                 <tr>
                                     <th>

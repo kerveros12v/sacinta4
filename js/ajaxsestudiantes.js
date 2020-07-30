@@ -1,7 +1,5 @@
 $(document).ready(function(){
-
-  cargarpaisest1();
-  cargarFormulario();
+   cargarFormulario();
   cargarDiscapaidadEstudiante();
   cargarResidenciaEstudiante();
   cargarContactoEmergenciaEstudiante();
@@ -11,6 +9,7 @@ $(document).ready(function(){
   cargarformMatricula();
   cargarformtrabajo();
   cargarmenu();
+  cargarpaisest2();
 });
 function salirmatricula(){
   $.ajax({
@@ -28,6 +27,7 @@ function mostrarReporteMatricula(){
   //window.open("../reportes/formularioMatriculacionEstudiante.php?cedula="+$('#ced').val(), "Formulario de Matriculacion", "width=1000, height=1000")
   registrarEstudiante();
   registrardisapacidadEstudiante();
+  registrarresisenciaEstudiante();
     //window.Location('../reportes/formularioMatriculacionEstudiante.php','top', "Formulario de Matriculacion", "width=100%, height=100%,location=no");
 
 }
@@ -308,9 +308,25 @@ function cargarpaisest1() {
     });
 
 }
+
+function cargarpaisest2() {
+  $.ajax({
+    type: 'POST',
+    url: '../ajax/ajaxsselectpaisprint.php'
+
+  })
+    .done(function (cargar) {
+      $('#paisRecidencia').html(cargar);
+      cargarProvinciasest2();
+    })
+    .fail(function () {
+      alert('Hubo un error al cargar')
+    });
+
+}
+
 function cargarProvinciasest1() {
 
-  $('#paisNacionalidad').on('change', function () {
     var id = $('#paisNacionalidad').val();
     console.log("pais seleccionado: "+id);
     $.ajax({
@@ -326,7 +342,45 @@ function cargarProvinciasest1() {
       .fail(function () {
         alert('Hubo un error al cargar la lista de Provincias')
       })
-  })
+
+}
+function cargarProvinciasest2() {
+
+    var id = $('#paisRecidencia').val();
+    console.log("paisRecidencia seleccionado: "+id);
+    $.ajax({
+      type: 'POST',
+      url: '../ajax/ajaxsselectprovinciaprint.php',
+      data: { 'id': id }
+    })
+      .done(function (cargar) {
+        $('#provinciaRecidencia').html(cargar);
+        cargarCantonest2();
+      })
+      .fail(function () {
+        alert('Hubo un error al cargar la lista de Provincias')
+      })
+
+
+}
+function cargarCantonest2() {
+
+    var id = $('#provinciaRecidencia').val();
+    $.ajax({
+      type: 'POST',
+      url: '../ajax/ajaxsselectcantonprint.php',
+      data: {
+        'canton': -1,
+        'provincia': id
+      }
+    })
+      .done(function (cargar) {
+        $('#cantonRecidencia').html(cargar);
+      })
+      .fail(function () {
+        alert('Hubo un error al cargar la lista de Provincias')
+      })
+
 }
 function cargarCantonest1() {
 
@@ -373,3 +427,32 @@ function registrardisapacidadEstudiante(){
     alert('Hubo un error al cargar de Perfiles')
   })
 }
+function registrarresisenciaEstudiante(){
+  var paisRecidencia=$('#paisRecidencia').val();
+  var provinciaRecidencia=$('#provinciaRecidencia').val();
+  var cantonRecidencia=$('#cantonRecidencia').val();
+  var direcciondomi=$('#direcciondomi').val();
+  var parroquia=$('parroquiaRecidencia').val();
+  $.ajax({
+    type: 'POST',
+    url: '../controladores/registroResidenciaEstudiante.php',
+    data:{
+    'paisRecidencia':paisRecidencia,
+    'provinciaRecidencia':provinciaRecidencia,
+    'cantonRecidencia':cantonRecidencia,
+    'direcciondomi':direcciondomi,
+    'parroquia':parroquia,
+    'actualizar':0,
+    'eliminar':0,
+    'opt':1}
+  })
+  .done(function(cargar){
+    alert(cargar)
+    cargarFormulario()
+  })
+  .fail(function(){
+    alert('Hubo un error al cargar de Perfiles')
+  })
+}
+
+

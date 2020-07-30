@@ -1,6 +1,5 @@
 <?php
 namespace Clasesphp;
-
 class Residenciaestudiantes{
 private $residenciaEstudiantesId;
 private $estudiantes_numeroIdentificacion ;
