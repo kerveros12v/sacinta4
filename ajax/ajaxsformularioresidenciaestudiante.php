@@ -4,7 +4,7 @@ require_once("../Crud/CrudPeriodoacademico.php");
 require_once("ajaxsselectpais.php");
 require_once("ajaxsselectprovincia.php");
 require_once("ajaxsselectcanton.php");
-require_once("ajaxsselectparroquia.php");
+require_once("ajaxsselectparroquias.php");
 require_once("ajaxsselect2.php");
 
 session_start();
@@ -49,7 +49,7 @@ function cargarresidenciaestudiante($cedula,$periodo){
                                 <tr>
                                     <td>
                                         <select class="selector"  name="provinciaRecidencia" id="provinciaRecidencia" onchange="cargarCantonest2()">
-                                            '.cargarProvincias($dato->get_provinciaResidencia()).'
+                                            '.cargarProvincias($dato->get_provinciaResidencia(),$dato->get_paisResidencia()).'
                                         </select>
                                     </td>
                                 </tr>
@@ -64,7 +64,7 @@ function cargarresidenciaestudiante($cedula,$periodo){
                             <table>
                                 <tr>
                                     <td>
-                                        <select class="selector"  name="cantonRecidencia" id="cantonRecidencia" >
+                                        <select class="selector"  name="cantonRecidencia" id="cantonRecidencia" onchange="parroquiaRecidencia()">
                                             '.cargarCanton($dato->get_cantonResidencia(),$dato->get_provinciaResidencia()).'
                                         </select>
                                     </td>

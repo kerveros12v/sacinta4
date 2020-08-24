@@ -366,6 +366,7 @@ function cargarProvinciasest2() {
 function cargarCantonest2() {
 
     var id = $('#provinciaRecidencia').val();
+    console.log("provinciaRecidencia seleccionado: "+id);
     $.ajax({
       type: 'POST',
       url: '../ajax/ajaxsselectcantonprint.php',
@@ -394,13 +395,35 @@ function cargarCantonest1() {
       }
     })
       .done(function (cargar) {
-        $('#cantonNacionalidad').html(cargar);
+        $('#cantonNacionalidad').html(cargar)
+        parroquiaRecidencia()
       })
       .fail(function () {
         alert('Hubo un error al cargar la lista de Provincias')
       })
 
 }
+
+function parroquiaRecidencia() {
+
+  var id = $('#cantonRecidencia').val();
+  console.log("cantonRecidencia seleccionado: "+id);
+/*
+  $.ajax({
+    type: 'POST',
+    url: '../ajax/ajaxsselectparroquiasprint.php',
+    data: { 'id': id }
+  })
+    .done(function (cargar) {
+      $('#parroquiaRecidencia').html(cargar);
+    })
+    .fail(function () {
+      alert('Hubo un error al cargar la lista de Provincias')
+    })
+*/
+}
+
+
 function registrardisapacidadEstudiante(){
   var CarnetConadisId=$('#CarnetConadisId').val();
   var fkDiscapacidadDiscapacidadId=$('#fkDiscapacidadDiscapacidadId').val();
