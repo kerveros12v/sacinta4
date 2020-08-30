@@ -3,17 +3,18 @@
 namespace Crud;
 
 require_once("conexion.php");
-require_once("../clasesphp/Bachilleratos.php");
+require_once("../ec.edu.intsuperior/modelo/clasesphp/Bachilleratos.php");
 
+use Crud\Db;
 use Clasesphp\Bachilleratos;
 
 class CrudBachillerato
 {
-	// constructor de la clase
+	/**
+	 * Class constructor.
+	 */
 	public function __construct()
 	{
-		$db = Db::conectar();
-		$select = $db->query("SET NAMES 'utf8'");
 	}
 
 	public  function mostrar()
@@ -24,7 +25,7 @@ class CrudBachillerato
 
 		foreach ($select->fetchAll() as $bachillerato) {
 			$mybachillerato = new Bachilleratos();
-			$mybachillerato->set_bachilleratoId($bachillerato['bachilleratoId']);
+			$mybachillerato->setBachilleratoId($bachillerato['bachilleratoId']);
 			$mybachillerato->set_fkEstudiantesNumeroIdentificacion($bachillerato['fkEstudiantesNumeroIdentificacion']);
 			$mybachillerato->set_fkTiposBacilleratotiposBacilleratoId($bachillerato['fkTiposBacilleratotiposBacilleratoId']);
 			$mybachillerato->set_anioGraduacion($bachillerato['anioGraduacion']);
