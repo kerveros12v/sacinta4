@@ -5,82 +5,156 @@ namespace Clasesphp;
 class Tipobeca
 {
 	private $tipoBecaId;
-	private $tipoBeca;
 	private $tipobecacodigo;
+	private $tipoBeca;
 	private $tipobecaOculto;
 	private $tipobecaAccion;
 	private $tipobecafecha;
 	private $tipobecauser;
-	public function _construct()
+	/**
+	 * Class constructor.
+	 */
+	public function __construct()
 	{
 	}
-	public function set_tipoBecaId($tipoBecaId)
-	{
-		$this->tipoBecaId = $tipoBecaId;
-	}
-	public function get_tipoBecaId()
+
+	/**
+	 * Get the value of tipoBecaId
+	 */
+	public function getTipoBecaId()
 	{
 		return $this->tipoBecaId;
 	}
-	public function set_tipoBeca($tipoBeca)
+
+	/**
+	 * Set the value of tipoBecaId
+	 *
+	 * @return  self
+	 */
+	public function setTipoBecaId($tipoBecaId)
 	{
-		$this->tipoBeca = $tipoBeca;
+		$this->tipoBecaId = $tipoBecaId;
+
+		return $this;
 	}
-	public function get_tipoBeca()
-	{
-		return $this->tipoBeca;
-	}
-	public function set_tipobecacodigo($tipobecacodigo)
-	{
-		$this->tipobecacodigo = $tipobecacodigo;
-	}
-	public function get_tipobecacodigo()
+
+	/**
+	 * Get the value of tipobecacodigo
+	 */
+	public function getTipobecacodigo()
 	{
 		return $this->tipobecacodigo;
 	}
-	public function set_tipobecaOculto($tipobecaOculto)
+
+	/**
+	 * Set the value of tipobecacodigo
+	 *
+	 * @return  self
+	 */
+	public function setTipobecacodigo($tipobecacodigo)
 	{
-		$this->tipobecaOculto = $tipobecaOculto;
+		$this->tipobecacodigo = $tipobecacodigo;
+
+		return $this;
 	}
-	public function get_tipobecaOculto()
+
+	/**
+	 * Get the value of tipoBeca
+	 */
+	public function getTipoBeca()
+	{
+		return $this->tipoBeca;
+	}
+
+	/**
+	 * Set the value of tipoBeca
+	 *
+	 * @return  self
+	 */
+	public function setTipoBeca($tipoBeca)
+	{
+		$this->tipoBeca = $tipoBeca;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of tipobecaOculto
+	 */
+	public function getTipobecaOculto()
 	{
 		return $this->tipobecaOculto;
 	}
-	public function set_tipobecaAccion($tipobecaAccion)
+
+	/**
+	 * Set the value of tipobecaOculto
+	 *
+	 * @return  self
+	 */
+	public function setTipobecaOculto($tipobecaOculto)
 	{
-		$this->tipobecaAccion = $tipobecaAccion;
+		$this->tipobecaOculto = $tipobecaOculto;
+
+		return $this;
 	}
-	public function get_tipobecaAccion()
+
+	/**
+	 * Get the value of tipobecaAccion
+	 */
+	public function getTipobecaAccion()
 	{
 		return $this->tipobecaAccion;
 	}
-	public function set_tipobecafecha($tipobecafecha)
+
+	/**
+	 * Set the value of tipobecaAccion
+	 *
+	 * @return  self
+	 */
+	public function setTipobecaAccion($tipobecaAccion)
 	{
-		$this->tipobecafecha = $tipobecafecha;
+		$this->tipobecaAccion = $tipobecaAccion;
+
+		return $this;
 	}
-	public function get_tipobecafecha()
+
+	/**
+	 * Get the value of tipobecafecha
+	 */
+	public function getTipobecafecha()
 	{
 		return $this->tipobecafecha;
 	}
-	public function set_tipobecauser($tipobecauser)
+
+	/**
+	 * Set the value of tipobecafecha
+	 *
+	 * @return  self
+	 */
+	public function setTipobecafecha($tipobecafecha)
 	{
-		$this->tipobecauser = $tipobecauser;
+		$this->tipobecafecha = $tipobecafecha;
+
+		return $this;
 	}
-	public function get_tipobecauser()
+
+	/**
+	 * Get the value of tipobecauser
+	 */
+	public function getTipobecauser()
 	{
 		return $this->tipobecauser;
 	}
-	public function formatoJSON()
+
+	/**
+	 * Set the value of tipobecauser
+	 *
+	 * @return  self
+	 */
+	public function setTipobecauser($tipobecauser)
 	{
-		$myarray = array(
-			'tipoBecaId' => $this->tipoBecaId,
-			'tipobecacodigo' => $this->tipobecacodigo,
-			'tipoBeca' => $this->tipoBeca,
-			'tipobecaOculto' => $this->tipobecaOculto,
-			'tipobecaAccion' => $this->tipobecaAccion,
-			'tipobecafecha' => $this->tipobecafecha,
-			'tipobecauser' => $this->tipobecauser
-		);
-		return json_encode($myarray, JSON_PRETTY_PRINT);
+		$this->tipobecauser = $tipobecauser;
+
+		return $this;
 	}
 }

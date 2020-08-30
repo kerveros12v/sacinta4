@@ -4,68 +4,157 @@ namespace Clasesphp;
 
 class Tipodocumento
 {
-	private $tipoDocumentoOculto, $tipoDocumentoAccion, $tipoDocumentofecha, $tipoDocumentouser;
 	private $tipoDocumentoId;
-	private $tipoDocumento;
 	private $tipoDocumentocodigo;
-	public function _construct()
+	private $tipoDocumento;
+	private $tipoDocumentoOculto;
+	private $tipoDocumentoAccion;
+	private $tipoDocumentofecha;
+	private $tipoDocumentouser;
+	/**
+	 * Class constructor.
+	 */
+	public function __construct()
 	{
 	}
-	public function set_tipoDocumentoId($tipoDocumentoId)
-	{
-		$this->tipoDocumentoId = $tipoDocumentoId;
-	}
-	public function set_tipoDocumento($tipoDocumento)
-	{
-		$this->tipoDocumento = $tipoDocumento;
-	}
-	public function get_tipoDocumentoId()
+
+	/**
+	 * Get the value of tipoDocumentoId
+	 */
+	public function getTipoDocumentoId()
 	{
 		return $this->tipoDocumentoId;
 	}
-	public function get_tipoDocumento()
+
+	/**
+	 * Set the value of tipoDocumentoId
+	 *
+	 * @return  self
+	 */
+	public function setTipoDocumentoId($tipoDocumentoId)
 	{
-		return $this->tipoDocumento;
+		$this->tipoDocumentoId = $tipoDocumentoId;
+
+		return $this;
 	}
-	public function set_tipoDocumentocodigo($tipoDocumentocodigo)
-	{
-		$this->tipoDocumentocodigo = $tipoDocumentocodigo;
-	}
-	public function get_tipoDocumentocodigo()
+
+	/**
+	 * Get the value of tipoDocumentocodigo
+	 */
+	public function getTipoDocumentocodigo()
 	{
 		return $this->tipoDocumentocodigo;
 	}
 
-	public function set_tipoDocumentoOculto($tipoDocumentoOculto)
+	/**
+	 * Set the value of tipoDocumentocodigo
+	 *
+	 * @return  self
+	 */
+	public function setTipoDocumentocodigo($tipoDocumentocodigo)
 	{
-		$this->tipoDocumentoOculto = $tipoDocumentoOculto;
+		$this->tipoDocumentocodigo = $tipoDocumentocodigo;
+
+		return $this;
 	}
-	public function get_tipoDocumentoOculto()
+
+	/**
+	 * Get the value of tipoDocumento
+	 */
+	public function getTipoDocumento()
+	{
+		return $this->tipoDocumento;
+	}
+
+	/**
+	 * Set the value of tipoDocumento
+	 *
+	 * @return  self
+	 */
+	public function setTipoDocumento($tipoDocumento)
+	{
+		$this->tipoDocumento = $tipoDocumento;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of tipoDocumentoOculto
+	 */
+	public function getTipoDocumentoOculto()
 	{
 		return $this->tipoDocumentoOculto;
 	}
-	public function set_tipoDocumentoAccion($tipoDocumentoAccion)
+
+	/**
+	 * Set the value of tipoDocumentoOculto
+	 *
+	 * @return  self
+	 */
+	public function setTipoDocumentoOculto($tipoDocumentoOculto)
 	{
-		$this->tipoDocumentoAccion = $tipoDocumentoAccion;
+		$this->tipoDocumentoOculto = $tipoDocumentoOculto;
+
+		return $this;
 	}
-	public function get_tipoDocumentoAccion()
+
+	/**
+	 * Get the value of tipoDocumentoAccion
+	 */
+	public function getTipoDocumentoAccion()
 	{
 		return $this->tipoDocumentoAccion;
 	}
-	public function set_tipoDocumentofecha($tipoDocumentofecha)
+
+	/**
+	 * Set the value of tipoDocumentoAccion
+	 *
+	 * @return  self
+	 */
+	public function setTipoDocumentoAccion($tipoDocumentoAccion)
 	{
-		$this->tipoDocumentofecha = $tipoDocumentofecha;
+		$this->tipoDocumentoAccion = $tipoDocumentoAccion;
+
+		return $this;
 	}
-	public function get_tipoDocumentofecha()
+
+	/**
+	 * Get the value of tipoDocumentofecha
+	 */
+	public function getTipoDocumentofecha()
 	{
 		return $this->tipoDocumentofecha;
 	}
-	public function set_tipoDocumentouser($tipoDocumentouser)
+
+	/**
+	 * Set the value of tipoDocumentofecha
+	 *
+	 * @return  self
+	 */
+	public function setTipoDocumentofecha($tipoDocumentofecha)
 	{
-		$this->tipoDocumentouser = $tipoDocumentouser;
+		$this->tipoDocumentofecha = $tipoDocumentofecha;
+
+		return $this;
 	}
-	public function get_tipoDocumentouser()
+
+	/**
+	 * Get the value of tipoDocumentouser
+	 */
+	public function getTipoDocumentouser()
 	{
 		return $this->tipoDocumentouser;
+	}
+
+	/**
+	 * Set the value of tipoDocumentouser
+	 *
+	 * @return  self
+	 */
+	public function setTipoDocumentouser($tipoDocumentouser)
+	{
+		$this->tipoDocumentouser = $tipoDocumentouser;
+
+		return $this;
 	}
 }

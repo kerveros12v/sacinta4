@@ -1,42 +1,139 @@
 <?php
+
 namespace Clasesphp;
 
-class SocioEmpleo{
-    private $idsocioempleo,$socioEmpleoregistro,$socioempleoOculto,$socioempleoAccion,$socioempleofecha,$socioempleouser;
-    public function __construct(){}
-    public function set_idsocioempleo($idsocioempleo){$this->idsocioempleo=$idsocioempleo;}
-    public function set_socioEmpleoregistro($socioEmpleoregistro){$this->socioEmpleoregistro=$socioEmpleoregistro;}
-    public function set_socioempleoOculto($socioempleoOculto){$this->socioempleoOculto=$socioempleoOculto;}
-    public function set_socioempleoAccion($socioempleoAccion){$this->socioempleoAccion=$socioempleoAccion;}
-    public function set_socioempleofecha($socioempleofecha){$this->socioempleofecha=$socioempleofecha;}
-    public function set_socioempleouser($socioempleouser){$this->socioempleouser=$socioempleouser;}
-    public function get_idsocioempleo(){return $this->idsocioempleo;}
-    public function get_socioEmpleoregistro(){return $this->socioEmpleoregistro;}
-    public function get_socioempleoOculto(){return $this->socioempleoOculto;}
-    public function get_socioempleoAccion(){return $this->socioempleoAccion;}
-    public function get_socioempleofecha(){return $this->socioempleofecha;}
-    public function get_socioempleouser(){return $this->socioempleouser;}
-    public function formatoJSON(){
-        $myarray=array(
-            'idsocioempleo'=>$this->idsocioempleo,
-            'socioEmpleoregistro'=>$this->socioEmpleoregistro,
-            'socioempleoOculto'=>$this->socioempleoOculto,
-            'socioempleoAccion'=>$this->socioempleoAccion,
-            'socioempleofecha'=>$this->socioempleofecha,
-            'socioempleouser'=>$this->socioempleouser
-        );
-        return json_encode($myarray);
+class SocioEmpleo
+{
+    private $idsocioempleo;
+    private $socioEmpleoregistro;
+    private $socioempleoOculto;
+    private $socioempleoAccion;
+    private $socioempleofecha;
+    private $socioempleouser;
+    /**
+     * Class constructor.
+     */
+    public function __construct()
+    {
     }
-    public function formatoArray(){
-        $myarray=array(
-            'idsocioempleo'=>$this->idsocioempleo,
-            'socioEmpleoregistro'=>$this->socioEmpleoregistro,
-            'socioempleoOculto'=>$this->socioempleoOculto,
-            'socioempleoAccion'=>$this->socioempleoAccion,
-            'socioempleofecha'=>$this->socioempleofecha,
-            'socioempleouser'=>$this->socioempleouser
-        );
-        return $myarray;
+
+    /**
+     * Get the value of idsocioempleo
+     */
+    public function getIdsocioempleo()
+    {
+        return $this->idsocioempleo;
+    }
+
+    /**
+     * Set the value of idsocioempleo
+     *
+     * @return  self
+     */
+    public function setIdsocioempleo($idsocioempleo)
+    {
+        $this->idsocioempleo = $idsocioempleo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of socioEmpleoregistro
+     */
+    public function getSocioEmpleoregistro()
+    {
+        return $this->socioEmpleoregistro;
+    }
+
+    /**
+     * Set the value of socioEmpleoregistro
+     *
+     * @return  self
+     */
+    public function setSocioEmpleoregistro($socioEmpleoregistro)
+    {
+        $this->socioEmpleoregistro = $socioEmpleoregistro;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of socioempleoOculto
+     */
+    public function getSocioempleoOculto()
+    {
+        return $this->socioempleoOculto;
+    }
+
+    /**
+     * Set the value of socioempleoOculto
+     *
+     * @return  self
+     */
+    public function setSocioempleoOculto($socioempleoOculto)
+    {
+        $this->socioempleoOculto = $socioempleoOculto;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of socioempleoAccion
+     */
+    public function getSocioempleoAccion()
+    {
+        return $this->socioempleoAccion;
+    }
+
+    /**
+     * Set the value of socioempleoAccion
+     *
+     * @return  self
+     */
+    public function setSocioempleoAccion($socioempleoAccion)
+    {
+        $this->socioempleoAccion = $socioempleoAccion;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of socioempleofecha
+     */
+    public function getSocioempleofecha()
+    {
+        return $this->socioempleofecha;
+    }
+
+    /**
+     * Set the value of socioempleofecha
+     *
+     * @return  self
+     */
+    public function setSocioempleofecha($socioempleofecha)
+    {
+        $this->socioempleofecha = $socioempleofecha;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of socioempleouser
+     */
+    public function getSocioempleouser()
+    {
+        return $this->socioempleouser;
+    }
+
+    /**
+     * Set the value of socioempleouser
+     *
+     * @return  self
+     */
+    public function setSocioempleouser($socioempleouser)
+    {
+        $this->socioempleouser = $socioempleouser;
+
+        return $this;
     }
 }
-?>

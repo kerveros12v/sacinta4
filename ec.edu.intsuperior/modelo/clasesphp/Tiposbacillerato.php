@@ -4,68 +4,157 @@ namespace Clasesphp;
 
 class Tiposbacillerato
 {
-	private $tiposbacilleratocodigo, $tiposbacilleratoOculto, $tiposbacilleratoAccion, $tiposbacilleratofecha, $tiposbacilleratouser;
-
 	private $tiposBacilleratoId;
+	private $tiposbacilleratocodigo;
 	private $tipoBacillerato;
-	public function _construct()
+	private $tiposbacilleratoOculto;
+	private $tiposbacilleratoAccion;
+	private $tiposbacilleratofecha;
+	private $tiposbacilleratouser;
+	/**
+	 * Class constructor.
+	 */
+	public function __construct()
 	{
 	}
-	public function set_tiposBacilleratoId($tiposBacilleratoId)
-	{
-		$this->tiposBacilleratoId = $tiposBacilleratoId;
-	}
-	public function get_tiposBacilleratoId()
+
+	/**
+	 * Get the value of tiposBacilleratoId
+	 */
+	public function getTiposBacilleratoId()
 	{
 		return $this->tiposBacilleratoId;
 	}
-	public function set_tipoBacillerato($tipoBacillerato)
+
+	/**
+	 * Set the value of tiposBacilleratoId
+	 *
+	 * @return  self
+	 */
+	public function setTiposBacilleratoId($tiposBacilleratoId)
 	{
-		$this->tipoBacillerato = $tipoBacillerato;
+		$this->tiposBacilleratoId = $tiposBacilleratoId;
+
+		return $this;
 	}
-	public function get_tipoBacillerato()
+
+	/**
+	 * Get the value of tiposbacilleratocodigo
+	 */
+	public function getTiposbacilleratocodigo()
+	{
+		return $this->tiposbacilleratocodigo;
+	}
+
+	/**
+	 * Set the value of tiposbacilleratocodigo
+	 *
+	 * @return  self
+	 */
+	public function setTiposbacilleratocodigo($tiposbacilleratocodigo)
+	{
+		$this->tiposbacilleratocodigo = $tiposbacilleratocodigo;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of tipoBacillerato
+	 */
+	public function getTipoBacillerato()
 	{
 		return $this->tipoBacillerato;
 	}
 
-	public function set_tiposbacilleratocodigo($tiposbacilleratocodigo)
+	/**
+	 * Set the value of tipoBacillerato
+	 *
+	 * @return  self
+	 */
+	public function setTipoBacillerato($tipoBacillerato)
 	{
-		$this->tiposbacilleratocodigo = $tiposbacilleratocodigo;
+		$this->tipoBacillerato = $tipoBacillerato;
+
+		return $this;
 	}
-	public function get_tiposbacilleratocodigo()
-	{
-		return $this->tiposbacilleratocodigo;
-	}
-	public function set_tiposbacilleratoOculto($tiposbacilleratoOculto)
-	{
-		$this->tiposbacilleratoOculto = $tiposbacilleratoOculto;
-	}
-	public function get_tiposbacilleratoOculto()
+
+	/**
+	 * Get the value of tiposbacilleratoOculto
+	 */
+	public function getTiposbacilleratoOculto()
 	{
 		return $this->tiposbacilleratoOculto;
 	}
-	public function set_tiposbacilleratoAccion($tiposbacilleratoAccion)
+
+	/**
+	 * Set the value of tiposbacilleratoOculto
+	 *
+	 * @return  self
+	 */
+	public function setTiposbacilleratoOculto($tiposbacilleratoOculto)
 	{
-		$this->tiposbacilleratoAccion = $tiposbacilleratoAccion;
+		$this->tiposbacilleratoOculto = $tiposbacilleratoOculto;
+
+		return $this;
 	}
-	public function get_tiposbacilleratoAccion()
+
+	/**
+	 * Get the value of tiposbacilleratoAccion
+	 */
+	public function getTiposbacilleratoAccion()
 	{
 		return $this->tiposbacilleratoAccion;
 	}
-	public function set_tiposbacilleratofecha($tiposbacilleratofecha)
+
+	/**
+	 * Set the value of tiposbacilleratoAccion
+	 *
+	 * @return  self
+	 */
+	public function setTiposbacilleratoAccion($tiposbacilleratoAccion)
 	{
-		$this->tiposbacilleratofecha = $tiposbacilleratofecha;
+		$this->tiposbacilleratoAccion = $tiposbacilleratoAccion;
+
+		return $this;
 	}
-	public function get_tiposbacilleratofecha()
+
+	/**
+	 * Get the value of tiposbacilleratofecha
+	 */
+	public function getTiposbacilleratofecha()
 	{
 		return $this->tiposbacilleratofecha;
 	}
-	public function set_tiposbacilleratouser($tiposbacilleratouser)
+
+	/**
+	 * Set the value of tiposbacilleratofecha
+	 *
+	 * @return  self
+	 */
+	public function setTiposbacilleratofecha($tiposbacilleratofecha)
 	{
-		$this->tiposbacilleratouser = $tiposbacilleratouser;
+		$this->tiposbacilleratofecha = $tiposbacilleratofecha;
+
+		return $this;
 	}
-	public function get_tiposbacilleratouser()
+
+	/**
+	 * Get the value of tiposbacilleratouser
+	 */
+	public function getTiposbacilleratouser()
 	{
 		return $this->tiposbacilleratouser;
+	}
+
+	/**
+	 * Set the value of tiposbacilleratouser
+	 *
+	 * @return  self
+	 */
+	public function setTiposbacilleratouser($tiposbacilleratouser)
+	{
+		$this->tiposbacilleratouser = $tiposbacilleratouser;
+
+		return $this;
 	}
 }

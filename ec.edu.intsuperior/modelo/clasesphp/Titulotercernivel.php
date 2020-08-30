@@ -6,80 +6,156 @@ class Titulotercernivel
 {
 
 	private $tituloTercerNivelId;
-	private $tituloTercerNivel;
 	private $titulotercernivelcodigo;
+	private $tituloTercerNivel;
 	private $titulotercernivelOculto;
 	private $titulotercernivelAccion;
 	private $titulotercernivelfecha;
-	private $titulotercerniveluse;
-	public function _construct()
+	private $titulotercerniveluser;
+	/**
+	 * Class constructor.
+	 */
+	public function __construct()
 	{
 	}
-	public function set_tituloTercerNivelId($tituloTercerNivelId)
-	{
-		$this->tituloTercerNivelId = $tituloTercerNivelId;
-	}
-	public function get_tituloTercerNivelId()
+
+	/**
+	 * Get the value of tituloTercerNivelId
+	 */
+	public function getTituloTercerNivelId()
 	{
 		return $this->tituloTercerNivelId;
 	}
-	public function set_tituloTercerNivel($tituloTercerNivel)
+
+	/**
+	 * Set the value of tituloTercerNivelId
+	 *
+	 * @return  self
+	 */
+	public function setTituloTercerNivelId($tituloTercerNivelId)
 	{
-		$this->tituloTercerNivel = $tituloTercerNivel;
+		$this->tituloTercerNivelId = $tituloTercerNivelId;
+
+		return $this;
 	}
-	public function get_tituloTercerNivel()
+
+	/**
+	 * Get the value of titulotercernivelcodigo
+	 */
+	public function getTitulotercernivelcodigo()
+	{
+		return $this->titulotercernivelcodigo;
+	}
+
+	/**
+	 * Set the value of titulotercernivelcodigo
+	 *
+	 * @return  self
+	 */
+	public function setTitulotercernivelcodigo($titulotercernivelcodigo)
+	{
+		$this->titulotercernivelcodigo = $titulotercernivelcodigo;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of tituloTercerNivel
+	 */
+	public function getTituloTercerNivel()
 	{
 		return $this->tituloTercerNivel;
 	}
 
-	public function set_titulotercernivelcodigo($titulotercernivelcodigo)
+	/**
+	 * Set the value of tituloTercerNivel
+	 *
+	 * @return  self
+	 */
+	public function setTituloTercerNivel($tituloTercerNivel)
 	{
-		$this->titulotercernivelcodigo = $titulotercernivelcodigo;
+		$this->tituloTercerNivel = $tituloTercerNivel;
+
+		return $this;
 	}
-	public function set_titulotercernivelOculto($titulotercernivelOculto)
-	{
-		$this->titulotercernivelOculto = $titulotercernivelOculto;
-	}
-	public function set_titulotercernivelAccion($titulotercernivelAccion)
-	{
-		$this->titulotercernivelAccion = $titulotercernivelAccion;
-	}
-	public function set_titulotercernivelfecha($titulotercernivelfecha)
-	{
-		$this->titulotercernivelfecha = $titulotercernivelfecha;
-	}
-	public function set_titulotercerniveluse($titulotercerniveluse)
-	{
-		$this->titulotercerniveluse = $titulotercerniveluse;
-	}
-	public function get_titulotercernivelcodigo()
-	{
-		return $this->titulotercernivelcodigo;
-	}
-	public function get_titulotercernivelOculto()
+
+	/**
+	 * Get the value of titulotercernivelOculto
+	 */
+	public function getTitulotercernivelOculto()
 	{
 		return $this->titulotercernivelOculto;
 	}
-	public function get_titulotercernivelAccion()
+
+	/**
+	 * Set the value of titulotercernivelOculto
+	 *
+	 * @return  self
+	 */
+	public function setTitulotercernivelOculto($titulotercernivelOculto)
+	{
+		$this->titulotercernivelOculto = $titulotercernivelOculto;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of titulotercernivelAccion
+	 */
+	public function getTitulotercernivelAccion()
 	{
 		return $this->titulotercernivelAccion;
 	}
-	public function get_titulotercernivelfecha()
+
+	/**
+	 * Set the value of titulotercernivelAccion
+	 *
+	 * @return  self
+	 */
+	public function setTitulotercernivelAccion($titulotercernivelAccion)
+	{
+		$this->titulotercernivelAccion = $titulotercernivelAccion;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of titulotercernivelfecha
+	 */
+	public function getTitulotercernivelfecha()
 	{
 		return $this->titulotercernivelfecha;
 	}
-	public function get_titulotercerniveluse()
+
+	/**
+	 * Set the value of titulotercernivelfecha
+	 *
+	 * @return  self
+	 */
+	public function setTitulotercernivelfecha($titulotercernivelfecha)
 	{
-		return $this->titulotercerniveluse;
+		$this->titulotercernivelfecha = $titulotercernivelfecha;
+
+		return $this;
 	}
-	public function _toString()
+
+	/**
+	 * Get the value of titulotercerniveluser
+	 */
+	public function getTitulotercerniveluser()
 	{
-		return "tituloTercerNivelId:{" . $this->tituloTercerNivelId .
-			"}tituloTercerNivel:{" . $this->tituloTercerNivel .
-			"}titulotercernivelcodigo:{" . $this->titulotercernivelcodigo .
-			"}titulotercernivelOculto:{" . $this->titulotercernivelOculto .
-			"}titulotercernivelAccion:{" . $this->titulotercernivelAccion .
-			"}titulotercernivelfecha:{" . $this->titulotercernivelfecha .
-			"}titulotercerniveluse:{" . $this->titulotercerniveluse . "}";
+		return $this->titulotercerniveluser;
+	}
+
+	/**
+	 * Set the value of titulotercerniveluser
+	 *
+	 * @return  self
+	 */
+	public function setTitulotercerniveluser($titulotercerniveluser)
+	{
+		$this->titulotercerniveluser = $titulotercerniveluser;
+
+		return $this;
 	}
 }

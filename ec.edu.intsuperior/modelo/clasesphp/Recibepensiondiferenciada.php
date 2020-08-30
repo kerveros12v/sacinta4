@@ -4,67 +4,157 @@ namespace Clasesphp;
 
 class Recibepensiondiferenciada
 {
-	private  $recibepensiondiferenciadacodigo,  $recibepensiondiferenciadaOculto, $recibepensiondiferenciadaAccion, $recibepensiondiferenciadafecha, $recibepensiondiferenciadauser;
-	private $recibePensionDiferenciadaId;
+	private  $recibePensionDiferenciadaId;
+	private $recibepensiondiferenciadacodigo;
 	private $recibePensionDiferenciada;
-	public function _construct()
+	private $recibepensiondiferenciadaOculto;
+	private $recibepensiondiferenciadaAccion;
+	private $recibepensiondiferenciadafecha;
+	private $recibepensiondiferenciadauser;
+	/**
+	 * Class constructor.
+	 */
+	public function __construct()
 	{
 	}
-	public function set_recibePensionDiferenciadaId($recibePensionDiferenciadaId)
-	{
-		$this->recibePensionDiferenciadaId = $recibePensionDiferenciadaId;
-	}
-	public function get_recibePensionDiferenciadaId()
+
+	/**
+	 * Get the value of recibePensionDiferenciadaId
+	 */
+	public function getRecibePensionDiferenciadaId()
 	{
 		return $this->recibePensionDiferenciadaId;
 	}
-	public function set_recibePensionDiferenciada($recibePensionDiferenciada)
+
+	/**
+	 * Set the value of recibePensionDiferenciadaId
+	 *
+	 * @return  self
+	 */
+	public function setRecibePensionDiferenciadaId($recibePensionDiferenciadaId)
 	{
-		$this->recibePensionDiferenciada = $recibePensionDiferenciada;
+		$this->recibePensionDiferenciadaId = $recibePensionDiferenciadaId;
+
+		return $this;
 	}
-	public function get_recibePensionDiferenciada()
+
+	/**
+	 * Get the value of recibepensiondiferenciadacodigo
+	 */
+	public function getRecibepensiondiferenciadacodigo()
+	{
+		return $this->recibepensiondiferenciadacodigo;
+	}
+
+	/**
+	 * Set the value of recibepensiondiferenciadacodigo
+	 *
+	 * @return  self
+	 */
+	public function setRecibepensiondiferenciadacodigo($recibepensiondiferenciadacodigo)
+	{
+		$this->recibepensiondiferenciadacodigo = $recibepensiondiferenciadacodigo;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of recibePensionDiferenciada
+	 */
+	public function getRecibePensionDiferenciada()
 	{
 		return $this->recibePensionDiferenciada;
 	}
 
-	public function set_recibepensiondiferenciadacodigo($recibepensiondiferenciadacodigo)
+	/**
+	 * Set the value of recibePensionDiferenciada
+	 *
+	 * @return  self
+	 */
+	public function setRecibePensionDiferenciada($recibePensionDiferenciada)
 	{
-		$this->recibepensiondiferenciadacodigo = $recibepensiondiferenciadacodigo;
+		$this->recibePensionDiferenciada = $recibePensionDiferenciada;
+
+		return $this;
 	}
-	public function get_recibepensiondiferenciadacodigo()
-	{
-		return $this->recibepensiondiferenciadacodigo;
-	}
-	public function set_recibepensiondiferenciadaOculto($recibepensiondiferenciadaOculto)
-	{
-		$this->recibepensiondiferenciadaOculto = $recibepensiondiferenciadaOculto;
-	}
-	public function get_recibepensiondiferenciadaOculto()
+
+	/**
+	 * Get the value of recibepensiondiferenciadaOculto
+	 */
+	public function getRecibepensiondiferenciadaOculto()
 	{
 		return $this->recibepensiondiferenciadaOculto;
 	}
-	public function set_recibepensiondiferenciadaAccion($recibepensiondiferenciadaAccion)
+
+	/**
+	 * Set the value of recibepensiondiferenciadaOculto
+	 *
+	 * @return  self
+	 */
+	public function setRecibepensiondiferenciadaOculto($recibepensiondiferenciadaOculto)
 	{
-		$this->recibepensiondiferenciadaAccion = $recibepensiondiferenciadaAccion;
+		$this->recibepensiondiferenciadaOculto = $recibepensiondiferenciadaOculto;
+
+		return $this;
 	}
-	public function get_recibepensiondiferenciadaAccion()
+
+	/**
+	 * Get the value of recibepensiondiferenciadaAccion
+	 */
+	public function getRecibepensiondiferenciadaAccion()
 	{
 		return $this->recibepensiondiferenciadaAccion;
 	}
-	public function set_recibepensiondiferenciadafecha($recibepensiondiferenciadafecha)
+
+	/**
+	 * Set the value of recibepensiondiferenciadaAccion
+	 *
+	 * @return  self
+	 */
+	public function setRecibepensiondiferenciadaAccion($recibepensiondiferenciadaAccion)
 	{
-		$this->recibepensiondiferenciadafecha = $recibepensiondiferenciadafecha;
+		$this->recibepensiondiferenciadaAccion = $recibepensiondiferenciadaAccion;
+
+		return $this;
 	}
-	public function get_recibepensiondiferenciadafecha()
+
+	/**
+	 * Get the value of recibepensiondiferenciadafecha
+	 */
+	public function getRecibepensiondiferenciadafecha()
 	{
 		return $this->recibepensiondiferenciadafecha;
 	}
-	public function set_recibepensiondiferenciadauser($recibepensiondiferenciadauser)
+
+	/**
+	 * Set the value of recibepensiondiferenciadafecha
+	 *
+	 * @return  self
+	 */
+	public function setRecibepensiondiferenciadafecha($recibepensiondiferenciadafecha)
 	{
-		$this->recibepensiondiferenciadauser = $recibepensiondiferenciadauser;
+		$this->recibepensiondiferenciadafecha = $recibepensiondiferenciadafecha;
+
+		return $this;
 	}
-	public function get_recibepensiondiferenciadauser()
+
+	/**
+	 * Get the value of recibepensiondiferenciadauser
+	 */
+	public function getRecibepensiondiferenciadauser()
 	{
 		return $this->recibepensiondiferenciadauser;
+	}
+
+	/**
+	 * Set the value of recibepensiondiferenciadauser
+	 *
+	 * @return  self
+	 */
+	public function setRecibepensiondiferenciadauser($recibepensiondiferenciadauser)
+	{
+		$this->recibepensiondiferenciadauser = $recibepensiondiferenciadauser;
+
+		return $this;
 	}
 }

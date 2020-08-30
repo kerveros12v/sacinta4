@@ -4,77 +4,157 @@ namespace Clasesphp;
 
 class Sexos
 {
-	private $sexoOculto, $sexoAccion, $sexofecha, $sexouser;
 	private $sexoId;
-	private $sexo;
 	private $sexocodigo;
-	public function _construct()
+	private $sexo;
+	private $sexoOculto;
+	private $sexoAccion;
+	private $sexofecha;
+	private $sexouser;
+	/**
+	 * Class constructor.
+	 */
+	public function __construct()
 	{
 	}
-	public function set_sexoOculto($sexoOculto)
-	{
-		$this->sexoOculto = $sexoOculto;
-	}
-	public function get_sexoOculto()
-	{
-		return $this->sexoOculto;
-	}
-	public function set_sexoAccion($sexoAccion)
-	{
-		$this->sexoAccion = $sexoAccion;
-	}
-	public function get_sexoAccion()
-	{
-		return $this->sexoAccion;
-	}
-	public function set_sexofecha($sexofecha)
-	{
-		$this->sexofecha = $sexofecha;
-	}
-	public function get_sexofecha()
-	{
-		return $this->sexofecha;
-	}
-	public function set_sexouser($sexouser)
-	{
-		$this->sexouser = $sexouser;
-	}
-	public function get_sexouser()
-	{
-		return $this->sexouser;
-	}
-	public function set_sexoId($sexoId)
-	{
-		$this->sexoId = $sexoId;
-	}
-	public function get_sexoId()
+
+	/**
+	 * Get the value of sexoId
+	 */
+	public function getSexoId()
 	{
 		return $this->sexoId;
 	}
-	public function set_sexo($sexo)
+
+	/**
+	 * Set the value of sexoId
+	 *
+	 * @return  self
+	 */
+	public function setSexoId($sexoId)
 	{
-		$this->sexo = $sexo;
+		$this->sexoId = $sexoId;
+
+		return $this;
 	}
-	public function get_sexo()
-	{
-		return $this->sexo;
-	}
-	public function set_sexocodigo($sexocodigo)
-	{
-		$this->sexocodigo = $sexocodigo;
-	}
-	public function get_sexocodigo()
+
+	/**
+	 * Get the value of sexocodigo
+	 */
+	public function getSexocodigo()
 	{
 		return $this->sexocodigo;
 	}
-	public function formatoJSON()
+
+	/**
+	 * Set the value of sexocodigo
+	 *
+	 * @return  self
+	 */
+	public function setSexocodigo($sexocodigo)
 	{
-		$myarray = array('sexoId' => $this->sexoId, 'sexo' => $this->sexo);
-		return json_encode($myarray);
+		$this->sexocodigo = $sexocodigo;
+
+		return $this;
 	}
-	public function formatoArray()
+
+	/**
+	 * Get the value of sexo
+	 */
+	public function getSexo()
 	{
-		$myarray = array('sexoId' => $this->sexoId, 'sexo' => $this->sexo);
-		return ($myarray);
+		return $this->sexo;
+	}
+
+	/**
+	 * Set the value of sexo
+	 *
+	 * @return  self
+	 */
+	public function setSexo($sexo)
+	{
+		$this->sexo = $sexo;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of sexoOculto
+	 */
+	public function getSexoOculto()
+	{
+		return $this->sexoOculto;
+	}
+
+	/**
+	 * Set the value of sexoOculto
+	 *
+	 * @return  self
+	 */
+	public function setSexoOculto($sexoOculto)
+	{
+		$this->sexoOculto = $sexoOculto;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of sexoAccion
+	 */
+	public function getSexoAccion()
+	{
+		return $this->sexoAccion;
+	}
+
+	/**
+	 * Set the value of sexoAccion
+	 *
+	 * @return  self
+	 */
+	public function setSexoAccion($sexoAccion)
+	{
+		$this->sexoAccion = $sexoAccion;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of sexofecha
+	 */
+	public function getSexofecha()
+	{
+		return $this->sexofecha;
+	}
+
+	/**
+	 * Set the value of sexofecha
+	 *
+	 * @return  self
+	 */
+	public function setSexofecha($sexofecha)
+	{
+		$this->sexofecha = $sexofecha;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of sexouser
+	 */
+	public function getSexouser()
+	{
+		return $this->sexouser;
+	}
+
+	/**
+	 * Set the value of sexouser
+	 *
+	 * @return  self
+	 */
+	public function setSexouser($sexouser)
+	{
+		$this->sexouser = $sexouser;
+
+		return $this;
 	}
 }

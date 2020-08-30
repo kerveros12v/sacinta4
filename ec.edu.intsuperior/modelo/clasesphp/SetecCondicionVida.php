@@ -1,151 +1,286 @@
 <?php
+
 namespace Clasesphp;
 
-class SetecCondicionVida{
-    private $SetecCondiciondeVidaCedula;
-    private $SetecCondiciondeVidaFecha;
-    private $Setecjefehogar;
-    private $Setecseguromedico;
-    private $SetecAsistenciaInstitucion;
-    private $Setecvivienda;
-    private $SetecLuz;
-    private $SetecAgua;
-    private $SetecInternet;
+class SetecCondicionVida
+{
     private $idSetecCondiciondeVida;
-    private $Setecnumhijos;
-    private $Setechijomayor;
-    private $SetecMienbrosHogar;
-    public function get_Setechijomayor() {
-        return $this->Setechijomayor;
+    private $setecCondiciondeVidaCedula;
+    private $setecCondiciondeVidaFecha;
+    private $setecjefehogar;
+    private $setecseguromedico;
+    private $setecnumhijos;
+    private $setechijomayor;
+    private $setecAsistenciaInstitucion;
+    private $setecvivienda;
+    private $setecMienbrosHogar;
+    private $setecLuz;
+    private $setecAgua;
+    private $setecInternet;
+    /**
+     * Class constructor.
+     */
+    public function __construct()
+    {
     }
 
-    public function set_Setechijomayor($Setechijomayor) {
-        $this->Setechijomayor = $Setechijomayor;
-    }
-    public function get_SetecCondiciondeVidaCedula() {
-        return $this->SetecCondiciondeVidaCedula;
-    }
-
-    public function set_SetecCondiciondeVidaCedula($setecCondiciondeVidaCedula) {
-        $this->SetecCondiciondeVidaCedula = $setecCondiciondeVidaCedula;
-    }
-
-    public function get_SetecCondiciondeVidaFecha() {
-        return $this->SetecCondiciondeVidaFecha;
-    }
-
-    public function set_SetecCondiciondeVidaFecha($setecCondiciondeVidaFecha) {
-        $this->SetecCondiciondeVidaFecha = $setecCondiciondeVidaFecha;
-    }
-
-    public function get_Setecjefehogar() {
-        return $this->Setecjefehogar;
-    }
-
-    public function set_Setecjefehogar($setecjefehogar) {
-        $this->Setecjefehogar = $setecjefehogar;
-    }
-
-    public function get_Setecseguromedico() {
-        return $this->Setecseguromedico;
-    }
-
-    public function set_Setecseguromedico($setecseguromedico) {
-        $this->Setecseguromedico = $setecseguromedico;
-    }
-
-    public function get_SetecAsistenciaInstitucion() {
-        return $this->SetecAsistenciaInstitucion;
-    }
-
-    public function set_SetecAsistenciaInstitucion($setecAsistenciaInstitucion) {
-        $this->SetecAsistenciaInstitucion = $setecAsistenciaInstitucion;
-    }
-
-    public function get_Setecvivienda() {
-        return $this->Setecvivienda;
-    }
-
-    public function set_Setecvivienda($setecvivienda) {
-        $this->Setecvivienda = $setecvivienda;
-    }
-
-    public function get_SetecLuz() {
-        return $this->SetecLuz;
-    }
-
-    public function set_SetecLuz($setecLuz) {
-        $this->SetecLuz = $setecLuz;
-    }
-
-    public function get_SetecAgua() {
-        return $this->SetecAgua;
-    }
-
-    public function set_SetecAgua($setecAgua) {
-        $this->SetecAgua = $setecAgua;
-    }
-
-    public function get_SetecInternet() {
-        return $this->SetecInternet;
-    }
-
-    public function set_SetecInternet($setecInternet) {
-        $this->SetecInternet = $setecInternet;
-    }
-
-    public function get_IdSetecCondiciondeVida() {
+    /**
+     * Get the value of idSetecCondiciondeVida
+     */
+    public function getIdSetecCondiciondeVida()
+    {
         return $this->idSetecCondiciondeVida;
     }
 
-    public function set_IdSetecCondiciondeVida($idSetecCondiciondeVida) {
+    /**
+     * Set the value of idSetecCondiciondeVida
+     *
+     * @return  self
+     */
+    public function setIdSetecCondiciondeVida($idSetecCondiciondeVida)
+    {
         $this->idSetecCondiciondeVida = $idSetecCondiciondeVida;
+
+        return $this;
     }
 
-    public function get_Setecnumhijos() {
-        return $this->Setecnumhijos;
+    /**
+     * Get the value of setecCondiciondeVidaCedula
+     */
+    public function getSetecCondiciondeVidaCedula()
+    {
+        return $this->setecCondiciondeVidaCedula;
     }
 
-    public function set_Setecnumhijos($setecnumhijos) {
-        $this->Setecnumhijos = $setecnumhijos;
+    /**
+     * Set the value of setecCondiciondeVidaCedula
+     *
+     * @return  self
+     */
+    public function setSetecCondiciondeVidaCedula($setecCondiciondeVidaCedula)
+    {
+        $this->setecCondiciondeVidaCedula = $setecCondiciondeVidaCedula;
+
+        return $this;
     }
 
-    public function get_SetecMienbrosHogar() {
-        return $this->SetecMienbrosHogar;
+    /**
+     * Get the value of setecCondiciondeVidaFecha
+     */
+    public function getSetecCondiciondeVidaFecha()
+    {
+        return $this->setecCondiciondeVidaFecha;
     }
 
-    public function set_SetecMienbrosHogar($setecMienbrosHogar) {
-        $this->SetecMienbrosHogar = $setecMienbrosHogar;
+    /**
+     * Set the value of setecCondiciondeVidaFecha
+     *
+     * @return  self
+     */
+    public function setSetecCondiciondeVidaFecha($setecCondiciondeVidaFecha)
+    {
+        $this->setecCondiciondeVidaFecha = $setecCondiciondeVidaFecha;
+
+        return $this;
     }
-    public function formatoArray(){
-        $myarray=array('SetecCondiciondeVidaCedula'=>$this->SetecCondiciondeVidaCedula,
-        'SetecCondiciondeVidaFecha'=>$this->SetecCondiciondeVidaFecha,
-        'Setecjefehogar'=>$this->Setecjefehogar,
-        'Setecseguromedico'=>$this->Setecseguromedico,
-        'SetecAsistenciaInstitucion'=>$this->SetecAsistenciaInstitucion,
-        'Setecvivienda'=>$this->Setecvivienda,
-        'SetecLuz'=>$this->SetecLuz,
-        'SetecAgua'=>$this->SetecAgua,
-        'SetecInternet'=>$this->SetecInternet,
-        'idSetecCondiciondeVida'=>$this->idSetecCondiciondeVida,
-        'Setecnumhijos'=>$this->Setecnumhijos,
-        'SetecMienbrosHogar'=>$this->SetecMienbrosHogar);
-        return $myarray;
+
+    /**
+     * Get the value of setecjefehogar
+     */
+    public function getSetecjefehogar()
+    {
+        return $this->setecjefehogar;
     }
-    public function formatoJSON(){
-        $myarray=array('SetecCondiciondeVidaCedula'=>$this->SetecCondiciondeVidaCedula,
-        'SetecCondiciondeVidaFecha'=>$this->SetecCondiciondeVidaFecha,
-        'Setecjefehogar'=>$this->Setecjefehogar,
-        'Setecseguromedico'=>$this->Setecseguromedico,
-        'SetecAsistenciaInstitucion'=>$this->SetecAsistenciaInstitucion,
-        'Setecvivienda'=>$this->Setecvivienda,
-        'SetecLuz'=>$this->SetecLuz,
-        'SetecAgua'=>$this->SetecAgua,
-        'SetecInternet'=>$this->SetecInternet,
-        'idSetecCondiciondeVida'=>$this->idSetecCondiciondeVida,
-        'Setecnumhijos'=>$this->Setecnumhijos,
-        'SetecMienbrosHogar'=>$this->SetecMienbrosHogar);
-        return json_encode($myarray);
+
+    /**
+     * Set the value of setecjefehogar
+     *
+     * @return  self
+     */
+    public function setSetecjefehogar($setecjefehogar)
+    {
+        $this->setecjefehogar = $setecjefehogar;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setecseguromedico
+     */
+    public function getSetecseguromedico()
+    {
+        return $this->setecseguromedico;
+    }
+
+    /**
+     * Set the value of setecseguromedico
+     *
+     * @return  self
+     */
+    public function setSetecseguromedico($setecseguromedico)
+    {
+        $this->setecseguromedico = $setecseguromedico;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setecnumhijos
+     */
+    public function getSetecnumhijos()
+    {
+        return $this->setecnumhijos;
+    }
+
+    /**
+     * Set the value of setecnumhijos
+     *
+     * @return  self
+     */
+    public function setSetecnumhijos($setecnumhijos)
+    {
+        $this->setecnumhijos = $setecnumhijos;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setechijomayor
+     */
+    public function getSetechijomayor()
+    {
+        return $this->setechijomayor;
+    }
+
+    /**
+     * Set the value of setechijomayor
+     *
+     * @return  self
+     */
+    public function setSetechijomayor($setechijomayor)
+    {
+        $this->setechijomayor = $setechijomayor;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setecAsistenciaInstitucion
+     */
+    public function getSetecAsistenciaInstitucion()
+    {
+        return $this->setecAsistenciaInstitucion;
+    }
+
+    /**
+     * Set the value of setecAsistenciaInstitucion
+     *
+     * @return  self
+     */
+    public function setSetecAsistenciaInstitucion($setecAsistenciaInstitucion)
+    {
+        $this->setecAsistenciaInstitucion = $setecAsistenciaInstitucion;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setecvivienda
+     */
+    public function getSetecvivienda()
+    {
+        return $this->setecvivienda;
+    }
+
+    /**
+     * Set the value of setecvivienda
+     *
+     * @return  self
+     */
+    public function setSetecvivienda($setecvivienda)
+    {
+        $this->setecvivienda = $setecvivienda;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setecMienbrosHogar
+     */
+    public function getSetecMienbrosHogar()
+    {
+        return $this->setecMienbrosHogar;
+    }
+
+    /**
+     * Set the value of setecMienbrosHogar
+     *
+     * @return  self
+     */
+    public function setSetecMienbrosHogar($setecMienbrosHogar)
+    {
+        $this->setecMienbrosHogar = $setecMienbrosHogar;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setecLuz
+     */
+    public function getSetecLuz()
+    {
+        return $this->setecLuz;
+    }
+
+    /**
+     * Set the value of setecLuz
+     *
+     * @return  self
+     */
+    public function setSetecLuz($setecLuz)
+    {
+        $this->setecLuz = $setecLuz;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setecAgua
+     */
+    public function getSetecAgua()
+    {
+        return $this->setecAgua;
+    }
+
+    /**
+     * Set the value of setecAgua
+     *
+     * @return  self
+     */
+    public function setSetecAgua($setecAgua)
+    {
+        $this->setecAgua = $setecAgua;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setecInternet
+     */
+    public function getSetecInternet()
+    {
+        return $this->setecInternet;
+    }
+
+    /**
+     * Set the value of setecInternet
+     *
+     * @return  self
+     */
+    public function setSetecInternet($setecInternet)
+    {
+        $this->setecInternet = $setecInternet;
+
+        return $this;
     }
 }
-?>

@@ -4,66 +4,157 @@ namespace Clasesphp;
 
 class Tipocarreras
 {
-	private $tipocarrerascodigo, $tipocarrerasOculto, $tipocarrerasAccion, $tipocarrerasfecha, $tipocarrerasuser;
 	private $tipoCarrerasId;
+	private $tipocarrerascodigo;
 	private $tipoCarreras;
-	public function _construct()
+	private $tipocarrerasOculto;
+	private $tipocarrerasAccion;
+	private $tipocarrerasfecha;
+	private $tipocarrerasuser;
+	/**
+	 * Class constructor.
+	 */
+	public function __construct()
 	{
 	}
-	public function set_tipoCarrerasId($tipoCarrerasId)
-	{
-		$this->tipoCarrerasId = $tipoCarrerasId;
-	}
-	public function get_tipoCarrerasId()
+
+	/**
+	 * Get the value of tipoCarrerasId
+	 */
+	public function getTipoCarrerasId()
 	{
 		return $this->tipoCarrerasId;
 	}
-	public function set_tipoCarreras($tipoCarreras)
+
+	/**
+	 * Set the value of tipoCarrerasId
+	 *
+	 * @return  self
+	 */
+	public function setTipoCarrerasId($tipoCarrerasId)
 	{
-		$this->tipoCarreras = $tipoCarreras;
+		$this->tipoCarrerasId = $tipoCarrerasId;
+
+		return $this;
 	}
-	public function get_tipoCarreras()
-	{
-		return $this->tipoCarreras;
-	}
-	public function set_tipocarrerascodigo($tipocarrerascodigo)
-	{
-		$this->tipocarrerascodigo = $tipocarrerascodigo;
-	}
-	public function get_tipocarrerascodigo()
+
+	/**
+	 * Get the value of tipocarrerascodigo
+	 */
+	public function getTipocarrerascodigo()
 	{
 		return $this->tipocarrerascodigo;
 	}
-	public function set_tipocarrerasOculto($tipocarrerasOculto)
+
+	/**
+	 * Set the value of tipocarrerascodigo
+	 *
+	 * @return  self
+	 */
+	public function setTipocarrerascodigo($tipocarrerascodigo)
 	{
-		$this->tipocarrerasOculto = $tipocarrerasOculto;
+		$this->tipocarrerascodigo = $tipocarrerascodigo;
+
+		return $this;
 	}
-	public function get_tipocarrerasOculto()
+
+	/**
+	 * Get the value of tipoCarreras
+	 */
+	public function getTipoCarreras()
+	{
+		return $this->tipoCarreras;
+	}
+
+	/**
+	 * Set the value of tipoCarreras
+	 *
+	 * @return  self
+	 */
+	public function setTipoCarreras($tipoCarreras)
+	{
+		$this->tipoCarreras = $tipoCarreras;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of tipocarrerasOculto
+	 */
+	public function getTipocarrerasOculto()
 	{
 		return $this->tipocarrerasOculto;
 	}
-	public function set_tipocarrerasAccion($tipocarrerasAccion)
+
+	/**
+	 * Set the value of tipocarrerasOculto
+	 *
+	 * @return  self
+	 */
+	public function setTipocarrerasOculto($tipocarrerasOculto)
 	{
-		$this->tipocarrerasAccion = $tipocarrerasAccion;
+		$this->tipocarrerasOculto = $tipocarrerasOculto;
+
+		return $this;
 	}
-	public function get_tipocarrerasAccion()
+
+	/**
+	 * Get the value of tipocarrerasAccion
+	 */
+	public function getTipocarrerasAccion()
 	{
 		return $this->tipocarrerasAccion;
 	}
-	public function set_tipocarrerasfecha($tipocarrerasfecha)
+
+	/**
+	 * Set the value of tipocarrerasAccion
+	 *
+	 * @return  self
+	 */
+	public function setTipocarrerasAccion($tipocarrerasAccion)
 	{
-		$this->tipocarrerasfecha = $tipocarrerasfecha;
+		$this->tipocarrerasAccion = $tipocarrerasAccion;
+
+		return $this;
 	}
-	public function get_tipocarrerasfecha()
+
+	/**
+	 * Get the value of tipocarrerasfecha
+	 */
+	public function getTipocarrerasfecha()
 	{
 		return $this->tipocarrerasfecha;
 	}
-	public function set_tipocarrerasuser($tipocarrerasuser)
+
+	/**
+	 * Set the value of tipocarrerasfecha
+	 *
+	 * @return  self
+	 */
+	public function setTipocarrerasfecha($tipocarrerasfecha)
 	{
-		$this->tipocarrerasuser = $tipocarrerasuser;
+		$this->tipocarrerasfecha = $tipocarrerasfecha;
+
+		return $this;
 	}
-	public function get_tipocarrerasuser()
+
+	/**
+	 * Get the value of tipocarrerasuser
+	 */
+	public function getTipocarrerasuser()
 	{
 		return $this->tipocarrerasuser;
+	}
+
+	/**
+	 * Set the value of tipocarrerasuser
+	 *
+	 * @return  self
+	 */
+	public function setTipocarrerasuser($tipocarrerasuser)
+	{
+		$this->tipocarrerasuser = $tipocarrerasuser;
+
+		return $this;
 	}
 }

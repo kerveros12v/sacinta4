@@ -1,27 +1,160 @@
 <?php
+
 namespace Clasesphp;
 
 class Sectoreconomico
 {
-	private $sectoreconomicocodigo, $sectoreconomicoOculto, $sectoreconomicoAccion, $sectoreconomicofecha, $sectoreconomicouser;
 	private $sectorEconomicoid;
-	private $SectorEconomico;
+	private $sectoreconomicocodigo;
+	private $sectorEconomico;
+	private $sectoreconomicoOculto;
+	private $sectoreconomicoAccion;
+	private $sectoreconomicofecha;
+	private $sectoreconomicouser;
+	/**
+	 * Class constructor.
+	 */
+	public function __construct()
+	{
+	}
 
-public function _construct(){}
-public function set_sectorEconomicoid($sectorEconomicoid){$this->sectorEconomicoid=$sectorEconomicoid;}
-public function get_sectorEconomicoid(){return $this->sectorEconomicoid;}
-public function set_SectorEconomico($SectorEconomico){$this->SectorEconomico=$SectorEconomico;}
-public function get_SectorEconomico(){return $this->SectorEconomico;}
+	/**
+	 * Get the value of sectorEconomicoid
+	 */
+	public function getSectorEconomicoid()
+	{
+		return $this->sectorEconomicoid;
+	}
 
-public function set_sectoreconomicocodigo($sectoreconomicocodigo){$this->sectoreconomicocodigo=$sectoreconomicocodigo;}
-public function get_sectoreconomicocodigo(){return $this->sectoreconomicocodigo;}
-public function set_sectoreconomicoOculto($sectoreconomicoOculto){$this->sectoreconomicoOculto=$sectoreconomicoOculto;}
-public function get_sectoreconomicoOculto(){return $this->sectoreconomicoOculto;}
-public function set_sectoreconomicoAccion($sectoreconomicoAccion){$this->sectoreconomicoAccion=$sectoreconomicoAccion;}
-public function get_sectoreconomicoAccion(){return $this->sectoreconomicoAccion;}
-public function set_sectoreconomicofecha($sectoreconomicofecha){$this->sectoreconomicofecha=$sectoreconomicofecha;}
-public function get_sectoreconomicofecha(){return $this->sectoreconomicofecha;}
-public function set_sectoreconomicouser($sectoreconomicouser){$this->sectoreconomicouser=$sectoreconomicouser;}
-public function get_sectoreconomicouser(){return $this->sectoreconomicouser;}
+	/**
+	 * Set the value of sectorEconomicoid
+	 *
+	 * @return  self
+	 */
+	public function setSectorEconomicoid($sectorEconomicoid)
+	{
+		$this->sectorEconomicoid = $sectorEconomicoid;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of sectoreconomicocodigo
+	 */
+	public function getSectoreconomicocodigo()
+	{
+		return $this->sectoreconomicocodigo;
+	}
+
+	/**
+	 * Set the value of sectoreconomicocodigo
+	 *
+	 * @return  self
+	 */
+	public function setSectoreconomicocodigo($sectoreconomicocodigo)
+	{
+		$this->sectoreconomicocodigo = $sectoreconomicocodigo;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of sectorEconomico
+	 */
+	public function getSectorEconomico()
+	{
+		return $this->sectorEconomico;
+	}
+
+	/**
+	 * Set the value of sectorEconomico
+	 *
+	 * @return  self
+	 */
+	public function setSectorEconomico($sectorEconomico)
+	{
+		$this->sectorEconomico = $sectorEconomico;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of sectoreconomicoOculto
+	 */
+	public function getSectoreconomicoOculto()
+	{
+		return $this->sectoreconomicoOculto;
+	}
+
+	/**
+	 * Set the value of sectoreconomicoOculto
+	 *
+	 * @return  self
+	 */
+	public function setSectoreconomicoOculto($sectoreconomicoOculto)
+	{
+		$this->sectoreconomicoOculto = $sectoreconomicoOculto;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of sectoreconomicoAccion
+	 */
+	public function getSectoreconomicoAccion()
+	{
+		return $this->sectoreconomicoAccion;
+	}
+
+	/**
+	 * Set the value of sectoreconomicoAccion
+	 *
+	 * @return  self
+	 */
+	public function setSectoreconomicoAccion($sectoreconomicoAccion)
+	{
+		$this->sectoreconomicoAccion = $sectoreconomicoAccion;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of sectoreconomicofecha
+	 */
+	public function getSectoreconomicofecha()
+	{
+		return $this->sectoreconomicofecha;
+	}
+
+	/**
+	 * Set the value of sectoreconomicofecha
+	 *
+	 * @return  self
+	 */
+	public function setSectoreconomicofecha($sectoreconomicofecha)
+	{
+		$this->sectoreconomicofecha = $sectoreconomicofecha;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of sectoreconomicouser
+	 */
+	public function getSectoreconomicouser()
+	{
+		return $this->sectoreconomicouser;
+	}
+
+	/**
+	 * Set the value of sectoreconomicouser
+	 *
+	 * @return  self
+	 */
+	public function setSectoreconomicouser($sectoreconomicouser)
+	{
+		$this->sectoreconomicouser = $sectoreconomicouser;
+
+		return $this;
+	}
 }
-?>

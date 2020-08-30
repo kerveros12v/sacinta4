@@ -1,39 +1,160 @@
 <?php
+
 namespace Clasesphp;
 
-class SetecEstadoOcupacional{
-    private $setecEstadoOcupacionalId,
-    $setecestadoocupacionalcodigo,
-    $estadoOcupacional,
-    $seoOculto,
-    $seoAccion,
-    $seofecha,
-    $seouser;
-    public function __construct(){  }
-    public function set_setecEstadoOcupacionalId($setecEstadoOcupacionalId){$this->setecEstadoOcupacionalId=$setecEstadoOcupacionalId;}
-    public function set_setecestadoocupacionalcodigo($setecestadoocupacionalcodigo){$this->setecestadoocupacionalcodigo=$setecestadoocupacionalcodigo;}
-    public function set_estadoOcupacional($estadoOcupacional){$this->estadoOcupacional=$estadoOcupacional;}
-    public function set_seoOculto($seoOculto){$this->seoOculto=$seoOculto;}
-    public function set_seoAccion($seoAccion){$this->seoAccion=$seoAccion;}
-    public function set_seofecha($seofecha){$this->seofecha=$seofecha;}
-    public function set_seouser($seouser){$this->seouser=$seouser;}
+class SetecEstadoOcupacional
+{
+    private $setecEstadoOcupacionalId;
+    private $setecestadoocupacionalcodigo;
+    private $estadoOcupacional;
+    private $seoOculto;
+    private $seoAccion;
+    private $seofecha;
+    private $seouser;
+    /**
+     * Class constructor.
+     */
+    public function __construct()
+    {
+    }
 
-    public function get_setecEstadoOcupacionalId(){return $this->setecEstadoOcupacionalId;}
-    public function get_setecestadoocupacionalcodigo(){return $this->setecestadoocupacionalcodigo;}
-    public function get_estadoOcupacional(){return $this->estadoOcupacional;}
-    public function get_seoOculto(){return $this->seoOculto;}
-    public function get_seoAccion(){return $this->seoAccion;}
-    public function get_seofecha(){return $this->seofecha;}
-    public function get_seouser(){return $this->seouser;}
-    public function formatoJSON(){
-       $myarray=array( 'setecEstadoOcupacionalId'=>$this->setecEstadoOcupacionalId,
-       'setecestadoocupacionalcodigo'=>$this->setecestadoocupacionalcodigo,
-       'estadoOcupacional'=>$this->estadoOcupacional,
-       'seoOculto'=>$this->seoOculto,
-       'seoAccion'=>$this->seoAccion,
-       'seofecha'=>$this->seofecha,
-       'seouser'=>$this->seouser);
-       return json_encode($myarray);
+    /**
+     * Get the value of setecEstadoOcupacionalId
+     */
+    public function getSetecEstadoOcupacionalId()
+    {
+        return $this->setecEstadoOcupacionalId;
+    }
+
+    /**
+     * Set the value of setecEstadoOcupacionalId
+     *
+     * @return  self
+     */
+    public function setSetecEstadoOcupacionalId($setecEstadoOcupacionalId)
+    {
+        $this->setecEstadoOcupacionalId = $setecEstadoOcupacionalId;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setecestadoocupacionalcodigo
+     */
+    public function getSetecestadoocupacionalcodigo()
+    {
+        return $this->setecestadoocupacionalcodigo;
+    }
+
+    /**
+     * Set the value of setecestadoocupacionalcodigo
+     *
+     * @return  self
+     */
+    public function setSetecestadoocupacionalcodigo($setecestadoocupacionalcodigo)
+    {
+        $this->setecestadoocupacionalcodigo = $setecestadoocupacionalcodigo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of estadoOcupacional
+     */
+    public function getEstadoOcupacional()
+    {
+        return $this->estadoOcupacional;
+    }
+
+    /**
+     * Set the value of estadoOcupacional
+     *
+     * @return  self
+     */
+    public function setEstadoOcupacional($estadoOcupacional)
+    {
+        $this->estadoOcupacional = $estadoOcupacional;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of seoOculto
+     */
+    public function getSeoOculto()
+    {
+        return $this->seoOculto;
+    }
+
+    /**
+     * Set the value of seoOculto
+     *
+     * @return  self
+     */
+    public function setSeoOculto($seoOculto)
+    {
+        $this->seoOculto = $seoOculto;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of seoAccion
+     */
+    public function getSeoAccion()
+    {
+        return $this->seoAccion;
+    }
+
+    /**
+     * Set the value of seoAccion
+     *
+     * @return  self
+     */
+    public function setSeoAccion($seoAccion)
+    {
+        $this->seoAccion = $seoAccion;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of seofecha
+     */
+    public function getSeofecha()
+    {
+        return $this->seofecha;
+    }
+
+    /**
+     * Set the value of seofecha
+     *
+     * @return  self
+     */
+    public function setSeofecha($seofecha)
+    {
+        $this->seofecha = $seofecha;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of seouser
+     */
+    public function getSeouser()
+    {
+        return $this->seouser;
+    }
+
+    /**
+     * Set the value of seouser
+     *
+     * @return  self
+     */
+    public function setSeouser($seouser)
+    {
+        $this->seouser = $seouser;
+
+        return $this;
     }
 }
-?>

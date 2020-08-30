@@ -4,96 +4,178 @@ namespace Clasesphp;
 
 class Tipodiscapacidad
 {
-	private $tdcodigo,  $tdOculto, $tdAccion, $tdfecha, $tduser;
 	private $tipoDiscapacidadid;
+	private $tdcodigo;
 	private $tipoDiscapacidad;
 	private $tipodiscapacidadbool;
-	public function _construct()
+	private $tdOculto;
+	private $tdAccion;
+	private $tdfecha;
+	private $tduser;
+	/**
+	 * Class constructor.
+	 */
+	public function __construct()
 	{
 	}
 
-	public function set_tipodiscapacidadbool($tipodiscapacidadbool)
-	{
-		$this->tipodiscapacidadbool = $tipodiscapacidadbool;
-	}
-	public function get_tipodiscapacidadbool()
-	{
-		return $this->tipodiscapacidadbool;
-	}
-
-	public function set_tipoDiscapacidadid($tipoDiscapacidadid)
-	{
-		$this->tipoDiscapacidadid = $tipoDiscapacidadid;
-	}
-	public function get_tipoDiscapacidadid()
+	/**
+	 * Get the value of tipoDiscapacidadid
+	 */
+	public function getTipoDiscapacidadid()
 	{
 		return $this->tipoDiscapacidadid;
 	}
-	public function set_tipoDiscapacidad($tipoDiscapacidad)
+
+	/**
+	 * Set the value of tipoDiscapacidadid
+	 *
+	 * @return  self
+	 */
+	public function setTipoDiscapacidadid($tipoDiscapacidadid)
 	{
-		$this->tipoDiscapacidad = $tipoDiscapacidad;
+		$this->tipoDiscapacidadid = $tipoDiscapacidadid;
+
+		return $this;
 	}
-	public function get_tipoDiscapacidad()
+
+	/**
+	 * Get the value of tdcodigo
+	 */
+	public function getTdcodigo()
+	{
+		return $this->tdcodigo;
+	}
+
+	/**
+	 * Set the value of tdcodigo
+	 *
+	 * @return  self
+	 */
+	public function setTdcodigo($tdcodigo)
+	{
+		$this->tdcodigo = $tdcodigo;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of tipoDiscapacidad
+	 */
+	public function getTipoDiscapacidad()
 	{
 		return $this->tipoDiscapacidad;
 	}
 
-	public function set_tdcodigo($tdcodigo)
+	/**
+	 * Set the value of tipoDiscapacidad
+	 *
+	 * @return  self
+	 */
+	public function setTipoDiscapacidad($tipoDiscapacidad)
 	{
-		$this->tdcodigo = $tdcodigo;
+		$this->tipoDiscapacidad = $tipoDiscapacidad;
+
+		return $this;
 	}
-	public function get_tdcodigo()
+
+	/**
+	 * Get the value of tipodiscapacidadbool
+	 */
+	public function getTipodiscapacidadbool()
 	{
-		return $this->tdcodigo;
+		return $this->tipodiscapacidadbool;
 	}
-	public function set_tdOculto($tdOculto)
+
+	/**
+	 * Set the value of tipodiscapacidadbool
+	 *
+	 * @return  self
+	 */
+	public function setTipodiscapacidadbool($tipodiscapacidadbool)
 	{
-		$this->tdOculto = $tdOculto;
+		$this->tipodiscapacidadbool = $tipodiscapacidadbool;
+
+		return $this;
 	}
-	public function get_tdOculto()
+
+	/**
+	 * Get the value of tdOculto
+	 */
+	public function getTdOculto()
 	{
 		return $this->tdOculto;
 	}
-	public function set_tdAccion($tdAccion)
+
+	/**
+	 * Set the value of tdOculto
+	 *
+	 * @return  self
+	 */
+	public function setTdOculto($tdOculto)
 	{
-		$this->tipoDtdAccioniscapacidadid = $tdAccion;
+		$this->tdOculto = $tdOculto;
+
+		return $this;
 	}
-	public function get_tdAccion()
+
+	/**
+	 * Get the value of tdAccion
+	 */
+	public function getTdAccion()
 	{
 		return $this->tdAccion;
 	}
-	public function set_tdfecha($tdfecha)
+
+	/**
+	 * Set the value of tdAccion
+	 *
+	 * @return  self
+	 */
+	public function setTdAccion($tdAccion)
 	{
-		$this->tdfecha = $tdfecha;
+		$this->tdAccion = $tdAccion;
+
+		return $this;
 	}
-	public function get_tdfecha()
+
+	/**
+	 * Get the value of tdfecha
+	 */
+	public function getTdfecha()
 	{
 		return $this->tdfecha;
 	}
-	public function set_tduser($tduser)
+
+	/**
+	 * Set the value of tdfecha
+	 *
+	 * @return  self
+	 */
+	public function setTdfecha($tdfecha)
 	{
-		$this->tduser = $tduser;
+		$this->tdfecha = $tdfecha;
+
+		return $this;
 	}
-	public function get_tduser()
+
+	/**
+	 * Get the value of tduser
+	 */
+	public function getTduser()
 	{
 		return $this->tduser;
 	}
 
+	/**
+	 * Set the value of tduser
+	 *
+	 * @return  self
+	 */
+	public function setTduser($tduser)
+	{
+		$this->tduser = $tduser;
 
-	public function formatoJSON()
-	{
-		$myarray = array(
-			'tipoDiscapacidadid' => $this->tipoDiscapacidadid,
-			'tipoDiscapacidad' => $this->tipoDiscapacidad
-		);
-		return json_encode($myarray);
-	}
-	public function formatoArray()
-	{
-		$myarray = array(
-			'tipoDiscapacidadid' => $this->tipoDiscapacidadid,
-			'tipoDiscapacidad' => $this->tipoDiscapacidad
-		);
-		return $myarray;
+		return $this;
 	}
 }

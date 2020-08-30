@@ -1,69 +1,246 @@
 <?php
+
 namespace Clasesphp;
 
-class Setec{
+class Setec
+{
 
 
-    private $fksecestadocertificacion;
-    private $setecfkcondiciondevida, $setecfkcondicionlaboral;
     private $idsetec;
-    private $setecAspirante_numeroidentificacionsetec;
+    private $setecAspiranteNumeroidentificacionsetec;
     private $fksetecEncuestador;
-    private $setecCertificacion_idsetecCertificacion;
+    private $setecCertificacionIdsetecCertificacion;
+    private $setecfkcondiciondevida;
+    private $setecfkcondicionlaboral;
+    private $fksecestadocertificacion;
     private $setecOculto;
     private $setecAccion;
     private $setecfecha;
     private $setecuser;
-    public function __construct(){}
-    public function set_fksecestadocertificacion($fksecestadocertificacion){$this->fksecestadocertificacion=$fksecestadocertificacion;}
-    public function get_fksecestadocertificacion(){return $this->fksecestadocertificacion;}
-    public function set__idsetec($idsetec){$this->idsetec=$idsetec;}
-    public function set__setecAspirante_numeroidentificacionsetec($setecAspirante_numeroidentificacionsetec){$this->setecAspirante_numeroidentificacionsetec=$setecAspirante_numeroidentificacionsetec;}
-    public function set__fksetecEncuestador($fksetecEncuestador){$this->fksetecEncuestador=$fksetecEncuestador;}
-    public function set__setecCertificacion_idsetecCertificacion($setecCertificacion_idsetecCertificacion){$this->setecCertificacion_idsetecCertificacion=$setecCertificacion_idsetecCertificacion;}
-    public function set__setecOculto($setecOculto){$this->setecOculto=$setecOculto;}
-    public function set__setecAccion($setecAccion){$this->setecAccion=$setecAccion;}
-    public function set__setecfecha($setecfecha){$this->setecfecha=$setecfecha;}
-    public function set__setecuser($setecuser){$this->setecuser=$setecuser;}
-    public function set__setecfkcondiciondevida($setecfkcondiciondevida){$this->setecfkcondiciondevida=$setecfkcondiciondevida;}
-    public function set__setecfkcondicionlaboral($setecfkcondicionlaboral){$this->setecfkcondicionlaboral=$setecfkcondicionlaboral;}
-    public function get_idsetec(){return $this->idsetec;}
-   public function get_setecAspirante_numeroidentificacionsetec(){return $this->setecAspirante_numeroidentificacionsetec;}
-   public function get_fksetecEncuestador(){return $this->fksetecEncuestador;}
-   public function get_setecCertificacion_idsetecCertificacion(){return $this->setecCertificacion_idsetecCertificacion;}
-   public function get_setecfkcondiciondevida(){return $this->setecfkcondiciondevida;}
-   public function get_setecfkcondicionlaboral(){return $this->setecfkcondicionlaboral;}
-   public function get_setecOculto(){return $this->setecOculto;}
-   public function get_setecAccion(){return $this->setecAccion;}
-   public function get_setecfecha(){return $this->setecfecha;}
-   public function get_setecuser(){return $this->setecuser;}
-   public function formatoJSON(){
-    $myarray=array('idsetec'=>$this->idsetec,
-    'setecAspirante_numeroidentificacionsetec'=>$this->setecAspirante_numeroidentificacionsetec,
-    'fksetecEncuestador'=>$this->fksetecEncuestador,
-    'setecCertificacion_idsetecCertificacion'=>$this->setecCertificacion_idsetecCertificacion,
-    'setecOculto'=>$this->setecOculto,
-    'setecAccion'=>$this->setecAccion,
-    'setecfecha'=>$this->setecfecha,
-    'setecuser'=>$this->setecuser,
-    'setecfkcondiciondevida'=>$this->setecfkcondiciondevida,
-    'setecfkcondicionlaboral'=>$this->setecfkcondicionlaboral,
-    'fksecestadocertificacion'=>$this->fksecestadocertificacion);
-    return json_encode($myarray);
-   }
-   public function formatoArray(){
-    $myarray=array('idsetec'=>$this->idsetec,
-    'setecAspirante_numeroidentificacionsetec'=>$this->setecAspirante_numeroidentificacionsetec,
-    'fksetecEncuestador'=>$this->fksetecEncuestador,
-    'setecCertificacion_idsetecCertificacion'=>$this->setecCertificacion_idsetecCertificacion,
-    'setecOculto'=>$this->setecOculto,
-    'setecAccion'=>$this->setecAccion,
-    'setecfecha'=>$this->setecfecha,
-    'setecuser'=>$this->setecuser,
-    'setecfkcondiciondevida'=>$this->setecfkcondiciondevida,
-    'setecfkcondicionlaboral'=>$this->setecfkcondicionlaboral,
-    'fksecestadocertificacion'=>$this->fksecestadocertificacion);
-    return $myarray;
-   }
+    /**
+     * Class constructor.
+     */
+    public function __construct()
+    {
+    }
+
+    /**
+     * Get the value of idsetec
+     */
+    public function getIdsetec()
+    {
+        return $this->idsetec;
+    }
+
+    /**
+     * Set the value of idsetec
+     *
+     * @return  self
+     */
+    public function setIdsetec($idsetec)
+    {
+        $this->idsetec = $idsetec;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setecAspiranteNumeroidentificacionsetec
+     */
+    public function getSetecAspiranteNumeroidentificacionsetec()
+    {
+        return $this->setecAspiranteNumeroidentificacionsetec;
+    }
+
+    /**
+     * Set the value of setecAspiranteNumeroidentificacionsetec
+     *
+     * @return  self
+     */
+    public function setSetecAspiranteNumeroidentificacionsetec($setecAspiranteNumeroidentificacionsetec)
+    {
+        $this->setecAspiranteNumeroidentificacionsetec = $setecAspiranteNumeroidentificacionsetec;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of fksetecEncuestador
+     */
+    public function getFksetecEncuestador()
+    {
+        return $this->fksetecEncuestador;
+    }
+
+    /**
+     * Set the value of fksetecEncuestador
+     *
+     * @return  self
+     */
+    public function setFksetecEncuestador($fksetecEncuestador)
+    {
+        $this->fksetecEncuestador = $fksetecEncuestador;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setecCertificacionIdsetecCertificacion
+     */
+    public function getSetecCertificacionIdsetecCertificacion()
+    {
+        return $this->setecCertificacionIdsetecCertificacion;
+    }
+
+    /**
+     * Set the value of setecCertificacionIdsetecCertificacion
+     *
+     * @return  self
+     */
+    public function setSetecCertificacionIdsetecCertificacion($setecCertificacionIdsetecCertificacion)
+    {
+        $this->setecCertificacionIdsetecCertificacion = $setecCertificacionIdsetecCertificacion;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setecfkcondiciondevida
+     */
+    public function getSetecfkcondiciondevida()
+    {
+        return $this->setecfkcondiciondevida;
+    }
+
+    /**
+     * Set the value of setecfkcondiciondevida
+     *
+     * @return  self
+     */
+    public function setSetecfkcondiciondevida($setecfkcondiciondevida)
+    {
+        $this->setecfkcondiciondevida = $setecfkcondiciondevida;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setecfkcondicionlaboral
+     */
+    public function getSetecfkcondicionlaboral()
+    {
+        return $this->setecfkcondicionlaboral;
+    }
+
+    /**
+     * Set the value of setecfkcondicionlaboral
+     *
+     * @return  self
+     */
+    public function setSetecfkcondicionlaboral($setecfkcondicionlaboral)
+    {
+        $this->setecfkcondicionlaboral = $setecfkcondicionlaboral;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of fksecestadocertificacion
+     */
+    public function getFksecestadocertificacion()
+    {
+        return $this->fksecestadocertificacion;
+    }
+
+    /**
+     * Set the value of fksecestadocertificacion
+     *
+     * @return  self
+     */
+    public function setFksecestadocertificacion($fksecestadocertificacion)
+    {
+        $this->fksecestadocertificacion = $fksecestadocertificacion;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setecOculto
+     */
+    public function getSetecOculto()
+    {
+        return $this->setecOculto;
+    }
+
+    /**
+     * Set the value of setecOculto
+     *
+     * @return  self
+     */
+    public function setSetecOculto($setecOculto)
+    {
+        $this->setecOculto = $setecOculto;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setecAccion
+     */
+    public function getSetecAccion()
+    {
+        return $this->setecAccion;
+    }
+
+    /**
+     * Set the value of setecAccion
+     *
+     * @return  self
+     */
+    public function setSetecAccion($setecAccion)
+    {
+        $this->setecAccion = $setecAccion;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setecfecha
+     */
+    public function getSetecfecha()
+    {
+        return $this->setecfecha;
+    }
+
+    /**
+     * Set the value of setecfecha
+     *
+     * @return  self
+     */
+    public function setSetecfecha($setecfecha)
+    {
+        $this->setecfecha = $setecfecha;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of setecuser
+     */
+    public function getSetecuser()
+    {
+        return $this->setecuser;
+    }
+
+    /**
+     * Set the value of setecuser
+     *
+     * @return  self
+     */
+    public function setSetecuser($setecuser)
+    {
+        $this->setecuser = $setecuser;
+
+        return $this;
+    }
 }
-?>

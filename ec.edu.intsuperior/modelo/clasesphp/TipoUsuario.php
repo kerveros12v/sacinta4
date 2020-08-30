@@ -7,87 +7,175 @@ class TipoUsuario
     private $idtipousuario;
     private $tipousuariocodigo;
     private $tipousuario;
+    private $tipousuariopemisos;
     private $tipousuarioOculto;
     private $tipousuarioAccion;
     private $tipousuariofecha;
     private $tipousuariouser;
-    private $tipousuariopemisos;
+    /**
+     * Class constructor.
+     */
     public function __construct()
     {
     }
 
-    public function set_tipousuariopemisos($tipousuariopemisos)
-    {
-        $this->tipousuariopemisos = $tipousuariopemisos;
-    }
-    public function get_tipousuariopemisos()
-    {
-        return $this->tipousuariopemisos;
-    }
-    public function set_idtipousuario($idtipousuario)
-    {
-        $this->idtipousuario = $idtipousuario;
-    }
-    public function get_idtipousuario()
+    /**
+     * Get the value of idtipousuario
+     */
+    public function getIdtipousuario()
     {
         return $this->idtipousuario;
     }
-    public function set_tipousuariocodigo($tipousuariocodigo)
+
+    /**
+     * Set the value of idtipousuario
+     *
+     * @return  self
+     */
+    public function setIdtipousuario($idtipousuario)
     {
-        $this->tipousuariocodigo = $tipousuariocodigo;
+        $this->idtipousuario = $idtipousuario;
+
+        return $this;
     }
-    public function get_tipousuariocodigo()
+
+    /**
+     * Get the value of tipousuariocodigo
+     */
+    public function getTipousuariocodigo()
     {
         return $this->tipousuariocodigo;
     }
-    public function set_tipousuario($tipousuario)
+
+    /**
+     * Set the value of tipousuariocodigo
+     *
+     * @return  self
+     */
+    public function setTipousuariocodigo($tipousuariocodigo)
     {
-        $this->tipousuario = $tipousuario;
+        $this->tipousuariocodigo = $tipousuariocodigo;
+
+        return $this;
     }
-    public function get_tipousuario()
+
+    /**
+     * Get the value of tipousuario
+     */
+    public function getTipousuario()
     {
         return $this->tipousuario;
     }
-    public function set_tipousuarioOculto($tipousuarioOculto)
+
+    /**
+     * Set the value of tipousuario
+     *
+     * @return  self
+     */
+    public function setTipousuario($tipousuario)
     {
-        $this->tipousuarioOculto = $tipousuarioOculto;
+        $this->tipousuario = $tipousuario;
+
+        return $this;
     }
-    public function get_tipousuarioOculto()
+
+    /**
+     * Get the value of tipousuariopemisos
+     */
+    public function getTipousuariopemisos()
+    {
+        return $this->tipousuariopemisos;
+    }
+
+    /**
+     * Set the value of tipousuariopemisos
+     *
+     * @return  self
+     */
+    public function setTipousuariopemisos($tipousuariopemisos)
+    {
+        $this->tipousuariopemisos = $tipousuariopemisos;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of tipousuarioOculto
+     */
+    public function getTipousuarioOculto()
     {
         return $this->tipousuarioOculto;
     }
-    public function set_tipousuarioAccion($tipousuarioAccion)
+
+    /**
+     * Set the value of tipousuarioOculto
+     *
+     * @return  self
+     */
+    public function setTipousuarioOculto($tipousuarioOculto)
     {
-        $this->tipousuarioAccion = $tipousuarioAccion;
+        $this->tipousuarioOculto = $tipousuarioOculto;
+
+        return $this;
     }
-    public function get_tipousuarioAccion()
+
+    /**
+     * Get the value of tipousuarioAccion
+     */
+    public function getTipousuarioAccion()
     {
         return $this->tipousuarioAccion;
     }
-    public function set_tipousuariofecha($tipousuariofecha)
+
+    /**
+     * Set the value of tipousuarioAccion
+     *
+     * @return  self
+     */
+    public function setTipousuarioAccion($tipousuarioAccion)
     {
-        $this->tipousuariofecha = $tipousuariofecha;
+        $this->tipousuarioAccion = $tipousuarioAccion;
+
+        return $this;
     }
-    public function get_tipousuariofecha()
+
+    /**
+     * Get the value of tipousuariofecha
+     */
+    public function getTipousuariofecha()
     {
         return $this->tipousuariofecha;
     }
-    public function set_tipousuariouser($tipousuariouser)
+
+    /**
+     * Set the value of tipousuariofecha
+     *
+     * @return  self
+     */
+    public function setTipousuariofecha($tipousuariofecha)
     {
-        $this->tipousuariouser = $tipousuariouser;
+        $this->tipousuariofecha = $tipousuariofecha;
+
+        return $this;
     }
-    public function get_tipousuariouser()
+
+    /**
+     * Get the value of tipousuariouser
+     */
+    public function getTipousuariouser()
     {
         return $this->tipousuariouser;
     }
-    public function __toString()
+
+    /**
+     * Set the value of tipousuariouser
+     *
+     * @return  self
+     */
+    public function setTipousuariouser($tipousuariouser)
     {
-        return ":{" . $this->idtipousuario
-            . "}:{" . $this->tipousuariocodigo
-            . "}:{" . $this->tipousuario
-            . "}:{" . $this->tipousuarioOculto
-            . "}:{" . $this->tipousuarioAccion
-            . "}:{" . $this->tipousuariofecha
-            . "}:{" . $this->tipousuariouser."}";
+        $this->tipousuariouser = $tipousuariouser;
+
+        return $this;
     }
 }
