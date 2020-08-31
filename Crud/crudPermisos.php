@@ -3,8 +3,9 @@
 namespace Crud;
 
 require_once("conexion.php");
-require_once("../clasesphp/Permisos.php");
-require_once("../clasesphp/AccesoDepartamentos.php");
+require_once("../ec.edu.intsuperior/modelo/clasesphp/Permisos.php");
+require_once("../ec.edu.intsuperior/modelo/clasesphp/AccesoDepartamentos.php");
+
 use Clasesphp\AccesoDepartamentos;
 use Crud\Db;
 use Clasesphp\Permisos;
@@ -25,18 +26,19 @@ class CrudPermisos
       $mytipousuario = $this->mostrarTipoUsuario($permiso['tipousuario_idtipousuario']);
       $myurl = $this->mostrarUrl($permiso['departamentos_iddepartamentos']);
       $mydepartamentosubdivision = $this->mostrarSubDepartamentoporId($permiso['departamentos_iddepartamentos']);
-      $mypermisos->set_codigo($permiso['accesodepartamentocodigo']);
-      $mypermisos->set_etiqueta($mydepartamento);
-      $mypermisos->set_tusuario($mytipousuario);
-      $mypermisos->set_url($myurl);
-      $mypermisos->set_codDepartamento($permiso['departamentos_iddepartamentos']);
-      $mypermisos->set_departamentosSubdivision($mydepartamentosubdivision);
+      $mypermisos->setCodigo($permiso['accesodepartamentocodigo']);
+      $mypermisos->setEtiqueta($mydepartamento);
+      $mypermisos->setTusuario($mytipousuario);
+      $mypermisos->setUrl($myurl);
+      $mypermisos->setCodDepartamento($permiso['departamentos_iddepartamentos']);
+      $mypermisos->setDepartamentosSubdivision($mydepartamentosubdivision);
       $listapermisos[] = $mypermisos;
     }
 
     return $listapermisos;
   }
-  public function listaaccesospermisoscodigo(){
+  public function listaaccesospermisoscodigo()
+  {
 
     $db = Db::conectar();
     $listapermisos = null;
@@ -56,16 +58,16 @@ class CrudPermisos
     $select->execute();
     foreach ($select->fetchAll() as $permiso) {
       $mypermisos = new Permisos();
-      $mydepartamento = ($permiso['departamentos_iddepartamentos']);
+      $mydepartamento = $this->mostrarDepartamento($permiso['departamentos_iddepartamentos']);
       $mytipousuario = $this->mostrarTipoUsuario($permiso['tipousuario_idtipousuario']);
       $myurl = $this->mostrarUrl($permiso['departamentos_iddepartamentos']);
       $mydepartamentosubdivision = $this->mostrarSubDepartamentoporId($permiso['departamentos_iddepartamentos']);
-      $mypermisos->set_codigo($permiso['accesodepartamentocodigo']);
-      $mypermisos->set_etiqueta($mydepartamento);
-      $mypermisos->set_tusuario($mytipousuario);
-      $mypermisos->set_url($myurl);
-      $mypermisos->set_codDepartamento($permiso['departamentos_iddepartamentos']);
-      $mypermisos->set_departamentosSubdivision($mydepartamentosubdivision);
+      $mypermisos->setCodigo($permiso['accesodepartamentocodigo']);
+      $mypermisos->setEtiqueta($mydepartamento);
+      $mypermisos->setTusuario($mytipousuario);
+      $mypermisos->setUrl($myurl);
+      $mypermisos->setCodDepartamento($permiso['departamentos_iddepartamentos']);
+      $mypermisos->setDepartamentosSubdivision($mydepartamentosubdivision);
       $listapermisos[] = $mypermisos;
     }
 
@@ -80,12 +82,12 @@ class CrudPermisos
     $select->execute();
     foreach ($select->fetchAll() as $permiso) {
       $mypermisos = new AccesoDepartamentos();
-      $mydepartamento =($permiso['departamentos_iddepartamentos']);
+      $mydepartamento = ($permiso['departamentos_iddepartamentos']);
       $mytipousuario = ($permiso['tipousuario_idtipousuario']);
-      $mypermisos->set_accesodepartamentocodigo($permiso['accesodepartamentocodigo']);
-      $mypermisos->set_departamentos_iddepartamentos($mydepartamento);
-      $mypermisos->set_tipousuario_idtipousuario($mytipousuario);
-      $mypermisos->set_idaccesodepartamento($permiso['idaccesodepartamento']);
+      $mypermisos->setAccesodepartamentocodigo($permiso['accesodepartamentocodigo']);
+      $mypermisos->setDepartamentos_iddepartamentos($mydepartamento);
+      $mypermisos->setTipousuario_idtipousuario($mytipousuario);
+      $mypermisos->setIdaccesodepartamento($permiso['idaccesodepartamento']);
 
       $listapermisos[] = $mypermisos;
     }
@@ -139,7 +141,8 @@ class CrudPermisos
     $lst1 = ($p['departamentosSubdivision']);
     return $lst1;
   }
-  public function mostrardepartamentosparametro($id){
+  public function mostrardepartamentosparametro($id)
+  {
 
     $db = Db::conectar();
     $select = $db->prepare("SELECT * FROM `departamentos` WHERE iddepartamentos=:id ORDER BY `iddepartamentos`  ASC;");

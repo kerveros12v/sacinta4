@@ -7,7 +7,7 @@ function cargarmenu(){
     var c=$('#cedula').val();
     $.ajax({
       type: 'POST',
-      url: '../ajax/ajaxspermisos.php',
+      url: '../ec.edu.intsuperior/vista/ajax/ajaxspermisos.php',
       data:{'a':id,'c':c}
     })
     .done(function(cargar){
