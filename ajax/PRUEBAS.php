@@ -1,59 +1,28 @@
-<?php
-$indicesServer = array(
-    'PHP_SELF',
-    'argv',
-    'argc',
-    'GATEWAY_INTERFACE',
-    'SERVER_ADDR',
-    'SERVER_NAME',
-    'SERVER_SOFTWARE',
-    'SERVER_PROTOCOL',
-    'REQUEST_METHOD',
-    'REQUEST_TIME',
-    'REQUEST_TIME_FLOAT',
-    'QUERY_STRING',
-    'DOCUMENT_ROOT',
-    'HTTP_ACCEPT',
-    'HTTP_ACCEPT_CHARSET',
-    'HTTP_ACCEPT_ENCODING',
-    'HTTP_ACCEPT_LANGUAGE',
-    'HTTP_CONNECTION',
-    'HTTP_HOST',
-    'HTTP_REFERER',
-    'HTTP_USER_AGENT',
-    'HTTPS',
-    'REMOTE_ADDR',
-    'REMOTE_HOST',
-    'REMOTE_PORT',
-    'REMOTE_USER',
-    'REDIRECT_REMOTE_USER',
-    'SCRIPT_FILENAME',
-    'SERVER_ADMIN',
-    'SERVER_PORT',
-    'SERVER_SIGNATURE',
-    'PATH_TRANSLATED',
-    'SCRIPT_NAME',
-    'REQUEST_URI',
-    'PHP_AUTH_DIGEST',
-    'PHP_AUTH_USER',
-    'PHP_AUTH_PW',
-    'AUTH_TYPE',
-    'PATH_INFO',
-    'ORIG_PATH_INFO'
-);
+<!doctype html>
+<html lang="en">
 
-echo '<table cellpadding="10">';
-foreach ($indicesServer as $arg) {
-    if (isset($_SERVER[$arg])) {
-        echo '<tr><td>' . $arg . '</td><td>' . $_SERVER[$arg] . '</td></tr>';
-    } else {
-        echo '<tr><td>' . $arg . '</td><td>-</td></tr>';
-    }
-}
-echo '</table>';
-echo  $_SERVER['PHP_SELF'];
-echo "<br>";
-echo dirname(__FILE__) . "/crudPermisos.php";
-echo "<br>";
-session_start();
-echo "Directorio Base: " . $_SESSION['urlbase'];
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Dialog - Default functionality</title>
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $("#dialog").dialog();
+        });
+    </script>
+</head>
+
+<body>
+
+    <div id="dialog" title="Basic dialog">
+        <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+    </div>
+
+
+</body>
+
+</html>

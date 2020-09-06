@@ -21,13 +21,13 @@ class CrudGeneros
 		$select = $db->query('SELECT * FROM generos');
 		foreach ($select->fetchAll() as $generos1) {
 			$mygenero = new Generos();
-			$mygenero->set_generoId($generos1['generoId']);
-			$mygenero->set_genero($generos1['genero']);
-			$mygenero->set_generoscodigo($generos1['generoscodigo']);
-			$mygenero->set_generoOculto($generos1['generoOculto']);
-			$mygenero->set_generoAccion($generos1['generoAccion']);
-			$mygenero->set_generofecha($generos1['generofecha']);
-			$mygenero->set_generouser($generos1['generouser']);
+			$mygenero->setGeneroId($generos1['generoId']);
+			$mygenero->setGenero($generos1['genero']);
+			$mygenero->setGeneroscodigo($generos1['generoscodigo']);
+			$mygenero->setGeneroOculto($generos1['generoOculto']);
+			$mygenero->setGeneroAccion($generos1['generoAccion']);
+			$mygenero->setGenerofecha($generos1['generofecha']);
+			$mygenero->setGenerouser($generos1['generouser']);
 			$listaGeneros[] = $mygenero;
 		}
 		return $listaGeneros;
@@ -47,13 +47,13 @@ class CrudGeneros
 		$select->execute();
 		$generos1 = $select->fetch();
 		$mygenero = new Generos();
-		$mygenero->set_generoId($generos1['generoId']);
-		$mygenero->set_genero($generos1['genero']);
-		$mygenero->set_generoscodigo($generos1['generoscodigo']);
-		$mygenero->set_generoOculto($generos1['generoOculto']);
-		$mygenero->set_generoAccion($generos1['generoAccion']);
-		$mygenero->set_generofecha($generos1['generofecha']);
-		$mygenero->set_generouser($generos1['generouser']);
+		$mygenero->setGeneroId($generos1['generoId']);
+		$mygenero->setGenero($generos1['genero']);
+		$mygenero->setGeneroscodigo($generos1['generoscodigo']);
+		$mygenero->setGeneroOculto($generos1['generoOculto']);
+		$mygenero->setGeneroAccion($generos1['generoAccion']);
+		$mygenero->setGenerofecha($generos1['generofecha']);
+		$mygenero->setGenerouser($generos1['generouser']);
 		return $mygenero;
 	}
 	public function obtenerDato($id)
@@ -80,13 +80,13 @@ class CrudGeneros
 		`generofecha` = :generofecha1,
 		`generouser` = :generouser1
 		WHERE `generoId` = :generoId1;');
-		$actualizar->bindValue('generoId1', $generos1->get_generoId());
-		$actualizar->bindValue('generoscodigo1', $generos1->get_generoscodigo());
-		$actualizar->bindValue('genero1', $generos1->get_genero());
-		$actualizar->bindValue('generoOculto1', $generos1->get_generoOculto());
-		$actualizar->bindValue('generoAccion1', $generos1->get_generoAccion());
-		$actualizar->bindValue('generofecha1', $generos1->get_generofecha());
-		$actualizar->bindValue('generouser1', $generos1->get_generouser());
+		$actualizar->bindValue('generoId1', $generos1->getGeneroId());
+		$actualizar->bindValue('generoscodigo1', $generos1->getGeneroscodigo());
+		$actualizar->bindValue('genero1', $generos1->getGenero());
+		$actualizar->bindValue('generoOculto1', $generos1->getGeneroOculto());
+		$actualizar->bindValue('generoAccion1', $generos1->getGeneroAccion());
+		$actualizar->bindValue('generofecha1', $generos1->getGenerofecha());
+		$actualizar->bindValue('generouser1', $generos1->getGenerouser());
 		$actualizar->execute();
 	}
 	public function insertar($generos1)
@@ -109,13 +109,13 @@ class CrudGeneros
 		:generofecha1,
 		:generouser1);
 		');
-		$insert->bindValue('generoId1', $generos1->get_generoId());
-		$insert->bindValue('generoscodigo1', $generos1->get_generoscodigo());
-		$insert->bindValue('genero1', $generos1->get_genero());
-		$insert->bindValue('generoOculto1', $generos1->get_generoOculto());
-		$insert->bindValue('generoAccion1', $generos1->get_generoAccion());
-		$insert->bindValue('generofecha1', $generos1->get_generofecha());
-		$insert->bindValue('generouser1', $generos1->get_generouser());
+		$insert->bindValue('generoId1', $generos1->getGeneroId());
+		$insert->bindValue('generoscodigo1', $generos1->getGeneroscodigo());
+		$insert->bindValue('genero1', $generos1->getGenero());
+		$insert->bindValue('generoOculto1', $generos1->getGeneroOculto());
+		$insert->bindValue('generoAccion1', $generos1->getGeneroAccion());
+		$insert->bindValue('generofecha1', $generos1->getGenerofecha());
+		$insert->bindValue('generouser1', $generos1->getGenerouser());
 		$insert->execute();
 	}
 }

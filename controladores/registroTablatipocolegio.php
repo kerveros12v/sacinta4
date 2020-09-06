@@ -7,17 +7,17 @@ function opciontipocolegio()
     try {
         $dato = new \Clasesphp\Tipocolegio();
         $crud = new \Crud\CrudTipocolegio();
-        $dato->set_tipoColegioId($_POST['id']);
-		$dato->set_tipoColegio(strtoupper($_POST['nom']));
-		$dato->set_tipocolegiocodigo($_POST['cod']);
-		$dato->set_tipocolegioOculto($_POST['eliminar']);
-		$dato->set_tipocolegioAccion($_POST['actualizar']);
-		$dato->set_tipocolegiofecha(date("Y-m-d"));
-		$dato->set_tipocolegiouser($_SESSION['tipouser'] . $_SESSION['user']);
+        $dato->setTipoColegioId($_POST['id']);
+        $dato->setTipoColegio(strtoupper($_POST['nom']));
+        $dato->setTipocolegiocodigo($_POST['cod']);
+        $dato->setTipocolegioOculto($_POST['eliminar']);
+        $dato->setTipocolegioAccion($_POST['actualizar']);
+        $dato->setTipocolegiofecha(date("Y-m-d"));
+        $dato->setTipocolegiouser($_SESSION['tipouser'] . $_SESSION['user']);
         $opcion = $_POST['opt'];
-        if ($_SESSION['user']!="") {
+        if ($_SESSION['user'] != "") {
             if ($opcion == 1) {
-                $dato->set_tipoColegioId(null);
+                $dato->setTipoColegioId(null);
                 $crud->insertar($dato);
                 return (guardarR());
             }
@@ -26,11 +26,11 @@ function opciontipocolegio()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($dato->get_tipoColegioId());
+                $crud->eliminar($dato->getTipoColegioId());
                 return (eliminarR());
             }
         }
-        echo(tiempoExedido());
+        echo (tiempoExedido());
     } catch (Exception $e) {
         return $e;
     }

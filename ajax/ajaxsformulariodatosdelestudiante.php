@@ -17,17 +17,18 @@ require_once("ajaxsselect2.php");
 
 session_start();
 
-function cargarformulario($cedula){
+function cargarformulario($cedula)
+{
 
 
-	$crud=new \Crud\CrudEstudiantes();
-	$dato=new \Clasesphp\Estudiantes();
-	if($crud->existe($cedula)==true){
-		$dato=$crud->obtenerEstudiantes($cedula);
-	}else{
-		echo "<script>console.log('No se pudo encontrar al estudiante: ".$cedula."')</script>";
+	$crud = new \Crud\CrudEstudiantes();
+	$dato = new \Clasesphp\Estudiantes();
+	if ($crud->existe($cedula) == true) {
+		$dato = $crud->obtenerEstudiantes($cedula);
+	} else {
+		echo "<script>console.log('No se pudo encontrar al estudiante: " . $cedula . "')</script>";
 	}
-$r=ajaxs_select2().'
+	$r = ajaxs_select2() . '
 <td>
 	<table width=100%;>
 		<tr class="tabtitulos">
@@ -45,7 +46,7 @@ $r=ajaxs_select2().'
 								<tr>
 									<td>
 										<select class="selector" name="tipodocumento" id="tipodocumento">
-											'.cargartipodocumento($dato->get_fktipodocumentoId()).'
+											' . cargartipodocumento($dato->getFktipodocumentoId()) . '
 								 		</select>
 									</td>
 								</tr>
@@ -60,7 +61,7 @@ $r=ajaxs_select2().'
 							<table>
 								<tr>
 									<td>
-										<input type="text" id="ced" name="ced" maxlength="10" placeholder="Ingrese su N° CI/RUC" readonly="readonly" required="required" value="'.$cedula.'"  />
+										<input type="text" id="ced" name="ced" maxlength="10" placeholder="Ingrese su N° CI/RUC" readonly="readonly" required="required" value="' . $cedula . '"  />
 									</td>
 								</tr>
 								<tr>
@@ -82,7 +83,7 @@ $r=ajaxs_select2().'
 							<table>
 								<tr>
 									<td>
-										<input type="text" placeholder="Primer Apellido" id="apellidoEst" name="apellidoEst" class="texto" required="required" value="'.$dato->get_primerApellido().'"/>
+										<input type="text" placeholder="Primer Apellido" id="apellidoEst" name="apellidoEst" class="texto" required="required" value="' . $dato->getPrimerApellido() . '"/>
 									</td>
 								</tr>
 								<tr>
@@ -96,7 +97,7 @@ $r=ajaxs_select2().'
 							<table>
 								<tr>
 									<td>
-										<input type="text" placeholder="Segundo Apellido" id="apellidoEst2" name="apellidoEst2" class="texto" value="'.$dato->get_segundoApellido().'" />
+										<input type="text" placeholder="Segundo Apellido" id="apellidoEst2" name="apellidoEst2" class="texto" value="' . $dato->getSegundoApellido() . '" />
 									</td>
 								</tr>
 								<tr>
@@ -112,7 +113,7 @@ $r=ajaxs_select2().'
 							<table>
 								<tr>
 									<td>
-									<input type="text" placeholder="Primer Nombre" id="nombreEst" name="nombreEst"  class="texto" required="required" value="'.$dato->get_primerNombre().'"/>
+									<input type="text" placeholder="Primer Nombre" id="nombreEst" name="nombreEst"  class="texto" required="required" value="' . $dato->getPrimerNombre() . '"/>
 									</td>
 								</tr>
 								<tr>
@@ -126,7 +127,7 @@ $r=ajaxs_select2().'
 							<table>
 								<tr>
 									<td>
-									<input type="text" placeholder="Segundo Nombre" id="nombreEst2" name="nombreEst2"  class="texto"  value="'.$dato->get_segundoNombre().'"/>
+									<input type="text" placeholder="Segundo Nombre" id="nombreEst2" name="nombreEst2"  class="texto"  value="' . $dato->getSegundoNombre() . '"/>
 									</td>
 								</tr>
 								<tr>
@@ -154,7 +155,7 @@ $r=ajaxs_select2().'
 								<tr>
 									<td>
 										<select class="selector" name="lstsexo" id="lstsexo">
-											'.cargarSexos($dato->get_fksexoId()).'
+											' . cargarSexos($dato->getFksexoId()) . '
 										</select>
 									</td>
 								</tr>
@@ -170,7 +171,7 @@ $r=ajaxs_select2().'
 								<tr>
 									<td>
 										<select class="selector"  id="lstgeneros" name="lstgeneros">
-											'.cargarGeneros($dato->get_fkGeneroId()).'
+											' . cargarGeneros($dato->getFkGeneroId()) . '
 										</select>
 									</td>
 								</tr>
@@ -199,7 +200,7 @@ $r=ajaxs_select2().'
 								<tr>
 									<td>
 										<select  class="selector" id="estadoCivil"  name="estadoCivil">
-											'.cargarEstadoCivil($dato->get_fkEstadoCivilId()).'
+											' . cargarEstadoCivil($dato->getFkEstadoCivilId()) . '
 										</select>
 									</td>
 								</tr>
@@ -215,7 +216,7 @@ $r=ajaxs_select2().'
 								<tr>
 									<td>
 										<select  class="selector" id="lstsangre" name="lstsangre">
-											'.cargartipoSangre($dato->get_fkTipoSangreId()).'
+											' . cargartipoSangre($dato->getFkTipoSangreId()) . '
 										</select>
 									</td>
 								</tr>
@@ -243,7 +244,7 @@ $r=ajaxs_select2().'
 							<table>
 								<tr>
 									<td>
-										<input type="date" placeholder="Ingrese su fecha de nacimiento" id="fechanaci" name="fechanaci"  class="light" required="required" value="'.$dato->get_fechaNacimiento().'"/>
+										<input type="date" placeholder="Ingrese su fecha de nacimiento" id="fechanaci" name="fechanaci"  class="light" required="required" value="' . $dato->getFechaNacimiento() . '"/>
 									</td>
 								</tr>
 								<tr>
@@ -258,7 +259,7 @@ $r=ajaxs_select2().'
 								<tr>
 									<td>
 										<select  class="selector" id="paisNacionalidad" name="paisNacionalidad" >
-											'.cargarPais($dato->get_fkPaisNacionalidadId()).'
+											' . cargarPais($dato->getFkPaisNacionalidadId()) . '
 										</select>
 									</td>
 								</tr>
@@ -282,7 +283,7 @@ $r=ajaxs_select2().'
 								<tr>
 									<td>
 										<select class="selector"  name="provinciaNacionalidad" id="provinciaNacionalidad" onchange="cargarCantonest1()"  >
-											'.cargarProvincias($dato->get_fkProvinciaNacimientoId()).'
+											' . cargarProvincias($dato->get_fkProvinciaNacimientoId()) . '
 										</select>
 									</td>
 								</tr>
@@ -298,7 +299,7 @@ $r=ajaxs_select2().'
 								<tr>
 									<td>
 										<select  class="selector" name="cantonNacionalidad" id="cantonNacionalidad">
-											'.cargarCanton($dato->get_fkCantonNacimientoId(),$dato->get_fkProvinciaNacimientoId()).'
+											' . cargarCanton($dato->get_fkCantonNacimientoId(), $dato->get_fkProvinciaNacimientoId()) . '
 										</select>
 									</td>
 								</tr>
@@ -316,7 +317,7 @@ $r=ajaxs_select2().'
 								<tr>
 									<td>
 										<select class="selector"  name="categoraMigratoria" id="categoraMigratoria">
-											'.cargarCategoriaMigratoria($dato->get_categoriaMigratoria_categoriaMigratoriaId()).'
+											' . cargarCategoriaMigratoria($dato->get_categoriaMigratoria_categoriaMigratoriaId()) . '
 										</select>
 									</td>
 								</tr>
@@ -342,7 +343,7 @@ $r=ajaxs_select2().'
 					<tr>
 						<td>
 							<select class="selector"  id="etnia" name="etnia" onchange="mostrarOcultarEtniaPueblo()">
-								'.cargarEtnia($dato->get_fktEtniaId()).'
+								' . cargarEtnia($dato->get_fktEtniaId()) . '
 							</select>
 						</td>
 					</tr>
@@ -363,7 +364,7 @@ $r=ajaxs_select2().'
 							<tr>
 								<td>
 									<select  class="selector" name="pueblonacionalidad" id="pueblonacionalidad">
-										'.cargarPueblo($dato->get_fkPuebloNacionalidadId()).'
+										' . cargarPueblo($dato->get_fkPuebloNacionalidadId()) . '
 									</select>
 								</td>
 							</tr>
@@ -379,7 +380,7 @@ $r=ajaxs_select2().'
 							<tr>
 								<td>
 									<select class="selector"  id="lstidioma" name="lstidioma">
-										'.cargarIdioma($dato->get_idiomas()).'
+										' . cargarIdioma($dato->get_idiomas()) . '
 									</select>
 								</td>
 							</tr>
@@ -407,7 +408,7 @@ $r=ajaxs_select2().'
 						<table>
 							<tr>
 								<td>
-									<input type="email" placeholder="Correo Electrónico" id="email1" name="email1" class="texto" required="required" value="'.$dato->get_correoElectronico().'"/>
+									<input type="email" placeholder="Correo Electrónico" id="email1" name="email1" class="texto" required="required" value="' . $dato->get_correoElectronico() . '"/>
 								</td>
 							</tr>
 							<tr>
@@ -421,7 +422,7 @@ $r=ajaxs_select2().'
 						<table>
 							<tr>
 								<td>
-									<input type="tel" placeholder="Numero Celular"  pattern="[0-9]{10}" id="numcelular" maxlength="10" name="telefonos"  class="light campnum1" required="required" value="'.$dato->get_numeroCelular().'"/>
+									<input type="tel" placeholder="Numero Celular"  pattern="[0-9]{10}" id="numcelular" maxlength="10" name="telefonos"  class="light campnum1" required="required" value="' . $dato->get_numeroCelular() . '"/>
 								</td>
 							</tr>
 							<tr>
@@ -435,7 +436,7 @@ $r=ajaxs_select2().'
 						<table>
 							<tr>
 								<td>
-									<input type="tel" placeholder="Numero Convencional"  minlength="1" maxlength="8" id="numconvenconal" name="numconvenconal" class="light campnum1" value="'.$dato->get_numeroComvencional().'"/>
+									<input type="tel" placeholder="Numero Convencional"  minlength="1" maxlength="8" id="numconvenconal" name="numconvenconal" class="light campnum1" value="' . $dato->get_numeroComvencional() . '"/>
 								</td>
 							</tr>
 							<tr>
@@ -453,14 +454,11 @@ $r=ajaxs_select2().'
 	</table>
 </td>
 ';
-return $r;
+	return $r;
 }
-try{
-	$cedula=isset($_SESSION['campbuscarest'])?$_SESSION['campbuscarest']:"";
+try {
+	$cedula = isset($_SESSION['campbuscarest']) ? $_SESSION['campbuscarest'] : "";
 	echo cargarformulario($cedula);
+} catch (\Throwable $e) {
+	echo $e;
 }
-catch(\Throwable $e){
-echo $e;
-}
-
-?>

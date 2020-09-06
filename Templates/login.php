@@ -10,7 +10,7 @@
 <body>
 
   <div class="cabecera" id="cabecera"><img src="../img/EsCayambe.png" id="logo" class="logo" /></div>
-  <form action="../ec.edu.intsuperior/controlador/controladores/loginacceso.php" method="POST" enctype="application/x-www-form-urlencoded" name="login">
+  <form action="../controladores/loginacceso.php" method="POST" enctype="application/x-www-form-urlencoded" name="login">
     <div class="login">
       <input type="text" placeholder="Usuario" name="username" id="username" required="required" />
       <input type="password" placeholder="Contraseña" name="password" id="password" required="required" />

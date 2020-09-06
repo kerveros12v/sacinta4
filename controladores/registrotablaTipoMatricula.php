@@ -17,20 +17,20 @@ function opcionTipodocumento()
         $datos = new Tipomatricula();
         $crud = new CrudTipomatricula();
 
-        $datos->set_tipoMatriculaId($_POST['id']);
-        $datos->set_tipoMatricula($_POST['nom']);
-        $datos->set_tipomatriculacodigo($_POST['cod']);
-        $datos->set_tipomatriculaOculto($_POST['eliminar']);
-        $datos->set_tipomatriculaAccion($_POST['actualizar']);
-        $datos->set_tipomatriculafecha(date("Y-m-d"));
-        $datos->set_tipomatriculauser($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->setTipoMatriculaId($_POST['id']);
+        $datos->setTipoMatricula(strtoupper($_POST['nom']));
+        $datos->setTipomatriculacodigo($_POST['cod']);
+        $datos->setTipomatriculaOculto($_POST['eliminar']);
+        $datos->setTipomatriculaAccion($_POST['actualizar']);
+        $datos->setTipomatriculafecha(date("Y-m-d"));
+        $datos->setTipomatriculauser($_SESSION['tipouser'] . $_SESSION['user']);
 
         $opcion = $_POST['opt'];
 
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_tipoMatriculaId(null);
+                $datos->setTipoMatriculaId(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -38,8 +38,8 @@ function opcionTipodocumento()
                 $crud->actualizar($datos);
                 return (actualizarR());
             }
-            if ($opcion ==optEliminar()) {
-                $crud->eliminar($datos->get_tipoMatriculaId());
+            if ($opcion == optEliminar()) {
+                $crud->eliminar($datos->getTipoMatriculaId());
                 return (eliminarR());
             }
         }

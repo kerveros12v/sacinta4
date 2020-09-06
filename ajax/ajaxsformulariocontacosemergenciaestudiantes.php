@@ -6,15 +6,16 @@ require_once("ajaxsselectparentesco.php");
 require_once("ajaxsselect2.php");
 
 session_start();
-$crud1=new \Crud\CrudPeriodoacademico();
-$cedula=isset($_SESSION['campbuscarest'])?$_SESSION['campbuscarest']:"";
-$periodo=isset($_SESSION['periodo'])?$periodo=$crudperiodoaca->obtenerPeriodoacademico($_SESSION['periodo']):$periodo=$crud1->obtenerPeriodoAcademicoActual();
+$crud1 = new \Crud\CrudPeriodoacademico();
+$cedula = isset($_SESSION['campbuscarest']) ? $_SESSION['campbuscarest'] : "";
+$periodo = isset($_SESSION['periodo']) ? $periodo = $crudperiodoaca->obtenerPeriodoacademico($_SESSION['periodo']) : $periodo = $crud1->obtenerPeriodoAcademicoActual();
 
-    function cargarContactoEmergencia($cedula,$periodo){
-        $crud=new \Crud\CrudContactosemergencia();
-        $dato=$crud->obtenerContactoEmergencia($cedula,$periodo);
-        $r=ajaxs_select2();
-        $r.='
+function cargarContactoEmergencia($cedula, $periodo)
+{
+    $crud = new \Crud\CrudContactosemergencia();
+    $dato = $crud->obtenerContactoEmergencia($cedula, $periodo);
+    $r = ajaxs_select2();
+    $r .= '
     <td>
         <table>
             <tr class="tabtitulos">
@@ -30,7 +31,7 @@ $periodo=isset($_SESSION['periodo'])?$periodo=$crudperiodoaca->obtenerPeriodoaca
                                <table class="fulltext">
                                     <tr>
                                         <td>
-                                            <input type="text" name="nomcontactoemergen" id="nomcontactoemergen" class="fulltext" required="required" value="'.$dato->get_nombreContactoEmergencia().'"/>
+                                            <input type="text" name="nomcontactoemergen" id="nomcontactoemergen" class="fulltext" required="required" value="' . $dato->getNombreContactoEmergencia() . '"/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -49,7 +50,7 @@ $periodo=isset($_SESSION['periodo'])?$periodo=$crudperiodoaca->obtenerPeriodoaca
                                             <table>
                                                 <tr>
                                                     <td>
-                                                        <input type="text" name="numcontacto" id="numcontacto" value="'.$dato->get_numeroContactosEmergencia().'"/>
+                                                        <input type="text" name="numcontacto" id="numcontacto" value="' . $dato->getNumeroContactosEmergencia() . '"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -64,7 +65,7 @@ $periodo=isset($_SESSION['periodo'])?$periodo=$crudperiodoaca->obtenerPeriodoaca
                                                 <tr>
                                                     <td>
                                                         <select class="selector"  name="parentesco1" id="parentesco1">
-                                                            '.cargarparentesco($dato->get_Parentescos_idParentescos()).'
+                                                            ' . cargarparentesco($dato->getParentescosIdParentescos()) . '
                                                         </select>
                                                     </td>
                                                 </tr>
@@ -85,6 +86,5 @@ $periodo=isset($_SESSION['periodo'])?$periodo=$crudperiodoaca->obtenerPeriodoaca
         </table>
     </td>';
     return $r;
-                }
-echo cargarContactoEmergencia($cedula,$periodo->get_periodoacademicoId());
-?>
+}
+echo cargarContactoEmergencia($cedula, $periodo->get_periodoacademicoId());

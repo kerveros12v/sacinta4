@@ -13,8 +13,6 @@ class CrudProvincias
 	// constructor de la clase
 	public function __construct()
 	{
-		$db = Db::conectar();
-		$select = $db->query("SET NAMES 'utf8'");
 	}
 
 	public function mostrar()
@@ -24,14 +22,14 @@ class CrudProvincias
 		$select = $db->query("SELECT * FROM `provincia` ");
 		foreach ($select->fetchAll() as $provincia1) {
 			$myprovincia = new Provincias();
-			$myprovincia->set_provinciaId($provincia1['provinciaId']);
-			$myprovincia->set_provincia($provincia1['provincia']);
-			$myprovincia->set_provinciacodigo($provincia1['provinciacodigo']);
-			$myprovincia->set_provinciapais($provincia1['provinciapais']);
-			$myprovincia->set_provinciaOculto($provincia1['provinciaOculto']);
-			$myprovincia->set_provinciaAccion($provincia1['provinciaAccion']);
-			$myprovincia->set_provinciafecha($provincia1['provinciafecha']);
-			$myprovincia->set_provinciauser($provincia1['provinciauser']);
+			$myprovincia->setProvinciaId($provincia1['provinciaId']);
+			$myprovincia->setProvincia($provincia1['provincia']);
+			$myprovincia->setProvinciacodigo($provincia1['provinciacodigo']);
+			$myprovincia->setProvinciapais($provincia1['provinciapais']);
+			$myprovincia->setProvinciaOculto($provincia1['provinciaOculto']);
+			$myprovincia->setProvinciaAccion($provincia1['provinciaAccion']);
+			$myprovincia->setProvinciafecha($provincia1['provinciafecha']);
+			$myprovincia->setProvinciauser($provincia1['provinciauser']);
 			$listaprovincia[] = $myprovincia;
 		}
 		return $listaprovincia;
@@ -45,14 +43,14 @@ class CrudProvincias
 		$select->execute();
 		foreach ($select->fetchAll() as $provincia1) {
 			$myprovincia = new Provincias();
-			$myprovincia->set_provinciaId($provincia1['provinciaId']);
-			$myprovincia->set_provincia($provincia1['provincia']);
-			$myprovincia->set_provinciacodigo($provincia1['provinciacodigo']);
-			$myprovincia->set_provinciapais($provincia1['provinciapais']);
-			$myprovincia->set_provinciaOculto($provincia1['provinciaOculto']);
-			$myprovincia->set_provinciaAccion($provincia1['provinciaAccion']);
-			$myprovincia->set_provinciafecha($provincia1['provinciafecha']);
-			$myprovincia->set_provinciauser($provincia1['provinciauser']);
+			$myprovincia->setProvinciaId($provincia1['provinciaId']);
+			$myprovincia->setProvincia($provincia1['provincia']);
+			$myprovincia->setProvinciacodigo($provincia1['provinciacodigo']);
+			$myprovincia->setProvinciapais($provincia1['provinciapais']);
+			$myprovincia->setProvinciaOculto($provincia1['provinciaOculto']);
+			$myprovincia->setProvinciaAccion($provincia1['provinciaAccion']);
+			$myprovincia->setProvinciafecha($provincia1['provinciafecha']);
+			$myprovincia->setProvinciauser($provincia1['provinciauser']);
 			$listaprovincia[] = $myprovincia;
 		}
 		return $listaprovincia;
@@ -72,14 +70,14 @@ class CrudProvincias
 		$select->execute();
 		$provincia1 = $select->fetch();
 		$myprovincia = new Provincias();
-		$myprovincia->set_provinciaId($provincia1['provinciaId']);
-		$myprovincia->set_provincia($provincia1['provincia']);
-		$myprovincia->set_provinciacodigo($provincia1['provinciacodigo']);
-		$myprovincia->set_provinciapais($provincia1['provinciapais']);
-		$myprovincia->set_provinciaOculto($provincia1['provinciaOculto']);
-		$myprovincia->set_provinciaAccion($provincia1['provinciaAccion']);
-		$myprovincia->set_provinciafecha($provincia1['provinciafecha']);
-		$myprovincia->set_provinciauser($provincia1['provinciauser']);
+		$myprovincia->setProvinciaId($provincia1['provinciaId']);
+		$myprovincia->setProvincia($provincia1['provincia']);
+		$myprovincia->setProvinciacodigo($provincia1['provinciacodigo']);
+		$myprovincia->setProvinciapais($provincia1['provinciapais']);
+		$myprovincia->setProvinciaOculto($provincia1['provinciaOculto']);
+		$myprovincia->setProvinciaAccion($provincia1['provinciaAccion']);
+		$myprovincia->setProvinciafecha($provincia1['provinciafecha']);
+		$myprovincia->setProvinciauser($provincia1['provinciauser']);
 
 		return $myprovincia;
 	}
@@ -108,14 +106,14 @@ class CrudProvincias
 			`provinciafecha` = :provinciafecha1,
 			`provinciauser` = :provinciauser1
 			WHERE `provinciaId` = :provinciaId1;');
-		$actualizar->bindValue('provinciaId1', $provincia1->get_provinciaId());
-		$actualizar->bindValue('provinciacodigo1', $provincia1->get_provinciacodigo());
-		$actualizar->bindValue('provincia1', $provincia1->get_provincia());
-		$actualizar->bindValue('provinciapais1', $provincia1->get_provinciapais());
-		$actualizar->bindValue('provinciaOculto1', $provincia1->get_provinciaOculto());
-		$actualizar->bindValue('provinciaAccion1', $provincia1->get_provinciaAccion());
-		$actualizar->bindValue('provinciafecha1', $provincia1->get_provinciafecha());
-		$actualizar->bindValue('provinciauser1', $provincia1->get_provinciauser());
+		$actualizar->bindValue('provinciaId1', $provincia1->getProvinciaId());
+		$actualizar->bindValue('provinciacodigo1', $provincia1->getProvinciacodigo());
+		$actualizar->bindValue('provincia1', $provincia1->getProvincia());
+		$actualizar->bindValue('provinciapais1', $provincia1->getProvinciapais());
+		$actualizar->bindValue('provinciaOculto1', $provincia1->getProvinciaOculto());
+		$actualizar->bindValue('provinciaAccion1', $provincia1->getProvinciaAccion());
+		$actualizar->bindValue('provinciafecha1', $provincia1->getProvinciafecha());
+		$actualizar->bindValue('provinciauser1', $provincia1->getProvinciauser());
 		$actualizar->execute();
 	}
 	public function insertar($provincia1)
@@ -139,14 +137,14 @@ class CrudProvincias
 			:provinciaAccion1,
 			:provinciafecha1,
 			:provinciauser1);');
-		$insert->bindValue('provinciaId1', $provincia1->get_provinciaId());
-		$insert->bindValue('provinciacodigo1', $provincia1->get_provinciacodigo());
-		$insert->bindValue('provincia1', $provincia1->get_provincia());
-		$insert->bindValue('provinciapais1', $provincia1->get_provinciapais());
-		$insert->bindValue('provinciaOculto1', $provincia1->get_provinciaOculto());
-		$insert->bindValue('provinciaAccion1', $provincia1->get_provinciaAccion());
-		$insert->bindValue('provinciafecha1', $provincia1->get_provinciafecha());
-		$insert->bindValue('provinciauser1', $provincia1->get_provinciauser());
+		$insert->bindValue('provinciaId1', $provincia1->getProvinciaId());
+		$insert->bindValue('provinciacodigo1', $provincia1->getProvinciacodigo());
+		$insert->bindValue('provincia1', $provincia1->getProvincia());
+		$insert->bindValue('provinciapais1', $provincia1->getProvinciapais());
+		$insert->bindValue('provinciaOculto1', $provincia1->getProvinciaOculto());
+		$insert->bindValue('provinciaAccion1', $provincia1->getProvinciaAccion());
+		$insert->bindValue('provinciafecha1', $provincia1->getProvinciafecha());
+		$insert->bindValue('provinciauser1', $provincia1->getProvinciauser());
 
 		$insert->execute();
 	}

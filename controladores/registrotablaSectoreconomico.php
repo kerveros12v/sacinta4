@@ -14,13 +14,13 @@ function opcionSectoreconomico()
         $datos = new Sectoreconomico();
         $crud = new CrudSectorEconomico();
 
-        $datos->set_sectorEconomicoid($_POST['id']);
-        $datos->set_SectorEconomico(strtoupper($_POST['nom']));
-        $datos->set_sectoreconomicocodigo($_POST['cod']);
-        $datos->set_sectoreconomicoOculto($_POST['eliminar']);
-        $datos->set_sectoreconomicoAccion($_POST['actualizar']);
-        $datos->set_sectoreconomicofecha(date("Y-m-d"));
-        $datos->set_sectoreconomicouser($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->setSectorEconomicoid($_POST['id']);
+        $datos->setSectorEconomico(strtoupper($_POST['nom']));
+        $datos->setSectoreconomicocodigo($_POST['cod']);
+        $datos->setSectoreconomicoOculto($_POST['eliminar']);
+        $datos->setSectoreconomicoAccion($_POST['actualizar']);
+        $datos->setSectoreconomicofecha(date("Y-m-d"));
+        $datos->setSectoreconomicouser($_SESSION['tipouser'] . $_SESSION['user']);
 
 
         $opcion = $_POST['opt'];
@@ -28,7 +28,7 @@ function opcionSectoreconomico()
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_sectorEconomicoid(null);
+                $datos->setSectorEconomicoid(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -37,7 +37,7 @@ function opcionSectoreconomico()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_sectorEconomicoid());
+                $crud->eliminar($datos->getSectorEconomicoid());
                 return (eliminarR());
             }
         }

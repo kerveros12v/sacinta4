@@ -7,15 +7,16 @@ use Crud\CrudMatriculas;
 use Crud\CrudPeriodoacademico;
 
 session_start();
-$crud1=new CrudPeriodoacademico();
-$cedula=isset($_SESSION['est'])?$_SESSION['est']:"";
-$periodo=isset($_SESSION['periodo'])?$crud1->obtenerPeriodoacademico($_SESSION['periodo']):$crud1->obtenerPeriodoAcademicoActual();
-function cargardatosMatricula($cedula,$periodo){
-    $crud=new CrudMatriculas();
-    $dato=$crud->obtenerMatricula($cedula,$periodo);
-    $r=ajaxs_select2();
-    if($dato->get_codigoMatricula()!="" && $dato->get_codigoMatricula()!=null){
-   $r.='
+$crud1 = new CrudPeriodoacademico();
+$cedula = isset($_SESSION['est']) ? $_SESSION['est'] : "";
+$periodo = isset($_SESSION['periodo']) ? $crud1->obtenerPeriodoacademico($_SESSION['periodo']) : $crud1->obtenerPeriodoAcademicoActual();
+function cargardatosMatricula($cedula, $periodo)
+{
+    $crud = new CrudMatriculas();
+    $dato = $crud->obtenerMatricula($cedula, $periodo);
+    $r = ajaxs_select2();
+    if ($dato->getCodigoMatricula() != "" && $dato->getCodigoMatricula() != null) {
+        $r .= '
     <td>
     <table class="tabtitulos">
         <tr>
@@ -23,11 +24,12 @@ function cargardatosMatricula($cedula,$periodo){
                 Codigo de Matricula:
             </td>
             <td>
-                <input type="text" class="codmatricula" id="codmatricula" name="codmatricula"  readonly="readonly" value="'.$dato->get_codigoMatricula().'" />
+                <input type="text" class="codmatricula" id="codmatricula" name="codmatricula"  readonly="readonly" value="' . $dato->getCodigoMatricula() . '" />
             </td>
         </tr>
     </table>
-</td>';}
-return $r;
+</td>';
+    }
+    return $r;
 }
-echo cargardatosMatricula($cedula,$periodo->get_periodoacademicoId());
+echo cargardatosMatricula($cedula, $periodo->getPeriodoacademicoId());

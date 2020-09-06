@@ -13,19 +13,19 @@ function opcionTipodocumento()
         $datos = new Tipodocumento();
         $crud = new CrudTipodocumento();
 
-        $datos->set_tipoDocumentoId($_POST['id']);
-        $datos->set_tipoDocumento($_POST['nom']);
-        $datos->set_tipoDocumentocodigo($_POST['cod']);
-        $datos->set_tipoDocumentoOculto($_POST['eliminar']);
-        $datos->set_tipoDocumentoAccion($_POST['actualizar']);
-        $datos->set_tipoDocumentofecha(date("Y-m-d"));
-        $datos->set_tipoDocumentouser($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->setTipoDocumentoId($_POST['id']);
+        $datos->setTipoDocumento(strtoupper($_POST['nom']));
+        $datos->setTipoDocumentocodigo($_POST['cod']);
+        $datos->setTipoDocumentoOculto($_POST['eliminar']);
+        $datos->setTipoDocumentoAccion($_POST['actualizar']);
+        $datos->setTipoDocumentofecha(date("Y-m-d"));
+        $datos->setTipoDocumentouser($_SESSION['tipouser'] . $_SESSION['user']);
         $opcion = $_POST['opt'];
 
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_tipoDocumentoId(null);
+                $datos->setTipoDocumentoId(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -34,7 +34,7 @@ function opcionTipodocumento()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_tipoDocumentoId());
+                $crud->eliminar($datos->getTipoDocumentoId());
                 return (eliminarR());
             }
         }

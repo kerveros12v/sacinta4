@@ -19,15 +19,15 @@ class CrudTipoCarreras
 		$db = Db::conectar();
 		$listatipocarrera = null;
 		$select = $db->query("SELECT * FROM `tipocarreras`;");
-		foreach ($select->fetchAll() as $carrera_) {
+		foreach ($select->fetchAll() as $carrera1) {
 			$mytipocarrera = new Tipocarreras();
-			$mytipocarrera->set_tipoCarrerasId($carrera_['tipoCarrerasId']);
-			$mytipocarrera->set_tipoCarreras($carrera_['tipoCarreras']);
-			$mytipocarrera->set_tipocarrerascodigo($carrera_['tipocarrerascodigo']);
-			$mytipocarrera->set_tipocarrerasOculto($carrera_['tipocarrerasOculto']);
-			$mytipocarrera->set_tipocarrerasAccion($carrera_['tipocarrerasAccion']);
-			$mytipocarrera->set_tipocarrerasfecha($carrera_['tipocarrerasfecha']);
-			$mytipocarrera->set_tipocarrerasuser($carrera_['tipocarrerasuser']);
+			$mytipocarrera->setTipoCarrerasId($carrera1['tipoCarrerasId']);
+			$mytipocarrera->setTipoCarreras($carrera1['tipoCarreras']);
+			$mytipocarrera->setTipocarrerascodigo($carrera1['tipocarrerascodigo']);
+			$mytipocarrera->setTipocarrerasOculto($carrera1['tipocarrerasOculto']);
+			$mytipocarrera->setTipocarrerasAccion($carrera1['tipocarrerasAccion']);
+			$mytipocarrera->setTipocarrerasfecha($carrera1['tipocarrerasfecha']);
+			$mytipocarrera->setTipocarrerasuser($carrera1['tipocarrerasuser']);
 			$listatipocarrera[] = $mytipocarrera;
 		}
 		return $listatipocarrera;
@@ -45,15 +45,15 @@ class CrudTipoCarreras
 		$select = $db->prepare('SELECT * FROM tipocarreras WHERE tipoCarrerasId=:id');
 		$select->bindValue('id', $id);
 		$select->execute();
-		$carrera_ = $select->fetch();
+		$carrera1 = $select->fetch();
 		$mytipocarrera = new Tipocarreras();
-		$mytipocarrera->set_tipoCarrerasId($carrera_['tipoCarrerasId']);
-		$mytipocarrera->set_tipoCarreras($carrera_['tipoCarreras']);
-		$mytipocarrera->set_tipocarrerascodigo($carrera_['tipocarrerascodigo']);
-		$mytipocarrera->set_tipocarrerasOculto($carrera_['tipocarrerasOculto']);
-		$mytipocarrera->set_tipocarrerasAccion($carrera_['tipocarrerasAccion']);
-		$mytipocarrera->set_tipocarrerasfecha($carrera_['tipocarrerasfecha']);
-		$mytipocarrera->set_tipocarrerasuser($carrera_['tipocarrerasuser']);
+		$mytipocarrera->setTipoCarrerasId($carrera1['tipoCarrerasId']);
+		$mytipocarrera->setTipoCarreras($carrera1['tipoCarreras']);
+		$mytipocarrera->setTipocarrerascodigo($carrera1['tipocarrerascodigo']);
+		$mytipocarrera->setTipocarrerasOculto($carrera1['tipocarrerasOculto']);
+		$mytipocarrera->setTipocarrerasAccion($carrera1['tipocarrerasAccion']);
+		$mytipocarrera->setTipocarrerasfecha($carrera1['tipocarrerasfecha']);
+		$mytipocarrera->setTipocarrerasuser($carrera1['tipocarrerasuser']);
 
 
 		return $mytipocarrera;
@@ -64,12 +64,12 @@ class CrudTipoCarreras
 		$select = $db->prepare('SELECT tipoCarreras FROM tipocarreras WHERE tipoCarrerasId=:id');
 		$select->bindValue('id', $id);
 		$select->execute();
-		$carrera_ = $select->fetch();
-		$mytipocarrera = ($carrera_['tipoCarreras']);
+		$carrera1 = $select->fetch();
+		$mytipocarrera = ($carrera1['tipoCarreras']);
 
 		return $mytipocarrera;
 	}
-	public function actualizar($carrera_)
+	public function actualizar($carrera1)
 	{
 		$db = Db::conectar();
 		$actualizar = $db->prepare('UPDATE `tipocarreras`
@@ -82,16 +82,16 @@ class CrudTipoCarreras
 		`tipocarrerasfecha` = :tipocarrerasfecha1,
 		`tipocarrerasuser` = :tipocarrerasuser1
 		WHERE `tipoCarrerasId` = :tipoCarrerasId1;');
-		$actualizar->bindValue('tipoCarrerasId1', $carrera_->get_tipoCarrerasId());
-		$actualizar->bindValue('tipocarrerascodigo1', $carrera_->get_tipocarrerascodigo());
-		$actualizar->bindValue('tipoCarreras1', $carrera_->get_tipoCarreras());
-		$actualizar->bindValue('tipocarrerasOculto1', $carrera_->get_tipocarrerasOculto());
-		$actualizar->bindValue('tipocarrerasAccion1', $carrera_->get_tipocarrerasAccion());
-		$actualizar->bindValue('tipocarrerasfecha1', $carrera_->get_tipocarrerasfecha());
-		$actualizar->bindValue('tipocarrerasuser1', $carrera_->get_tipocarrerasuser());
+		$actualizar->bindValue('tipoCarrerasId1', $carrera1->getTipoCarrerasId());
+		$actualizar->bindValue('tipocarrerascodigo1', $carrera1->getTipocarrerascodigo());
+		$actualizar->bindValue('tipoCarreras1', $carrera1->getTipoCarreras());
+		$actualizar->bindValue('tipocarrerasOculto1', $carrera1->getTipocarrerasOculto());
+		$actualizar->bindValue('tipocarrerasAccion1', $carrera1->getTipocarrerasAccion());
+		$actualizar->bindValue('tipocarrerasfecha1', $carrera1->getTipocarrerasfecha());
+		$actualizar->bindValue('tipocarrerasuser1', $carrera1->getTipocarrerasuser());
 		$actualizar->execute();
 	}
-	public function insertar($carrera_)
+	public function insertar($carrera1)
 	{
 		$db = Db::conectar();
 		$insert = $db->prepare('INSERT INTO `tipocarreras`
@@ -111,13 +111,13 @@ class CrudTipoCarreras
 		:tipocarrerasfecha1,
 		:tipocarrerasuser1);
 		');
-		$insert->bindValue('tipoCarrerasId1', $carrera_->get_tipoCarrerasId());
-		$insert->bindValue('tipocarrerascodigo1', $carrera_->get_tipocarrerascodigo());
-		$insert->bindValue('tipoCarreras1', $carrera_->get_tipoCarreras());
-		$insert->bindValue('tipocarrerasOculto1', $carrera_->get_tipocarrerasOculto());
-		$insert->bindValue('tipocarrerasAccion1', $carrera_->get_tipocarrerasAccion());
-		$insert->bindValue('tipocarrerasfecha1', $carrera_->get_tipocarrerasfecha());
-		$insert->bindValue('tipocarrerasuser1', $carrera_->get_tipocarrerasuser());
+		$insert->bindValue('tipoCarrerasId1', $carrera1->getTipoCarrerasId());
+		$insert->bindValue('tipocarrerascodigo1', $carrera1->getTipocarrerascodigo());
+		$insert->bindValue('tipoCarreras1', $carrera1->getTipoCarreras());
+		$insert->bindValue('tipocarrerasOculto1', $carrera1->getTipocarrerasOculto());
+		$insert->bindValue('tipocarrerasAccion1', $carrera1->getTipocarrerasAccion());
+		$insert->bindValue('tipocarrerasfecha1', $carrera1->getTipocarrerasfecha());
+		$insert->bindValue('tipocarrerasuser1', $carrera1->getTipocarrerasuser());
 		$insert->execute();
 	}
 }

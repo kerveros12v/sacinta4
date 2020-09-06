@@ -15,19 +15,19 @@ function opcionTipobachillerato()
         $datos = new Tiposbacillerato();
         $crud = new CrudTipoBachillerato();
 
-        $datos->set_tiposBacilleratoId($_POST['id']);
-        $datos->set_tipoBacillerato($_POST['nom']);
-        $datos->set_tiposbacilleratocodigo($_POST['cod']);
-        $datos->set_tiposbacilleratoOculto($_POST['eliminar']);
-        $datos->set_tiposbacilleratoAccion($_POST['actualizar']);
-        $datos->set_tiposbacilleratofecha(date("Y-m-d"));
-        $datos->set_tiposbacilleratouser($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->setTiposBacilleratoId($_POST['id']);
+        $datos->setTipoBacillerato(strtoupper($_POST['nom']));
+        $datos->setTiposbacilleratocodigo($_POST['cod']);
+        $datos->setTiposbacilleratoOculto($_POST['eliminar']);
+        $datos->setTiposbacilleratoAccion($_POST['actualizar']);
+        $datos->setTiposbacilleratofecha(date("Y-m-d"));
+        $datos->setTiposbacilleratouser($_SESSION['tipouser'] . $_SESSION['user']);
         $opcion = $_POST['opt'];
 
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_tiposBacilleratoId(null);
+                $datos->setTiposBacilleratoId(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -36,7 +36,7 @@ function opcionTipobachillerato()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_tiposBacilleratoId());
+                $crud->eliminar($datos->getTiposBacilleratoId());
                 return (eliminarR());
             }
         }

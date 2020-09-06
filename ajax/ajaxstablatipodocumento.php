@@ -1,13 +1,15 @@
 <?php
 require_once("../Crud/CrudTipoDocumento.php");
 require_once("../controladores/respuestasgenerales.php");
+
 use Crud\CrudTipodocumento;
+
 session_start();
 function cargartablatipodocumento()
 {
-    $r="";
+    $r = "";
     $crud = new CrudTipodocumento();
-    $r.= '
+    $r .= '
 <tr>
     <td>
 
@@ -31,24 +33,24 @@ function cargartablatipodocumento()
 
         </td>
         <td>
-            <input type="text" class="camptext1" id="tipoDocumentocodigo' . $dato->get_tipoDocumentoId() . '" name="tipoDocumentocodigo' . $dato->get_tipoDocumentoId() . '"  maxlength="10" value="' . $dato->get_tipoDocumentocodigo() . '"/>
+            <input type="text" class="camptext1" id="tipoDocumentocodigo' . $dato->getTipoDocumentoId() . '" name="tipoDocumentocodigo' . $dato->getTipoDocumentoId() . '"  maxlength="10" value="' . $dato->getTipoDocumentocodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="tipoDocumento' . $dato->get_tipoDocumentoId() . '" name="tipoDocumento' . $dato->get_tipoDocumentoId() . '"  value="' . $dato->get_tipoDocumento() . '"/>
+            <input type="text" id="tipoDocumento' . $dato->getTipoDocumentoId() . '" name="tipoDocumento' . $dato->getTipoDocumentoId() . '"  value="' . $dato->getTipoDocumento() . '"/>
         </td>
         <td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_tipoDocumentoId() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_tipoDocumentoId() . ')">
+        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getTipoDocumentoId() . ')">
+         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getTipoDocumentoId() . ')">
         </td>
     </tr>
     ';
     }
     return $r;
 }
-if ($_SESSION['user']!="") {
+if ($_SESSION['user'] != "") {
     echo cargartablatipodocumento();
-} else{
-	echo '<tr>
+} else {
+    echo '<tr>
 		<td>
 		</td>
 		<td>
@@ -56,7 +58,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }

@@ -8,9 +8,9 @@ use Crud\CrudTipoBachillerato;
 session_start();
 function cargartablatipoBachillerato()
 {
-    $r="";
+    $r = "";
     $crud = new CrudTipoBachillerato();
-    $r.= '
+    $r .= '
 <tr>
     <td>
 
@@ -34,29 +34,28 @@ function cargartablatipoBachillerato()
 
         </td>
         <td>
-            <input type="text" class="camptext1" id="tiposbacilleratocodigo' . $dato->get_tiposBacilleratoId() . '" name="tiposbacilleratocodigo' . $dato->get_tiposBacilleratoId() . '"  maxlength="10" value="' . $dato->get_tiposbacilleratocodigo() . '"/>
+            <input type="text" class="camptext1" id="tiposbacilleratocodigo' . $dato->getTiposBacilleratoId() . '" name="tiposbacilleratocodigo' . $dato->getTiposBacilleratoId() . '"  maxlength="10" value="' . $dato->getTiposbacilleratocodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="tipoBacillerato' . $dato->get_tiposBacilleratoId() . '" name="tipoBacillerato' . $dato->get_tiposBacilleratoId() . '"  value="' . $dato->get_tipoBacillerato() . '"/>
+            <input type="text" id="tipoBacillerato' . $dato->getTiposBacilleratoId() . '" name="tipoBacillerato' . $dato->getTiposBacilleratoId() . '"  value="' . $dato->getTipoBacillerato() . '"/>
         </td>
         <td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_tiposBacilleratoId() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_tiposBacilleratoId() . ')">
+        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getTiposBacilleratoId() . ')">
+         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getTiposBacilleratoId() . ')">
         </td>
     </tr>
     ';
     }
     return $r;
 }
-if ($_SESSION['user']!="") {
-    try{
+if ($_SESSION['user'] != "") {
+    try {
         echo cargartablatipoBachillerato();
-    }
-    catch(\Exception $e){
+    } catch (\Exception $e) {
         echo $e;
     }
-} else{
-	echo '<tr>
+} else {
+    echo '<tr>
 		<td>
 		</td>
 		<td>
@@ -64,7 +63,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }

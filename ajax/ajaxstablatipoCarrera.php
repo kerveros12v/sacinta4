@@ -9,9 +9,9 @@ use Crud\CrudTipoCarreras;
 session_start();
 function cargartablaget_tipoCarreras()
 {
-    $r="";
+    $r = "";
     $crud = new CrudTipoCarreras();
-    $r.= '
+    $r .= '
 <tr>
     <td>
 
@@ -35,24 +35,24 @@ function cargartablaget_tipoCarreras()
 
         </td>
         <td>
-            <input type="text" class="camptext1" id="tipocarrerascodigo' . $dato->get_tipoCarrerasId() . '" name="tipocarrerascodigo' . $dato->get_tipoCarrerasId() . '"  maxlength="10" value="' . $dato->get_tipocarrerascodigo() . '"/>
+            <input type="text" class="camptext1" id="tipocarrerascodigo' . $dato->getTipoCarrerasId() . '" name="tipocarrerascodigo' . $dato->getTipoCarrerasId() . '"  maxlength="10" value="' . $dato->getTipocarrerascodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="tipoCarreras' . $dato->get_tipoCarrerasId() . '" name="tipoCarreras' . $dato->get_tipoCarrerasId() . '"  value="' . $dato->get_tipoCarreras() . '"/>
+            <input type="text" id="tipoCarreras' . $dato->getTipoCarrerasId() . '" name="tipoCarreras' . $dato->getTipoCarrerasId() . '"  value="' . $dato->getTipoCarreras() . '"/>
         </td>
         <td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_tipoCarrerasId() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_tipoCarrerasId() . ')">
+        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getTipoCarrerasId() . ')">
+         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getTipoCarrerasId() . ')">
         </td>
     </tr>
     ';
     }
     return $r;
 }
-if ($_SESSION['user']!="") {
+if ($_SESSION['user'] != "") {
     echo cargartablaget_tipoCarreras();
-} else{
-	echo '<tr>
+} else {
+    echo '<tr>
 		<td>
 		</td>
 		<td>
@@ -60,7 +60,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }

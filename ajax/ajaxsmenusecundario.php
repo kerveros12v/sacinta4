@@ -12,21 +12,21 @@ try {
     $lstpermisos = $crudpermisos->mostrarPermiso($a);
     $aux1 = 0;
     foreach ($lstpermisos as $key) {
-        if ($crudpermisos->mostrardepartamentosparametro($key->get_codDepartamento()) == 2)
+        if ($crudpermisos->mostrardepartamentosparametro($key->getCodDepartamento()) == 2)
 
-            $lstdepartamentos[] = $key->get_departamentosSubdivision();
+            $lstdepartamentos[] = $key->getDepartamentosSubdivision();
     }
     $unicosDepartamentos = array_unique($lstdepartamentos);
     asort($unicosDepartamentos);
 
     if ($unicosDepartamentos != null) {
         foreach ($unicosDepartamentos as $lp1) {
-             foreach ($lstpermisos as $dp) {
-                if ($lp1 == $dp->get_departamentosSubdivision()) {
-                    echo ('<li><a href="' . $dp->get_url() . '" target="contenedor1">' . $crudpermisos->mostrarDepartamento($dp->get_etiqueta())  . '</a></li>');
+            asort($lstpermisos);
+            foreach ($lstpermisos as $dp) {
+                if ($lp1 == $dp->getDepartamentosSubdivision()) {
+                    echo ('<li><a href="' . $dp->getUrl() . '" target="contenedor1">' . $dp->getEtiqueta()  . '</a></li>');
                 }
             }
-
         }
     }
 } catch (Exception $ex) {

@@ -3,7 +3,7 @@
 namespace Crud;
 
 require_once("conexion.php");
-require_once("../ec.edu.intsuperior/modelo/clasesphp/Periodoacademico.php");
+require_once("../clasesphp/Periodoacademico.php");
 
 use Crud\Db;
 use Clasesphp\Periodoacademico;

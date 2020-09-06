@@ -2,8 +2,8 @@
 
 namespace Crud;
 
-require_once("conexion.php");
-require_once("../ec.edu.intsuperior/modelo/clasesphp/Bimestres.php");
+require_once 'conexion.php';
+require_once '../clasesphp/Bimestres.php';
 
 use Clasesphp\Bimestres;
 
@@ -12,16 +12,13 @@ class CrudBimestres
 	// constructor de la clase
 	public function __construct()
 	{
-		$db = Db::conectar();
-		$select = $db->query("SET NAMES 'utf8'");
 	}
 
 	public function mostrar()
 	{
-
 		$db = Db::conectar();
 		$bimestres = null;
-		$select = $db->query("SELECT * FROM bimestres;");
+		$select = $db->query('SELECT * FROM bimestres;');
 		foreach ($select->fetchAll() as $bimestres) {
 			$mybimestres = new Bimestres();
 			$mybimestres->setIdBimestres($bimestres['idBimestres']);
@@ -33,8 +30,10 @@ class CrudBimestres
 			$mybimestres->setBimestresuser($bimestres['bimestresuser']);
 			$listabonoDesarrollo[] = $mybimestres;
 		}
+
 		return $listabonoDesarrollo;
 	}
+
 	public function obtenerBimestre($id)
 	{
 		$db = Db::conectar();
@@ -50,8 +49,10 @@ class CrudBimestres
 		$mybimestres->setBimestresAccion($bimestres['bimestresAccion']);
 		$mybimestres->setBimestresfecha($bimestres['bimestresfecha']);
 		$mybimestres->setBimestresuser($bimestres['bimestresuser']);
+
 		return $mybimestres;
 	}
+
 	public function obtenerDato($id)
 	{
 		$db = Db::conectar();
@@ -64,6 +65,7 @@ class CrudBimestres
 
 		return $mybimestres;
 	}
+
 	public function actualizar($bimestres)
 	{
 		$db = Db::conectar();
@@ -77,15 +79,16 @@ class CrudBimestres
         `bimestresfecha` = :bimestresfecha1,
         `bimestresuser` = :bimestresuser1
         WHERE `idBimestres` = :idBimestres1;');
-		$actualizar->bindValue('idBimestres1', $bimestres->get_idBimestres());
-		$actualizar->bindValue('bimestrescodigo1', $bimestres->get_bimestrescodigo());
-		$actualizar->bindValue('bimestre1', $bimestres->get_bimestre());
-		$actualizar->bindValue('bimestresOculto1', $bimestres->get_bimestresOculto());
-		$actualizar->bindValue('bimestresAccion1', $bimestres->get_bimestresAccion());
-		$actualizar->bindValue('bimestresfecha1', $bimestres->get_bimestresfecha());
-		$actualizar->bindValue('bimestresuser1', $bimestres->get_bimestresuser());
+		$actualizar->bindValue('idBimestres1', $bimestres->getIdBimestres());
+		$actualizar->bindValue('bimestrescodigo1', $bimestres->getBimestrescodigo());
+		$actualizar->bindValue('bimestre1', $bimestres->getBimestre());
+		$actualizar->bindValue('bimestresOculto1', $bimestres->getBimestresOculto());
+		$actualizar->bindValue('bimestresAccion1', $bimestres->getBimestresAccion());
+		$actualizar->bindValue('bimestresfecha1', $bimestres->getBimestresfecha());
+		$actualizar->bindValue('bimestresuser1', $bimestres->getBimestresuser());
 		$actualizar->execute();
 	}
+
 	public function insertar($bimestres)
 	{
 		$db = Db::conectar();
@@ -105,15 +108,16 @@ class CrudBimestres
         :bimestresAccion1,
         :bimestresfecha1,
         :bimestresuser1);');
-		$insert->bindValue('idBimestres1', $bimestres->get_idBimestres());
-		$insert->bindValue('bimestrescodigo1', $bimestres->get_bimestrescodigo());
-		$insert->bindValue('bimestre1', $bimestres->get_bimestre());
-		$insert->bindValue('bimestresOculto1', $bimestres->get_bimestresOculto());
-		$insert->bindValue('bimestresAccion1', $bimestres->get_bimestresAccion());
-		$insert->bindValue('bimestresfecha1', $bimestres->get_bimestresfecha());
-		$insert->bindValue('bimestresuser1', $bimestres->get_bimestresuser());
+		$insert->bindValue('idBimestres1', $bimestres->getIdBimestres());
+		$insert->bindValue('bimestrescodigo1', $bimestres->getBimestrescodigo());
+		$insert->bindValue('bimestre1', $bimestres->getBimestre());
+		$insert->bindValue('bimestresOculto1', $bimestres->getBimestresOculto());
+		$insert->bindValue('bimestresAccion1', $bimestres->getBimestresAccion());
+		$insert->bindValue('bimestresfecha1', $bimestres->getBimestresfecha());
+		$insert->bindValue('bimestresuser1', $bimestres->getBimestresuser());
 		$insert->execute();
 	}
+
 	public function eliminar($id)
 	{
 		$db = Db::conectar();

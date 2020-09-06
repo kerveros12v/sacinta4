@@ -4,6 +4,7 @@ require_once("../controladores/respuestasgenerales.php");
 
 use Clasesphp\Etnias;
 use Crud\CrudEtnia;
+
 session_start();
 function cargarEtniasT()
 {
@@ -30,22 +31,22 @@ function cargarEtniasT()
 			<td>
 			</td>
 			<td>
-				<input type="text" class="camptext1" id="etniascodigo' . $dato->get_etniaId() . '" name="etniascodigo' . $dato->get_etniaId() . '" required="required" value="' . $dato->get_etniascodigo() . '" />
+				<input type="text" class="camptext1" id="etniascodigo' . $dato->getEtniaId() . '" name="etniascodigo' . $dato->getEtniaId() . '" required="required" value="' . $dato->getEtniascodigo() . '" />
 			</td>
 			<td>
-				<input type="text" id="etnia' . $dato->get_etniaId() . '" name="etnia' . $dato->get_etniaId() . '" required="required" value="' . $dato->get_etnia() . '" />
+				<input type="text" id="etnia' . $dato->getEtniaId() . '" name="etnia' . $dato->getEtniaId() . '" required="required" value="' . $dato->getEtnia() . '" />
 			</td>
 			<td>
-				<input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_etniaId() . ')">
- 				<input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_etniaId() . ')">
+				<input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getEtniaId() . ')">
+ 				<input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getEtniaId() . ')">
 			</td>
 		</tr>';
 	}
 	return $lista;
 }
-if ($_SESSION['user']!="") {
+if ($_SESSION['user'] != "") {
 	echo cargarEtniasT();
-} else{
+} else {
 	echo '<tr>
 		<td>
 		</td>
@@ -54,9 +55,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }
-
-?>

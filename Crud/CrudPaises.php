@@ -22,13 +22,13 @@ class CrudPaises
 		$select = $db->query("SELECT * FROM `paises` ");
 		foreach ($select->fetchAll() as $paises1) {
 			$mypaises = new Paises();
-			$mypaises->set_paisId($paises1['paisId']);
-			$mypaises->set_pais($paises1['pais']);
-			$mypaises->set_codigo($paises1['paisescodigo']);
-			$mypaises->set_oculto($paises1['paisesOculto']);
-			$mypaises->set_estado($paises1['paisesAccion']);
-			$mypaises->set_fecha($paises1['paisesfecha']);
-			$mypaises->set_user($paises1['paisesuser']);
+			$mypaises->setPaisId($paises1['paisId']);
+			$mypaises->setPais($paises1['pais']);
+			$mypaises->setPaisescodigo($paises1['paisescodigo']);
+			$mypaises->setPaisesOculto($paises1['paisesOculto']);
+			$mypaises->setPaisesAccion($paises1['paisesAccion']);
+			$mypaises->setPaisesfecha($paises1['paisesfecha']);
+			$mypaises->setPaisesuser($paises1['paisesuser']);
 			$listapaises[] = $mypaises;
 		}
 		return $listapaises;
@@ -48,13 +48,13 @@ class CrudPaises
 		$select->execute();
 		$paises1 = $select->fetch();
 		$mypaises = new Paises();
-		$mypaises->set_paisId($paises1['paisId']);
-		$mypaises->set_pais($paises1['pais']);
-		$mypaises->set_codigo($paises1['paisescodigo']);
-		$mypaises->set_oculto($paises1['paisesOculto']);
-		$mypaises->set_estado($paises1['paisesAccion']);
-		$mypaises->set_fecha($paises1['paisesfecha']);
-		$mypaises->set_user($paises1['paisesuser']);
+		$mypaises->setPaisId($paises1['paisId']);
+		$mypaises->setPais($paises1['pais']);
+		$mypaises->setPaisescodigo($paises1['paisescodigo']);
+		$mypaises->setPaisesOculto($paises1['paisesOculto']);
+		$mypaises->setPaisesAccion($paises1['paisesAccion']);
+		$mypaises->setPaisesfecha($paises1['paisesfecha']);
+		$mypaises->setPaisesuser($paises1['paisesuser']);
 
 		return $mypaises;
 	}
@@ -83,13 +83,13 @@ class CrudPaises
 			`paisesuser` = :paisesuser1
 			WHERE `paisId` = :paisId1;
 			');
-		$actualizar->bindValue('paisId1', $paises1->get_paisId());
-		$actualizar->bindValue('paisescodigo1', $paises1->get_codigo());
-		$actualizar->bindValue('pais1', $paises1->get_pais());
-		$actualizar->bindValue('paisesOculto1', $paises1->get_oculto());
-		$actualizar->bindValue('paisesAccion1', $paises1->get_estado());
-		$actualizar->bindValue('paisesfecha1', $paises1->get_fecha());
-		$actualizar->bindValue('paisesuser1', $paises1->get_user());
+		$actualizar->bindValue('paisId1', $paises1->getPaisId());
+		$actualizar->bindValue('paisescodigo1', $paises1->getPaisescodigo());
+		$actualizar->bindValue('pais1', $paises1->getPais());
+		$actualizar->bindValue('paisesOculto1', $paises1->getPaisesOculto());
+		$actualizar->bindValue('paisesAccion1', $paises1->getPaisesAccion());
+		$actualizar->bindValue('paisesfecha1', $paises1->getPaisesfecha());
+		$actualizar->bindValue('paisesuser1', $paises1->getPaisesuser());
 		$actualizar->execute();
 	}
 	public function insertar($paises1)
@@ -112,14 +112,14 @@ class CrudPaises
 			:paisesfecha1,
 			:paisesuser1);
 			');
+		$insert->bindValue('paisId1', $paises1->getPaisId());
+		$insert->bindValue('paisescodigo1', $paises1->getPaisescodigo());
+		$insert->bindValue('pais1', $paises1->getPais());
+		$insert->bindValue('paisesOculto1', $paises1->getPaisesOculto());
+		$insert->bindValue('paisesAccion1', $paises1->getPaisesAccion());
+		$insert->bindValue('paisesfecha1', $paises1->getPaisesfecha());
+		$insert->bindValue('paisesuser1', $paises1->getPaisesuser());
 
-		$insert->bindValue('paisId1', $paises1->get_paisId());
-		$insert->bindValue('paisescodigo1', $paises1->get_codigo());
-		$insert->bindValue('pais1', $paises1->get_pais());
-		$insert->bindValue('paisesOculto1', $paises1->get_oculto());
-		$insert->bindValue('paisesAccion1', $paises1->get_estado());
-		$insert->bindValue('paisesfecha1', $paises1->get_fecha());
-		$insert->bindValue('paisesuser1', $paises1->get_user());
 
 		$insert->execute();
 	}

@@ -1,10 +1,11 @@
 <?php
-require_once ("../Crud/CrudProvincia.php");
-function cargarProvincias($opt){
-	$oCrudprovinciaRecidencia=new \Crud\CrudProvincias();
-				$listaprovinciaRecidencia=$oCrudprovinciaRecidencia->mostrar();
-				$dato=new \Clasesphp\Provincias();
-                $lista='<tr>
+require_once("../Crud/CrudProvincia.php");
+function cargarProvincias($opt)
+{
+    $oCrudprovinciaRecidencia = new \Crud\CrudProvincias();
+    $listaprovinciaRecidencia = $oCrudprovinciaRecidencia->mostrar();
+    $dato = new \Clasesphp\Provincias();
+    $lista = '<tr class="ui-widget-header">
                             <th>
                                 Codigo
                             </th>
@@ -27,30 +28,29 @@ function cargarProvincias($opt){
                             </td>
                         </tr>
                        ';
-                foreach($listaprovinciaRecidencia as $dato){
-                    if($dato->get_provinciapais()==$opt){
-                    $lista.='
+    foreach ($listaprovinciaRecidencia as $dato) {
+        if ($dato->getProvinciapais() == $opt) {
+            $lista .= '
                     <tr>
                     <td>
-                            <input type="text" class="camptext1" id="provinciacodigo'.$dato->get_provinciaId().'" name="provinciacodigo'.$dato->get_provinciaId().'"   value="'.$dato->get_provinciacodigo().'"  required="required" />
+                            <input type="text" class="camptext1" id="provinciacodigo' . $dato->getProvinciaId() . '" name="provinciacodigo' . $dato->getProvinciaId() . '"   value="' . $dato->getProvinciacodigo() . '"  required="required" />
                         </td>
                         <td>
-                            <input type="text" id="provincia'.$dato->get_provinciaId().'" name="provincia'.$dato->get_provinciaId().'"   value="'.$dato->get_provincia().'"  required="required" />
+                            <input type="text" id="provincia' . $dato->getProvinciaId() . '" name="provincia' . $dato->getProvinciaId() . '"   value="' . $dato->getProvincia() . '"  required="required" />
                         </td>
                         <td>
                         <div class=enlinea>
-                            <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar('.$dato->get_provinciaId().')">
-                            <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar('.$dato->get_provinciaId().')">
+                            <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getProvinciaId() . ')">
+                            <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getProvinciaId() . ')">
                         </div>
                         </td>
                     </tr>';
-                    }
-                }
-			return $lista;
+        }
+    }
+    return $lista;
 }
 
 
 
 
 echo cargarProvincias($_POST['id']);
-?>

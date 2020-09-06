@@ -3,12 +3,13 @@ require_once("../Crud/CrudTituloTercerNivel.php");
 require_once("../controladores/respuestasgenerales.php");
 
 use Crud\CrudTituloTercerNivel;
+
 session_start();
 function cargartablatitulotercernivel()
 {
-    $r="";
+    $r = "";
     $crud = new CrudTituloTercerNivel();
-    $r.= '
+    $r .= '
 <tr>
     <td>
 
@@ -32,32 +33,26 @@ function cargartablatitulotercernivel()
 
         </td>
         <td>
-            <input type="text" class="camptext1" id="titulotercernivelcodigo' . $dato->get_tituloTercerNivelId() . '" name="titulotercernivelcodigo' . $dato->get_tituloTercerNivelId() . '"  maxlength="10" value="' . $dato->get_titulotercernivelcodigo() . '"/>
+            <input type="text" class="camptext1" id="titulotercernivelcodigo' . $dato->getTituloTercerNivelId() . '" name="titulotercernivelcodigo' . $dato->getTituloTercerNivelId() . '"  maxlength="10" value="' . $dato->getTitulotercernivelcodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="tituloTercerNivel' . $dato->get_tituloTercerNivelId() . '" name="tituloTercerNivel' . $dato->get_tituloTercerNivelId() . '"  value="' . $dato->get_tituloTercerNivel() . '"/>
+            <input type="text" id="tituloTercerNivel' . $dato->getTituloTercerNivelId() . '" name="tituloTercerNivel' . $dato->getTituloTercerNivelId() . '"  value="' . $dato->getTituloTercerNivel() . '"/>
         </td>
         <td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_tituloTercerNivelId() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_tituloTercerNivelId() . ')">
+        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getTituloTercerNivelId() . ')">
+         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getTituloTercerNivelId() . ')">
         </td>
     </tr>
     ';
     }
     return $r;
 }
-if ($_SESSION['user']!="") {
+if ($_SESSION['user'] != "") {
     echo cargartablatitulotercernivel();
-} else{
-	echo '<tr>
+} else {
+    echo '<tr>
 		<td>
-		</td>
-		<td>
-		</td>
-		<td>
-		</td>
-		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }

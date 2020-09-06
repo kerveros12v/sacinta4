@@ -7,28 +7,26 @@ use Crud\CrudBimestres;
 
 session_start();
 
-
-
 function opcionBimestre()
 {
     try {
         $datos = new Bimestres();
         $crud = new CrudBimestres();
 
-        $datos->set_idBimestres($_POST['id']);
-        $datos->set_bimestre($_POST['nom']);
-        $datos->set_bimestrescodigo($_POST['cod']);
-        $datos->set_bimestresOculto($_POST['eliminar']);
-        $datos->set_bimestresAccion($_POST['actualizar']);
-        $datos->set_bimestresfecha(date("Y-m-d"));
-        $datos->set_bimestresuser($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->setIdBimestres($_POST['id']);
+        $datos->setBimestre($_POST['nom']);
+        $datos->setBimestrescodigo($_POST['cod']);
+        $datos->setBimestresOculto($_POST['eliminar']);
+        $datos->setBimestresAccion($_POST['actualizar']);
+        $datos->setBimestresfecha(date("Y-m-d"));
+        $datos->setBimestresuser($_SESSION['tipouser'] . $_SESSION['user']);
 
         $opcion = $_POST['opt'];
 
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_idBimestres(null);
+                $datos->setIdBimestres(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -37,7 +35,7 @@ function opcionBimestre()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_idBimestres());
+                $crud->eliminar($datos->getIdBimestres());
                 return (eliminarR());
             }
         }

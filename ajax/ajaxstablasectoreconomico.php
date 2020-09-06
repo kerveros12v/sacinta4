@@ -8,9 +8,9 @@ use Crud\CrudSectorEconomico;
 session_start();
 function cargartablaSectorEconomico()
 {
-    $r="";
+    $r = "";
     $crud = new CrudSectorEconomico();
-    $r.= '
+    $r .= '
 <tr>
     <td>
 
@@ -34,29 +34,28 @@ function cargartablaSectorEconomico()
 
         </td>
         <td>
-            <input type="text" class="camptext1" id="sectoreconomicocodigo' . $dato->get_sectorEconomicoid() . '" name="sectoreconomicocodigo' . $dato->get_sectorEconomicoid() . '"  maxlength="10" value="' . $dato->get_sectoreconomicocodigo() . '"/>
+            <input type="text" class="camptext1" id="sectoreconomicocodigo' . $dato->getSectorEconomicoid() . '" name="sectoreconomicocodigo' . $dato->getSectorEconomicoid() . '"  maxlength="10" value="' . $dato->getSectoreconomicocodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="SectorEconomico' . $dato->get_sectorEconomicoid() . '" name="SectorEconomico' . $dato->get_sectorEconomicoid() . '"  value="' . $dato->get_SectorEconomico() . '"/>
+            <input type="text" id="SectorEconomico' . $dato->getSectorEconomicoid() . '" name="SectorEconomico' . $dato->getSectorEconomicoid() . '"  value="' . $dato->getSectorEconomico() . '"/>
         </td>
         <td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_sectorEconomicoid() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_sectorEconomicoid() . ')">
+        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getSectorEconomicoid() . ')">
+         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getSectorEconomicoid() . ')">
         </td>
     </tr>
     ';
     }
     return $r;
 }
-if ($_SESSION['user']!="") {
-    try{
+if ($_SESSION['user'] != "") {
+    try {
         echo cargartablaSectorEconomico();
-    }
-    catch(\Exception $e){
+    } catch (\Exception $e) {
         echo $e;
     }
-} else{
-	echo '<tr>
+} else {
+    echo '<tr>
 		<td>
 		</td>
 		<td>
@@ -64,7 +63,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }

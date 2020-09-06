@@ -21,13 +21,13 @@ class CrudTipocolegio
 		$select = $db->query("SELECT * FROM `tipocolegio`");
 		foreach ($select->fetchAll() as $tipocolegio) {
 			$mytipocolegio = new Tipocolegio();
-			$mytipocolegio->set_tipoColegioId($tipocolegio['tipoColegioId']);
-			$mytipocolegio->set_tipoColegio($tipocolegio['tipoColegio']);
-			$mytipocolegio->set_tipocolegiocodigo($tipocolegio['tipocolegiocodigo']);
-			$mytipocolegio->set_tipocolegioOculto($tipocolegio['tipocolegioOculto']);
-			$mytipocolegio->set_tipocolegioAccion($tipocolegio['tipocolegioAccion']);
-			$mytipocolegio->set_tipocolegiofecha($tipocolegio['tipocolegiofecha']);
-			$mytipocolegio->set_tipocolegiouser($tipocolegio['tipocolegiouser']);
+			$mytipocolegio->setTipoColegioId($tipocolegio['tipoColegioId']);
+			$mytipocolegio->setTipoColegio($tipocolegio['tipoColegio']);
+			$mytipocolegio->setTipocolegiocodigo($tipocolegio['tipocolegiocodigo']);
+			$mytipocolegio->setTipocolegioOculto($tipocolegio['tipocolegioOculto']);
+			$mytipocolegio->setTipocolegioAccion($tipocolegio['tipocolegioAccion']);
+			$mytipocolegio->setTipocolegiofecha($tipocolegio['tipocolegiofecha']);
+			$mytipocolegio->setTipocolegiouser($tipocolegio['tipocolegiouser']);
 			$listatipocolegio[] = $mytipocolegio;
 		}
 		return $listatipocolegio;
@@ -48,13 +48,13 @@ class CrudTipocolegio
 		$select->execute();
 		$tipocolegio = $select->fetch();
 		$mytipocolegio = new Tipocolegio();
-		$mytipocolegio->set_tipoColegioId($tipocolegio['tipoColegioId']);
-		$mytipocolegio->set_tipoColegio($tipocolegio['tipoColegio']);
-		$mytipocolegio->set_tipocolegiocodigo($tipocolegio['tipocolegiocodigo']);
-		$mytipocolegio->set_tipocolegioOculto($tipocolegio['tipocolegioOculto']);
-		$mytipocolegio->set_tipocolegioAccion($tipocolegio['tipocolegioAccion']);
-		$mytipocolegio->set_tipocolegiofecha($tipocolegio['tipocolegiofecha']);
-		$mytipocolegio->set_tipocolegiouser($tipocolegio['tipocolegiouser']);
+		$mytipocolegio->setTipoColegioId($tipocolegio['tipoColegioId']);
+		$mytipocolegio->setTipoColegio($tipocolegio['tipoColegio']);
+		$mytipocolegio->setTipocolegiocodigo($tipocolegio['tipocolegiocodigo']);
+		$mytipocolegio->setTipocolegioOculto($tipocolegio['tipocolegioOculto']);
+		$mytipocolegio->setTipocolegioAccion($tipocolegio['tipocolegioAccion']);
+		$mytipocolegio->setTipocolegiofecha($tipocolegio['tipocolegiofecha']);
+		$mytipocolegio->setTipocolegiouser($tipocolegio['tipocolegiouser']);
 
 		return $mytipocolegio;
 	}
@@ -83,13 +83,13 @@ class CrudTipocolegio
 		`tipocolegiofecha` = :tipocolegiofecha1,
 		`tipocolegiouser` = :tipocolegiouser1
 		WHERE `tipoColegioId` = :tipoColegioId1;');
-		$actualizar->bindValue('tipoColegioId1', $tipocolegio->get_tipoColegioId());
-		$actualizar->bindValue('tipocolegiocodigo1', $tipocolegio->get_tipocolegiocodigo());
-		$actualizar->bindValue('tipoColegio1', $tipocolegio->get_tipoColegio());
-		$actualizar->bindValue('tipocolegioOculto1', $tipocolegio->get_tipocolegioOculto());
-		$actualizar->bindValue('tipocolegioAccion1', $tipocolegio->get_tipocolegioAccion());
-		$actualizar->bindValue('tipocolegiofecha1', $tipocolegio->get_tipocolegiofecha());
-		$actualizar->bindValue('tipocolegiouser1', $tipocolegio->get_tipocolegiouser());
+		$actualizar->bindValue('tipoColegioId1', $tipocolegio->getTipoColegioId());
+		$actualizar->bindValue('tipocolegiocodigo1', $tipocolegio->getTipocolegiocodigo());
+		$actualizar->bindValue('tipoColegio1', $tipocolegio->getTipoColegio());
+		$actualizar->bindValue('tipocolegioOculto1', $tipocolegio->getTipocolegioOculto());
+		$actualizar->bindValue('tipocolegioAccion1', $tipocolegio->getTipocolegioAccion());
+		$actualizar->bindValue('tipocolegiofecha1', $tipocolegio->getTipocolegiofecha());
+		$actualizar->bindValue('tipocolegiouser1', $tipocolegio->getTipocolegiouser());
 		$actualizar->execute();
 	}
 	public function insertar($tipocolegio)
@@ -111,13 +111,14 @@ class CrudTipocolegio
 		:tipocolegioAccion1,
 		:tipocolegiofecha1,
 		:tipocolegiouser1);');
-		$insert->bindValue('tipoColegioId1', $tipocolegio->get_tipoColegioId());
-		$insert->bindValue('tipocolegiocodigo1', $tipocolegio->get_tipocolegiocodigo());
-		$insert->bindValue('tipoColegio1', $tipocolegio->get_tipoColegio());
-		$insert->bindValue('tipocolegioOculto1', $tipocolegio->get_tipocolegioOculto());
-		$insert->bindValue('tipocolegioAccion1', $tipocolegio->get_tipocolegioAccion());
-		$insert->bindValue('tipocolegiofecha1', $tipocolegio->get_tipocolegiofecha());
-		$insert->bindValue('tipocolegiouser1', $tipocolegio->get_tipocolegiouser());
+		$insert->bindValue('tipoColegioId1', $tipocolegio->getTipoColegioId());
+		$insert->bindValue('tipocolegiocodigo1', $tipocolegio->getTipocolegiocodigo());
+		$insert->bindValue('tipoColegio1', $tipocolegio->getTipoColegio());
+		$insert->bindValue('tipocolegioOculto1', $tipocolegio->getTipocolegioOculto());
+		$insert->bindValue('tipocolegioAccion1', $tipocolegio->getTipocolegioAccion());
+		$insert->bindValue('tipocolegiofecha1', $tipocolegio->getTipocolegiofecha());
+		$insert->bindValue('tipocolegiouser1', $tipocolegio->getTipocolegiouser());
+
 		$insert->execute();
 	}
 }

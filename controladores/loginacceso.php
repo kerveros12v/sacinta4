@@ -15,8 +15,8 @@ try {
   ////////////////////////////////////
 
   if ($usuario_1 == "admin" && $clave_1 == "admin") {
-    $_SESSION['user'] = "Desarrollador";
-    $_SESSION['tipouser'] = "Desarrollador";
+    $_SESSION['user'] = "DESARROLLADOR";
+    $_SESSION['tipouser'] = "DESS";
     $_SESSION['acceso'] = 1;
     cargarplantilla();
   } else {
@@ -76,7 +76,7 @@ function cargarlogin()
 {
   try {
     header("Status: 301 Moved Permanently");
-    header("Location: ../../../Templates/login.php");
+    header("Location: ../Templates/login.php");
   } catch (Exception $ex) {
     echo ("<script>console.log('" . $ex . "');</script>");
   }
@@ -85,7 +85,7 @@ function cargarplantilla()
 {
   try {
     header("Status: 301 Moved Permanently");
-    header("Location: ../../../Templates/plantillaBase.php");
+    header("Location: ../Templates/plantillaBase.php");
   } catch (Exception $ex) {
     echo ("<script>console.log('" . $ex . "');</script>");
   }

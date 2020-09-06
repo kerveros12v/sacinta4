@@ -1,13 +1,15 @@
 <?php
 require_once("../Crud/CrudTipoSangre.php");
 require_once("../controladores/respuestasgenerales.php");
+
 use Crud\CrudTipoSangre;
+
 session_start();
 function cargartablatipoSangre()
 {
-    $r="";
+    $r = "";
     $crud = new CrudTipoSangre();
-    $r.= '
+    $r .= '
 <tr>
     <td>
 
@@ -31,24 +33,24 @@ function cargartablatipoSangre()
 
         </td>
         <td>
-            <input type="text" class="camptext1" id="tipossangrescodigo' . $dato->get_tipoSangreId() . '" name="tipossangrescodigo' . $dato->get_tipoSangreId() . '"  maxlength="10" value="' . $dato->get_tipossangrescodigo() . '"/>
+            <input type="text" class="camptext1" id="tipossangrescodigo' . $dato->getTipoSangreId() . '" name="tipossangrescodigo' . $dato->getTipoSangreId() . '"  maxlength="10" value="' . $dato->getTipossangrescodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="tipoSangre' . $dato->get_tipoSangreId() . '" name="tipoSangre' . $dato->get_tipoSangreId() . '"  value="' . $dato->get_tipoSangre() . '"/>
+            <input type="text" id="tipoSangre' . $dato->getTipoSangreId() . '" name="tipoSangre' . $dato->getTipoSangreId() . '"  value="' . $dato->getTipoSangre() . '"/>
         </td>
         <td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_tipoSangreId() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_tipoSangreId() . ')">
+        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getTipoSangreId() . ')">
+         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getTipoSangreId() . ')">
         </td>
     </tr>
     ';
     }
     return $r;
 }
-if ($_SESSION['user']!="") {
+if ($_SESSION['user'] != "") {
     echo cargartablatipoSangre();
-} else{
-	echo '<tr>
+} else {
+    echo '<tr>
 		<td>
 		</td>
 		<td>
@@ -56,7 +58,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }

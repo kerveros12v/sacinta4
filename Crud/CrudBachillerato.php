@@ -3,7 +3,7 @@
 namespace Crud;
 
 require_once("conexion.php");
-require_once("../ec.edu.intsuperior/modelo/clasesphp/Bachilleratos.php");
+require_once("../clasesphp/Bachilleratos.php");
 
 use Crud\Db;
 use Clasesphp\Bachilleratos;
@@ -18,10 +18,8 @@ class CrudBachillerato
 	{
 		$this->dbmysql = Db::conectar();
 	}
-
 	public  function mostrar()
 	{
-
 		$listabachillerato = null;
 		$select = $this->dbmysql->query("SELECT * FROM `bachillerato`");
 		foreach ($select->fetchAll() as $bachillerato) {

@@ -13,20 +13,20 @@ function opcionTitulotercernivel()
         $datos = new Titulotercernivel();
         $crud = new CrudTituloTercerNivel();
 
-        $datos->set_tituloTercerNivelId($_POST['tituloTercerNivelId']);
-        $datos->set_tituloTercerNivel($_POST['tituloTercerNivel']);
-        $datos->set_titulotercernivelcodigo($_POST['titulotercernivelcodigo']);
-        $datos->set_titulotercernivelOculto($_POST['eliminar']);
-        $datos->set_titulotercernivelAccion($_POST['actualizar']);
-        $datos->set_titulotercernivelfecha(date("Y-m-d"));
-        $datos->set_titulotercerniveluse($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->setTituloTercerNivelId($_POST['tituloTercerNivelId']);
+        $datos->setTituloTercerNivel($_POST['tituloTercerNivel']);
+        $datos->setTitulotercernivelcodigo($_POST['titulotercernivelcodigo']);
+        $datos->setTitulotercernivelOculto($_POST['eliminar']);
+        $datos->setTitulotercernivelAccion($_POST['actualizar']);
+        $datos->setTitulotercernivelfecha(date("Y-m-d"));
+        $datos->setTitulotercerniveluser($_SESSION['tipouser'] . $_SESSION['user']);
 
         $opcion = $_POST['opt'];
 
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_tituloTercerNivelId(null);
+                $datos->setTituloTercerNivelId(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -35,7 +35,7 @@ function opcionTitulotercernivel()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_tituloTercerNivelId());
+                $crud->eliminar($datos->getTituloTercerNivelId());
                 return (eliminarR());
             }
         }

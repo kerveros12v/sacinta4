@@ -11,10 +11,10 @@ function cargarProvincias($opt)
     $provinciaRecidencia = new Provincias();
     $lista = '<option disabled><label>Seleccione una Provincia</label></option>"';
     foreach ($listaprovinciaRecidencia as $provinciaRecidencia) {
-        if ($opt == $provinciaRecidencia->get_provinciaId()) {
-            $lista .= "<option selected='selected' value='" . $provinciaRecidencia->get_provinciaId() . "'><label>" . (($provinciaRecidencia->get_provincia())) . "</label></option>";
+        if ($opt == $provinciaRecidencia->getProvinciaId()) {
+            $lista .= "<option selected='selected' value='" . $provinciaRecidencia->getProvinciaId() . "'><label>" . (($provinciaRecidencia->getProvincia())) . "</label></option>";
         } else {
-            $lista .= "<option value='" . $provinciaRecidencia->get_provinciaId() . "'><label>" . (($provinciaRecidencia->get_provincia())) . "</label></option>";
+            $lista .= "<option value='" . $provinciaRecidencia->getProvinciaId() . "'><label>" . (($provinciaRecidencia->getProvincia())) . "</label></option>";
         }
     }
 
@@ -28,7 +28,7 @@ function cargarProvinciasporpais($opt)
     $provinciaRecidencia = new Provincias();
     $lista = '<option disabled><label>Seleccione una Provincia</label></option>"';
     foreach ($listaprovinciaRecidencia as $provinciaRecidencia) {
-        $lista .= "<option value='" . $provinciaRecidencia->get_provinciaId() . "'><label>" . (($provinciaRecidencia->get_provincia())) . "</label></option>";
+        $lista .= "<option value='" . $provinciaRecidencia->getProvinciaId() . "'><label>" . (($provinciaRecidencia->getProvincia())) . "</label></option>";
     }
     return $lista;
 }
@@ -39,10 +39,10 @@ function cargarProvincias_pais($opt, $provincia)
     $provinciaRecidencia = new Provincias();
     $lista = '<option disabled><label>Seleccione una Provincia</label></option>"';
     foreach ($listaprovinciaRecidencia as $provinciaRecidencia) {
-        if ($provincia == $provinciaRecidencia->get_provinciaId()) {
-            $lista .= "<option selected='selected' value='" . $provinciaRecidencia->get_provinciaId() . "'><label>" . (($provinciaRecidencia->get_provincia())) . "</label></option>";
+        if ($provincia == $provinciaRecidencia->getProvinciaId()) {
+            $lista .= "<option selected='selected' value='" . $provinciaRecidencia->getProvinciaId() . "'><label>" . (($provinciaRecidencia->getProvincia())) . "</label></option>";
         } else {
-            $lista .= "<option value='" . $provinciaRecidencia->get_provinciaId() . "'><label>" . (($provinciaRecidencia->get_provincia())) . "</label></option>";
+            $lista .= "<option value='" . $provinciaRecidencia->getProvinciaId() . "'><label>" . (($provinciaRecidencia->getProvincia())) . "</label></option>";
         }
     }
     return $lista;

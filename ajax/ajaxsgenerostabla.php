@@ -5,6 +5,7 @@ require_once("../controladores/respuestasgenerales.php");
 
 use Clasesphp\Generos;
 use Crud\CrudGeneros;
+
 session_start();
 function cargarGeneroT()
 {
@@ -31,22 +32,22 @@ function cargarGeneroT()
 			<td>
 			</td>
 			<td>
-				<input type="text" class="camptext1" id="generoscodigo' . $dato->get_generoId() . '" name="generoscodigo' . $dato->get_generoId() . '" required="required" value="' . $dato->get_generoscodigo() . '" />
+				<input type="text" class="camptext1" id="generoscodigo' . $dato->getGeneroId() . '" name="generoscodigo' . $dato->getGeneroId() . '" required="required" value="' . $dato->getGeneroscodigo() . '" />
 			</td>
 			<td>
-				<input type="text" id="genero' . $dato->get_generoId() . '" name="genero' . $dato->get_generoId() . '" required="required" value="' . $dato->get_genero() . '" />
+				<input type="text" id="genero' . $dato->getGeneroId() . '" name="genero' . $dato->getGeneroId() . '" required="required" value="' . $dato->getGenero() . '" />
 			</td>
 			<td>
-				<input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_generoId() . ')">
- 				<input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_generoId() . ')">
+				<input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getGeneroId() . ')">
+ 				<input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getGeneroId() . ')">
 			</td>
 		</tr>';
 	}
 	return $lista;
 }
-if ($_SESSION['user']!="") {
+if ($_SESSION['user'] != "") {
 	echo cargarGeneroT();
-} else{
+} else {
 	echo '<tr>
 		<td>
 		</td>
@@ -55,9 +56,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }
-
-?>

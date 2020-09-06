@@ -60,21 +60,21 @@ function cargarCanton($opt,$p){
                     $lista.='
                     <tr>
                     <td>
-                            <input type="text" class="camptext1" id="cantoncodigo'.$dato->get_cantonId().'" name="cantoncodigo'.$dato->get_cantonId().'"   value="'.$dato->get_cantoncodigo().'"  required="required" />
+                            <input type="text" class="camptext1" id="cantoncodigo'.$dato->getCantonId().'" name="cantoncodigo'.$dato->getCantonId().'"   value="'.$dato->getCantoncodigo().'"  required="required" />
                         </td>
                         <td>
-                            <input type="text" id="canton'.$dato->get_cantonId().'" name="canton'.$dato->get_cantonId().'"   value="'.$dato->get_canton().'"  required="required" />
+                            <input type="text" id="canton'.$dato->getCantonId().'" name="canton'.$dato->getCantonId().'"   value="'.$dato->getCanton().'"  required="required" />
                         </td>
                         <td>
 
-                            <select class="selector"  id="provinciacanton1'.$dato->get_cantonId().'" name="provinciacanton1'.$dato->get_cantonId().'">
-                            '.cargarProvincias_pais($p,$dato->get_cantonprovincia()).'
+                            <select class="selector"  id="provinciacanton1'.$dato->getCantonId().'" name="provinciacanton1'.$dato->getCantonId().'">
+                            '.cargarProvincias_pais($p,$dato->getCantonprovincia()).'
                             </select>
                         </td>
                         <td>
                         <div class=enlinea>
-                            <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar('.$dato->get_cantonId().')">
-                            <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar('.$dato->get_cantonId().')">
+                            <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar('.$dato->getCantonId().')">
+                            <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar('.$dato->getCantonId().')">
                         </div>
                         </td>
                     </tr>';
@@ -90,5 +90,3 @@ if ($_SESSION['user']!="") {
  }else {
     echo tiempoExedido();
  }
-
-?>

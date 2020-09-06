@@ -1,11 +1,14 @@
 <?php
 require_once("../Crud/CrudBonodesarrollo.php");
+
 use Crud\CrudBonodesarrollo;
+
+session_start();
 function cargartablatitulotercernivel()
 {
-    $r="";
+    $r = "";
     $crud = new CrudBonodesarrollo();
-    $r.= '
+    $r .= '
 <tr>
     <td>
 
@@ -26,21 +29,34 @@ function cargartablatitulotercernivel()
         $r .= '
     <tr>
         <td>
-
         </td>
         <td>
-            <input type="text" class="camptext1" id="bonodesarrollocodigo' . $dato->get_bonoDesarrolloId() . '" name="bonodesarrollocodigo' . $dato->get_bonoDesarrolloId() . '"  maxlength="10" value="' . $dato->get_bonodesarrollocodigo() . '"/>
+            <input type="text" class="camptext1" id="bonodesarrollocodigo' . $dato->getBonoDesarrolloId() . '" name="bonodesarrollocodigo' . $dato->getBonoDesarrolloId() . '"  maxlength="10" value="' . $dato->getBonodesarrollocodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="bonoDesarrollo' . $dato->get_bonoDesarrolloId() . '" name="bonoDesarrollo' . $dato->get_bonoDesarrolloId() . '"  value="' . $dato->get_bonoDesarrollo() . '"/>
+            <input type="text" id="bonoDesarrollo' . $dato->getBonoDesarrolloId() . '" name="bonoDesarrollo' . $dato->getBonoDesarrolloId() . '"  value="' . $dato->getBonoDesarrollo() . '"/>
         </td>
         <td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_bonoDesarrolloId() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_bonoDesarrolloId() . ')">
+        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getBonoDesarrolloId() . ')">
+         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getBonoDesarrolloId() . ')">
         </td>
     </tr>
     ';
     }
     return $r;
 }
-echo cargartablatitulotercernivel();
+if ($_SESSION['user'] != "") {
+    echo cargartablatitulotercernivel();
+} else {
+    echo '<tr>
+		<td>
+		</td>
+		<td>
+		</td>
+		<td>
+		</td>
+		<td>
+			' . tiempoExedido() . '
+		</td>
+	</tr>';
+}

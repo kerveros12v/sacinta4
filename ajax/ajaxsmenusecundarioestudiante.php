@@ -12,22 +12,21 @@ try {
     $lstpermisos = $crudpermisos->mostrarPermiso($a);
     $aux1 = 0;
     foreach ($lstpermisos as $key) {
-        if ($crudpermisos->mostrardepartamentosparametro($key->get_codDepartamento()) == 3)
+        if ($crudpermisos->mostrardepartamentosparametro($key->getCodDepartamento()) == 3)
 
-            $lstdepartamentos[] = $key->get_departamentosSubdivision();
+            $lstdepartamentos[] = $key->getDepartamentosSubdivision();
     }
     $unicosDepartamentos = array_unique($lstdepartamentos);
     asort($unicosDepartamentos);
 
     if ($unicosDepartamentos != null) {
         foreach ($unicosDepartamentos as $lp1) {
-             foreach ($lstpermisos as $dp) {
-                if ($lp1 == $dp->get_departamentosSubdivision()) {
-                    $auxonclick="cargarDatosCampo('" . $dp->get_url() ."')";
-                    echo ('<li><a href=# onclick="'.$auxonclick.'" >' . $crudpermisos->mostrarDepartamento($dp->get_etiqueta())  . '</a></li>');
+            foreach ($lstpermisos as $dp) {
+                if ($lp1 == $dp->getDepartamentosSubdivision()) {
+                    $auxonclick = "cargarDatosCampo('" . $dp->getUrl() . "')";
+                    echo ('<li><a href=# onclick="' . $auxonclick . '" >' . $dp->getEtiqueta() . '</a></li>');
                 }
             }
-
         }
     }
 } catch (Exception $ex) {

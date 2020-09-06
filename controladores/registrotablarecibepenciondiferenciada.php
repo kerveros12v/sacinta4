@@ -12,19 +12,19 @@ function opcionRecibepenciondiferenciada()
         $datos = new Recibepensiondiferenciada();
         $crud = new Crudrecibepensiondiferenciada();
 
-        $datos->set_recibePensionDiferenciadaId($_POST['id']);
-        $datos->set_recibePensionDiferenciada(strtoupper($_POST['nom']));
-        $datos->set_recibepensiondiferenciadacodigo($_POST['cod']);
-        $datos->set_recibepensiondiferenciadaOculto($_POST['eliminar']);
-        $datos->set_recibepensiondiferenciadaAccion($_POST['actualizar']);
-        $datos->set_recibepensiondiferenciadafecha(date("Y-m-d"));
-        $datos->set_recibepensiondiferenciadauser($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->setRecibePensionDiferenciadaId($_POST['id']);
+        $datos->setRecibePensionDiferenciada(strtoupper($_POST['nom']));
+        $datos->setRecibepensiondiferenciadacodigo($_POST['cod']);
+        $datos->setRecibepensiondiferenciadaOculto($_POST['eliminar']);
+        $datos->setRecibepensiondiferenciadaAccion($_POST['actualizar']);
+        $datos->setRecibepensiondiferenciadafecha(date("Y-m-d"));
+        $datos->setRecibepensiondiferenciadauser($_SESSION['tipouser'] . $_SESSION['user']);
         $opcion = $_POST['opt'];
 
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_recibePensionDiferenciadaId(null);
+                $datos->setRecibePensionDiferenciadaId(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -33,7 +33,7 @@ function opcionRecibepenciondiferenciada()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_recibePensionDiferenciadaId());
+                $crud->eliminar($datos->getRecibePensionDiferenciadaId());
                 return (eliminarR());
             }
         }

@@ -1,85 +1,115 @@
-$(document).ready(function(){
-    cargartabla();
+$(document).ready(function () {
+  cargartabla();
 });
-function cargartabla(){
-    $.ajax({
-      type: 'GET',
-      url: '../ajax/ajaxstablabimestre.php'
+function cargartabla() {
+  $.ajax({
+    type: 'GET',
+    url: '../ajax/ajaxstablabimestre.php'
 
-    })
-    .done(function(cargar){
+  })
+    .done(function (cargar) {
       $('#contenedorbimestre').html(cargar)
     })
-    .fail(function(){
+    .fail(function () {
       alert('Hubo un error al cargar')
     });
-  }
-  function registro(){
-    var cod= $('#bimestrescodigo').val();
-    var nom=$('#bimestre').val();
-    $.ajax({
-      type: 'POST',
-      url: '../controladores/registrotablaBimestre.php',
-      data:{
-      'id':null,
-      'cod':cod,
-      'nom':nom,
-      'eliminar':0,
-      'actualizar':0,
-      'opt':1}
-      })
-      .done(function(cargar){
-        alert(cargar)
-        cargartabla()
-      })
-      .fail(function(){
-        alert('Hubo un error al cargar de Perfiles')
-      })
+}
+function registro() {
+  var cod = $('#bimestrescodigo').val();
+  var nom = $('#bimestre').val();
+  $.ajax({
+    type: 'POST',
+    url: '../controladores/registrotablaBimestre.php',
+    data: {
+      'id': null,
+      'cod': cod,
+      'nom': nom,
+      'eliminar': 0,
+      'actualizar': 0,
+      'opt': 1
     }
-    function actualizar(dato){
+  })
+    .done(function (cargar) {
+      $('#dialog-confirm').html(cargar)
+      $("#dialog").dialog({
+        height: 250,
+        buttons: {
+          Aceptar: function () {
+            cargartabla()
+            $(this).dialog("close");
 
-        var cod= $('#bimestrescodigo'+dato).val();
-        var nom=$('#bimestre'+dato).val();
-        $.ajax({
-          type: 'POST',
-          url: '../controladores/registrotablaBimestre.php',
-          data:{
-          'id':dato,
-          'cod':cod,
-          'nom':nom,
-          'eliminar':0,
-          'actualizar':1,
-          'opt':2}
+          }
+        }
+      })
+    })
+    .fail(function () {
+      alert('Hubo un error al cargar de Perfiles')
+    })
+}
+function actualizar(dato) {
+
+  var cod = $('#bimestrescodigo' + dato).val();
+  var nom = $('#bimestre' + dato).val();
+  $.ajax({
+    type: 'POST',
+    url: '../controladores/registrotablaBimestre.php',
+    data: {
+      'id': dato,
+      'cod': cod,
+      'nom': nom,
+      'eliminar': 0,
+      'actualizar': 1,
+      'opt': 2
+    }
+  })
+    .done(function (cargar) {
+      $('#dialog-confirm').html(cargar)
+        $("#dialog").dialog({
+          height: 250,
+          buttons: {
+            Aceptar: function () {
+              cargartabla()
+              $(this).dialog("close");
+
+            }
+          }
         })
-        .done(function(cargar){
-          alert(cargar)
-       cargartabla()
+    })
+    .fail(function () {
+      $('#dialogo').html(cargar)
+    })
+}
+function eliminar(dato) {
+
+  var cod = $('#bimestrescodigo' + dato).val();
+  var nom = $('#bimestre' + dato).val();
+  $.ajax({
+    type: 'POST',
+    url: '../controladores/registrotablaBimestre.php',
+    data: {
+      'id': dato,
+      'cod': cod,
+      'nom': nom,
+      'eliminar': 1,
+      'actualizar': 2,
+      'opt': 0
+    }
+  })
+    .done(function (cargar) {
+      $('#dialog-confirm').html(cargar)
+        $("#dialog").dialog({
+          height: 250,
+          buttons: {
+            Aceptar: function () {
+              cargartabla()
+              $(this).dialog("close");
+
+            }
+          }
         })
-        .fail(function(){
+
+      })
+        .fail(function () {
           alert('Hubo un error al cargar')
         })
-      }
-      function eliminar(dato){
-
-        var cod= $('#bimestrescodigo'+dato).val();
-        var nom=$('#bimestre'+dato).val();
-        $.ajax({
-          type: 'POST',
-          url: '../controladores/registrotablaBimestre.php',
-          data:{
-            'id':dato,
-            'cod':cod,
-            'nom':nom,
-            'eliminar':1,
-            'actualizar':2,
-            'opt':0}
-        })
-        .done(function(cargar){
-          alert(cargar)
-
-       cargartabla()
-        })
-        .fail(function(){
-          alert('Hubo un error al cargar')
-        })
-      }
+    }

@@ -1,13 +1,15 @@
 <?php
 require_once("../Crud/CrudBimestre.php");
 require_once("../controladores/respuestasgenerales.php");
+
 use Crud\CrudBimestres;
+
 session_start();
 function cargartablabimestre()
 {
-    $r="";
+    $r = "";
     $crud = new CrudBimestres();
-    $r.= '
+    $r .= '
 <tr>
     <td>
 
@@ -31,24 +33,24 @@ function cargartablabimestre()
 
         </td>
         <td>
-            <input type="text" class="camptext1" id="bimestrescodigo' . $dato->get_idBimestres() . '" name="bimestrescodigo' . $dato->get_idBimestres() . '"  maxlength="10" value="' . $dato->get_bimestrescodigo() . '"/>
+            <input type="text" class="camptext1" id="bimestrescodigo' . $dato->getIdBimestres() . '" name="bimestrescodigo' . $dato->getIdBimestres() . '"  maxlength="10" value="' . $dato->getBimestrescodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="bimestre' . $dato->get_idBimestres() . '" name="bimestre' . $dato->get_idBimestres() . '"  value="' . $dato->get_bimestre() . '"/>
+            <input type="text" id="bimestre' . $dato->getIdBimestres() . '" name="bimestre' . $dato->getIdBimestres() . '"  value="' . $dato->getBimestre() . '"/>
         </td>
         <td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_idBimestres() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_idBimestres() . ')">
+        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getIdBimestres() . ')">
+         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getIdBimestres() . ')">
         </td>
     </tr>
     ';
     }
     return $r;
 }
-if ($_SESSION['user']!="") {
+if ($_SESSION['user'] != "") {
     echo cargartablabimestre();
-} else{
-	echo '<tr>
+} else {
+    echo '<tr>
 		<td>
 		</td>
 		<td>
@@ -56,7 +58,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }

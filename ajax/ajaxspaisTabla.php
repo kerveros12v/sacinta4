@@ -30,14 +30,14 @@ function cargarPaisT()
 			<td>
 			</td>
 			<td>
-				<input type="text" class="camptext1" id="paiscodigo' . $pais1->get_paisId() . '" name="paiscodigo' . $pais1->get_paisId() . '" required="required" value="' . $pais1->get_codigo() . '" />
+				<input type="text" class="camptext1" id="paiscodigo' . $pais1->getPaisId() . '" name="paiscodigo' . $pais1->getPaisId() . '" required="required" value="' . $pais1->getPaisescodigo() . '" />
 			</td>
 			<td>
-				<input type="text" id="pais' . $pais1->get_paisId() . '" name="pais' . $pais1->get_paisId() . '" required="required" value="' . $pais1->get_pais() . '" />
+				<input type="text" id="pais' . $pais1->getPaisId() . '" name="pais' . $pais1->getPaisId() . '" required="required" value="' . $pais1->getPais() . '" />
 			</td>
 			<td>
-				<input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $pais1->get_paisId() . ')">
- 				<input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $pais1->get_paisId() . ')">
+				<input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $pais1->getPaisId() . ')">
+ 				<input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $pais1->getPaisId() . ')">
 			</td>
 		</tr>';
 	}

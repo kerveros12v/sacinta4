@@ -43,7 +43,7 @@ document.location=\"$PHP_SELF?ancho=\"+screen.width+\"&alto=\"+screen.height;
 } else {
   if (isset($_GET['ancho']) && isset($_GET['alto'])) {
     // Resolución de pantalla
-    // echo "<script>console.log('Esta es tu resolucion de pantalla: Ancho= " . $_GET['ancho'] . " y Alto= " . $_GET['alto'] . "')</script>";
+    echo "<script>console.log('Esta es tu resolucion de pantalla: Ancho= " . $_GET['ancho'] . " y Alto= " . $_GET['alto'] . "')</script>";
   } else {
     // Error en la detección
     echo "No se ha podido detectar la resolución de pantalla";

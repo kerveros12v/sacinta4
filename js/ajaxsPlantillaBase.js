@@ -3,12 +3,10 @@ $(document).ready(function(){
 
 });
 function cargarmenu(){
-    var id=$('#codCedula').val();
-    var c=$('#cedula').val();
+
     $.ajax({
       type: 'POST',
-      url: '../ec.edu.intsuperior/vista/ajax/ajaxspermisos.php',
-      data:{'a':id,'c':c}
+      url: '../ajax/ajaxspermisos.php'
     })
     .done(function(cargar){
       $('#nav').html(cargar)

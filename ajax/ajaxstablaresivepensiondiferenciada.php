@@ -8,9 +8,9 @@ use Crud\Crudrecibepensiondiferenciada;
 session_start();
 function cargartablaresivepenciondiferenciada()
 {
-    $r="";
+    $r = "";
     $crud = new Crudrecibepensiondiferenciada();
-    $r.= '
+    $r .= '
 <tr>
     <td>
     </td>
@@ -33,29 +33,28 @@ function cargartablaresivepenciondiferenciada()
 
         </td>
         <td>
-            <input type="text" class="camptext1" id="recibepensiondiferenciadacodigo' . $dato->get_recibePensionDiferenciadaId() . '" name="recibepensiondiferenciadacodigo' . $dato->get_recibePensionDiferenciadaId() . '"  maxlength="10" value="' . $dato->get_recibepensiondiferenciadacodigo() . '"/>
+            <input type="text" class="camptext1" id="recibepensiondiferenciadacodigo' . $dato->getRecibePensionDiferenciadaId() . '" name="recibepensiondiferenciadacodigo' . $dato->getRecibePensionDiferenciadaId() . '"  maxlength="10" value="' . $dato->getRecibepensiondiferenciadacodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="recibePensionDiferenciada' . $dato->get_recibePensionDiferenciadaId() . '" name="recibePensionDiferenciada' . $dato->get_recibePensionDiferenciadaId() . '"  value="' . $dato->get_recibePensionDiferenciada() . '"/>
+            <input type="text" id="recibePensionDiferenciada' . $dato->getRecibePensionDiferenciadaId() . '" name="recibePensionDiferenciada' . $dato->getRecibePensionDiferenciadaId() . '"  value="' . $dato->getRecibePensionDiferenciada() . '"/>
         </td>
         <td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_recibePensionDiferenciadaId() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_recibePensionDiferenciadaId() . ')">
+        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getRecibePensionDiferenciadaId() . ')">
+         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getRecibePensionDiferenciadaId() . ')">
         </td>
     </tr>
     ';
     }
     return $r;
 }
-if ($_SESSION['user']!="") {
-    try{
+if ($_SESSION['user'] != "") {
+    try {
         echo cargartablaresivepenciondiferenciada();
-    }
-    catch(\Exception $e){
+    } catch (\Exception $e) {
         echo $e;
     }
-} else{
-	echo '<tr>
+} else {
+    echo '<tr>
 		<td>
 		</td>
 		<td>
@@ -63,7 +62,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }

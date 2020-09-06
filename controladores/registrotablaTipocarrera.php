@@ -16,20 +16,20 @@ function opcionTipocarrera()
         $datos = new Tipocarreras();
         $crud = new CrudTipoCarreras();
 
-        $datos->set_tipoCarrerasId($_POST['id']);
-        $datos->set_tipoCarreras(strtoupper($_POST['nom']));
-        $datos->set_tipocarrerascodigo($_POST['cod']);
-        $datos->set_tipocarrerasOculto($_POST['eliminar']);
-        $datos->set_tipocarrerasAccion($_POST['actualizar']);
-        $datos->set_tipocarrerasfecha(date("Y-m-d"));
-        $datos->set_tipocarrerasuser($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->setTipoCarrerasId($_POST['id']);
+        $datos->setTipoCarreras(strtoupper($_POST['nom']));
+        $datos->setTipocarrerascodigo($_POST['cod']);
+        $datos->setTipocarrerasOculto($_POST['eliminar']);
+        $datos->setTipocarrerasAccion($_POST['actualizar']);
+        $datos->setTipocarrerasfecha(date("Y-m-d"));
+        $datos->setTipocarrerasuser($_SESSION['tipouser'] . $_SESSION['user']);
 
         $opcion = $_POST['opt'];
 
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_tipoCarrerasId(null);
+                $datos->setTipoCarrerasId(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -38,7 +38,7 @@ function opcionTipocarrera()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_tipoCarrerasId());
+                $crud->eliminar($datos->getTipoCarrerasId());
                 return (eliminarR());
             }
         }

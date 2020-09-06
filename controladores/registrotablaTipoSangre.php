@@ -15,20 +15,20 @@ function opcionTipodocumento()
         $datos = new Tipossangre();
         $crud = new CrudTipoSangre();
 
-        $datos->set_tipoSangreId($_POST['id']);
-        $datos->set_tipoSangre($_POST['nom']);
-        $datos->set_tipossangrescodigo($_POST['cod']);
-        $datos->set_tipossangreOculto($_POST['eliminar']);
-        $datos->set_tipossangreAccion($_POST['actualizar']);
-        $datos->set_tipossangrefecha(date("Y-m-d"));
-        $datos->set_tipossangreuser($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->setTipoSangreId($_POST['id']);
+        $datos->setTipoSangre(strtoupper($_POST['nom']));
+        $datos->setTipossangrescodigo($_POST['cod']);
+        $datos->setTipossangreOculto($_POST['eliminar']);
+        $datos->setTipossangreAccion($_POST['actualizar']);
+        $datos->setTipossangrefecha(date("Y-m-d"));
+        $datos->setTipossangreuser($_SESSION['tipouser'] . $_SESSION['user']);
 
         $opcion = $_POST['opt'];
 
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_tipoSangreId(null);
+                $datos->setTipoSangreId(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -37,7 +37,7 @@ function opcionTipodocumento()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_tipoSangreId());
+                $crud->eliminar($datos->getTipoSangreId());
                 return (eliminarR());
             }
         }

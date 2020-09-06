@@ -1,71 +1,81 @@
 <?php
+
 namespace Crud;
+
 require_once('conexion.php');
 require_once("../clasesphp/Titulotercernivel.php");
+
 use Clasesphp\Titulotercernivel;
 
-class CrudTituloTercerNivel{
-		// constructor de la clase
-		public function __construct(){
-			$db=Db::conectar();
-			$select=$db->query("SET NAMES 'utf8'");
-			}
+class CrudTituloTercerNivel
+{
+	// constructor de la clase
+	public function __construct()
+	{
+		$db = Db::conectar();
+		$select = $db->query("SET NAMES 'utf8'");
+	}
 
-		public function mostrar(){
-			$db=Db::conectar();
-			$listatitulotercernivel=null;
-			$select=$db->query('SELECT * FROM titulotercernivel');
-			foreach($select->fetchAll() as $titulotercernivel){
-				$mytitulotercernivel= new Titulotercernivel();
-				$mytitulotercernivel->set_tituloTercerNivelId($titulotercernivel['tituloTercerNivelId']);
-				$mytitulotercernivel->set_titulotercernivelcodigo($titulotercernivel['titulotercernivelcodigo']);
-				$mytitulotercernivel->set_tituloTercerNivel($titulotercernivel['tituloTercerNivel']);
-				$mytitulotercernivel->set_titulotercernivelOculto($titulotercernivel['titulotercernivelOculto']);
-				$mytitulotercernivel->set_titulotercernivelAccion($titulotercernivel['titulotercernivelAccion']);
-				$mytitulotercernivel->set_titulotercernivelfecha($titulotercernivel['titulotercernivelfecha']);
-				$mytitulotercernivel->set_titulotercerniveluse($titulotercernivel['titulotercerniveluser']);
+	public function mostrar()
+	{
+		$db = Db::conectar();
+		$listatitulotercernivel = null;
+		$select = $db->query('SELECT * FROM titulotercernivel');
+		foreach ($select->fetchAll() as $titulotercernivel) {
+			$mytitulotercernivel = new Titulotercernivel();
+			$mytitulotercernivel->setTituloTercerNivelId($titulotercernivel['tituloTercerNivelId']);
+			$mytitulotercernivel->setTitulotercernivelcodigo($titulotercernivel['titulotercernivelcodigo']);
+			$mytitulotercernivel->setTituloTercerNivel($titulotercernivel['tituloTercerNivel']);
+			$mytitulotercernivel->setTitulotercernivelOculto($titulotercernivel['titulotercernivelOculto']);
+			$mytitulotercernivel->setTitulotercernivelAccion($titulotercernivel['titulotercernivelAccion']);
+			$mytitulotercernivel->setTitulotercernivelfecha($titulotercernivel['titulotercernivelfecha']);
+			$mytitulotercernivel->setTitulotercerniveluser($titulotercernivel['titulotercerniveluser']);
 
-				$listatitulotercernivel[]=$mytitulotercernivel;
-			}
-			return $listatitulotercernivel;
+			$listatitulotercernivel[] = $mytitulotercernivel;
 		}
-		    public function eliminar($id){
-			$db=Db::conectar();
-			$eliminar=$db->prepare('DELETE FROM titulotercernivel WHERE tituloTercerNivelId=:id');
-			$eliminar->bindValue('id',$id);
-			$eliminar->execute();
-		}
-		public function obtenertituloTercerNivel($id){
-			$mytitulotercernivel= new Titulotercernivel();
-			$db=Db::conectar();
-			$select=$db->prepare('SELECT * FROM `titulotercernivel` WHERE  tituloTercerNivelId=:id');
-			$select->bindValue('id',$id);
-			$select->execute();
-			$titulotercernivel=$select->fetch();
-			$mytitulotercernivel->set_tituloTercerNivelId($titulotercernivel['tituloTercerNivelId']);
-			$mytitulotercernivel->set_titulotercernivelcodigo($titulotercernivel['titulotercernivelcodigo']);
-			$mytitulotercernivel->set_tituloTercerNivel($titulotercernivel['tituloTercerNivel']);
-			$mytitulotercernivel->set_titulotercernivelOculto($titulotercernivel['titulotercernivelOculto']);
-			$mytitulotercernivel->set_titulotercernivelAccion($titulotercernivel['titulotercernivelAccion']);
-			$mytitulotercernivel->set_titulotercernivelfecha($titulotercernivel['titulotercernivelfecha']);
-			$mytitulotercernivel->set_titulotercerniveluse($titulotercernivel['titulotercerniveluser']);
+		return $listatitulotercernivel;
+	}
+	public function eliminar($id)
+	{
+		$db = Db::conectar();
+		$eliminar = $db->prepare('DELETE FROM titulotercernivel WHERE tituloTercerNivelId=:id');
+		$eliminar->bindValue('id', $id);
+		$eliminar->execute();
+	}
+	public function obtenertituloTercerNivel($id)
+	{
+		$mytitulotercernivel = new Titulotercernivel();
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT * FROM `titulotercernivel` WHERE  tituloTercerNivelId=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$titulotercernivel = $select->fetch();
+		$mytitulotercernivel->setTituloTercerNivelId($titulotercernivel['tituloTercerNivelId']);
+		$mytitulotercernivel->setTitulotercernivelcodigo($titulotercernivel['titulotercernivelcodigo']);
+		$mytitulotercernivel->setTituloTercerNivel($titulotercernivel['tituloTercerNivel']);
+		$mytitulotercernivel->setTitulotercernivelOculto($titulotercernivel['titulotercernivelOculto']);
+		$mytitulotercernivel->setTitulotercernivelAccion($titulotercernivel['titulotercernivelAccion']);
+		$mytitulotercernivel->setTitulotercernivelfecha($titulotercernivel['titulotercernivelfecha']);
+		$mytitulotercernivel->setTitulotercerniveluser($titulotercernivel['titulotercerniveluser']);
 
-			return $mytitulotercernivel;
-		}
-		public function obtenerDato($id){
-			$db=Db::conectar();
-			$select=$db->prepare('SELECT tituloTercerNivel FROM titulotercernivel WHERE tituloTercerNivelId=:id');
-			$select->bindValue('id',$id);
-			$select->execute();
-			$titulotercernivel=$select->fetch();
-			$mytitulotercernivel=($titulotercernivel['tituloTercerNivel']);
+		return $mytitulotercernivel;
+	}
+	public function obtenerDato($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT tituloTercerNivel FROM titulotercernivel WHERE tituloTercerNivelId=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$titulotercernivel = $select->fetch();
+		$mytitulotercernivel = ($titulotercernivel['tituloTercerNivel']);
 
-			return $mytitulotercernivel;
-		}
-		public function actualizar($titulotercernivel){
-			$db=Db::conectar();
+		return $mytitulotercernivel;
+	}
+	public function actualizar($titulotercernivel)
+	{
+		$db = Db::conectar();
 
-			$actualizar=$db->prepare('UPDATE `titulotercernivel`
+		$actualizar = $db->prepare('UPDATE `titulotercernivel`
 			SET
 			`tituloTercerNivelId` = :tituloTercerNivelId1,
 			`titulotercernivelcodigo` = :titulotercernivelcodigo1,
@@ -75,18 +85,19 @@ class CrudTituloTercerNivel{
 			`titulotercernivelfecha` = :titulotercernivelfecha1,
 			`titulotercerniveluser` = :titulotercerniveluser1
 			WHERE `tituloTercerNivelId` = :tituloTercerNivelId1;');
-			$actualizar->bindValue('tituloTercerNivelId1',$titulotercernivel->get_tituloTercerNivelId());
-			$actualizar->bindValue('titulotercernivelcodigo1',$titulotercernivel->get_titulotercernivelcodigo());
-			$actualizar->bindValue('tituloTercerNivel1',$titulotercernivel->get_tituloTercerNivel());
-			$actualizar->bindValue('titulotercernivelOculto1',$titulotercernivel->get_titulotercernivelOculto());
-			$actualizar->bindValue('titulotercernivelAccion1',$titulotercernivel->get_titulotercernivelAccion());
-			$actualizar->bindValue('titulotercernivelfecha1',$titulotercernivel->get_titulotercernivelfecha());
-			$actualizar->bindValue('titulotercerniveluser1',$titulotercernivel->get_titulotercerniveluse());
-			$actualizar->execute();
-		}
-		public function insertar($titulotercernivel){
-			$db=Db::conectar();
-			$insert=$db->prepare('INSERT INTO `titulotercernivel`
+		$actualizar->bindValue('tituloTercerNivelId1', $titulotercernivel->getTituloTercerNivelId());
+		$actualizar->bindValue('titulotercernivelcodigo1', $titulotercernivel->getTitulotercernivelcodigo());
+		$actualizar->bindValue('tituloTercerNivel1', $titulotercernivel->getTituloTercerNivel());
+		$actualizar->bindValue('titulotercernivelOculto1', $titulotercernivel->getTitulotercernivelOculto());
+		$actualizar->bindValue('titulotercernivelAccion1', $titulotercernivel->getTitulotercernivelAccion());
+		$actualizar->bindValue('titulotercernivelfecha1', $titulotercernivel->getTitulotercernivelfecha());
+		$actualizar->bindValue('titulotercerniveluser1', $titulotercernivel->getTitulotercerniveluser());
+		$actualizar->execute();
+	}
+	public function insertar($titulotercernivel)
+	{
+		$db = Db::conectar();
+		$insert = $db->prepare('INSERT INTO `titulotercernivel`
 			(`tituloTercerNivelId`,
 			`titulotercernivelcodigo`,
 			`tituloTercerNivel`,
@@ -102,16 +113,13 @@ class CrudTituloTercerNivel{
 			:titulotercernivelAccion1,
 			:titulotercernivelfecha1,
 			:titulotercerniveluser1);');
-			$insert->bindValue('tituloTercerNivelId1',$titulotercernivel->get_tituloTercerNivelId());
-			$insert->bindValue('titulotercernivelcodigo1',$titulotercernivel->get_titulotercernivelcodigo());
-			$insert->bindValue('tituloTercerNivel1',$titulotercernivel->get_tituloTercerNivel());
-			$insert->bindValue('titulotercernivelOculto1',$titulotercernivel->get_titulotercernivelOculto());
-			$insert->bindValue('titulotercernivelAccion1',$titulotercernivel->get_titulotercernivelAccion());
-			$insert->bindValue('titulotercernivelfecha1',$titulotercernivel->get_titulotercernivelfecha());
-			$insert->bindValue('titulotercerniveluser1',$titulotercernivel->get_titulotercerniveluse());
-			$insert->execute();
-
-		}
+		$insert->bindValue('tituloTercerNivelId1', $titulotercernivel->getTituloTercerNivelId());
+		$insert->bindValue('titulotercernivelcodigo1', $titulotercernivel->getTitulotercernivelcodigo());
+		$insert->bindValue('tituloTercerNivel1', $titulotercernivel->getTituloTercerNivel());
+		$insert->bindValue('titulotercernivelOculto1', $titulotercernivel->getTitulotercernivelOculto());
+		$insert->bindValue('titulotercernivelAccion1', $titulotercernivel->getTitulotercernivelAccion());
+		$insert->bindValue('titulotercernivelfecha1', $titulotercernivel->getTitulotercernivelfecha());
+		$insert->bindValue('titulotercerniveluser1', $titulotercernivel->getTitulotercerniveluser());
+		$insert->execute();
 	}
-
-?>
+}

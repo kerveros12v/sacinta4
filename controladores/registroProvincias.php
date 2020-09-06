@@ -9,18 +9,18 @@ function opcionprovincia()
     try {
         $dato = new \Clasesphp\Provincias();
         $crud = new \Crud\CrudProvincias();
-        $dato->set_provinciaId($_POST['id']);
-        $dato->set_provinciacodigo($_POST['cod']);
-        $dato->set_provincia(strtoupper($_POST['nom']));
-        $dato->set_provinciapais($_POST['pais']);
-        $dato->set_provinciaOculto($_POST['eliminar']);
-        $dato->set_provinciaAccion($_POST['actualizar']);
-        $dato->set_provinciafecha(date("Y-m-d"));
-        $dato->set_provinciauser($_SESSION['tipouser'] . $_SESSION['user']);
+        $dato->setProvinciaId($_POST['id']);
+        $dato->setProvinciacodigo($_POST['cod']);
+        $dato->setProvincia(strtoupper($_POST['nom']));
+        $dato->setProvinciapais($_POST['pais']);
+        $dato->setProvinciaOculto($_POST['eliminar']);
+        $dato->setProvinciaAccion($_POST['actualizar']);
+        $dato->setProvinciafecha(date("Y-m-d"));
+        $dato->setProvinciauser($_SESSION['tipouser'] . $_SESSION['user']);
         $opcion = $_POST['opt'];
-        if ($_SESSION['user']!="") {
+        if ($_SESSION['user'] != "") {
             if ($opcion == 1) {
-                $dato->set_provinciaId(null);
+                $dato->setProvinciaId(null);
                 $crud->insertar($dato);
                 return (guardarR());
             }
@@ -29,12 +29,11 @@ function opcionprovincia()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($dato->get_provinciaId());
+                $crud->eliminar($dato->getProvinciaId());
                 return (eliminarR());
             }
         }
-        echo(tiempoExedido());
-
+        echo (tiempoExedido());
     } catch (Exception $e) {
         return $e;
     }

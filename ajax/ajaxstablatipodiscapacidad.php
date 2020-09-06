@@ -11,12 +11,12 @@ use Crud\CrudTipoDiscapacidad;
 session_start();
 function cargartablatipoDiscapacidad()
 {
-    $r="";
+    $r = "";
     $crud = new CrudTipoDiscapacidad();
-    $r.= '
+    $r .= '
 <tr>
     <td>
-    '.ajaxs_select2().'
+    ' . ajaxs_select2() . '
     </td>
     <td>
         <input type="text" class="camptext1" id="tdcodigo" name="tdcodigo"  maxlength="10" value=""/>
@@ -26,7 +26,7 @@ function cargartablatipoDiscapacidad()
     </td>
     <td>
         <select class="selector"  name="tipodiscapacidadbool" id="tipodiscapacidadbool">
-            '.discapacidad(-1) .'
+            ' . discapacidad(-1) . '
         </select>
     </td>
     <td>
@@ -42,29 +42,29 @@ function cargartablatipoDiscapacidad()
 
         </td>
         <td>
-            <input type="text" class="camptext1" id="tdcodigo' . $dato->get_tipoDiscapacidadid() . '" name="tdcodigo' . $dato->get_tipoDiscapacidadid() . '"  maxlength="10" value="' . $dato->get_tdcodigo() . '"/>
+            <input type="text" class="camptext1" id="tdcodigo' . $dato->getTipoDiscapacidadid() . '" name="tdcodigo' . $dato->getTipoDiscapacidadid() . '"  maxlength="10" value="' . $dato->getTdcodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="tipoDiscapacidad' . $dato->get_tipoDiscapacidadid() . '" name="tipoDiscapacidad' . $dato->get_tipoDiscapacidadid() . '"  value="' . $dato->get_tipoDiscapacidad() . '"/>
+            <input type="text" id="tipoDiscapacidad' . $dato->getTipoDiscapacidadid() . '" name="tipoDiscapacidad' . $dato->getTipoDiscapacidadid() . '"  value="' . $dato->getTipoDiscapacidad() . '"/>
         </td>
         <td>
-            <select class="selector"  name="tipodiscapacidadbool' . $dato->get_tipoDiscapacidadid() . '" id="tipodiscapacidadbool' . $dato->get_tipoDiscapacidadid() . '">
-                '.discapacidad($dato->get_tipodiscapacidadbool()) .'
+            <select class="selector"  name="tipodiscapacidadbool' . $dato->getTipodiscapacidadbool() . '" id="tipodiscapacidadbool' . $dato->getTipoDiscapacidadid() . '">
+                ' . discapacidad($dato->getTipodiscapacidadbool()) . '
             </select>
         </td>
         <td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_tipoDiscapacidadid() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_tipoDiscapacidadid() . ')">
+        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getTipoDiscapacidadid() . ')">
+         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getTipoDiscapacidadid() . ')">
         </td>
     </tr>
     ';
     }
     return $r;
 }
-if ($_SESSION['user']!="") {
+if ($_SESSION['user'] != "") {
     echo cargartablatipoDiscapacidad();
-} else{
-	echo '<tr>
+} else {
+    echo '<tr>
 		<td>
 		</td>
 		<td>
@@ -72,7 +72,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }

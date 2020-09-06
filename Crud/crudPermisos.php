@@ -2,13 +2,13 @@
 
 namespace Crud;
 
-require_once("conexion.php");
-require_once("../ec.edu.intsuperior/modelo/clasesphp/Permisos.php");
-require_once("../ec.edu.intsuperior/modelo/clasesphp/AccesoDepartamentos.php");
+require_once "conexion.php";
+require_once "../clasesphp/Permisos.php";
+require_once "../clasesphp/AccesoDepartamentos.php";
 
 use Clasesphp\AccesoDepartamentos;
-use Crud\Db;
 use Clasesphp\Permisos;
+use Crud\Db;
 
 class CrudPermisos
 {
@@ -118,7 +118,7 @@ class CrudPermisos
   }
   public function mostrarDepartamento($id)
   {
-
+    //iddepartamentos, departamento, departamentosSubdivision, url, departamentosparametro, departamentosOculto, departamentosAccion, departamentosfecha, departamentosuser
     $db = Db::conectar();
     $select = $db->prepare("SELECT * FROM `departamentos` WHERE iddepartamentos=:id ORDER BY `iddepartamentos`  ASC;");
     $select->bindValue('id', $id);

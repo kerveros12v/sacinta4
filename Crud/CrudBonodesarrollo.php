@@ -12,10 +12,7 @@ class CrudBonodesarrollo
 	// constructor de la clase
 	public function __construct()
 	{
-		$db = Db::conectar();
-		$select = $db->query("SET NAMES 'utf8'");
 	}
-
 	public function mostrar()
 	{
 		$db = Db::conectar();
@@ -23,13 +20,13 @@ class CrudBonodesarrollo
 		$select = $db->query("SELECT * FROM bonodesarrollo;");
 		foreach ($select->fetchAll() as $bonoDesarrollo) {
 			$mybonoDesarrollo = new Bonodesarrollo();
-			$mybonoDesarrollo->set_bonoDesarrolloId($bonoDesarrollo['bonoDesarrolloId']);
-			$mybonoDesarrollo->set_bonoDesarrollo($bonoDesarrollo['bonoDesarrollo']);
-			$mybonoDesarrollo->set_bonodesarrollocodigo($bonoDesarrollo['bonodesarrollocodigo']);
-			$mybonoDesarrollo->set_bonodesarrolloOculto($bonoDesarrollo['bonodesarrolloOculto']);
-			$mybonoDesarrollo->set_bonodesarrolloAccion($bonoDesarrollo['bonodesarrolloAccion']);
-			$mybonoDesarrollo->set_bonodesarrollofecha($bonoDesarrollo['bonodesarrollofecha']);
-			$mybonoDesarrollo->set_bonodesarrollouser($bonoDesarrollo['bonodesarrollouser']);
+			$mybonoDesarrollo->setBonoDesarrolloId($bonoDesarrollo['bonoDesarrolloId']);
+			$mybonoDesarrollo->setBonoDesarrollo($bonoDesarrollo['bonoDesarrollo']);
+			$mybonoDesarrollo->setBonodesarrollocodigo($bonoDesarrollo['bonodesarrollocodigo']);
+			$mybonoDesarrollo->setBonodesarrolloOculto($bonoDesarrollo['bonodesarrolloOculto']);
+			$mybonoDesarrollo->setBonodesarrolloAccion($bonoDesarrollo['bonodesarrolloAccion']);
+			$mybonoDesarrollo->setBonodesarrollofecha($bonoDesarrollo['bonodesarrollofecha']);
+			$mybonoDesarrollo->setBonodesarrollouser($bonoDesarrollo['bonodesarrollouser']);
 			$listabonoDesarrollo[] = $mybonoDesarrollo;
 		}
 		return $listabonoDesarrollo;
@@ -42,13 +39,13 @@ class CrudBonodesarrollo
 		$select->execute();
 		$bonoDesarrollo = $select->fetch();
 		$mybonoDesarrollo = new Bonodesarrollo();
-		$mybonoDesarrollo->set_bonoDesarrolloId($bonoDesarrollo['bonoDesarrolloId']);
-		$mybonoDesarrollo->set_bonoDesarrollo($bonoDesarrollo['bonoDesarrollo']);
-		$mybonoDesarrollo->set_bonodesarrollocodigo($bonoDesarrollo['bonodesarrollocodigo']);
-		$mybonoDesarrollo->set_bonodesarrolloOculto($bonoDesarrollo['bonodesarrolloOculto']);
-		$mybonoDesarrollo->set_bonodesarrolloAccion($bonoDesarrollo['bonodesarrolloAccion']);
-		$mybonoDesarrollo->set_bonodesarrollofecha($bonoDesarrollo['bonodesarrollofecha']);
-		$mybonoDesarrollo->set_bonodesarrollouser($bonoDesarrollo['bonodesarrollouser']);
+		$mybonoDesarrollo->setBonoDesarrolloId($bonoDesarrollo['bonoDesarrolloId']);
+		$mybonoDesarrollo->setBonoDesarrollo($bonoDesarrollo['bonoDesarrollo']);
+		$mybonoDesarrollo->setBonodesarrollocodigo($bonoDesarrollo['bonodesarrollocodigo']);
+		$mybonoDesarrollo->setBonodesarrolloOculto($bonoDesarrollo['bonodesarrolloOculto']);
+		$mybonoDesarrollo->setBonodesarrolloAccion($bonoDesarrollo['bonodesarrolloAccion']);
+		$mybonoDesarrollo->setBonodesarrollofecha($bonoDesarrollo['bonodesarrollofecha']);
+		$mybonoDesarrollo->setBonodesarrollouser($bonoDesarrollo['bonodesarrollouser']);
 		return $mybonoDesarrollo;
 	}
 	public function obtenerDato($id)
@@ -58,18 +55,17 @@ class CrudBonodesarrollo
 		$select->bindValue('id', $id);
 		$select->execute();
 		$bonoDesarrollo = $select->fetch();
-
 		$mybonoDesarrollo = ($bonoDesarrollo['bonoDesarrollo']);
-
 		return $mybonoDesarrollo;
 	}
 
 
 
 
-	public function actualizar($bonodesarrollo){
-		$db=Db::conectar();
-		$actualizar=$db->prepare('UPDATE `bonodesarrollo`
+	public function actualizar($bonodesarrollo)
+	{
+		$db = Db::conectar();
+		$actualizar = $db->prepare('UPDATE `bonodesarrollo`
 		SET
 		`bonoDesarrolloId` = :bonoDesarrolloId1,
 		`bonodesarrollocodigo` = :bonodesarrollocodigo1,
@@ -79,18 +75,19 @@ class CrudBonodesarrollo
 		`bonodesarrollofecha` = :bonodesarrollofecha1,
 		`bonodesarrollouser` = :bonodesarrollouser1
 		WHERE `bonoDesarrolloId` = :bonoDesarrolloId1;');
-		$actualizar->bindValue('bonoDesarrolloId1',$bonodesarrollo->get_bonoDesarrolloId());
-		$actualizar->bindValue('bonodesarrollocodigo1',$bonodesarrollo->get_bonodesarrollocodigo());
-		$actualizar->bindValue('bonoDesarrollo1',$bonodesarrollo->get_bonoDesarrollo());
-		$actualizar->bindValue('bonodesarrolloOculto1',$bonodesarrollo->get_bonodesarrolloOculto());
-		$actualizar->bindValue('bonodesarrolloAccion1',$bonodesarrollo->get_bonodesarrolloAccion());
-		$actualizar->bindValue('bonodesarrollofecha1',$bonodesarrollo->get_bonodesarrollofecha());
-		$actualizar->bindValue('bonodesarrollouser1',$bonodesarrollo->get_bonodesarrollouser());
+		$actualizar->bindValue('bonoDesarrolloId1', $bonodesarrollo->getBonoDesarrolloId());
+		$actualizar->bindValue('bonodesarrollocodigo1', $bonodesarrollo->getBonodesarrollocodigo());
+		$actualizar->bindValue('bonoDesarrollo1', $bonodesarrollo->getBonoDesarrollo());
+		$actualizar->bindValue('bonodesarrolloOculto1', $bonodesarrollo->getBonodesarrolloOculto());
+		$actualizar->bindValue('bonodesarrolloAccion1', $bonodesarrollo->getBonodesarrolloAccion());
+		$actualizar->bindValue('bonodesarrollofecha1', $bonodesarrollo->getBonodesarrollofecha());
+		$actualizar->bindValue('bonodesarrollouser1', $bonodesarrollo->getBonodesarrollouser());
 		$actualizar->execute();
 	}
-	public function insertar($bonodesarrollo){
-		$db=Db::conectar();
-		$insert=$db->prepare('INSERT INTO `bonodesarrollo`
+	public function insertar($bonodesarrollo)
+	{
+		$db = Db::conectar();
+		$insert = $db->prepare('INSERT INTO `bonodesarrollo`
 		(`bonoDesarrolloId`,
 		`bonodesarrollocodigo`,
 		`bonoDesarrollo`,
@@ -107,20 +104,20 @@ class CrudBonodesarrollo
 		:bonodesarrollofecha1,
 		:bonodesarrollouser1);
 		');
-		$insert->bindValue('bonoDesarrolloId1',$bonodesarrollo->get_bonoDesarrolloId());
-		$insert->bindValue('bonodesarrollocodigo1',$bonodesarrollo->get_bonodesarrollocodigo());
-		$insert->bindValue('bonoDesarrollo1',$bonodesarrollo->get_bonoDesarrollo());
-		$insert->bindValue('bonodesarrolloOculto1',$bonodesarrollo->get_bonodesarrolloOculto());
-		$insert->bindValue('bonodesarrolloAccion1',$bonodesarrollo->get_bonodesarrolloAccion());
-		$insert->bindValue('bonodesarrollofecha1',$bonodesarrollo->get_bonodesarrollofecha());
-		$insert->bindValue('bonodesarrollouser1',$bonodesarrollo->get_bonodesarrollouser());
+		$insert->bindValue('bonoDesarrolloId1', $bonodesarrollo->getBonoDesarrolloId());
+		$insert->bindValue('bonodesarrollocodigo1', $bonodesarrollo->getBonodesarrollocodigo());
+		$insert->bindValue('bonoDesarrollo1', $bonodesarrollo->getBonoDesarrollo());
+		$insert->bindValue('bonodesarrolloOculto1', $bonodesarrollo->getBonodesarrolloOculto());
+		$insert->bindValue('bonodesarrolloAccion1', $bonodesarrollo->getBonodesarrolloAccion());
+		$insert->bindValue('bonodesarrollofecha1', $bonodesarrollo->getBonodesarrollofecha());
+		$insert->bindValue('bonodesarrollouser1', $bonodesarrollo->getBonodesarrollouser());
 		$insert->execute();
-
 	}
-	public function eliminar($id){
-		$db=Db::conectar();
-		$eliminar=$db->prepare('DELETE FROM bonodesarrollo WHERE bonoDesarrolloId=:id');
-		$eliminar->bindValue('id',$id);
+	public function eliminar($id)
+	{
+		$db = Db::conectar();
+		$eliminar = $db->prepare('DELETE FROM bonodesarrollo WHERE bonoDesarrolloId=:id');
+		$eliminar->bindValue('id', $id);
 		$eliminar->execute();
 	}
 }

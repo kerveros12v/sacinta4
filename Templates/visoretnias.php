@@ -12,7 +12,9 @@
 </head>
 
 <body>
-
+  <div id="dialog" style="display: none;" title="Respuesta del servidor">
+    <p id="dialog-confirm"></p>
+  </div>
   <div>
     <table class="ui-widget ui-widget-content" title="Perfiles Registradas Actualmente:">
       <tr class="ui-widget-header">

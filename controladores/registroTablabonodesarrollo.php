@@ -15,19 +15,19 @@ function opcionbonodesarrollo()
         $datos = new Bonodesarrollo();
         $crud = new CrudBonodesarrollo();
 
-        $datos->set_bonoDesarrolloId($_POST['id']);
-        $datos->set_bonoDesarrollo(strtoupper($_POST['nom']));
-        $datos->set_bonodesarrollocodigo($_POST['cod']);
-        $datos->set_bonodesarrolloOculto($_POST['eliminar']);
-        $datos->set_bonodesarrolloAccion($_POST['actualizar']);
-        $datos->set_bonodesarrollofecha(date("Y-m-d"));
-        $datos->set_bonodesarrollouser($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->setBonoDesarrolloId($_POST['id']);
+        $datos->setBonoDesarrollo(strtoupper($_POST['nom']));
+        $datos->setBonodesarrollocodigo($_POST['cod']);
+        $datos->setBonodesarrolloOculto($_POST['eliminar']);
+        $datos->setBonodesarrolloAccion($_POST['actualizar']);
+        $datos->setBonodesarrollofecha(date("Y-m-d"));
+        $datos->setBonodesarrollouser($_SESSION['tipouser'] . $_SESSION['user']);
         $opcion = $_POST['opt'];
 
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_bonoDesarrolloId(null);
+                $datos->setBonoDesarrolloId(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -36,7 +36,7 @@ function opcionbonodesarrollo()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_bonoDesarrolloId());
+                $crud->eliminar($datos->getBonoDesarrolloId());
                 return (eliminarR());
             }
         }

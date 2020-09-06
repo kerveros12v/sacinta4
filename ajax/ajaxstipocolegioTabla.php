@@ -4,6 +4,7 @@ require_once("../controladores/respuestasgenerales.php");
 
 use Clasesphp\Tipocolegio;
 use Crud\CrudTipocolegio;
+
 session_start();
 
 function cargarTipoColegioT()
@@ -31,22 +32,22 @@ function cargarTipoColegioT()
 			<td>
 			</td>
 			<td>
-				<input type="text" class="camptext1" id="tipocolegiocodigo' . $tipocolegio1->get_tipoColegioId() . '" name="tipocolegiocodigo' . $tipocolegio1->get_tipoColegioId() . '" required="required" value="' . $tipocolegio1->get_tipocolegiocodigo() . '" />
+				<input type="text" class="camptext1" id="tipocolegiocodigo' . $tipocolegio1->getTipoColegioId() . '" name="tipocolegiocodigo' . $tipocolegio1->getTipoColegioId() . '" required="required" value="' . $tipocolegio1->getTipocolegiocodigo() . '" />
 			</td>
 			<td>
-				<input type="text" id="tipoColegio' . $tipocolegio1->get_tipoColegioId() . '" name="tipoColegio' . $tipocolegio1->get_tipoColegioId() . '" required="required" value="' . $tipocolegio1->get_tipoColegio() . '" />
+				<input type="text" id="tipoColegio' . $tipocolegio1->getTipoColegioId() . '" name="tipoColegio' . $tipocolegio1->getTipoColegioId() . '" required="required" value="' . $tipocolegio1->getTipoColegio() . '" />
 			</td>
 			<td>
-				<input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $tipocolegio1->get_tipoColegioId() . ')">
- 				<input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $tipocolegio1->get_tipoColegioId() . ')">
+				<input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $tipocolegio1->getTipoColegioId() . ')">
+ 				<input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $tipocolegio1->getTipoColegioId() . ')">
 			</td>
 		</tr>';
 	}
 	return $lista;
 }
-if ($_SESSION['user']!="") {
+if ($_SESSION['user'] != "") {
 	echo cargarTipoColegioT();
-} else{
+} else {
 	echo '<tr>
 		<td>
 		</td>
@@ -55,9 +56,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }
-
-?>

@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Provincias</title>
-        <script type="text/javascript" src="../js/jquery.js"></script>
-        <script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
-        <link rel="stylesheet" type="text/css" href="../css/cssmatricula1.css"/>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/cssmatricula1.css" />
 
-        <script type="text/javascript" src="../js/ajaxscantones.js"></script>
-        <link href="../vendor/select2/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="../vendor/select2/select2/dist/js/select2.min.js"></script>
+    <script type="text/javascript" src="../js/ajaxscantones.js"></script>
+    <link href="../vendor/select2/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../vendor/select2/select2/dist/js/select2.min.js"></script>
 
-        <script type="text/javascript">
-            jQuery(document).ready(function($){
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
             $(document).ready(function() {
                 $('.selector').select2();
             });
         });
-</script>
+    </script>
 </head>
+
 <body>
+    <div id="dialog" style="display: none;" title="Respuesta del servidor">
+        <p id="dialog-confirm"></p>
+    </div>
     <form>
-        <table >
+        <table>
             <tr>
                 <td>
                     <table>
@@ -34,7 +39,7 @@
                                             Seleccione el Pais:
                                         </td>
                                         <td>
-                                            <select class="selector"  id="paiscanton" name="paiscanton"></select>
+                                            <select class="selector" id="paiscanton" name="paiscanton"></select>
                                         </td>
                                     </tr>
                                 </table>
@@ -46,7 +51,7 @@
                                             Seleccione la Provincia:
                                         </td>
                                         <td>
-                                            <select class="selector"  id="provinciacanton" name="provinciacanton"></select>
+                                            <select class="selector" id="provinciacanton" name="provinciacanton"></select>
                                         </td>
                                     </tr>
                                 </table>
@@ -66,4 +71,5 @@
         </table>
     </form>
 </body>
+
 </html>

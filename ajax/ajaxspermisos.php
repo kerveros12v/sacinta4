@@ -1,6 +1,6 @@
 <?php
 
-require_once("../../../modelo/Crud/crudPermisos.php");
+require_once("../Crud/crudPermisos.php");
 
 use Crud\CrudPermisos;
 
@@ -22,15 +22,15 @@ try {
     if ($unicosDepartamentos != null) {
         foreach ($unicosDepartamentos as $lp1) {
             echo '<li><a href="#">' . $lp1 . '</a>';
+
             echo "<ul>";
             foreach ($lstpermisos as $dp) {
                 if ($lp1 == $dp->getDepartamentosSubdivision()) {
-                    //echo"<script>console.log('".$dp->get_etiqueta()."');</scrit>";
-                    echo ('<li><a href="' . $dp->getUrl() . '" target="contenedor">' . $crudpermisos->mostrarDepartamento($dp->getEtiqueta()) . '</a></li>');
+                    echo ('<li><a href="' . $dp->getUrl() . '" target="contenedor">' . ($dp->getEtiqueta()) . '</a></li>');
                 }
             }
+
             echo "</ul>";
-            // foreach()
             echo "</li>";
         }
     }

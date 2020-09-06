@@ -12,8 +12,6 @@ class CrudTipodocumento
 	// constructor de la clase
 	public function __construct()
 	{
-		$db = Db::conectar();
-		$select = $db->query("SET NAMES 'utf8'");
 	}
 
 	public function mostrar()
@@ -21,16 +19,16 @@ class CrudTipodocumento
 		$db = Db::conectar();
 		$listatipo_documento = null;
 		$select = $db->query('SELECT * FROM tiposdocumentos');
-		foreach ($select->fetchAll() as $tipo_documento1) {
-			$mytipo_documento1 = new Tipodocumento();
-			$mytipo_documento1->set_tipoDocumentoId($tipo_documento1['tipoDocumentoId']);
-			$mytipo_documento1->set_tipoDocumento($tipo_documento1['tipoDocumento']);
-			$mytipo_documento1->set_tipoDocumentocodigo($tipo_documento1['tipoDocumentocodigo']);
-			$mytipo_documento1->set_tipoDocumentoOculto($tipo_documento1['tipoDocumentoOculto']);
-			$mytipo_documento1->set_tipoDocumentoAccion($tipo_documento1['tipoDocumentoAccion']);
-			$mytipo_documento1->set_tipoDocumentofecha($tipo_documento1['tipoDocumentofecha']);
-			$mytipo_documento1->set_tipoDocumentouser($tipo_documento1['tipoDocumentouser']);
-			$listatipo_documento[] = $mytipo_documento1;
+		foreach ($select->fetchAll() as $tipoDocumento1) {
+			$mytipoDocumento1 = new Tipodocumento();
+			$mytipoDocumento1->setTipoDocumentoId($tipoDocumento1['tipoDocumentoId']);
+			$mytipoDocumento1->setTipoDocumento($tipoDocumento1['tipoDocumento']);
+			$mytipoDocumento1->setTipoDocumentocodigo($tipoDocumento1['tipoDocumentocodigo']);
+			$mytipoDocumento1->setTipoDocumentoOculto($tipoDocumento1['tipoDocumentoOculto']);
+			$mytipoDocumento1->setTipoDocumentoAccion($tipoDocumento1['tipoDocumentoAccion']);
+			$mytipoDocumento1->setTipoDocumentofecha($tipoDocumento1['tipoDocumentofecha']);
+			$mytipoDocumento1->setTipoDocumentouser($tipoDocumento1['tipoDocumentouser']);
+			$listatipo_documento[] = $mytipoDocumento1;
 		}
 		return $listatipo_documento;
 	}
@@ -47,17 +45,17 @@ class CrudTipodocumento
 		$select = $db->prepare('SELECT * FROM tiposdocumentos WHERE tipoDocumentoId=:id');
 		$select->bindValue('id', $id);
 		$select->execute();
-		$tipo_documento1 = $select->fetch();
-		$mytipo_documento1 = new Tipodocumento();
-		$mytipo_documento1->set_tipoDocumentoId($tipo_documento1['tipoDocumentoId']);
-		$mytipo_documento1->set_tipoDocumento($tipo_documento1['tipoDocumento']);
-		$mytipo_documento1->set_tipoDocumentocodigo($tipo_documento1['tipoDocumentocodigo']);
-		$mytipo_documento1->set_tipoDocumentoOculto($tipo_documento1['tipoDocumentoOculto']);
-		$mytipo_documento1->set_tipoDocumentoAccion($tipo_documento1['tipoDocumentoAccion']);
-		$mytipo_documento1->set_tipoDocumentofecha($tipo_documento1['tipoDocumentofecha']);
-		$mytipo_documento1->set_tipoDocumentouser($tipo_documento1['tipoDocumentouser']);
+		$tipoDocumento1 = $select->fetch();
+		$mytipoDocumento1 = new Tipodocumento();
+		$mytipoDocumento1->setTipoDocumentoId($tipoDocumento1['tipoDocumentoId']);
+		$mytipoDocumento1->setTipoDocumento($tipoDocumento1['tipoDocumento']);
+		$mytipoDocumento1->setTipoDocumentocodigo($tipoDocumento1['tipoDocumentocodigo']);
+		$mytipoDocumento1->setTipoDocumentoOculto($tipoDocumento1['tipoDocumentoOculto']);
+		$mytipoDocumento1->setTipoDocumentoAccion($tipoDocumento1['tipoDocumentoAccion']);
+		$mytipoDocumento1->setTipoDocumentofecha($tipoDocumento1['tipoDocumentofecha']);
+		$mytipoDocumento1->setTipoDocumentouser($tipoDocumento1['tipoDocumentouser']);
 
-		return $mytipo_documento1;
+		return $mytipoDocumento1;
 	}
 	public function obtenerDato($id)
 	{
@@ -65,12 +63,12 @@ class CrudTipodocumento
 		$select = $db->prepare('SELECT * FROM tiposdocumentos WHERE tipoDocumentoId=:id');
 		$select->bindValue('id', $id);
 		$select->execute();
-		$tipo_documento1 = $select->fetch();
-		$mytipo_documento1 = ($tipo_documento1['tipoDocumento']);
+		$tipoDocumento1 = $select->fetch();
+		$mytipoDocumento1 = ($tipoDocumento1['tipoDocumento']);
 
-		return $mytipo_documento1;
+		return $mytipoDocumento1;
 	}
-	public function actualizar($tipo_documento1)
+	public function actualizar($tipoDocumento1)
 	{
 		$db = Db::conectar();
 		$actualizar = $db->prepare('UPDATE `tiposdocumentos`
@@ -83,16 +81,16 @@ class CrudTipodocumento
 			`tipoDocumentofecha` = :tipoDocumentofecha1,
 			`tipoDocumentouser` = :tipoDocumentouser1
 			WHERE `tipoDocumentoId` = :tipoDocumentoId1;');
-		$actualizar->bindValue('tipoDocumentoId1', $tipo_documento1->get_tipoDocumentoId());
-		$actualizar->bindValue('tipoDocumentocodigo1', $tipo_documento1->get_tipoDocumentocodigo());
-		$actualizar->bindValue('tipoDocumento1', $tipo_documento1->get_tipoDocumento());
-		$actualizar->bindValue('tipoDocumentoOculto1', $tipo_documento1->get_tipoDocumentoOculto());
-		$actualizar->bindValue('tipoDocumentoAccion1', $tipo_documento1->get_tipoDocumentoAccion());
-		$actualizar->bindValue('tipoDocumentofecha1', $tipo_documento1->get_tipoDocumentofecha());
-		$actualizar->bindValue('tipoDocumentouser1', $tipo_documento1->get_tipoDocumentouser());
+		$actualizar->bindValue('tipoDocumentoId1', $tipoDocumento1->getTipoDocumentoId());
+		$actualizar->bindValue('tipoDocumentocodigo1', $tipoDocumento1->getTipoDocumentocodigo());
+		$actualizar->bindValue('tipoDocumento1', $tipoDocumento1->getTipoDocumento());
+		$actualizar->bindValue('tipoDocumentoOculto1', $tipoDocumento1->getTipoDocumentoOculto());
+		$actualizar->bindValue('tipoDocumentoAccion1', $tipoDocumento1->getTipoDocumentoAccion());
+		$actualizar->bindValue('tipoDocumentofecha1', $tipoDocumento1->getTipoDocumentofecha());
+		$actualizar->bindValue('tipoDocumentouser1', $tipoDocumento1->getTipoDocumentouser());
 		$actualizar->execute();
 	}
-	public function insertar($tipo_documento1)
+	public function insertar($tipoDocumento1)
 	{
 		$db = Db::conectar();
 		$insert = $db->prepare('INSERT INTO `tiposdocumentos`
@@ -112,13 +110,13 @@ class CrudTipodocumento
 			:tipoDocumentofecha1,
 			:tipoDocumentouser1);
 			');
-		$insert->bindValue('tipoDocumentoId1', $tipo_documento1->get_tipoDocumentoId());
-		$insert->bindValue('tipoDocumentocodigo1', $tipo_documento1->get_tipoDocumentocodigo());
-		$insert->bindValue('tipoDocumento1', $tipo_documento1->get_tipoDocumento());
-		$insert->bindValue('tipoDocumentoOculto1', $tipo_documento1->get_tipoDocumentoOculto());
-		$insert->bindValue('tipoDocumentoAccion1', $tipo_documento1->get_tipoDocumentoAccion());
-		$insert->bindValue('tipoDocumentofecha1', $tipo_documento1->get_tipoDocumentofecha());
-		$insert->bindValue('tipoDocumentouser1', $tipo_documento1->get_tipoDocumentouser());
+		$insert->bindValue('tipoDocumentoId1', $tipoDocumento1->getTipoDocumentoId());
+		$insert->bindValue('tipoDocumentocodigo1', $tipoDocumento1->getTipoDocumentocodigo());
+		$insert->bindValue('tipoDocumento1', $tipoDocumento1->getTipoDocumento());
+		$insert->bindValue('tipoDocumentoOculto1', $tipoDocumento1->getTipoDocumentoOculto());
+		$insert->bindValue('tipoDocumentoAccion1', $tipoDocumento1->getTipoDocumentoAccion());
+		$insert->bindValue('tipoDocumentofecha1', $tipoDocumento1->getTipoDocumentofecha());
+		$insert->bindValue('tipoDocumentouser1', $tipoDocumento1->getTipoDocumentouser());
 		$insert->execute();
 	}
 }
