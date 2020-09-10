@@ -7,17 +7,17 @@ function opcionpais()
     try {
         $dato = new \Clasesphp\Paises();
         $crud = new \Crud\CrudPaises();
-        $dato->set_paisId($_POST['id']);
-        $dato->set_codigo($_POST['cod']);
-        $dato->set_pais(strtoupper($_POST['nom']));
-        $dato->set_oculto($_POST['eliminar']);
-        $dato->set_estado($_POST['actualizar']);
-        $dato->set_fecha(date("Y-m-d"));
-        $dato->set_user($_SESSION['tipouser'] . $_SESSION['user']);
+        $dato->setPaisId($_POST['id']);
+        $dato->setPaisescodigo($_POST['cod']);
+        $dato->setPais(strtoupper($_POST['nom']));
+        $dato->setPaisesOculto($_POST['eliminar']);
+        $dato->setPaisesAccion($_POST['actualizar']);
+        $dato->setPaisesfecha(date("Y-m-d"));
+        $dato->setPaisesuser($_SESSION['tipouser'] . $_SESSION['user']);
         $opcion = $_POST['opt'];
-        if ($_SESSION['user']!="") {
+        if ($_SESSION['user'] != "") {
             if ($opcion == 1) {
-                $dato->set_paisId(null);
+                $dato->setPaisId(null);
                 $crud->insertar($dato);
                 return (guardarR());
             }
@@ -26,11 +26,11 @@ function opcionpais()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($dato->get_paisId());
+                $crud->eliminar($dato->getPaisId());
                 return (eliminarR());
             }
         }
-        echo(tiempoExedido());
+        echo (tiempoExedido());
     } catch (Exception $e) {
         return $e;
     }

@@ -9,12 +9,12 @@ function cargarCanton($opt, $id)
     $oCrudcantonNacionalidad = new CrudCantones();
     $listacantonNacionalidad = $oCrudcantonNacionalidad->mostrarlistapoProvincia($id);
     $cantonNacionalidad = new Cantones();
-    $lista = '<option disabled><label>Seleccione un Canton</label></option>"';
+    $lista = '<option value=0 selected="selected" ><label>Seleccione un Canton</label></option>"';
     foreach ($listacantonNacionalidad as $cantonNacionalidad) {
-        if ($opt == $cantonNacionalidad->get_cantonId()) {
-            $lista .= " <option selected='selected' value='" . $cantonNacionalidad->get_cantonId() . "'><label>" . ($cantonNacionalidad->get_canton()) . "</label></option>";
+        if ($opt == $cantonNacionalidad->getCantonId()) {
+            $lista .= " <option selected='selected' value='" . $cantonNacionalidad->getCantonId() . "'><label>" . ($cantonNacionalidad->getCanton()) . "</label></option>";
         } else {
-            $lista .= " <option value='" . $cantonNacionalidad->get_cantonId() . "'><label>" . ($cantonNacionalidad->get_canton()) . "</label></option>";
+            $lista .= " <option value='" . $cantonNacionalidad->getCantonId() . "'><label>" . ($cantonNacionalidad->getCanton()) . "</label></option>";
         }
     }
     return $lista;
@@ -26,10 +26,10 @@ function cargarlistaCanton($opt)
     $cantonNacionalidad = new Cantones();
     $lista = '<option disabled><label>Seleccione un Canton</label></option>"';
     foreach ($listacantonNacionalidad as $cantonNacionalidad) {
-        if ($opt == $cantonNacionalidad->get_cantonId()) {
-            $lista .= " <option selected='selected' value='" . $cantonNacionalidad->get_cantonId() . "'><label>" . ($cantonNacionalidad->get_canton()) . "</label></option>";
+        if ($opt == $cantonNacionalidad->getCantonId()) {
+            $lista .= " <option selected='selected' value='" . $cantonNacionalidad->getCantonId() . "'><label>" . ($cantonNacionalidad->getCanton()) . "</label></option>";
         } else {
-            $lista .= " <option value='" . $cantonNacionalidad->get_cantonId() . "'><label>" . ($cantonNacionalidad->get_canton()) . "</label></option>";
+            $lista .= " <option value='" . $cantonNacionalidad->getCantonId() . "'><label>" . ($cantonNacionalidad->getCanton()) . "</label></option>";
         }
     }
     return $lista;

@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parroquias</title>
+    <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="../css/cssmatricula1.css" />
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/cssmatricula1.css" />
-
-    <script type="text/javascript" src="../js/ajaxsparroquia.js"></script>
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
     <link href="../vendor/select2/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../vendor/select2/select2/dist/js/select2.min.js"></script>
-
+    <script type="text/javascript" src="../js/ajaxsparroquia.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function($) {
             $(document).ready(function() {
@@ -23,6 +24,9 @@
 </head>
 
 <body>
+    <div id="dialog" style="display: none;" title="Respuesta del servidor">
+        <p id="dialog-confirm"></p>
+    </div>
     <form>
         <table>
             <tr>

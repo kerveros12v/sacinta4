@@ -14,7 +14,7 @@ function cargarParroquia($opt)
    $id = $opt;
    $crudparroquia = new CrudParroquia();
    $lstparroquia = $crudparroquia->mostrarporCiudad($id);
-   $lista="";
+   $lista = "";
    $lista .= '<tr>
    <th>
       Codigo
@@ -31,7 +31,7 @@ function cargarParroquia($opt)
       <input type="text" class="camptext1" id="codigoparroquia" name="codigoparroquia"   value=" "  required="required" />
    </td>
    <td>
-      <input type="text"  id="parroquia' . $parroquia->get_idparroquias() . '" name="parroquia' . $parroquia->get_idparroquias() . '"   value="' . $parroquia->get_parroquiascodigo() . '"  required="required" />
+      <input type="text"  id="parroquia' . $parroquia->getIdparroquias() . '" name="parroquia' . $parroquia->getIdparroquias() . '"   value="' . $parroquia->getParroquiascodigo() . '"  required="required" />
    </td>
    <td>
    <input type="button" value="Guardar" id="btnregistro" class="btnunico" onclick="registro()">
@@ -41,15 +41,15 @@ function cargarParroquia($opt)
       $lista .= '
    <tr>
       <td>
-         <input type="text" class="camptext1" id="codigoparroquia' . $parroquia->get_idparroquias() . '" name="codigoparroquia' . $parroquia->get_idparroquias() . '"   value="  ' . $parroquia->get_parroquiascodigo() . '"  required="required" />
+         <input type="text" class="camptext1" id="codigoparroquia' . $parroquia->getIdparroquias() . '" name="codigoparroquia' . $parroquia->getIdparroquias() . '"   value="  ' . $parroquia->getParroquiascodigo() . '"  required="required" />
       </td>
       <td>
-         <input type="text"  id="parroquia' . $parroquia->get_idparroquias() . '" name="parroquia' . $parroquia->get_idparroquias() . '"   value="' . $parroquia->get_parroquia() . '"  required="required" />
+         <input type="text"  id="parroquia' . $parroquia->getIdparroquias() . '" name="parroquia' . $parroquia->getIdparroquias() . '"   value="' . $parroquia->getParroquia() . '"  required="required" />
       </td>
       <td>
       <div class=enlinea>
-          <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $parroquia->get_idparroquias() . ')">
-          <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $parroquia->get_idparroquias() . ')">
+          <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $parroquia->getIdparroquias() . ')">
+          <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $parroquia->getIdparroquias() . ')">
       </div>
       </td>
    </tr>';

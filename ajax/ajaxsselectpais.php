@@ -10,7 +10,7 @@ function cargarPais($opt)
     $oCrudPais = new CrudPaises();
     $listaPaises = $oCrudPais->mostrar();
     $pais1 = new Paises();
-    $lista = '<option disabled><label>Seleccione un Pais</label></option>"';
+    $lista = '<option selected="selected" value="0"><label>Seleccione un Pais</label></option>"';
     foreach ($listaPaises as $pais1) {
         if ($opt == $pais1->getPaisId()) {
             $lista .= " <option  selected='selected' value='" . $pais1->getPaisId() . "'><label>" . ($pais1->getPais()) . "</label></option>";

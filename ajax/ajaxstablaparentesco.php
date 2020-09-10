@@ -7,9 +7,9 @@ use Crud\CrudParentescos;
 session_start();
 function cargartablaparentesco()
 {
-    $r="";
+    $r = "";
     $crud = new CrudParentescos();
-    $r.= '
+    $r .= '
 <tr>
     <td>
 
@@ -33,24 +33,24 @@ function cargartablaparentesco()
 
         </td>
         <td>
-            <input type="text" class="camptext1" id="parentescocodigo' . $dato->get_idParentescos() . '" name="parentescocodigo' . $dato->get_idParentescos() . '"  maxlength="10" value="' . $dato->get_parentescocodigo() . '"/>
+            <input type="text" class="camptext1" id="parentescocodigo' . $dato->getIdParentescos() . '" name="parentescocodigo' . $dato->getIdParentescos() . '"  maxlength="10" value="' . $dato->getParentescocodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="parentesco' . $dato->get_idParentescos() . '" name="parentesco' . $dato->get_idParentescos() . '"  value="' . $dato->get_parentesco() . '"/>
+            <input type="text" id="parentesco' . $dato->getIdParentescos() . '" name="parentesco' . $dato->getIdParentescos() . '"  value="' . $dato->getParentesco() . '"/>
         </td>
         <td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_idParentescos() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_idParentescos() . ')">
+        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getIdParentescos() . ')">
+         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getIdParentescos() . ')">
         </td>
     </tr>
     ';
     }
     return $r;
 }
-if ($_SESSION['user']!="") {
+if ($_SESSION['user'] != "") {
     echo cargartablaparentesco();
-} else{
-	echo '<tr>
+} else {
+    echo '<tr>
 		<td>
 		</td>
 		<td>
@@ -58,7 +58,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }

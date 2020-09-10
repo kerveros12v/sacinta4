@@ -12,19 +12,19 @@ function opcionparroquia()
     try {
         $parroquia = new Parroquia();
         $crudparroquia = new CrudParroquia();
-        $parroquia->set_idparroquias(trim($_POST['id']));
-        $parroquia->set_parroquiascodigo(trim($_POST['codigo']));
-        $parroquia->set_parroquia(strtoupper(trim($_POST['parroquia'])));
-        $parroquia->set_parroquiasCanton($_POST['canton']);
-        $parroquia->set_parroquiaAccion($_POST['actualizar']);
-        $parroquia->set_parroquiaOculto($_POST['eliminar']);
-        $parroquia->set_parroquiasUsuario($_SESSION['tipouser'] . $_SESSION['user']);
-        $parroquia->set_parroquiafecha(date("Y-m-d"));
+        $parroquia->setIdparroquias(trim($_POST['id']));
+        $parroquia->setParroquiascodigo(trim($_POST['codigo']));
+        $parroquia->setParroquia(strtoupper(trim($_POST['parroquia'])));
+        $parroquia->setParroquiasCanton($_POST['canton']);
+        $parroquia->setParroquiaAccion($_POST['actualizar']);
+        $parroquia->setParroquiaOculto($_POST['eliminar']);
+        $parroquia->setParroquiasUsuario($_SESSION['tipouser'] . $_SESSION['user']);
+        $parroquia->setParroquiafecha(date("Y-m-d"));
 
         $opcion = $_POST['opt'];
-        if ($_SESSION['user']!="") {
+        if ($_SESSION['user'] != "") {
             if ($opcion == 1) {
-                $parroquia->set_idparroquias(null);
+                $parroquia->setIdparroquias(null);
                 $crudparroquia->insertar($parroquia);
                 return (guardarR());
             }
@@ -33,11 +33,11 @@ function opcionparroquia()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crudparroquia->eliminar($parroquia->get_idparroquias());
+                $crudparroquia->eliminar($parroquia->getIdparroquias());
                 return (eliminarR());
             }
         }
-        echo(tiempoExedido());
+        echo (tiempoExedido());
     } catch (Exception $e) {
         return ($e->getMessage());
     }

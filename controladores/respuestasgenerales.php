@@ -36,6 +36,6 @@ function boolselect($o)
 }
 function dialogo($respuesta)
 {
-    $resultado = '<p>' . $respuesta . '</p>';
+    $resultado =  $respuesta;
     return $resultado;
 }

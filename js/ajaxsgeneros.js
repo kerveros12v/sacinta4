@@ -30,8 +30,17 @@ function cargartabla(){
       'opt':1}
       })
       .done(function(cargar){
-        alert(cargar)
-        cargartabla()
+        $('#dialog-confirm').html(cargar)
+        $("#dialog").dialog({
+          height: 250,
+          buttons: {
+            Aceptar: function () {
+              cargartabla()
+              $(this).dialog("close");
+
+            }
+          }
+        })
       })
       .fail(function(){
         alert('Hubo un error al cargar de Perfiles')
@@ -53,8 +62,17 @@ function cargartabla(){
           'opt':2}
         })
         .done(function(cargar){
-          alert(cargar)
-       cargartabla()
+          $('#dialog-confirm').html(cargar)
+          $("#dialog").dialog({
+            height: 250,
+            buttons: {
+              Aceptar: function () {
+                cargartabla()
+                $(this).dialog("close");
+
+              }
+            }
+          })
         })
         .fail(function(){
           alert('Hubo un error al cargar')
@@ -76,9 +94,17 @@ function cargartabla(){
             'opt':0}
         })
         .done(function(cargar){
-          alert(cargar)
+          $('#dialog-confirm').html(cargar)
+          $("#dialog").dialog({
+            height: 250,
+            buttons: {
+              Aceptar: function () {
+                cargartabla()
+                $(this).dialog("close");
 
-       cargartabla()
+              }
+            }
+          })
         })
         .fail(function(){
           alert('Hubo un error al cargar')

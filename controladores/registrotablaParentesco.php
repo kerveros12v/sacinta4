@@ -18,19 +18,19 @@ function opcionparentesco()
         $datos = new Parentescos();
         $crud = new CrudParentescos();
 
-        $datos->set_idParentescos($_POST['id']);
-        $datos->set_parentesco($_POST['nom']);
-        $datos->set_parentescocodigo($_POST['cod']);
-        $datos->set_parentescosOculto($_POST['eliminar']);
-        $datos->set_parentescosAccion($_POST['actualizar']);
-        $datos->set_parentescosfecha(date("Y-m-d"));
-        $datos->set_parentescosuser($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->setIdParentescos($_POST['id']);
+        $datos->setParentesco($_POST['nom']);
+        $datos->setParentescocodigo($_POST['cod']);
+        $datos->setParentescosOculto($_POST['eliminar']);
+        $datos->setParentescosAccion($_POST['actualizar']);
+        $datos->setParentescosfecha(date("Y-m-d"));
+        $datos->setParentescosuser($_SESSION['tipouser'] . $_SESSION['user']);
         $opcion = $_POST['opt'];
 
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_idParentescos(null);
+                $datos->setIdParentescos(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -39,7 +39,7 @@ function opcionparentesco()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_idParentescos());
+                $crud->eliminar($datos->getIdParentescos());
                 return (eliminarR());
             }
         }

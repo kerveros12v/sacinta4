@@ -12,8 +12,6 @@ class CrudNivelformacion
 	// constructor de la clase
 	public function __construct()
 	{
-		$db = Db::conectar();
-		$select = $db->query("SET NAMES 'utf8'");
 	}
 
 	public function mostrar()
@@ -24,14 +22,14 @@ class CrudNivelformacion
 
 		foreach ($select->fetchAll() as $nivelformacion1) {
 			$mynivelformacion = new Nivelformacion();
-			$mynivelformacion->set_nivelFormacionId($nivelformacion1['nivelFormacionId']);
-			$mynivelformacion->set_codigonivelFormacion($nivelformacion1['codigonivelFormacion']);
-			$mynivelformacion->set_nivelFormacion($nivelformacion1['nivelFormacion']);
-			$mynivelformacion->set_nivelInstruccion($nivelformacion1['nivelInstruccion']);
-			$mynivelformacion->set_nivelformacionfecha($nivelformacion1['nivelformacionfecha']);
-			$mynivelformacion->set_nivelformacionuser($nivelformacion1['nivelformacionuser']);
-			$mynivelformacion->set_nivelformacionOculto($nivelformacion1['nivelformacionOculto']);
-			$mynivelformacion->set_nivelformacionAccion($nivelformacion1['nivelformacionAccion']);
+			$mynivelformacion->setNivelFormacionId($nivelformacion1['nivelFormacionId']);
+			$mynivelformacion->setCodigonivelFormacion($nivelformacion1['codigonivelFormacion']);
+			$mynivelformacion->setNivelFormacion($nivelformacion1['nivelFormacion']);
+			$mynivelformacion->setNivelInstruccion($nivelformacion1['nivelInstruccion']);
+			$mynivelformacion->setNivelformacionfecha($nivelformacion1['nivelformacionfecha']);
+			$mynivelformacion->setNivelformacionuser($nivelformacion1['nivelformacionuser']);
+			$mynivelformacion->setNivelformacionOculto($nivelformacion1['nivelformacionOculto']);
+			$mynivelformacion->setNivelformacionAccion($nivelformacion1['nivelformacionAccion']);
 
 			$listaNivelformacion[] = $mynivelformacion;
 		}
@@ -63,15 +61,14 @@ class CrudNivelformacion
 		$select->execute();
 		$nivelformacion1 = $select->fetch();
 		$mynivelformacion = new Nivelformacion();
-		$mynivelformacion->set_nivelFormacionId($nivelformacion1['nivelFormacionId']);
-		$mynivelformacion->set_codigonivelFormacion($nivelformacion1['codigonivelFormacion']);
-		$mynivelformacion->set_nivelFormacion($nivelformacion1['nivelFormacion']);
-		$mynivelformacion->set_nivelInstruccion($nivelformacion1['nivelInstruccion']);
-		$mynivelformacion->set_nivelformacionfecha($nivelformacion1['nivelformacionfecha']);
-		$mynivelformacion->set_nivelformacionuser($nivelformacion1['nivelformacionuser']);
-		$mynivelformacion->set_nivelformacionOculto($nivelformacion1['nivelformacionOculto']);
-		$mynivelformacion->set_nivelformacionAccion($nivelformacion1['nivelformacionAccion']);
-
+		$mynivelformacion->setNivelFormacionId($nivelformacion1['nivelFormacionId']);
+		$mynivelformacion->setCodigonivelFormacion($nivelformacion1['codigonivelFormacion']);
+		$mynivelformacion->setNivelFormacion($nivelformacion1['nivelFormacion']);
+		$mynivelformacion->setNivelInstruccion($nivelformacion1['nivelInstruccion']);
+		$mynivelformacion->setNivelformacionfecha($nivelformacion1['nivelformacionfecha']);
+		$mynivelformacion->setNivelformacionuser($nivelformacion1['nivelformacionuser']);
+		$mynivelformacion->setNivelformacionOculto($nivelformacion1['nivelformacionOculto']);
+		$mynivelformacion->setNivelformacionAccion($nivelformacion1['nivelformacionAccion']);
 		return $mynivelformacion;
 	}
 	public function obtenerDato($id)
@@ -99,14 +96,14 @@ class CrudNivelformacion
 			`nivelformacionfecha` = :nivelformacionfecha1,
 			`nivelformacionuser` = :nivelformacionuser1
 			WHERE `nivelFormacionId` = :nivelFormacionId1;');
-		$actualizar->bindValue('nivelFormacionId1', $nivelformacion1->get_nivelFormacionId());
-		$actualizar->bindValue('codigonivelFormacion1', $nivelformacion1->get_codigonivelFormacion());
-		$actualizar->bindValue('nivelFormacion1', $nivelformacion1->get_nivelFormacion());
-		$actualizar->bindValue('nivelInstruccion1', $nivelformacion1->get_nivelInstruccion());
-		$actualizar->bindValue('nivelformacionOculto1', $nivelformacion1->get_nivelformacionOculto());
-		$actualizar->bindValue('nivelformacionAccion1', $nivelformacion1->get_nivelformacionAccion());
-		$actualizar->bindValue('nivelformacionfecha1', $nivelformacion1->get_nivelformacionfecha());
-		$actualizar->bindValue('nivelformacionuser1', $nivelformacion1->get_nivelformacionuser());
+		$actualizar->bindValue('nivelFormacionId1', $nivelformacion1->getNivelFormacionId());
+		$actualizar->bindValue('codigonivelFormacion1', $nivelformacion1->getCodigonivelFormacion());
+		$actualizar->bindValue('nivelFormacion1', $nivelformacion1->getNivelFormacion());
+		$actualizar->bindValue('nivelInstruccion1', $nivelformacion1->getNivelInstruccion());
+		$actualizar->bindValue('nivelformacionOculto1', $nivelformacion1->getNivelformacionOculto());
+		$actualizar->bindValue('nivelformacionAccion1', $nivelformacion1->getNivelformacionAccion());
+		$actualizar->bindValue('nivelformacionfecha1', $nivelformacion1->getNivelformacionfecha());
+		$actualizar->bindValue('nivelformacionuser1', $nivelformacion1->getNivelformacionuser());
 		$actualizar->execute();
 	}
 	public function insertar($nivelformacion1)
@@ -130,14 +127,14 @@ class CrudNivelformacion
 			:nivelformacionAccion1,
 			:nivelformacionfecha1,
 			:nivelformacionuser1);');
-		$insert->bindValue('nivelFormacionId1', $nivelformacion1->get_nivelFormacionId());
-		$insert->bindValue('codigonivelFormacion1', $nivelformacion1->get_codigonivelFormacion());
-		$insert->bindValue('nivelFormacion1', $nivelformacion1->get_nivelFormacion());
-		$insert->bindValue('nivelInstruccion1', $nivelformacion1->get_nivelInstruccion());
-		$insert->bindValue('nivelformacionOculto1', $nivelformacion1->get_nivelformacionOculto());
-		$insert->bindValue('nivelformacionAccion1', $nivelformacion1->get_nivelformacionAccion());
-		$insert->bindValue('nivelformacionfecha1', $nivelformacion1->get_nivelformacionfecha());
-		$insert->bindValue('nivelformacionuser1', $nivelformacion1->get_nivelformacionuser());
+		$insert->bindValue('nivelFormacionId1', $nivelformacion1->getNivelFormacionId());
+		$insert->bindValue('codigonivelFormacion1', $nivelformacion1->getCodigonivelFormacion());
+		$insert->bindValue('nivelFormacion1', $nivelformacion1->getNivelFormacion());
+		$insert->bindValue('nivelInstruccion1', $nivelformacion1->getNivelInstruccion());
+		$insert->bindValue('nivelformacionOculto1', $nivelformacion1->getNivelformacionOculto());
+		$insert->bindValue('nivelformacionAccion1', $nivelformacion1->getNivelformacionAccion());
+		$insert->bindValue('nivelformacionfecha1', $nivelformacion1->getNivelformacionfecha());
+		$insert->bindValue('nivelformacionuser1', $nivelformacion1->getNivelformacionuser());
 		$insert->execute();
 	}
 }

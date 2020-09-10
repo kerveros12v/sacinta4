@@ -119,9 +119,18 @@ function registro() {
     }
   })
     .done(function (cargar) {
-      alert(cargar)
-      cargartabla1()
-    })
+      $('#dialog-confirm').html(cargar)
+      $("#dialog").dialog({
+        height: 250,
+        buttons: {
+          Aceptar: function () {
+            cargartabla1()
+            $(this).dialog("close");
+
+          }
+        }
+      })
+        })
     .fail(function () {
       alert('Hubo un error al cargar de Perfiles')
     });
@@ -147,8 +156,17 @@ function actualizar(dato) {
     }
   })
     .done(function (cargar) {
-      alert(cargar)
-      cargartabla1()
+      $('#dialog-confirm').html(cargar)
+      $("#dialog").dialog({
+        height: 250,
+        buttons: {
+          Aceptar: function () {
+            cargartabla1()
+            $(this).dialog("close");
+
+          }
+        }
+      })
 
     })
     .fail(function () {
@@ -175,8 +193,17 @@ function eliminar(dato) {
     }
   })
     .done(function (cargar) {
-      alert(cargar)
-      cargartabla1()
+      $('#dialog-confirm').html(cargar)
+          $("#dialog").dialog({
+            height: 250,
+            buttons: {
+              Aceptar: function () {
+                cargartabla1()
+                $(this).dialog("close");
+
+              }
+            }
+          })
     })
     .fail(function () {
       alert('Hubo un error al cargar')

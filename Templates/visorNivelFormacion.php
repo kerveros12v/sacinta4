@@ -3,11 +3,13 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NIVEL DE FORMACION</title>
+  <title>Nivel de Formacion</title>
   <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="../css/cssmatricula1.css" />
   <script type="text/javascript" src="../js/jquery.js"></script>
   <script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
   <script type="text/javascript" src="../js/ajaxsnivelformacion.js"></script>
 </head>
 

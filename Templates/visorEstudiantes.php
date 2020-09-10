@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Tipo Sangre</title>
+  <title>Lista de Estudiantes</title>
   <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="../css/cssmatricula1.css" />
   <script type="text/javascript" src="../js/jquery.js"></script>

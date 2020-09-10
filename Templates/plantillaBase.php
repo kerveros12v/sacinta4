@@ -20,7 +20,7 @@ if (isset($_SESSION['tipouser'])) {
 
       */
       }
-    case "Desarrollador": {
+    case "DESS": {
         $nomb = $_SESSION['user'];
       }
   }
@@ -66,6 +66,9 @@ document.location=\"$PHP_SELF?ancho=\"+screen.width+\"&alto=\"+screen.height;
 </head>
 
 <body>
+  <div id="dialog" style="display: none;" title="Respuesta del servidor">
+    <p id="dialog-confirm"></p>
+  </div>
   <div class="sidebar1">
     <a href="Bienvenida.php" target="contenedor"><img src="../img/logo-principal.png" name="logo" width="110" height="60" id="logo" /></a>
     <ul class="nav">

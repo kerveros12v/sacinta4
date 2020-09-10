@@ -49,6 +49,16 @@ input[type=text].camptext1{
   color: #333;
   padding: 5px;
 }
+input[type=text].camptext3{
+  width: 1000px;
+  height: 20px;
+  border: 2px solid #ccc;
+  line-height: 40px;
+  font-family: Verdana;
+  font-size: 16px;
+  color: #333;
+  padding: 5px;
+}
 input[type=text].camptext2{
   width: 120px;
   height: 20px;

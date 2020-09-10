@@ -2,12 +2,11 @@
 
 require_once("../Crud/CrudCategoriaMigratoria.php");
 require_once("respuestasgenerales.php");
+
 use Clasesphp\Categoriasmigratoria;
 use Crud\CrudCategoriasMigratoria;
 
 session_start();
-
-
 
 function opcionTipodocumento()
 {
@@ -15,13 +14,13 @@ function opcionTipodocumento()
         $datos = new Categoriasmigratoria();
         $crud = new CrudCategoriasMigratoria();
 
-        $datos->set_categoriaMigratoriaId($_POST['id']);
-        $datos->set_categoriaMigratoria($_POST['nom']);
-        $datos->set_categoriasmigratoriacodigo($_POST['cod']);
-        $datos->set_categoriasmigratoriaOculto($_POST['eliminar']);
-        $datos->set_categoriasmigratoriaAccion($_POST['actualizar']);
-        $datos->set_categoriasmigratoriafecha(date("Y-m-d"));
-        $datos->set_categoriasmigratoriauser($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->setCategoriaMigratoriaId($_POST['id']);
+        $datos->setCategoriaMigratoria($_POST['nom']);
+        $datos->setCategoriasmigratoriacodigo($_POST['cod']);
+        $datos->setCategoriasmigratoriaOculto($_POST['eliminar']);
+        $datos->setCategoriasmigratoriaAccion($_POST['actualizar']);
+        $datos->setCategoriasmigratoriafecha(date("Y-m-d"));
+        $datos->setCategoriasmigratoriauser($_SESSION['tipouser'] . $_SESSION['user']);
 
 
         $opcion = $_POST['opt'];
@@ -29,7 +28,7 @@ function opcionTipodocumento()
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_categoriaMigratoriaId(null);
+                $datos->setCategoriaMigratoriaId(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -38,7 +37,7 @@ function opcionTipodocumento()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_categoriaMigratoriaId());
+                $crud->eliminar($datos->getCategoriaMigratoriaId());
                 return (eliminarR());
             }
         }

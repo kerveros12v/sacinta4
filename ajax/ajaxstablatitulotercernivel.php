@@ -18,7 +18,7 @@ function cargartablatitulotercernivel()
         <input type="text" class="camptext1" id="titulotercernivelcodigo" name="titulotercernivelcodigo"  maxlength="10" value=""/>
     </td>
     <td>
-        <input type="text" id="tituloTercerNivel" name="tituloTercerNivel"  value=""/>
+        <input type="text" class="camptext3" id="tituloTercerNivel" name="tituloTercerNivel"  value=""/>
     </td>
     <td>
         <input type="button" value="Guardar" id="btnguardar" class="btnunico" onclick="registro()">
@@ -36,7 +36,7 @@ function cargartablatitulotercernivel()
             <input type="text" class="camptext1" id="titulotercernivelcodigo' . $dato->getTituloTercerNivelId() . '" name="titulotercernivelcodigo' . $dato->getTituloTercerNivelId() . '"  maxlength="10" value="' . $dato->getTitulotercernivelcodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="tituloTercerNivel' . $dato->getTituloTercerNivelId() . '" name="tituloTercerNivel' . $dato->getTituloTercerNivelId() . '"  value="' . $dato->getTituloTercerNivel() . '"/>
+            <input type="text" class="camptext3" id="tituloTercerNivel' . $dato->getTituloTercerNivelId() . '" name="tituloTercerNivel' . $dato->getTituloTercerNivelId() . '"  value="' . $dato->getTituloTercerNivel() . '"/>
         </td>
         <td class="unilinea">
         <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getTituloTercerNivelId() . ')">

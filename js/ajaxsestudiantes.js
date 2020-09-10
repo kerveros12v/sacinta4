@@ -227,8 +227,17 @@ function registrarEstudiante(){
     'opt':1}
   })
   .done(function(cargar){
-    alert(cargar)
-    cargarFormulario()
+    $('#dialog-confirm').html(cargar)
+          $("#dialog").dialog({
+            height: 250,
+            buttons: {
+              Aceptar: function () {
+                cargarFormulario()
+                $(this).dialog("close");
+
+              }
+            }
+          })
   })
   .fail(function(){
     alert('Hubo un error al cargar de Perfiles')
@@ -251,8 +260,17 @@ function registrarEstudianteUsuario(dato){
     'opt':1}
   })
   .done(function(cargar){
-    alert(cargar)
- cargartabla()
+    $('#dialog-confirm').html(cargar)
+    $("#dialog").dialog({
+      height: 250,
+      buttons: {
+        Aceptar: function () {
+          cargartabla()
+          $(this).dialog("close");
+
+        }
+      }
+    })
   })
   .fail(function(){
     alert('Hubo un error al cargar de Perfiles')
@@ -272,7 +290,16 @@ function cargarEstudiantefoto(){
     'opt':3}
   })
   .done(function(cargar){
-    alert(cargar)
+    $('#dialog-confirm').html(cargar)
+    $("#dialog").dialog({
+      height: 250,
+      buttons: {
+        Aceptar: function () {
+          $(this).dialog("close");
+
+        }
+      }
+    })
   })
   .fail(function(){
     alert('Hubo un error al cargar de Perfiles')
@@ -443,8 +470,17 @@ function registrardisapacidadEstudiante(){
     'opt':1}
   })
   .done(function(cargar){
-    alert(cargar)
-    cargarFormulario()
+    $('#dialog-confirm').html(cargar)
+          $("#dialog").dialog({
+            height: 250,
+            buttons: {
+              Aceptar: function () {
+                cargarFormulario()
+                $(this).dialog("close");
+
+              }
+            }
+          })
   })
   .fail(function(){
     alert('Hubo un error al cargar de Perfiles')
@@ -470,8 +506,17 @@ function registrarresisenciaEstudiante(){
     'opt':1}
   })
   .done(function(cargar){
-    alert(cargar)
-    cargarFormulario()
+    $('#dialog-confirm').html(cargar)
+    $("#dialog").dialog({
+      height: 250,
+      buttons: {
+        Aceptar: function () {
+          cargarFormulario()
+          $(this).dialog("close");
+
+        }
+      }
+    })
   })
   .fail(function(){
     alert('Hubo un error al cargar de Perfiles')

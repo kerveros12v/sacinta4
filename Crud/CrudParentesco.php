@@ -12,8 +12,6 @@ class CrudParentescos
 	// constructor de la clase
 	public function __construct()
 	{
-		$db = Db::conectar();
-		$select = $db->query("SET NAMES 'utf8'");
 	}
 
 	public function mostrar()
@@ -25,13 +23,13 @@ class CrudParentescos
 		foreach ($select->fetchAll() as $parentescos) {
 			$myparentescos = new Parentescos();
 			///
-			$myparentescos->set_idParentescos($parentescos['idParentescos']);
-			$myparentescos->set_parentescocodigo($parentescos['parentescocodigo']);
-			$myparentescos->set_parentesco($parentescos['parentesco']);
-			$myparentescos->set_parentescosOculto($parentescos['parentescosOculto']);
-			$myparentescos->set_parentescosAccion($parentescos['parentescosAccion']);
-			$myparentescos->set_parentescosfecha($parentescos['parentescosfecha']);
-			$myparentescos->set_parentescosuser($parentescos['parentescosuser']);
+			$myparentescos->setIdParentescos($parentescos['idParentescos']);
+			$myparentescos->setParentescocodigo($parentescos['parentescocodigo']);
+			$myparentescos->setParentesco($parentescos['parentesco']);
+			$myparentescos->setParentescosOculto($parentescos['parentescosOculto']);
+			$myparentescos->setParentescosAccion($parentescos['parentescosAccion']);
+			$myparentescos->setParentescosfecha($parentescos['parentescosfecha']);
+			$myparentescos->setParentescosuser($parentescos['parentescosuser']);
 			////
 			$listaparentescos[] = $myparentescos;
 		}
@@ -46,13 +44,13 @@ class CrudParentescos
 		$parentescos = $select->fetch();
 		$myparentescos = new Parentescos();
 		///
-		$myparentescos->set_idParentescos($parentescos['idParentescos']);
-		$myparentescos->set_parentescocodigo($parentescos['parentescocodigo']);
-		$myparentescos->set_parentesco($parentescos['parentesco']);
-		$myparentescos->set_parentescosOculto($parentescos['parentescosOculto']);
-		$myparentescos->set_parentescosAccion($parentescos['parentescosAccion']);
-		$myparentescos->set_parentescosfecha($parentescos['parentescosfecha']);
-		$myparentescos->set_parentescosuser($parentescos['parentescosuser']);
+		$myparentescos->setIdParentescos($parentescos['idParentescos']);
+		$myparentescos->setParentescocodigo($parentescos['parentescocodigo']);
+		$myparentescos->setParentesco($parentescos['parentesco']);
+		$myparentescos->setParentescosOculto($parentescos['parentescosOculto']);
+		$myparentescos->setParentescosAccion($parentescos['parentescosAccion']);
+		$myparentescos->setParentescosfecha($parentescos['parentescosfecha']);
+		$myparentescos->setParentescosuser($parentescos['parentescosuser']);
 		return $myparentescos;
 	}
 	public function obtenerDato($id)
@@ -84,13 +82,13 @@ class CrudParentescos
 			:parentescosAccion1,
 			:parentescosfecha1,
 			:parentescosuser1);");
-		$insert->bindValue('idParentescos1', $parentesco->get_idParentescos());
-		$insert->bindValue('parentescocodigo1', $parentesco->get_parentescocodigo());
-		$insert->bindValue('parentesco1', $parentesco->get_parentesco());
-		$insert->bindValue('parentescosOculto1', $parentesco->get_parentescosOculto());
-		$insert->bindValue('parentescosAccion1', $parentesco->get_parentescosAccion());
-		$insert->bindValue('parentescosfecha1', $parentesco->get_parentescosfecha());
-		$insert->bindValue('parentescosuser1', $parentesco->get_parentescosuser());
+		$insert->bindValue('idParentescos1', $parentesco->getIdParentescos());
+		$insert->bindValue('parentescocodigo1', $parentesco->getParentescocodigo());
+		$insert->bindValue('parentesco1', $parentesco->getParentesco());
+		$insert->bindValue('parentescosOculto1', $parentesco->getParentescosOculto());
+		$insert->bindValue('parentescosAccion1', $parentesco->getParentescosAccion());
+		$insert->bindValue('parentescosfecha1', $parentesco->getParentescosfecha());
+		$insert->bindValue('parentescosuser1', $parentesco->getParentescosuser());
 		$insert->execute();
 	}
 	public function actualizar($parentesco)
@@ -107,13 +105,13 @@ class CrudParentescos
 		`parentescosuser` = :parentescosuser1
 		WHERE `idParentescos` = :idParentescos1;");
 
-		$actualizar->bindValue('idParentescos1', $parentesco->get_idParentescos());
-		$actualizar->bindValue('parentescocodigo1', $parentesco->get_parentescocodigo());
-		$actualizar->bindValue('parentesco1', $parentesco->get_parentesco());
-		$actualizar->bindValue('parentescosOculto1', $parentesco->get_parentescosOculto());
-		$actualizar->bindValue('parentescosAccion1', $parentesco->get_parentescosAccion());
-		$actualizar->bindValue('parentescosfecha1', $parentesco->get_parentescosfecha());
-		$actualizar->bindValue('parentescosuser1', $parentesco->get_parentescosuser());
+		$actualizar->bindValue('idParentescos1', $parentesco->getIdParentescos());
+		$actualizar->bindValue('parentescocodigo1', $parentesco->getParentescocodigo());
+		$actualizar->bindValue('parentesco1', $parentesco->getParentesco());
+		$actualizar->bindValue('parentescosOculto1', $parentesco->getParentescosOculto());
+		$actualizar->bindValue('parentescosAccion1', $parentesco->getParentescosAccion());
+		$actualizar->bindValue('parentescosfecha1', $parentesco->getParentescosfecha());
+		$actualizar->bindValue('parentescosuser1', $parentesco->getParentescosuser());
 		$actualizar->execute();
 	}
 	public function eliminar($id)

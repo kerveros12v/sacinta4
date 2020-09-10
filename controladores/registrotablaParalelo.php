@@ -16,19 +16,19 @@ function opcionParalelos()
         $datos = new Paralelos();
         $crud = new CrudParalelo();
 
-        $datos->set_paraleloId($_POST['id']);
-        $datos->set_paralelo(strtoupper($_POST['nom']));
-        $datos->set_paralelocodigo(trim($_POST['cod']));
-        $datos->set_paraleloOculto($_POST['eliminar']);
-        $datos->set_paraleloAccion($_POST['actualizar']);
-        $datos->set_paralelofecha(date("Y-m-d"));
-        $datos->set_paralelouser($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->setParaleloId($_POST['id']);
+        $datos->setParalelo(strtoupper($_POST['nom']));
+        $datos->setParalelocodigo(trim($_POST['cod']));
+        $datos->setParaleloOculto($_POST['eliminar']);
+        $datos->setParaleloAccion($_POST['actualizar']);
+        $datos->setParalelofecha(date("Y-m-d"));
+        $datos->setParalelouser($_SESSION['tipouser'] . $_SESSION['user']);
         $opcion = $_POST['opt'];
 
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_paraleloId(null);
+                $datos->setParaleloId(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -37,7 +37,7 @@ function opcionParalelos()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_paraleloId());
+                $crud->eliminar($datos->getParaleloId());
                 return (eliminarR());
             }
         }

@@ -8,9 +8,9 @@ use Crud\CrudParalelo;
 session_start();
 function cargartablaparalelos()
 {
-    $r="";
+    $r = "";
     $crud = new CrudParalelo();
-    $r.= '
+    $r .= '
 <tr>
     <td>
 
@@ -34,24 +34,24 @@ function cargartablaparalelos()
 
         </td>
         <td>
-            <input type="text" class="camptext1" id="paralelocodigo' . $dato->get_paraleloId() . '" name="paralelocodigo' . $dato->get_paraleloId() . '"  maxlength="10" value="' . $dato->get_paralelocodigo() . '"/>
+            <input type="text" class="camptext1" id="paralelocodigo' . $dato->getParaleloId() . '" name="paralelocodigo' . $dato->getParaleloId() . '"  maxlength="10" value="' . $dato->getParalelocodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="paralelo' . $dato->get_paraleloId() . '" name="paralelo' . $dato->get_paraleloId() . '"  value="' . $dato->get_paralelo() . '"/>
+            <input type="text" id="paralelo' . $dato->getParaleloId() . '" name="paralelo' . $dato->getParaleloId() . '"  value="' . $dato->getParalelo() . '"/>
         </td>
         <td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_paraleloId() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_paraleloId() . ')">
+        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getParaleloId() . ')">
+         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getParaleloId() . ')">
         </td>
     </tr>
     ';
     }
     return $r;
 }
-if ($_SESSION['user']!="") {
+if ($_SESSION['user'] != "") {
     echo cargartablaparalelos();
-} else{
-	echo '<tr>
+} else {
+    echo '<tr>
 		<td>
 		</td>
 		<td>
@@ -59,7 +59,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }

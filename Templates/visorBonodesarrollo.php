@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Encuestador de Setec</title>
+  <title>Bono de Desarrollo</title>
   <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="../css/cssmatricula1.css" />
   <script type="text/javascript" src="../js/jquery.js"></script>

@@ -4,12 +4,13 @@ require_once("../Crud/CrudNivelacademico.php");
 require_once("../controladores/respuestasgenerales.php");
 
 use Crud\CrudNivelacademico;
+
 session_start();
 function cargartablanivelacademico()
 {
-    $r="";
+    $r = "";
     $crud = new CrudNivelacademico();
-    $r.= '
+    $r .= '
 <tr>
     <td>
 
@@ -33,24 +34,24 @@ function cargartablanivelacademico()
 
         </td>
         <td>
-            <input type="text" class="camptext1" id="nivelacademicocodigo' . $dato->get_nivelAcademicoQueCursaId() . '" name="nivelacademicocodigo' . $dato->get_nivelAcademicoQueCursaId() . '"  maxlength="10" value="' . $dato->get_nivelacademicocodigo() . '"/>
+            <input type="text" class="camptext1" id="nivelacademicocodigo' . $dato->getNivelAcademicoQueCursaId() . '" name="nivelacademicocodigo' . $dato->getNivelAcademicoQueCursaId() . '"  maxlength="10" value="' . $dato->getNivelacademicocodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="nivelAcademicoQueCursa' . $dato->get_nivelAcademicoQueCursaId() . '" name="nivelAcademicoQueCursa' . $dato->get_nivelAcademicoQueCursaId() . '"  value="' . $dato->get_nivelAcademicoQueCursa() . '"/>
+            <input type="text" id="nivelAcademicoQueCursa' . $dato->getNivelAcademicoQueCursaId() . '" name="nivelAcademicoQueCursa' . $dato->getNivelAcademicoQueCursaId() . '"  value="' . $dato->getNivelAcademicoQueCursa() . '"/>
         </td>
         <td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_nivelAcademicoQueCursaId() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_nivelAcademicoQueCursaId() . ')">
+        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getNivelAcademicoQueCursaId() . ')">
+         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getNivelAcademicoQueCursaId() . ')">
         </td>
     </tr>
     ';
     }
     return $r;
 }
-if ($_SESSION['user']!="") {
+if ($_SESSION['user'] != "") {
     echo cargartablanivelacademico();
-} else{
-	echo '<tr>
+} else {
+    echo '<tr>
 		<td>
 		</td>
 		<td>
@@ -58,7 +59,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }
