@@ -6,17 +6,18 @@ require_once("ajaxsselectetnia.php");
 require_once("ajaxsselect2.php");
 
 use Crud\CrudIdiomas;
+
 session_start();
 function cargartablaidioma()
 {
 
     $crud = new CrudIdiomas();
-    $r= '
+    $r = '
     <tr class="ui-widget-header">
         <th>CODIGO</th>
        <th>IDIOMA</th>
        <th>ETNIA</th>
-       <th>'.ajaxs_select2().'</th>
+       <th>' . ajaxs_select2() . '</th>
     </tr>
     <tr>
         <td>
@@ -27,7 +28,7 @@ function cargartablaidioma()
         </td>
         <td>
             <select class="selector"  id="idiomaetnia" name="idiomaetnia">
-                '.cargarEtnia(-1).'
+                ' . cargarEtnia(-1) . '
             </select>
         </td>
         <td>
@@ -40,35 +41,34 @@ function cargartablaidioma()
         $r .= '
     <tr>
         <td>
-            <input type="text" class="camptext1" id="codigo' . $dato->get_ididiomaAncestral() . '" name="codigo' . $dato->get_ididiomaAncestral() . '"  maxlength="10" value="' . $dato->get_idiomasancestralcodigo() . '"/>
+            <input type="text" class="camptext1" id="codigo' . $dato->getIdidiomaAncestral() . '" name="codigo' . $dato->getIdidiomaAncestral() . '"  maxlength="10" value="' . $dato->getIdiomasancestralcodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="idioma' . $dato->get_ididiomaAncestral() . '" name="idioma' . $dato->get_ididiomaAncestral() . '"  value="' . $dato->get_idioma() . '"/>
+            <input type="text" id="idioma' . $dato->getIdidiomaAncestral() . '" name="idioma' . $dato->getIdidiomaAncestral() . '"  value="' . $dato->getIdioma() . '"/>
         </td>
         <td>
 
-        <select class="selector"  id="idiomaetnia'.$dato->get_ididiomaAncestral().'" name="idiomaetnia'.$dato->get_ididiomaAncestral().'">
-        '.cargarEtnia($dato->get_idiomaetnia()).'
+        <select class="selector"  id="idiomaetnia' . $dato->getIdidiomaAncestral() . '" name="idiomaetnia' . $dato->getIdidiomaAncestral() . '">
+        ' . cargarEtnia($dato->getIdiomaetnia()) . '
         </select>
     </td>
         <td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_ididiomaAncestral() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_ididiomaAncestral() . ')">
+        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getIdidiomaAncestral() . ')">
+         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getIdidiomaAncestral() . ')">
         </td>
     </tr>
     ';
     }
     return $r;
 }
-if ($_SESSION['user']!="") {
-    try{
+if ($_SESSION['user'] != "") {
+    try {
         echo cargartablaidioma();
-    }
-    catch(\Exception $e){
+    } catch (\Exception $e) {
         echo $e;
     }
-} else{
-	echo '<tr>
+} else {
+    echo '<tr>
 		<td>
 		</td>
 		<td>
@@ -76,7 +76,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }

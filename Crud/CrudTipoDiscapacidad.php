@@ -12,8 +12,6 @@ class CrudTipoDiscapacidad
 	// constructor de la clase
 	public function __construct()
 	{
-		$db = Db::conectar();
-		$select = $db->query("SET NAMES 'utf8'");
 	}
 
 	public function mostrar()
@@ -23,16 +21,14 @@ class CrudTipoDiscapacidad
 		$select = $db->query('SELECT * FROM tipodiscapacidad');
 		foreach ($select->fetchAll() as $tipodiscapacidad) {
 			$mytipodiscapacidad = new Tipodiscapacidad();
-			$mytipodiscapacidad->set_tipoDiscapacidadid($tipodiscapacidad['tipoDiscapacidadid']);
-			$mytipodiscapacidad->set_tipoDiscapacidad($tipodiscapacidad['tipoDiscapacidad']);
-			$mytipodiscapacidad->set_tdcodigo($tipodiscapacidad['tdcodigo']);
-			$mytipodiscapacidad->set_tdOculto($tipodiscapacidad['tdOculto']);
-			$mytipodiscapacidad->set_tdAccion($tipodiscapacidad['tdAccion']);
-			$mytipodiscapacidad->set_tdfecha($tipodiscapacidad['tdfecha']);
-			$mytipodiscapacidad->set_tduser($tipodiscapacidad['tduser']);
-			$mytipodiscapacidad->set_tipodiscapacidadbool($tipodiscapacidad['tipodiscapacidadbool']);
-
-
+			$mytipodiscapacidad->setTipoDiscapacidadid($tipodiscapacidad['tipoDiscapacidadid']);
+			$mytipodiscapacidad->setTipoDiscapacidad($tipodiscapacidad['tipoDiscapacidad']);
+			$mytipodiscapacidad->setTdcodigo($tipodiscapacidad['tdcodigo']);
+			$mytipodiscapacidad->setTdOculto($tipodiscapacidad['tdOculto']);
+			$mytipodiscapacidad->setTdAccion($tipodiscapacidad['tdAccion']);
+			$mytipodiscapacidad->setTdfecha($tipodiscapacidad['tdfecha']);
+			$mytipodiscapacidad->setTduser($tipodiscapacidad['tduser']);
+			$mytipodiscapacidad->setTipodiscapacidadbool($tipodiscapacidad['tipodiscapacidadbool']);
 			$listatipodiscapacidad[] = $mytipodiscapacidad;
 		}
 		return $listatipodiscapacidad;
@@ -52,14 +48,14 @@ class CrudTipoDiscapacidad
 		$select->execute();
 		$tipodiscapacidad = $select->fetch();
 		$mytipodiscapacidad = new Tipodiscapacidad();
-		$mytipodiscapacidad->set_tipoDiscapacidadid($tipodiscapacidad['tipoDiscapacidadid']);
-		$mytipodiscapacidad->set_tipoDiscapacidad($tipodiscapacidad['tipoDiscapacidad']);
-		$mytipodiscapacidad->set_tdcodigo($tipodiscapacidad['tdcodigo']);
-		$mytipodiscapacidad->set_tdOculto($tipodiscapacidad['tdOculto']);
-		$mytipodiscapacidad->set_tdAccion($tipodiscapacidad['tdAccion']);
-		$mytipodiscapacidad->set_tdfecha($tipodiscapacidad['tdfecha']);
-		$mytipodiscapacidad->set_tduser($tipodiscapacidad['tduser']);
-		$mytipodiscapacidad->set_tipodiscapacidadbool($tipodiscapacidad['tipodiscapacidadbool']);
+		$mytipodiscapacidad->setTipoDiscapacidadid($tipodiscapacidad['tipoDiscapacidadid']);
+		$mytipodiscapacidad->setTipoDiscapacidad($tipodiscapacidad['tipoDiscapacidad']);
+		$mytipodiscapacidad->setTdcodigo($tipodiscapacidad['tdcodigo']);
+		$mytipodiscapacidad->setTdOculto($tipodiscapacidad['tdOculto']);
+		$mytipodiscapacidad->setTdAccion($tipodiscapacidad['tdAccion']);
+		$mytipodiscapacidad->setTdfecha($tipodiscapacidad['tdfecha']);
+		$mytipodiscapacidad->setTduser($tipodiscapacidad['tduser']);
+		$mytipodiscapacidad->setTipodiscapacidadbool($tipodiscapacidad['tipodiscapacidadbool']);
 
 		return $mytipodiscapacidad;
 	}
@@ -88,14 +84,14 @@ class CrudTipoDiscapacidad
 		`tdfecha` = :tdfecha1,
 		`tduser` = :tduser1
 		WHERE `tipoDiscapacidadid` = :tipoDiscapacidadid1;');
-		$actualizar->bindValue('tipoDiscapacidadid1', $tipodiscapacidad->get_tipoDiscapacidadid());
-		$actualizar->bindValue('tdcodigo1', $tipodiscapacidad->get_tdcodigo());
-		$actualizar->bindValue('tipoDiscapacidad1', $tipodiscapacidad->get_tipoDiscapacidad());
-		$actualizar->bindValue('tipodiscapacidadbool1', $tipodiscapacidad->get_tipodiscapacidadbool());
-		$actualizar->bindValue('tdOculto1', $tipodiscapacidad->get_tdOculto());
-		$actualizar->bindValue('tdAccion1', $tipodiscapacidad->get_tdAccion());
-		$actualizar->bindValue('tdfecha1', $tipodiscapacidad->get_tdfecha());
-		$actualizar->bindValue('tduser1', $tipodiscapacidad->get_tduser());
+		$actualizar->bindValue('tipoDiscapacidadid1', $tipodiscapacidad->getTipoDiscapacidadid());
+		$actualizar->bindValue('tdcodigo1', $tipodiscapacidad->getTdcodigo());
+		$actualizar->bindValue('tipoDiscapacidad1', $tipodiscapacidad->getTipoDiscapacidad());
+		$actualizar->bindValue('tipodiscapacidadbool1', $tipodiscapacidad->getTipodiscapacidadbool());
+		$actualizar->bindValue('tdOculto1', $tipodiscapacidad->getTdOculto());
+		$actualizar->bindValue('tdAccion1', $tipodiscapacidad->getTdAccion());
+		$actualizar->bindValue('tdfecha1', $tipodiscapacidad->getTdfecha());
+		$actualizar->bindValue('tduser1', $tipodiscapacidad->getTduser());
 		$actualizar->execute();
 	}
 	public function insertar($tipodiscapacidad)
@@ -119,14 +115,14 @@ class CrudTipoDiscapacidad
 		:tdAccion1,
 		:tdfecha1,
 		:tduser1);');
-		$insert->bindValue('tipoDiscapacidadid1', $tipodiscapacidad->get_tipoDiscapacidadid());
-		$insert->bindValue('tdcodigo1', $tipodiscapacidad->get_tdcodigo());
-		$insert->bindValue('tipoDiscapacidad1', $tipodiscapacidad->get_tipoDiscapacidad());
-		$insert->bindValue('tipodiscapacidadbool1', $tipodiscapacidad->get_tipodiscapacidadbool());
-		$insert->bindValue('tdOculto1', $tipodiscapacidad->get_tdOculto());
-		$insert->bindValue('tdAccion1', $tipodiscapacidad->get_tdAccion());
-		$insert->bindValue('tdfecha1', $tipodiscapacidad->get_tdfecha());
-		$insert->bindValue('tduser1', $tipodiscapacidad->get_tduser());
+		$insert->bindValue('tipoDiscapacidadid1', $tipodiscapacidad->getTipoDiscapacidadid());
+		$insert->bindValue('tdcodigo1', $tipodiscapacidad->getTdcodigo());
+		$insert->bindValue('tipoDiscapacidad1', $tipodiscapacidad->getTipoDiscapacidad());
+		$insert->bindValue('tipodiscapacidadbool1', $tipodiscapacidad->getTipodiscapacidadbool());
+		$insert->bindValue('tdOculto1', $tipodiscapacidad->getTdOculto());
+		$insert->bindValue('tdAccion1', $tipodiscapacidad->getTdAccion());
+		$insert->bindValue('tdfecha1', $tipodiscapacidad->getTdfecha());
+		$insert->bindValue('tduser1', $tipodiscapacidad->getTduser());
 		$insert->execute();
 	}
 }

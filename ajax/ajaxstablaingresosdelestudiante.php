@@ -8,9 +8,9 @@ use Crud\CrudIngresosestudiante;
 session_start();
 function cargartablaingresosestudiante()
 {
-    $r="";
+    $r = "";
     $crud = new CrudIngresosestudiante();
-    $r.= '
+    $r .= '
 <tr>
     <td>
 
@@ -34,24 +34,24 @@ function cargartablaingresosestudiante()
 
         </td>
         <td>
-            <input type="text" class="camptext1" id="ingresosestudiantecodigo' . $dato->get_ingresosestudianteId() . '" name="ingresosestudiantecodigo' . $dato->get_ingresosestudianteId() . '"  maxlength="10" value="' . $dato->get_ingresosestudiantecodigo() . '"/>
+            <input type="text" class="camptext1" id="ingresosestudiantecodigo' . $dato->getIngresosestudianteId() . '" name="ingresosestudiantecodigo' . $dato->getIngresosestudianteId() . '"  maxlength="10" value="' . $dato->getIngresosestudiantecodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="ingresosestudiante' . $dato->get_ingresosestudianteId() . '" name="ingresosestudiante' . $dato->get_ingresosestudianteId() . '"  value="' . $dato->get_ingresosestudiante() . '"/>
+            <input type="text" id="ingresosestudiante' . $dato->getIngresosestudianteId() . '" name="ingresosestudiante' . $dato->getIngresosestudianteId() . '"  value="' . $dato->getIngresosestudiante() . '"/>
         </td>
         <td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_ingresosestudianteId() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_ingresosestudianteId() . ')">
+        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getIngresosestudianteId() . ')">
+         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getIngresosestudianteId() . ')">
         </td>
     </tr>
     ';
     }
     return $r;
 }
-if ($_SESSION['user']!="") {
+if ($_SESSION['user'] != "") {
     echo cargartablaingresosestudiante();
-} else{
-	echo '<tr>
+} else {
+    echo '<tr>
 		<td>
 		</td>
 		<td>
@@ -59,7 +59,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }

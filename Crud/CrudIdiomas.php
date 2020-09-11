@@ -12,8 +12,6 @@ class CrudIdiomas
 	// constructor de la clase
 	public function __construct()
 	{
-		$db = Db::conectar();
-		$select = $db->query("SET NAMES 'utf8'");
 	}
 	public function mostrar()
 	{
@@ -23,14 +21,14 @@ class CrudIdiomas
 
 		foreach ($select->fetchAll() as $idiomaAncestral) {
 			$myidiomaAncestral = new Idiomas();
-			$myidiomaAncestral->set_ididiomaAncestral($idiomaAncestral['ididiomaAncestral']);
-			$myidiomaAncestral->set_idioma($idiomaAncestral['idioma']);
-			$myidiomaAncestral->set_idiomaetnia($idiomaAncestral['idiomaetnia']);
-			$myidiomaAncestral->set_idiomaancestralOculto($idiomaAncestral['idiomaancestralOculto']);
-			$myidiomaAncestral->set_idiomaancestralAccion($idiomaAncestral['idiomaancestralAccion']);
-			$myidiomaAncestral->set_idiomaancestralfecha($idiomaAncestral['idiomaancestralfecha']);
-			$myidiomaAncestral->set_idiomaancestraluser($idiomaAncestral['idiomaancestraluser']);
-			$myidiomaAncestral->set_idiomasancestralcodigo($idiomaAncestral['idiomasancestralcodigo']);
+			$myidiomaAncestral->setIdidiomaAncestral($idiomaAncestral['ididiomaAncestral']);
+			$myidiomaAncestral->setIdioma($idiomaAncestral['idioma']);
+			$myidiomaAncestral->setIdiomaetnia($idiomaAncestral['idiomaetnia']);
+			$myidiomaAncestral->setIdiomaancestralOculto($idiomaAncestral['idiomaancestralOculto']);
+			$myidiomaAncestral->setIdiomaancestralAccion($idiomaAncestral['idiomaancestralAccion']);
+			$myidiomaAncestral->setIdiomaancestralfecha($idiomaAncestral['idiomaancestralfecha']);
+			$myidiomaAncestral->setIdiomaancestraluser($idiomaAncestral['idiomaancestraluser']);
+			$myidiomaAncestral->setIdiomasancestralcodigo($idiomaAncestral['idiomasancestralcodigo']);
 			$listaidiomaAncestral[] = $myidiomaAncestral;
 		}
 		return $listaidiomaAncestral;
@@ -50,16 +48,14 @@ class CrudIdiomas
 		$select->execute();
 		$idiomaAncestral = $select->fetch();
 		$myidiomaAncestral = new Idiomas();
-		$myidiomaAncestral->set_ididiomaAncestral($idiomaAncestral['ididiomaAncestral']);
-		$myidiomaAncestral->set_idioma($idiomaAncestral['idioma']);
-		$myidiomaAncestral->set_idiomaetnia($idiomaAncestral['idiomaetnia']);
-		$myidiomaAncestral->set_idiomaancestralOculto($idiomaAncestral['idiomaancestralOculto']);
-		$myidiomaAncestral->set_idiomaancestralAccion($idiomaAncestral['idiomaancestralAccion']);
-		$myidiomaAncestral->set_idiomaancestralfecha($idiomaAncestral['idiomaancestralfecha']);
-		$myidiomaAncestral->set_idiomaancestraluser($idiomaAncestral['idiomaancestraluser']);
-		$myidiomaAncestral->set_idiomasancestralcodigo($idiomaAncestral['idiomasancestralcodigo']);
-
-
+		$myidiomaAncestral->setIdidiomaAncestral($idiomaAncestral['ididiomaAncestral']);
+		$myidiomaAncestral->setIdioma($idiomaAncestral['idioma']);
+		$myidiomaAncestral->setIdiomaetnia($idiomaAncestral['idiomaetnia']);
+		$myidiomaAncestral->setIdiomaancestralOculto($idiomaAncestral['idiomaancestralOculto']);
+		$myidiomaAncestral->setIdiomaancestralAccion($idiomaAncestral['idiomaancestralAccion']);
+		$myidiomaAncestral->setIdiomaancestralfecha($idiomaAncestral['idiomaancestralfecha']);
+		$myidiomaAncestral->setIdiomaancestraluser($idiomaAncestral['idiomaancestraluser']);
+		$myidiomaAncestral->setIdiomasancestralcodigo($idiomaAncestral['idiomasancestralcodigo']);
 		return $myidiomaAncestral;
 	}
 	public function obtenerDato($id)
@@ -87,14 +83,14 @@ class CrudIdiomas
 			`idiomaancestralfecha` = :idiomaancestralfecha1,
 			`idiomaancestraluser` = :idiomaancestraluser1
 			WHERE `ididiomaAncestral` = :ididiomaAncestral1;');
-		$actualizar->bindValue('ididiomaAncestral1', $idiomaAncestral->get_ididiomaAncestral());
-		$actualizar->bindValue('idiomasancestralcodigo1', $idiomaAncestral->get_idiomasancestralcodigo());
-		$actualizar->bindValue('idioma1',  $idiomaAncestral->get_idioma());
-		$actualizar->bindValue('idiomaetnia1',$idiomaAncestral->get_idiomaetnia());
-		$actualizar->bindValue('idiomaancestralOculto1', $idiomaAncestral->get_idiomaancestralOculto());
-		$actualizar->bindValue('idiomaancestralAccion1', $idiomaAncestral->get_idiomaancestralAccion());
-		$actualizar->bindValue('idiomaancestralfecha1', $idiomaAncestral->get_idiomaancestralfecha());
-		$actualizar->bindValue('idiomaancestraluser1', $idiomaAncestral->get_idiomaancestraluser());
+		$actualizar->bindValue('ididiomaAncestral1', $idiomaAncestral->getIdidiomaAncestral());
+		$actualizar->bindValue('idiomasancestralcodigo1', $idiomaAncestral->getIdiomasancestralcodigo());
+		$actualizar->bindValue('idioma1',  $idiomaAncestral->getIdioma());
+		$actualizar->bindValue('idiomaetnia1', $idiomaAncestral->getIdiomaetnia());
+		$actualizar->bindValue('idiomaancestralOculto1', $idiomaAncestral->getIdiomaancestralOculto());
+		$actualizar->bindValue('idiomaancestralAccion1', $idiomaAncestral->getIdiomaancestralAccion());
+		$actualizar->bindValue('idiomaancestralfecha1', $idiomaAncestral->getIdiomaancestralfecha());
+		$actualizar->bindValue('idiomaancestraluser1', $idiomaAncestral->getIdiomaancestraluser());
 
 		$actualizar->execute();
 	}
@@ -119,14 +115,14 @@ class CrudIdiomas
 			:idiomaancestralAccion1,
 			:idiomaancestralfecha1,
 			:idiomaancestraluser1);');
-		$insert->bindValue('ididiomaAncestral1', $idiomaAncestral->get_ididiomaAncestral());
-		$insert->bindValue('idiomasancestralcodigo1', $idiomaAncestral->get_idiomasancestralcodigo());
-		$insert->bindValue('idioma1',$idiomaAncestral->get_idioma() );
-		$insert->bindValue('idiomaetnia1', $idiomaAncestral->get_idiomaetnia());
-		$insert->bindValue('idiomaancestralOculto1', $idiomaAncestral->get_idiomaancestralOculto());
-		$insert->bindValue('idiomaancestralAccion1', $idiomaAncestral->get_idiomaancestralAccion());
-		$insert->bindValue('idiomaancestralfecha1', $idiomaAncestral->get_idiomaancestralfecha());
-		$insert->bindValue('idiomaancestraluser1', $idiomaAncestral->get_idiomaancestraluser());
+		$insert->bindValue('ididiomaAncestral1', $idiomaAncestral->getIdidiomaAncestral());
+		$insert->bindValue('idiomasancestralcodigo1', $idiomaAncestral->getIdiomasancestralcodigo());
+		$insert->bindValue('idioma1', $idiomaAncestral->getIdioma());
+		$insert->bindValue('idiomaetnia1', $idiomaAncestral->getIdiomaetnia());
+		$insert->bindValue('idiomaancestralOculto1', $idiomaAncestral->getIdiomaancestralOculto());
+		$insert->bindValue('idiomaancestralAccion1', $idiomaAncestral->getIdiomaancestralAccion());
+		$insert->bindValue('idiomaancestralfecha1', $idiomaAncestral->getIdiomaancestralfecha());
+		$insert->bindValue('idiomaancestraluser1', $idiomaAncestral->getIdiomaancestraluser());
 
 		$insert->execute();
 	}

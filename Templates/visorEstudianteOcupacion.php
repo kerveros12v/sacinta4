@@ -23,7 +23,7 @@
       <tr class="ui-widget-header">
         <th></th>
         <th>Codigo</th>
-        <th>Genero</th>
+        <th>Estudiante Ocupacion</th>
         <th></th>
       </tr>
 

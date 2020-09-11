@@ -13,20 +13,20 @@ function opcionestadoCivil()
         $datos = new Estadosciviles();
         $crud = new CrudEStadoCivil();
 
-        $datos->set_estadoCivilId($_POST['id']);
-        $datos->set_estadoCivil($_POST['nom']);
-        $datos->set_estadoscivilcodigo($_POST['cod']);
-        $datos->set_estadoCivilOculto($_POST['eliminar']);
-        $datos->set_estadoCivilAccion($_POST['actualizar']);
-        $datos->set_estadoCivilfecha(date("Y-m-d"));
-        $datos->set_estadoCiviluser($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->setEstadoCivilId($_POST['id']);
+        $datos->setEstadoCivil(strtoupper($_POST['nom']));
+        $datos->setEstadoscivilcodigo($_POST['cod']);
+        $datos->setEstadoCivilOculto($_POST['eliminar']);
+        $datos->setEstadoCivilAccion($_POST['actualizar']);
+        $datos->setEstadoCivilfecha(date("Y-m-d"));
+        $datos->setEstadoCiviluser($_SESSION['tipouser'] . $_SESSION['user']);
 
         $opcion = $_POST['opt'];
 
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_estadoCivilId(null);
+                $datos->setEstadoCivilId(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -35,7 +35,7 @@ function opcionestadoCivil()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_estadoCivilId());
+                $crud->eliminar($datos->getEstadoCivilId());
                 return (eliminarR());
             }
         }

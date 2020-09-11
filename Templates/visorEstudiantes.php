@@ -18,8 +18,8 @@
   <table class="ui-widget ui-widget-content" title="Perfiles Registradas Actualmente:">
     <tr class="ui-widget-header">
       <th></th>
-      <th>CEDULA</th>
-      <th>APELLIDOS Y NOMBRES</th>
+      <th>Cedula</th>
+      <th>Apellidos y Nombres</th>
       <th></th>
 
     </tr>

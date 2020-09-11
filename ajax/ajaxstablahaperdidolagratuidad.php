@@ -8,9 +8,9 @@ use Crud\CrudHaperdidoLaGratuidad;
 session_start();
 function cargartabahaperdidolagratuidad()
 {
-    $r="";
+    $r = "";
     $crud = new CrudHaperdidoLaGratuidad();
-    $r.= '
+    $r .= '
 <tr>
     <td>
 
@@ -34,24 +34,24 @@ function cargartabahaperdidolagratuidad()
 
         </td>
         <td>
-            <input type="text" class="camptext1" id="haperdidolagratuidadcodigo' . $dato->get_HaPerdidoLaGratuidadId() . '" name="haperdidolagratuidadcodigo' . $dato->get_HaPerdidoLaGratuidadId() . '"  maxlength="10" value="' . $dato->get_haperdidolagratuidadcodigo() . '"/>
+            <input type="text" class="camptext1" id="haperdidolagratuidadcodigo' . $dato->getHaPerdidoLaGratuidadId() . '" name="haperdidolagratuidadcodigo' . $dato->getHaPerdidoLaGratuidadId() . '"  maxlength="10" value="' . $dato->getHaperdidolagratuidadcodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="haPerdidoLaGratuidad' . $dato->get_HaPerdidoLaGratuidadId() . '" name="haPerdidoLaGratuidad' . $dato->get_HaPerdidoLaGratuidadId() . '"  value="' . $dato->get_haPerdidoLaGratuidad() . '"/>
+            <input type="text" id="haPerdidoLaGratuidad' . $dato->getHaPerdidoLaGratuidadId() . '" name="haPerdidoLaGratuidad' . $dato->getHaPerdidoLaGratuidadId() . '"  value="' . $dato->getHaPerdidoLaGratuidad() . '"/>
         </td>
         <td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_HaPerdidoLaGratuidadId() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_HaPerdidoLaGratuidadId() . ')">
+        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getHaPerdidoLaGratuidadId() . ')">
+         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getHaPerdidoLaGratuidadId() . ')">
         </td>
     </tr>
     ';
     }
     return $r;
 }
-if ($_SESSION['user']!="") {
+if ($_SESSION['user'] != "") {
     echo cargartabahaperdidolagratuidad();
-} else{
-	echo '<tr>
+} else {
+    echo '<tr>
 		<td>
 		</td>
 		<td>
@@ -59,7 +59,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }

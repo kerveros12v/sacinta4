@@ -8,9 +8,9 @@ use Crud\CrudEStadoCivil;
 session_start();
 function cargartablaestadocivil()
 {
-    $r="";
+    $r = "";
     $crud = new CrudEStadoCivil();
-    $r.= '
+    $r .= '
 <tr>
     <td>
 
@@ -34,24 +34,24 @@ function cargartablaestadocivil()
 
         </td>
         <td>
-            <input type="text" class="camptext1" id="estadoscivilcodigo' . $dato->get_estadoCivilId() . '" name="estadoscivilcodigo' . $dato->get_estadoCivilId() . '"  maxlength="10" value="' . $dato->get_estadoscivilcodigo() . '"/>
+            <input type="text" class="camptext1" id="estadoscivilcodigo' . $dato->getEstadoCivilId() . '" name="estadoscivilcodigo' . $dato->getEstadoCivilId() . '"  maxlength="10" value="' . $dato->getEstadoscivilcodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="estadoCivil' . $dato->get_estadoCivilId() . '" name="estadoCivil' . $dato->get_estadoCivilId() . '"  value="' . $dato->get_estadoCivil() . '"/>
+            <input type="text" id="estadoCivil' . $dato->getEstadoCivilId() . '" name="estadoCivil' . $dato->getEstadoCivilId() . '"  value="' . $dato->getEstadoCivil() . '"/>
         </td>
         <td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_estadoCivilId() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_estadoCivilId() . ')">
+        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getEstadoCivilId() . ')">
+         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getEstadoCivilId() . ')">
         </td>
     </tr>
     ';
     }
     return $r;
 }
-if ($_SESSION['user']!="") {
+if ($_SESSION['user'] != "") {
     echo cargartablaestadocivil();
-} else{
-	echo '<tr>
+} else {
+    echo '<tr>
 		<td>
 		</td>
 		<td>
@@ -59,7 +59,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }

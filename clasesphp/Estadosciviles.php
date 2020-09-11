@@ -12,7 +12,7 @@ class Estadosciviles
 	private $estadoCivilfecha;
 	private $estadoCiviluser;
 	/**
-	 * Class constructor.
+	 * Class constructor. 
 	 */
 	public function __construct()
 	{

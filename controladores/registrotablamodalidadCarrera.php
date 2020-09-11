@@ -14,19 +14,19 @@ function opcionmodalidadCarrera()
         $datos = new Modalidadcarreras();
         $crud = new CrudModalidadcarreras();
 
-        $datos->set_modalidadCarreraId($_POST['id']);
-        $datos->set_modalidadCarrera(strtoupper($_POST['nom']));
-        $datos->set_modalidadcarreracodigo(trim($_POST['cod']));
-        $datos->set_modalidadcarreraOculto($_POST['eliminar']);
-        $datos->set_modalidadcarreraAccion($_POST['actualizar']);
-        $datos->set_modalidadcarrerafecha(date("Y-m-d"));
-        $datos->set_modalidadcarrerauser($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->setModalidadCarreraId($_POST['id']);
+        $datos->setModalidadCarrera(strtoupper($_POST['nom']));
+        $datos->setModalidadcarreracodigo(trim($_POST['cod']));
+        $datos->setModalidadcarreraOculto($_POST['eliminar']);
+        $datos->setModalidadcarreraAccion($_POST['actualizar']);
+        $datos->setModalidadcarrerafecha(date("Y-m-d"));
+        $datos->setModalidadcarrerauser($_SESSION['tipouser'] . $_SESSION['user']);
         $opcion = $_POST['opt'];
 
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_modalidadCarreraId(null);
+                $datos->setModalidadCarreraId(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -35,7 +35,7 @@ function opcionmodalidadCarrera()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_modalidadCarreraId());
+                $crud->eliminar($datos->getModalidadCarreraId());
                 return (eliminarR());
             }
         }

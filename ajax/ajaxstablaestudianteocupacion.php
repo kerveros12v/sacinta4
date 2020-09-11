@@ -30,14 +30,14 @@ function cargarestudianteOcupacion()
 			<td>
 			</td>
 			<td>
-				<input type="text" class="camptext1" id="estudianteocupacioncodigo' . $dato->get_estudianteOcupacionId() . '" name="estudianteocupacioncodigo' . $dato->get_estudianteOcupacionId() . '" required="required" value="' . $dato->get_estudianteocupacioncodigo() . '" />
+				<input type="text" class="camptext1" id="estudianteocupacioncodigo' . $dato->getEstudianteOcupacionId() . '" name="estudianteocupacioncodigo' . $dato->getEstudianteOcupacionId() . '" required="required" value="' . $dato->getEstudianteocupacioncodigo() . '" />
 			</td>
 			<td>
-				<input type="text" id="estudianteOcupacion' . $dato->get_estudianteOcupacionId() . '" name="estudianteOcupacion' . $dato->get_estudianteOcupacionId() . '" required="required" value="' . $dato->get_estudianteOcupacion() . '" />
+				<input type="text" id="estudianteOcupacion' . $dato->getEstudianteOcupacionId() . '" name="estudianteOcupacion' . $dato->getEstudianteOcupacionId() . '" required="required" value="' . $dato->getEstudianteOcupacion() . '" />
 			</td>
 			<td>
-				<input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_estudianteOcupacionId() . ')">
- 				<input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_estudianteOcupacionId() . ')">
+				<input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getEstudianteOcupacionId() . ')">
+ 				<input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getEstudianteOcupacionId() . ')">
 			</td>
 		</tr>';
 	}

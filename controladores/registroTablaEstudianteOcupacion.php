@@ -12,17 +12,17 @@ function opcionestudianteocupacion()
     try {
         $dato = new Estudianteocupacion;
         $crud = new CrudEstudianteOcupacion();
-        $dato->set_estudianteOcupacionId($_POST['id']);
-        $dato->set_estudianteocupacioncodigo($_POST['cod']);
-        $dato->set_estudianteOcupacion(strtoupper($_POST['nom']));
-        $dato->set_estudianteocupacionOculto($_POST['eliminar']);
-        $dato->set_estudianteocupacionAccion($_POST['actualizar']);
-        $dato->set_estudianteocupacionfecha(date("Y-m-d"));
-        $dato->set_estudianteocupacionuser($_SESSION['tipouser'] . $_SESSION['user']);
+        $dato->setEstudianteOcupacionId($_POST['id']);
+        $dato->setEstudianteocupacioncodigo($_POST['cod']);
+        $dato->setEstudianteOcupacion(strtoupper($_POST['nom']));
+        $dato->setEstudianteocupacionOculto($_POST['eliminar']);
+        $dato->setEstudianteocupacionAccion($_POST['actualizar']);
+        $dato->setEstudianteocupacionfecha(date("Y-m-d"));
+        $dato->setEstudianteocupacionuser($_SESSION['tipouser'] . $_SESSION['user']);
         $opcion = $_POST['opt'];
-        if ($_SESSION['user']!="") {
+        if ($_SESSION['user'] != "") {
             if ($opcion == 1) {
-                $dato->set_estudianteOcupacionId(null);
+                $dato->setEstudianteOcupacionId(null);
                 $crud->insertar($dato);
                 return (guardarR());
             }
@@ -31,11 +31,11 @@ function opcionestudianteocupacion()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($dato->get_estudianteOcupacionId());
+                $crud->eliminar($dato->getEstudianteOcupacionId());
                 return (eliminarR());
             }
         }
-        echo(tiempoExedido());
+        echo (tiempoExedido());
     } catch (Exception $e) {
         return $e;
     }

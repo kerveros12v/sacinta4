@@ -17,19 +17,19 @@ function opcionJornadasacademicas()
         $datos = new Jornadasacademicas();
         $crud = new CrudJornadasAcademicas();
 
-        $datos->set_JornadaAcademicaId($_POST['id']);
-        $datos->set_JornadaAcademica($_POST['nom']);
-        $datos->set_JornadaAcademicaCodigo($_POST['cod']);
-        $datos->set_jornadasacademicasOculto($_POST['eliminar']);
-        $datos->set_jornadasacademicasAccion($_POST['actualizar']);
-        $datos->set_jornadasacademicasfecha(date("Y-m-d"));
-        $datos->set_jornadasacademicasuser($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->setJornadaAcademicaId($_POST['id']);
+        $datos->setJornadaAcademica(strtoupper($_POST['nom']));
+        $datos->setJornadaAcademicaCodigo($_POST['cod']);
+        $datos->setJornadasacademicasOculto($_POST['eliminar']);
+        $datos->setJornadasacademicasAccion($_POST['actualizar']);
+        $datos->setJornadasacademicasfecha(date("Y-m-d"));
+        $datos->setJornadasacademicasuser($_SESSION['tipouser'] . $_SESSION['user']);
         $opcion = $_POST['opt'];
 
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_JornadaAcademicaId(null);
+                $datos->setJornadaAcademicaId(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -38,7 +38,7 @@ function opcionJornadasacademicas()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_JornadaAcademicaId());
+                $crud->eliminar($datos->getJornadaAcademicaId());
                 return (eliminarR());
             }
         }

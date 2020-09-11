@@ -14,20 +14,20 @@ function opcioncolegios()
         $crud = new CrudColegios();
 
 
-        $dato->set_idColegios(trim($_POST['id']));
-        $dato->set_colegio(strtoupper($_POST['colegios']));
-        $dato->set_cantonCantonId($_POST['canton']);
-        $dato->set_tipoColegioTipoColegioId($_POST['tipoColegioId']);
-        $dato->set_colegioscodigo(trim($_POST['codigo']));
-        $dato->set_colegiosOculto($_POST['eliminar']);
-        $dato->set_colegiosAccion($_POST['actualizar']);
-        $dato->set_colegiosfecha(date("Y-m-d"));
-        $dato->set_colegiosuser($_SESSION['tipouser'] . $_SESSION['user']);
+        $dato->setIdColegios(trim($_POST['id']));
+        $dato->setColegio(strtoupper($_POST['colegios']));
+        $dato->setCantonCantonId($_POST['canton']);
+        $dato->setTipoColegioTipoColegioId($_POST['tipoColegioId']);
+        $dato->setColegioscodigo(trim($_POST['codigo']));
+        $dato->setColegiosOculto($_POST['eliminar']);
+        $dato->setColegiosAccion($_POST['actualizar']);
+        $dato->setColegiosfecha(date("Y-m-d"));
+        $dato->setColegiosuser($_SESSION['tipouser'] . $_SESSION['user']);
 
         $opcion = $_POST['opt'];
         if ($_SESSION['user'] != "") {
             if ($opcion == 1) {
-                $dato->set_idColegios(null);
+                $dato->setIdColegios(null);
                 $crud->insertar($dato);
                 return (guardarR());
             }
@@ -36,7 +36,7 @@ function opcioncolegios()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($dato->get_idcolegios());
+                $crud->eliminar($dato->getIdColegios());
                 return (eliminarR());
             }
         }

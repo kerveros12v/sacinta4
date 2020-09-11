@@ -16,20 +16,20 @@ function opcionTipodocumento()
         $datos = new Tipodiscapacidad();
         $crud = new CrudTipoDiscapacidad();
 
-        $datos->set_tipoDiscapacidadid($_POST['id']);
-        $datos->set_tipoDiscapacidad(strtoupper($_POST['nom']));
-        $datos->set_tdcodigo($_POST['cod']);
-        $datos->set_tipodiscapacidadbool($_POST['tipodiscapacidadbool']);
-        $datos->set_tdOculto($_POST['eliminar']);
-        $datos->set_tdAccion($_POST['actualizar']);
-        $datos->set_tdfecha(date("Y-m-d"));
-        $datos->set_tduser($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->setTipoDiscapacidadid($_POST['id']);
+        $datos->setTipoDiscapacidad(strtoupper($_POST['nom']));
+        $datos->setTdcodigo($_POST['cod']);
+        $datos->setTipodiscapacidadbool($_POST['tipodiscapacidadbool']);
+        $datos->setTdOculto($_POST['eliminar']);
+        $datos->setTdAccion($_POST['actualizar']);
+        $datos->setTdfecha(date("Y-m-d"));
+        $datos->setTduser($_SESSION['tipouser'] . $_SESSION['user']);
         $opcion = $_POST['opt'];
 
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_tipoDiscapacidadid(null);
+                $datos->setTipoDiscapacidadid(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -38,7 +38,7 @@ function opcionTipodocumento()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_tipoDiscapacidadid());
+                $crud->eliminar($datos->getTipoDiscapacidadid());
                 return (eliminarR());
             }
         }

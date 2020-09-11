@@ -1,6 +1,7 @@
 <?php
 require_once("../Crud/CrudIdiomas.php");
 require_once("respuestasgenerales.php");
+
 use Clasesphp\Idiomas;
 use Crud\CrudIdiomas;
 
@@ -12,19 +13,19 @@ function opcionIdiomas()
         $datos = new Idiomas();
         $crud = new CrudIdiomas();
 
-        $datos->set_ididiomaAncestral($_POST['id']);
-        $datos->set_idioma($_POST['nom']);
-        $datos->set_idiomasancestralcodigo($_POST['cod']);
-        $datos->set_idiomaetnia($_POST['etnia']);
-        $datos->set_idiomaancestralOculto($_POST['eliminar']);
-        $datos->set_idiomaancestralAccion($_POST['actualizar']);
-        $datos->set_idiomaancestralfecha(date("Y-m-d"));
-        $datos->set_idiomaancestraluser($_SESSION['tipouser'] . $_SESSION['user']);
+        $datos->setIdidiomaAncestral($_POST['id']);
+        $datos->setIdioma(strtoupper($_POST['nom']));
+        $datos->setIdiomasancestralcodigo($_POST['cod']);
+        $datos->setIdiomaetnia($_POST['etnia']);
+        $datos->setIdiomaancestralOculto($_POST['eliminar']);
+        $datos->setIdiomaancestralAccion($_POST['actualizar']);
+        $datos->setIdiomaancestralfecha(date("Y-m-d"));
+        $datos->setIdiomaancestraluser($_SESSION['tipouser'] . $_SESSION['user']);
         $opcion = $_POST['opt'];
         if ($_SESSION['user'] != "") {
 
             if ($opcion == 1) {
-                $datos->set_ididiomaAncestral(null);
+                $datos->setIdidiomaAncestral(null);
                 $crud->insertar($datos);
                 return (guardarR());
             }
@@ -33,7 +34,7 @@ function opcionIdiomas()
                 return (actualizarR());
             }
             if ($opcion == optEliminar()) {
-                $crud->eliminar($datos->get_ididiomaAncestral());
+                $crud->eliminar($datos->getIdidiomaAncestral());
                 return (eliminarR());
             }
         }

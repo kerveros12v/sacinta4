@@ -1,15 +1,17 @@
 <?php
 require_once("../Crud/CrudDiscapacidad.php");
 require_once("../controladores/respuestasgenerales.php");
+
 use Crud\CrudDiscapacidad;
+
 session_start();
 function cargartabladiscapacidad()
 {
-    $r="";
+    $r = "";
     $crud = new CrudDiscapacidad();
 
 
-    $r.= '
+    $r .= '
 
 <tr>
     <td>
@@ -23,7 +25,7 @@ function cargartabladiscapacidad()
     </td>
     <td>
  <select class="selector"  id="discapacidadbool" name="discapacidadbool">
-    '.boolselect(1).'
+    ' . boolselect(1) . '
     </select>
     </td>
     <td>
@@ -39,29 +41,29 @@ function cargartabladiscapacidad()
 
         </td>
         <td>
-            <input type="text" class="camptext1" id="discapacidadcodigo' . $dato->get_discapacidadId() . '" name="discapacidadcodigo' . $dato->get_discapacidadId() . '"  maxlength="10" value="' . $dato->get_discapacidadcodigo() . '"/>
+            <input type="text" class="camptext1" id="discapacidadcodigo' . $dato->getDiscapacidadId() . '" name="discapacidadcodigo' . $dato->getDiscapacidadId() . '"  maxlength="10" value="' . $dato->getDiscapacidadcodigo() . '"/>
         </td>
         <td>
-            <input type="text" id="discapacidad' . $dato->get_discapacidadId() . '" name="discapacidad' . $dato->get_discapacidadId() . '"  value="' . $dato->get_discapacidad() . '"/>
+            <input type="text" id="discapacidad' . $dato->getDiscapacidadId() . '" name="discapacidad' . $dato->getDiscapacidadId() . '"  value="' . $dato->getDiscapacidad() . '"/>
         </td>
         <td>
             <select class="selector"  id="discapacidadbool" name="discapacidadbool">
-                '.boolselect($dato->get_discapacidadbool()).'
+                ' . boolselect($dato->getDiscapacidadbool()) . '
             </select>
         </td>
         <td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->get_discapacidadId() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->get_discapacidadId() . ')">
+        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getDiscapacidadId() . ')">
+         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getDiscapacidadId() . ')">
         </td>
     </tr>
     ';
     }
     return $r;
 }
-if ($_SESSION['user']!="") {
+if ($_SESSION['user'] != "") {
     echo cargartabladiscapacidad();
-} else{
-	echo '<tr>
+} else {
+    echo '<tr>
 		<td>
 		</td>
 		<td>
@@ -69,7 +71,7 @@ if ($_SESSION['user']!="") {
 		<td>
 		</td>
 		<td>
-			'.tiempoExedido().'
+			' . tiempoExedido() . '
 		</td>
 	</tr>';
 }
