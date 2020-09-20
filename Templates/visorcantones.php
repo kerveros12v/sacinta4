@@ -41,7 +41,7 @@
                                             Seleccione el Pais:
                                         </td>
                                         <td>
-                                            <select class="selector" id="paiscanton" name="paiscanton"></select>
+                                            <select class="selector" id="paiscanton" name="paiscanton" onchange="cargarProvincias()"></select>
                                         </td>
                                     </tr>
                                 </table>
@@ -53,7 +53,7 @@
                                             Seleccione la Provincia:
                                         </td>
                                         <td>
-                                            <select class="selector" id="provinciacanton" name="provinciacanton"></select>
+                                            <select class="selector" id="provinciacanton" name="provinciacanton" onchange="cargartabla1()"></select>
                                         </td>
                                     </tr>
                                 </table>

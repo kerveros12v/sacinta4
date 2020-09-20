@@ -1,7 +1,4 @@
 <?php
-
-
-
 error_reporting(E_ALL ^ E_NOTICE);
 require_once("../clasesphp/Estudiantes.php");
 require_once('../Crud/CrudEstudiante.php');
@@ -13,17 +10,14 @@ use Crud\CrudResidenciaestudiantes;
 session_start();
 function datosrecargadosresidencia($dato)
 {
-	$dato->set_estudiantes_numeroIdentificacion($_SESSION['campbuscarest']);
-	$dato->set_paisResidencia($_POST['paisRecidencia']);
-	$dato->set_provinciaResidencia($_POST['provinciaRecidencia']);
-	$dato->set_cantonResidencia($_POST['cantonRecidencia']);
-	$dato->set_direccionDomiciliariaResidencia(strtoupper(trim($_POST['direcciondomi'])));
-	$dato->set_codigoPostal(strtoupper((trim($_POST['parroquiaRecidencia']))));
-	$dato->set_periodo($_SESSION['campbuscarperiodo']);
-	$dato->set_residenciaestudiantesOculto($_POST['eliminar']);
-	$dato->set_residenciaestudiantesAccion($_POST['actualizar']);
-	$dato->set_residenciaestudiantesfecha(date("Y-m-d"));
-	$dato->set_residenciaestudiantesuser((isset($_SESSION['tipouser']))?$_SESSION['tipouser'] . $_SESSION['user']:$_SESSION['campbuscarest']);
+	$dato->setFknumeroIdentificacion($_SESSION['campbuscarest']);
+	$dato->setDireccionDomiciliariaResidencia(strtoupper(trim($_POST['direcciondomi'])));
+	$dato->setCodigoPostal(strtoupper((trim($_POST['parroquiaRecidencia']))));
+	$dato->setFkperiodo($_SESSION['campbuscarperiodo']);
+	$dato->setResidenciaestudiantesOculto($_POST['eliminar']);
+	$dato->setResidenciaestudiantesAccion($_POST['actualizar']);
+	$dato->setResidenciaestudiantesfecha(date("Y-m-d"));
+	$dato->setResidenciaestudiantesuser((isset($_SESSION['tipouser'])) ? $_SESSION['tipouser'] . $_SESSION['user'] : $_SESSION['campbuscarest']);
 
 	return $dato;
 }
@@ -36,21 +30,21 @@ function opcionresidenciaestudiante()
 		$opcion = $_POST['opt'];
 		if ($_SESSION['user'] != "" || $_SESSION['campbuscarest'] != "") {
 			if ($opcion == 1) {
-				if ($crud->existe($_SESSION['campbuscarest'],$_SESSION['campbuscarperiodo']) == 0) {
+				if ($crud->existe($_SESSION['campbuscarest'], $_SESSION['campbuscarperiodo']) == 0) {
 					$dato = datosrecargadosresidencia($dato);
 					$crud->insertar($dato);
 					return (guardarR());
 				} else $opcion = 2;
 			}
 			if ($opcion == 2) {
-				$dato=$crud->obtenerresidenciaestudiantes($_SESSION['campbuscarest'],$_SESSION['campbuscarperiodo']);
+				$dato = $crud->obtenerresidenciaestudiantes($_SESSION['campbuscarest'], $_SESSION['campbuscarperiodo']);
 				$dato = datosrecargadosresidencia($dato);
 				$crud->actualizar($dato);
 				return (actualizarR());
 			}
 
 			if ($opcion == optEliminar()) {
-				$crud->eliminar($dato->get_residenciaEstudiantesId());
+				$crud->eliminar($dato->getResidenciaEstudiantesId());
 				return (eliminarR());
 			}
 		} else {

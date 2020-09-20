@@ -33,6 +33,27 @@ class CrudIdiomas
 		}
 		return $listaidiomaAncestral;
 	}
+	public function mostrarporEtnia($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT * FROM idiomasancestrales WHERE idiomaetnia=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$listaidiomaAncestral = null;
+		foreach ($select->fetchAll() as $idiomaAncestral) {
+			$myidiomaAncestral = new Idiomas();
+			$myidiomaAncestral->setIdidiomaAncestral($idiomaAncestral['ididiomaAncestral']);
+			$myidiomaAncestral->setIdioma($idiomaAncestral['idioma']);
+			$myidiomaAncestral->setIdiomaetnia($idiomaAncestral['idiomaetnia']);
+			$myidiomaAncestral->setIdiomaancestralOculto($idiomaAncestral['idiomaancestralOculto']);
+			$myidiomaAncestral->setIdiomaancestralAccion($idiomaAncestral['idiomaancestralAccion']);
+			$myidiomaAncestral->setIdiomaancestralfecha($idiomaAncestral['idiomaancestralfecha']);
+			$myidiomaAncestral->setIdiomaancestraluser($idiomaAncestral['idiomaancestraluser']);
+			$myidiomaAncestral->setIdiomasancestralcodigo($idiomaAncestral['idiomasancestralcodigo']);
+			$listaidiomaAncestral[] = $myidiomaAncestral;
+		}
+		return $listaidiomaAncestral;
+	}
 	public function eliminar($id)
 	{
 		$db = Db::conectar();

@@ -15,10 +15,12 @@ function cargartabla(){
     });
   }
   function registro(){
-
+var id=$('#numeroIdentificacion').val();
+console.log("Cedula reconocida en script: "+id);
     $.ajax({
       type: 'POST',
-      url: '../ajax/ajaxsestudianteurlprint.php'
+      url: '../ajax/ajaxsestudianteurlprint.php',
+      data:{'id':id}
       })
       .done(function(cargar){
         window.open(cargar,"_self")

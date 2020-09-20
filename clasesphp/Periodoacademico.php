@@ -9,8 +9,8 @@ class Periodoacademico
     private $periodoAcademico;
     private $cicloperiodoIdcicloperiodo;
     private $fechaInicio;
-    private $duracionPeriodoAcademico;
-    private $anioPeriodoAcademico;
+    private $fechafin;
+    private $observaciones;
     private $actual;
     private $periodoacademicoOculto;
     private $periodoacademicoAccion;
@@ -124,41 +124,41 @@ class Periodoacademico
     }
 
     /**
-     * Get the value of duracionPeriodoAcademico
+     * Get the value of fechafin
      */
-    public function getDuracionPeriodoAcademico()
+    public function getfechafin()
     {
-        return $this->duracionPeriodoAcademico;
+        return $this->fechafin;
     }
 
     /**
-     * Set the value of duracionPeriodoAcademico
+     * Set the value of fechafin
      *
      * @return  self
      */
-    public function setDuracionPeriodoAcademico($duracionPeriodoAcademico)
+    public function setfechafin($fechafin)
     {
-        $this->duracionPeriodoAcademico = $duracionPeriodoAcademico;
+        $this->fechafin = $fechafin;
 
         return $this;
     }
 
     /**
-     * Get the value of anioPeriodoAcademico
+     * Get the value of observaciones
      */
-    public function getAnioPeriodoAcademico()
+    public function getobservaciones()
     {
-        return $this->anioPeriodoAcademico;
+        return $this->observaciones;
     }
 
     /**
-     * Set the value of anioPeriodoAcademico
+     * Set the value of observaciones
      *
      * @return  self
      */
-    public function setAnioPeriodoAcademico($anioPeriodoAcademico)
+    public function setobservaciones($observaciones)
     {
-        $this->anioPeriodoAcademico = $anioPeriodoAcademico;
+        $this->observaciones = $observaciones;
 
         return $this;
     }

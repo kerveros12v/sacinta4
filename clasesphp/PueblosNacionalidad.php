@@ -11,6 +11,7 @@ class PueblosNacionalidad
 	private $pueblonacionalidadAccion;
 	private $pueblonacionalidadfecha;
 	private $pueblonacionalidaduser;
+	private $pnetnia;
 	/**
 	 * Class constructor.
 	 */
@@ -154,6 +155,26 @@ class PueblosNacionalidad
 	public function setPueblonacionalidaduser($pueblonacionalidaduser)
 	{
 		$this->pueblonacionalidaduser = $pueblonacionalidaduser;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of pnetnia
+	 */
+	public function getPnetnia()
+	{
+		return $this->pnetnia;
+	}
+
+	/**
+	 * Set the value of pnetnia
+	 *
+	 * @return  self
+	 */
+	public function setPnetnia($pnetnia)
+	{
+		$this->pnetnia = $pnetnia;
 
 		return $this;
 	}

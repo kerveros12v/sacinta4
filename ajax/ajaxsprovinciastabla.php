@@ -5,28 +5,29 @@ function cargarProvincias($opt)
     $oCrudprovinciaRecidencia = new \Crud\CrudProvincias();
     $listaprovinciaRecidencia = $oCrudprovinciaRecidencia->mostrar();
     $dato = new \Clasesphp\Provincias();
-    $lista = '<tr class="ui-widget-header">
-                            <th>
-                                Codigo
-                            </th>
-                            <th>
-                                Provincia
-                            </th>
-                            <th>
-
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="text" class="camptext1" id="provinciacodigo" name="provinciacodigo"   value=""  required="required" />
-                            </td>
-                            <td>
-                                <input type="text" id="provincia" name="provincia"   value=""  required="required" />
-                            </td>
-                            <td>
-                                <input type="button" value="Guardar" id="btnregistro" class="btnunico" onclick="registro()">
-                            </td>
-                        </tr>
+    $lista = '';
+    if ($opt != 0)
+        $lista = '<tr class="ui-widget-header">
+                    <th>
+                        Codigo
+                    </th>
+                    <th>
+                        Provincia
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="camptext1" id="provinciacodigo" name="provinciacodigo"   value=""  required="required" />
+                    </td>
+                    <td>
+                        <input type="text" id="provincia" name="provincia"   value=""  required="required" />
+                    </td>
+                    <td>
+                        <input type="button" value="Guardar" id="btnregistro" class="btnunico" onclick="registro()">
+                    </td>
+                </tr>
                        ';
     foreach ($listaprovinciaRecidencia as $dato) {
         if ($dato->getProvinciapais() == $opt) {

@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <td>
-                    <table id=contenedorprovincias class="ui-widget ui-widget-content" title="Perfiles Registradas Actualmente:">
+                    <table id=contenedorprovincias class="ui-widget ui-widget-content " title="Perfiles Registradas Actualmente:">
 
                     </table>
                 </td>

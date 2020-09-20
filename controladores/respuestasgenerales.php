@@ -39,3 +39,15 @@ function dialogo($respuesta)
     $resultado =  $respuesta;
     return $resultado;
 }
+function imprimecooke()
+{
+
+    return ("<script>console.log('Periodo Actual: {" . $_SESSION['peridoactual']
+        . "}Campo de Busqueda de Periodo: {" . $_SESSION['campbuscarperiodo']
+        . "}Campo de Busqueda de Estudiante: {" . $_SESSION['campbuscarest']
+        . "}Tipo Usuario: {" . $_SESSION['tipouser']
+        . "}Acceso: {" . $_SESSION['acceso']
+        . "}est: {" . $_SESSION['est']
+        . "}user: {" . $_SESSION['user']
+        . "}');</script>");
+}

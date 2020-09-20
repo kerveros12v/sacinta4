@@ -556,4 +556,34 @@ class Estudiantes
 
 		return $this;
 	}
+	public function __toString()
+	{
+		return "fktipodocumentoId{" . $this->fktipodocumentoId . "}numeroIdentificacion{" .
+			$this->numeroIdentificacion . "}primerApellido{" .
+			$this->primerApellido . "}segundoApellido{" .
+			$this->segundoApellido . "}primerNombre{" .
+			$this->primerNombre . "}segundoNombre{" .
+			$this->segundoNombre . "}fksexoId{" .
+			$this->fksexoId . "}fkGeneroId{" .
+			$this->fkGeneroId . "}fkEstadoCivilId{" .
+			$this->fkEstadoCivilId . "}fkPuebloNacionalidadId{" .
+			$this->fkPuebloNacionalidadId . "}fkTipoSangreId{" .
+			$this->fkTipoSangreId . "}fechaNacimiento{" .
+			$this->fechaNacimiento . "}fkCantonNacimientoId{" .
+			$this->fkCantonNacimientoId . "}correoElectronico{" .
+			$this->correoElectronico . "}numeroCelular{" .
+			$this->numeroCelular . "}numeroComvencional{" .
+			$this->numeroComvencional . "}usuarioEstudiantes{" .
+			$this->usuarioEstudiantes . "}passwordEstudiantes{" .
+			$this->passwordEstudiantes . "}categoriaMigratoriaId{" .
+			$this->categoriaMigratoriaId . "}idiomas{" .
+			$this->idiomas . "}accesodepartamentoCodigo{" .
+			$this->accesodepartamentoCodigo . "}estudiantesimg{" .
+			$this->estudiantesimg . "}estudiantesOculto{" .
+			$this->estudiantesOculto . "}estudiantesAccion{" .
+			$this->estudiantesAccion . "}estudiantesfecha{" .
+			$this->estudiantesuser . "}";
+		$this->estudiantesfecha . "}{" .
+			$this->estudiantesuser . "}";
+	}
 }

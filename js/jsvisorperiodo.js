@@ -27,28 +27,30 @@ $(document).ready(function(){
       });
   }
   function registro(){
-    var periodoacademicoId= null;
     var codigoPeriodo=$('#codigoPeriodo').val();
     var periodoAcademico=$('#periodoAcademico').val();
     var ciclo=$('#ciclo').val();
     var fechaInicio=$('#fechaInicio').val();
-    var duracionPeriodoAcademico=$('#duracionPeriodoAcademico').val();
-    var anioPeriodoAcademico=$('#anioPeriodoAcademico').val();
-    var actual=$('#actual').val();
-    var eliminar=$('#eliminar').val();
+    var fechafin=$('#fechafin').val();
+    var observaciones=$('#observaciones').val();
+    var actual=0;
+    if($('#actual').is(':checked')==true){
+      actual=1;
+    }
     $.ajax({
       type: 'POST',
-      url: '../controladores/registroPeriodoAcademico.php',
+      url: '../controladores/registrotablaPeriodoAcademico.php',
       data:{
-        'periodoacademicoId':periodoacademicoId,
+        'periodoacademicoId':null,
         'codigoPeriodo':codigoPeriodo,
         'periodoAcademico':periodoAcademico,
         'ciclo':ciclo,
         'fechaInicio':fechaInicio,
-        'duracionPeriodoAcademico':duracionPeriodoAcademico,
-        'anioPeriodoAcademico':anioPeriodoAcademico,
+        'fechafin':fechafin,
+        'observaciones':observaciones,
         'actual':actual,
-        'eliminar':eliminar,
+        'eliminar':0,
+        'actualizar':0,
         'opt':1
       }
     })
@@ -62,31 +64,68 @@ $(document).ready(function(){
     });
   }
   function actualizar(dato){
-      var id= $('#idsetec'+dato).val();
-      var nom=$('#nomperfil'+dato).val();
-      $.ajax({
-        type: 'POST',
-        url: '../controladores/registroSetecPerfil.php',
-        data:{'id':id,'nom':nom,'opt':2}
+    var codigoPeriodo=$('#codigoPeriodo'+dato).val();
+    var periodoAcademico=$('#periodoAcademico'+dato).val();
+    var ciclo=$('#ciclo'+dato).val();
+    var fechaInicio=$('#fechaInicio'+dato).val();
+    var fechafin=$('#fechafin'+dato).val();
+    var observaciones=$('#observaciones'+dato).val();
+    var actual=1;
+
+    $.ajax({
+      type: 'POST',
+      url: '../controladores/registrotablaPeriodoAcademico.php',
+      data:{
+        'periodoacademicoId':dato,
+        'codigoPeriodo':codigoPeriodo,
+        'periodoAcademico':periodoAcademico,
+        'ciclo':ciclo,
+        'fechaInicio':fechaInicio,
+        'fechafin':fechafin,
+        'observaciones':observaciones,
+        'actual':actual,
+        'eliminar':0,
+          'actualizar':1,
+        'opt':2}
       })
       .done(function(cargar){
-     cargartabla()
+        cargarlistaperiodost()
      alert(cargar)
       })
       .fail(function(){
         alert('Hubo un error al cargar de Perfiles')
       })
+
     }
     function eliminar(dato){
-      var id= $('#idsetec'+dato).val();
-      var nom=$('#nomperfil'+dato).val();
-      $.ajax({
-        type: 'POST',
-        url: '../controladores/registroSetecPerfil.php',
-        data:{'id':id,'nom':nom,'opt':0}
+      var codigoPeriodo=$('#codigoPeriodo'+dato).val();
+    var periodoAcademico=$('#periodoAcademico'+dato).val();
+    var ciclo=$('#ciclo'+dato).val();
+    var fechaInicio=$('#fechaInicio'+dato).val();
+    var fechafin=$('#fechafin'+dato).val();
+    var observaciones=$('#observaciones'+dato).val();
+    var actual=0;
+    if($('#actual'+dato).is(':checked')==true){
+      actual=1;
+    }
+    $.ajax({
+      type: 'POST',
+      url: '../controladores/registrotablaPeriodoAcademico.php',
+      data:{
+        'periodoacademicoId':dato,
+        'codigoPeriodo':codigoPeriodo,
+        'periodoAcademico':periodoAcademico,
+        'ciclo':ciclo,
+        'fechaInicio':fechaInicio,
+        'fechafin':fechafin,
+        'observaciones':observaciones,
+        'actual':actual,
+        'eliminar':1,
+        'actualizar':2,
+        'opt':0}
       })
       .done(function(cargar){
-     cargartabla()
+        cargarlistaperiodost()
      alert(cargar)
       })
       .fail(function(){

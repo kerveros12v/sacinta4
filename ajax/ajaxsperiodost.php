@@ -2,97 +2,93 @@
 require_once("../Crud/CrudPeriodoacademico.php");
 require_once("ajaxsselectcicloperiodo.php");
 require_once("ajaxsselect2.php");
+
 use Crud\CrudPeriodoacademico;
-function cargarperiodoacademico(){
-    $lista='';
-    $crudperiodoaca=new CrudPeriodoacademico();
-    $lstperiodoacademico=$crudperiodoaca->mostrar();
 
-    $lista.=
-    '<tr>
-    <td>
-    '.ajaxs_select2().'
-    </td>
-    <td>
-        <input type="text" id="codigoPeriodo" class="camptext1"  name="codigoPeriodo"  required="required"  />
-    </td>
-    <td>
-        <input type="text" id="periodoAcademico"  name="periodoAcademico"  required="required"  />
-    </td>
-'./*'
-    <td>
-    <select class="selector"  name="ciclo" id="ciclo">
-        '.ciclop(0).'
-    </select>
-</td>
-<td>
-    <input type="date" id="fechaInicio" class="campfecha"  name="fechaInicio"  required="required"  />
-</td>
+function cargarperiodoacademico()
+{
+    $lista = '';
+    $crudperiodoaca = new CrudPeriodoacademico();
+    $lstperiodoacademico = $crudperiodoaca->mostrar();
+    $lista .=
+        '<tr>
+                 <td>
+                    <input type="text" id="codigoPeriodo" class="camptext1"  name="codigoPeriodo"  required="required" value="" />
+                </td>
 
-<td>
-    <input type="text" id="duracionPeriodoAcademico" class="camptext"  name="duracionPeriodoAcademico"  required="required"  />
-</td>
+                <td>
+                <select  name="ciclo" id="ciclo">
+                    ' . ciclop(0) . '
+                </select>
+                </td>
+                <td>
+                    <input type="date" id="fechaInicio" class="campfecha"  name="fechaInicio"  required="required" value="" />
+                </td>
 
-<td>
-    <input type="text" id="anioPeriodoAcademico" class="camptext2"  name="anioPeriodoAcademico"  required="required"  />
-</td>
-<td>
-    <input type="radio" name="actual" value="1" id="actual">
-</td>
-<td>
-    <input type="button" value="Guardar" id="btnregistro" class="btnunico" onclick="registro()">
-</td>
-*/'
-</tr>';
+                <td>
+                    <input type="date" id="fechafin" class="campfecha"  name="fechafin"  required="required" value="" />
+                </td>
+                <td>
+                <input type="text" id="periodoAcademico" class="camptext1"  name="periodoAcademico"  required="required" value="" />
+                </td>
+                <td>
+                    <input type="text" id="observaciones"   name="observaciones"  required="required" value="" />
+                </td>
+                <td>
+                    <input type="radio" name="actual" value="1" id="actual">
+                </td>
+                <td>
+                    <div class=enlinea>
+                    <input type="button" value="Guardar" id="btnguardar" class="btnunico" onclick="registro()">
+                    </div>
+                </td>
 
-/*
-        foreach($lstperiodoacademico as $p){
-            $actual1="";
-            if($p->get_actual()==1){$actual1=("checked='checked'");}
+            </tr>';
 
-                $lista.=
-                    '<tr>
-                        <td>
-                            <input type="hidden" id="periodoacademicoId'.$p->get_periodoacademicoId().'" class="camptext"  name="periodoacademicoId"  required="required" value="'.$p->get_periodoacademicoId().'"  />
+    foreach ($lstperiodoacademico as $p) {
+        $actual1 = "";
+        if ($p->getActual() == 1) {
+            $actual1 = ("checked='checked'");
+        }
+
+        $lista .=
+            '<tr>
+                         <td>
+                            <input type="text" id="codigoPeriodo' . $p->getPeriodoacademicoId() . '" class="camptext1"  name="codigoPeriodo' . $p->getPeriodoacademicoId() . '"  required="required" value="' . $p->getCodigoPeriodo() . '" />
                         </td>
+
                         <td>
-                            <input type="text" id="codigoPeriodo'.$p->get_periodoacademicoId().'" class="camptext1"  name="codigoPeriodo"  required="required" value="'.$p->get_codigo().'" />
-                        </td>
-                        <td>
-                            <input type="text" id="periodoAcademico'.$p->get_periodoacademicoId().'"   name="periodoAcademico"  required="required" value="'.$p->get_periodoAcademico().'" />
-                        </td>
-                        <td>
-                        <select class="selector"  name="ciclo" id="ciclo'.$p->get_periodoacademicoId().'">
-                            '.ciclop($p->get_ciclo()).'
+                        <select   name="ciclo" id="ciclo' . $p->getPeriodoacademicoId() . '">
+                            ' . ciclop($p->getCicloperiodoIdcicloperiodo()) . '
                         </select>
                         </td>
                         <td>
-                            <input type="date" id="fechaInicio'.$p->get_periodoacademicoId().'" class="campfecha"  name="fechaInicio"  required="required" value="'.$p->get_fechaInicio().'" />
+                            <input type="date" id="fechaInicio' . $p->getPeriodoacademicoId() . '" class="campfecha"  name="fechaInicio' . $p->getPeriodoacademicoId() . '"  required="required" value="' . $p->getFechaInicio() . '" />
                         </td>
 
                         <td>
-                            <input type="text" id="duracionPeriodoAcademico'.$p->get_periodoacademicoId().'" class="camptext"  name="duracionPeriodoAcademico"  required="required" value="'.$p->get_duracionPeriodoAcademico().'" />
-                        </td>
-
-                        <td>
-                            <input type="text" id="anioPeriodoAcademico'.$p->get_periodoacademicoId().'" class="camptext2"  name="anioPeriodoAcademico"  required="required" value="'.$p->get_anioPeriodoAcademico().'" />
+                            <input type="date" id="fechafin' . $p->getPeriodoacademicoId() . '" class="campfecha" name="fechafin' . $p->getPeriodoacademicoId() . '"  required="required" value="' . $p->getfechafin() . '" />
                         </td>
                         <td>
-                            <input type="radio" name="actual" value="1" id="actual'.$p->get_periodoacademicoId().' " '.$actual1.'>
+                        <input type="text" id="periodoAcademico' . $p->getPeriodoacademicoId() . '"  class="camptext1" name="periodoAcademico' . $p->getPeriodoacademicoId() . '"  required="required" value="' . $p->getPeriodoAcademico() . '" />
+                        </td>
+                        <td>
+                            <input type="text" id="observaciones' . $p->getPeriodoacademicoId() . '"   name="observaciones' . $p->getPeriodoacademicoId() . '"  required="required" value="' . $p->getobservaciones() . '" />
+                        </td>
+                        <td>
+                            <input type="radio" name="actual" value="1" id="actual' . $p->getPeriodoacademicoId() . ' " ' . $actual1 . '>
                         </td>
                         <td>
                             <div class=enlinea>
-                                <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar('.$p->get_periodoacademicoId().')">
-                                <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar('.$p->get_periodoacademicoId().')">
+                                <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $p->getPeriodoacademicoId() . ')">
+                                <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $p->getPeriodoacademicoId() . ')">
                             </div>
                         </td>
 
                     </tr>';
+    }
 
-        }
-*/
-   return $lista;
+    return $lista;
 }
 
 echo cargarperiodoacademico();
-?>

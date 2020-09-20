@@ -1,354 +1,369 @@
 <?php
+
 namespace Crud;
+
 require_once("conexion.php");
 require_once("../clasesphp/Matriculas.php");
+
 use Clasesphp\Matriculas;
-class CrudMatriculas{
-		// constructor de la clase
-		public function _construct(){
-			$db=Db::conectar();
-			$select=$db->query("SET NAMES 'utf8'");
-			}
 
-		public  function mostrar(){
-			$db=Db::conectar();
-			$listamatricula=NULL;
-			$select=$db->query("SELECT * FROM matriculas");
-
-			foreach($select->fetchAll() as $m){
-			  $mymatricula= new Matriculas();
-			  $mymatricula->set_matriculasId($m['matriculasId']);
-			  $mymatricula->set_CodigoMatricula($m['CodigoMatricula']);
-			  $mymatricula->set_fechaMatricula($m['fechaMatricula']);
-			  $mymatricula->set_montoCreditoEducativo($m['montoCreditoEducativo']);
-			  $mymatricula->set_montoAyudaEconomica($m['montoAyudaEconomica']);
-			  $mymatricula->set_fechainicioCarrera($m['fechainicioCarrera']);
-			  $mymatricula->set_estudiantes_numeroIdentificacion($m['estudiantes_numeroIdentificacion']);
-			  $mymatricula->set_carreras_carrerasId($m['carreras_carrerasId']);
-			  $mymatricula->set_jornadasacademicas_JornadaAcademicaId($m['jornadasacademicas_JornadaAcademicaId']);
-			  $mymatricula->set_periodoacademico_periodoacademicoId($m['periodoacademico_periodoacademicoId']);
-			  $mymatricula->set_paralelo_paraleloId($m['paralelo_paraleloId']);
-			  $mymatricula->set_tipomatricula_tipoMatriculaId($m['tipomatricula_tipoMatriculaId']);
-			  $mymatricula->set_nivelacademico_NivelAcademicoQueCursaId($m['nivelacademico_NivelAcademicoQueCursaId']);
-			  $mymatricula->set_recibepensiondiferenciada_recibePensionDiferenciadaId($m['recibepensiondiferenciada_recibePensionDiferenciadaId']);
-			  $mymatricula->set_estudianteocupacion_estudianteOcupacionId($m['estudianteocupacion_estudianteOcupacionId']);
-			  $mymatricula->set_bonodesarrollo_bonoDesarrolloId($m['bonodesarrollo_bonoDesarrolloId']);
-			  $mymatricula->set_ingresosestudiante_ingresosestudianteId($m['ingresosestudiante_ingresosestudianteId']);
-			  $mymatricula->set_harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid($m['harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid']);
-			  $mymatricula->set_haperdidolagratuidad_HaPerdidoLaGratuidadId($m['haperdidolagratuidad_HaPerdidoLaGratuidadId']);
-			  $mymatricula->set_ingresoTotalHogar($m['ingresoTotalHogar']);
-			  $mymatricula->set_fkNivelFormacionMadre($m['fkNivelFormacionMadre']);
-			  $mymatricula->set_fkNivelFormacionPadre($m['fkNivelFormacionPadre']);
-			  $mymatricula->set_cantidadMiembrosHogar($m['cantidadMiembrosHogar']);
-			  $mymatricula->set_matriculasOculto($m['matriculasOculto']);
-			  $mymatricula->set_matriculasAccion($m['matriculasAccion']);
-			  $mymatricula->set_matriculasfecha($m['matriculasfecha']);
-			  $mymatricula->set_matriculasuser($m['matriculasuser']);
-
-				$listamatricula[]=$mymatricula;
-			}
-			return $listamatricula;
-	}
-	public  function mostrarlistafechasMatriculacion(){
-			$db=Db::conectar();
-			$listamatricula=NULL;
-			$select=$db->query("SELECT fechaMatricula FROM `matriculas` GROUP BY fechaMatricula");
-
-			foreach($select->fetchAll() as $matricula){
-			 ///
-			   $mymatricula=($matricula['fechaMatricula']);
-
-			 ////
-				$listamatricula[]=$mymatricula;
-			}
-			return $listamatricula;
-	}
-	public  function listaMatriculas($cedulaEstudiante){
-			$db=Db::conectar();
-			$listamatricula=array();
-			$select=$db->prepare("SELECT * FROM matriculas WHERE estudiantes_numeroIdentificacion=:id ");
-			$select->bindValue('id',$cedulaEstudiante);
-			$select->execute();
-			foreach($select->fetchAll() as $m){
-				$mymatricula= new Matriculas();
-				$mymatricula->set_matriculasId($m['matriculasId']);
-				$mymatricula->set_CodigoMatricula($m['CodigoMatricula']);
-				$mymatricula->set_fechaMatricula($m['fechaMatricula']);
-				$mymatricula->set_montoCreditoEducativo($m['montoCreditoEducativo']);
-				$mymatricula->set_montoAyudaEconomica($m['montoAyudaEconomica']);
-				$mymatricula->set_fechainicioCarrera($m['fechainicioCarrera']);
-				$mymatricula->set_estudiantes_numeroIdentificacion($m['estudiantes_numeroIdentificacion']);
-				$mymatricula->set_carreras_carrerasId($m['carreras_carrerasId']);
-				$mymatricula->set_jornadasacademicas_JornadaAcademicaId($m['jornadasacademicas_JornadaAcademicaId']);
-				$mymatricula->set_periodoacademico_periodoacademicoId($m['periodoacademico_periodoacademicoId']);
-				$mymatricula->set_paralelo_paraleloId($m['paralelo_paraleloId']);
-				$mymatricula->set_tipomatricula_tipoMatriculaId($m['tipomatricula_tipoMatriculaId']);
-				$mymatricula->set_nivelacademico_NivelAcademicoQueCursaId($m['nivelacademico_NivelAcademicoQueCursaId']);
-				$mymatricula->set_recibepensiondiferenciada_recibePensionDiferenciadaId($m['recibepensiondiferenciada_recibePensionDiferenciadaId']);
-				$mymatricula->set_estudianteocupacion_estudianteOcupacionId($m['estudianteocupacion_estudianteOcupacionId']);
-				$mymatricula->set_bonodesarrollo_bonoDesarrolloId($m['bonodesarrollo_bonoDesarrolloId']);
-				$mymatricula->set_ingresosestudiante_ingresosestudianteId($m['ingresosestudiante_ingresosestudianteId']);
-				$mymatricula->set_harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid($m['harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid']);
-				$mymatricula->set_haperdidolagratuidad_HaPerdidoLaGratuidadId($m['haperdidolagratuidad_HaPerdidoLaGratuidadId']);
-				$mymatricula->set_ingresoTotalHogar($m['ingresoTotalHogar']);
-				$mymatricula->set_fkNivelFormacionMadre($m['fkNivelFormacionMadre']);
-				$mymatricula->set_fkNivelFormacionPadre($m['fkNivelFormacionPadre']);
-				$mymatricula->set_cantidadMiembrosHogar($m['cantidadMiembrosHogar']);
-				$mymatricula->set_matriculasOculto($m['matriculasOculto']);
-				$mymatricula->set_matriculasAccion($m['matriculasAccion']);
-				$mymatricula->set_matriculasfecha($m['matriculasfecha']);
-				$mymatricula->set_matriculasuser($m['matriculasuser']);
-				$listamatricula[]=$mymatricula;
-			}
-			return $listamatricula;
-	}
-	public  function listaFechasPorPeriodos($periodo2){
-			$db=Db::conectar();
-			$listamatricula=NULL;
-			$select=$db->prepare("SELECT fechaMatricula FROM `matriculas` WHERE periodoacademico_periodoacademicoId=:id GROUP BY fechaMatricula");
-			$select->bindValue('id',$periodo2);
-			$select->execute();
-			foreach($select->fetchAll() as $matricula){
-			  $mymatricula=($matricula['fechaMatricula']);
-			  $listamatricula[]=$mymatricula;
-			}
-			return $listamatricula;
-	}
-	public  function listaMatriculasporFecha($fechamatricula1){
-			$db=Db::conectar();
-			$listamatricula=NULL;
-			$select=$db->prepare("SELECT * FROM matriculas WHERE fechaMatricula=:id ");
-			$select->bindValue('id',$fechamatricula1);
-			$select->execute();
-			foreach($select->fetchAll() as $m){
-				$mymatricula= new Matriculas();
-				$mymatricula->set_matriculasId($m['matriculasId']);
-				$mymatricula->set_CodigoMatricula($m['CodigoMatricula']);
-				$mymatricula->set_fechaMatricula($m['fechaMatricula']);
-				$mymatricula->set_montoCreditoEducativo($m['montoCreditoEducativo']);
-				$mymatricula->set_montoAyudaEconomica($m['montoAyudaEconomica']);
-				$mymatricula->set_fechainicioCarrera($m['fechainicioCarrera']);
-				$mymatricula->set_estudiantes_numeroIdentificacion($m['estudiantes_numeroIdentificacion']);
-				$mymatricula->set_carreras_carrerasId($m['carreras_carrerasId']);
-				$mymatricula->set_jornadasacademicas_JornadaAcademicaId($m['jornadasacademicas_JornadaAcademicaId']);
-				$mymatricula->set_periodoacademico_periodoacademicoId($m['periodoacademico_periodoacademicoId']);
-				$mymatricula->set_paralelo_paraleloId($m['paralelo_paraleloId']);
-				$mymatricula->set_tipomatricula_tipoMatriculaId($m['tipomatricula_tipoMatriculaId']);
-				$mymatricula->set_nivelacademico_NivelAcademicoQueCursaId($m['nivelacademico_NivelAcademicoQueCursaId']);
-				$mymatricula->set_recibepensiondiferenciada_recibePensionDiferenciadaId($m['recibepensiondiferenciada_recibePensionDiferenciadaId']);
-				$mymatricula->set_estudianteocupacion_estudianteOcupacionId($m['estudianteocupacion_estudianteOcupacionId']);
-				$mymatricula->set_bonodesarrollo_bonoDesarrolloId($m['bonodesarrollo_bonoDesarrolloId']);
-				$mymatricula->set_ingresosestudiante_ingresosestudianteId($m['ingresosestudiante_ingresosestudianteId']);
-				$mymatricula->set_harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid($m['harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid']);
-				$mymatricula->set_haperdidolagratuidad_HaPerdidoLaGratuidadId($m['haperdidolagratuidad_HaPerdidoLaGratuidadId']);
-				$mymatricula->set_ingresoTotalHogar($m['ingresoTotalHogar']);
-				$mymatricula->set_fkNivelFormacionMadre($m['fkNivelFormacionMadre']);
-				$mymatricula->set_fkNivelFormacionPadre($m['fkNivelFormacionPadre']);
-				$mymatricula->set_cantidadMiembrosHogar($m['cantidadMiembrosHogar']);
-				$mymatricula->set_matriculasOculto($m['matriculasOculto']);
-				$mymatricula->set_matriculasAccion($m['matriculasAccion']);
-				$mymatricula->set_matriculasfecha($m['matriculasfecha']);
-				$mymatricula->set_matriculasuser($m['matriculasuser']);
-				$listamatricula[]=$mymatricula;
-			}
-			return $listamatricula;
-	}
-	public  function listaMatriculasporPeriodo($periodo1){
-			$db=Db::conectar();
-			$listamatricula=NULL;
-			$select=$db->prepare("SELECT * FROM matriculas WHERE periodoacademico_periodoacademicoId=:id ");
-			$select->bindValue('id',$periodo1);
-			$select->execute();
-			foreach($select->fetchAll() as $m){
-				$mymatricula= new Matriculas();
-				$mymatricula->set_matriculasId($m['matriculasId']);
-				$mymatricula->set_CodigoMatricula($m['CodigoMatricula']);
-				$mymatricula->set_fechaMatricula($m['fechaMatricula']);
-				$mymatricula->set_montoCreditoEducativo($m['montoCreditoEducativo']);
-				$mymatricula->set_montoAyudaEconomica($m['montoAyudaEconomica']);
-				$mymatricula->set_fechainicioCarrera($m['fechainicioCarrera']);
-				$mymatricula->set_estudiantes_numeroIdentificacion($m['estudiantes_numeroIdentificacion']);
-				$mymatricula->set_carreras_carrerasId($m['carreras_carrerasId']);
-				$mymatricula->set_jornadasacademicas_JornadaAcademicaId($m['jornadasacademicas_JornadaAcademicaId']);
-				$mymatricula->set_periodoacademico_periodoacademicoId($m['periodoacademico_periodoacademicoId']);
-				$mymatricula->set_paralelo_paraleloId($m['paralelo_paraleloId']);
-				$mymatricula->set_tipomatricula_tipoMatriculaId($m['tipomatricula_tipoMatriculaId']);
-				$mymatricula->set_nivelacademico_NivelAcademicoQueCursaId($m['nivelacademico_NivelAcademicoQueCursaId']);
-				$mymatricula->set_recibepensiondiferenciada_recibePensionDiferenciadaId($m['recibepensiondiferenciada_recibePensionDiferenciadaId']);
-				$mymatricula->set_estudianteocupacion_estudianteOcupacionId($m['estudianteocupacion_estudianteOcupacionId']);
-				$mymatricula->set_bonodesarrollo_bonoDesarrolloId($m['bonodesarrollo_bonoDesarrolloId']);
-				$mymatricula->set_ingresosestudiante_ingresosestudianteId($m['ingresosestudiante_ingresosestudianteId']);
-				$mymatricula->set_harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid($m['harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid']);
-				$mymatricula->set_haperdidolagratuidad_HaPerdidoLaGratuidadId($m['haperdidolagratuidad_HaPerdidoLaGratuidadId']);
-				$mymatricula->set_ingresoTotalHogar($m['ingresoTotalHogar']);
-				$mymatricula->set_fkNivelFormacionMadre($m['fkNivelFormacionMadre']);
-				$mymatricula->set_fkNivelFormacionPadre($m['fkNivelFormacionPadre']);
-				$mymatricula->set_cantidadMiembrosHogar($m['cantidadMiembrosHogar']);
-				$mymatricula->set_matriculasOculto($m['matriculasOculto']);
-				$mymatricula->set_matriculasAccion($m['matriculasAccion']);
-				$mymatricula->set_matriculasfecha($m['matriculasfecha']);
-				$mymatricula->set_matriculasuser($m['matriculasuser']);
-				$listamatricula[]=$mymatricula;
-			}
-			return $listamatricula;
-	}
-	public  function listaMatriculasporCarreras($carrera1){
-			$db=Db::conectar();
-			$listamatricula=NULL;
-			$select=$db->prepare("SELECT * FROM matriculas WHERE carreras_carrerasId=:id ");
-			$select->bindValue('id',$carrera1);
-			$select->execute();
-			foreach($select->fetchAll() as $m){
-				$mymatricula= new Matriculas();
-				$mymatricula->set_matriculasId($m['matriculasId']);
-				$mymatricula->set_CodigoMatricula($m['CodigoMatricula']);
-				$mymatricula->set_fechaMatricula($m['fechaMatricula']);
-				$mymatricula->set_montoCreditoEducativo($m['montoCreditoEducativo']);
-				$mymatricula->set_montoAyudaEconomica($m['montoAyudaEconomica']);
-				$mymatricula->set_fechainicioCarrera($m['fechainicioCarrera']);
-				$mymatricula->set_estudiantes_numeroIdentificacion($m['estudiantes_numeroIdentificacion']);
-				$mymatricula->set_carreras_carrerasId($m['carreras_carrerasId']);
-				$mymatricula->set_jornadasacademicas_JornadaAcademicaId($m['jornadasacademicas_JornadaAcademicaId']);
-				$mymatricula->set_periodoacademico_periodoacademicoId($m['periodoacademico_periodoacademicoId']);
-				$mymatricula->set_paralelo_paraleloId($m['paralelo_paraleloId']);
-				$mymatricula->set_tipomatricula_tipoMatriculaId($m['tipomatricula_tipoMatriculaId']);
-				$mymatricula->set_nivelacademico_NivelAcademicoQueCursaId($m['nivelacademico_NivelAcademicoQueCursaId']);
-				$mymatricula->set_recibepensiondiferenciada_recibePensionDiferenciadaId($m['recibepensiondiferenciada_recibePensionDiferenciadaId']);
-				$mymatricula->set_estudianteocupacion_estudianteOcupacionId($m['estudianteocupacion_estudianteOcupacionId']);
-				$mymatricula->set_bonodesarrollo_bonoDesarrolloId($m['bonodesarrollo_bonoDesarrolloId']);
-				$mymatricula->set_ingresosestudiante_ingresosestudianteId($m['ingresosestudiante_ingresosestudianteId']);
-				$mymatricula->set_harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid($m['harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid']);
-				$mymatricula->set_haperdidolagratuidad_HaPerdidoLaGratuidadId($m['haperdidolagratuidad_HaPerdidoLaGratuidadId']);
-				$mymatricula->set_ingresoTotalHogar($m['ingresoTotalHogar']);
-				$mymatricula->set_fkNivelFormacionMadre($m['fkNivelFormacionMadre']);
-				$mymatricula->set_fkNivelFormacionPadre($m['fkNivelFormacionPadre']);
-				$mymatricula->set_cantidadMiembrosHogar($m['cantidadMiembrosHogar']);
-				$mymatricula->set_matriculasOculto($m['matriculasOculto']);
-				$mymatricula->set_matriculasAccion($m['matriculasAccion']);
-				$mymatricula->set_matriculasfecha($m['matriculasfecha']);
-				$mymatricula->set_matriculasuser($m['matriculasuser']);
-				$listamatricula[]=$mymatricula;
-			}
-			return $listamatricula;
-	}
-	public  function listaMatriculasporCursos($curso1){
-			$db=Db::conectar();
-			$listamatricula=NULL;
-			$select=$db->prepare("SELECT * FROM matriculas WHERE nivelacademico_NivelAcademicoQueCursaId=:id ");
-			$select->bindValue('id',$curso1);
-			$select->execute();
-			foreach($select->fetchAll() as $m){
-				$mymatricula= new Matriculas();
-				$mymatricula->set_matriculasId($m['matriculasId']);
-				$mymatricula->set_CodigoMatricula($m['CodigoMatricula']);
-				$mymatricula->set_fechaMatricula($m['fechaMatricula']);
-				$mymatricula->set_montoCreditoEducativo($m['montoCreditoEducativo']);
-				$mymatricula->set_montoAyudaEconomica($m['montoAyudaEconomica']);
-				$mymatricula->set_fechainicioCarrera($m['fechainicioCarrera']);
-				$mymatricula->set_estudiantes_numeroIdentificacion($m['estudiantes_numeroIdentificacion']);
-				$mymatricula->set_carreras_carrerasId($m['carreras_carrerasId']);
-				$mymatricula->set_jornadasacademicas_JornadaAcademicaId($m['jornadasacademicas_JornadaAcademicaId']);
-				$mymatricula->set_periodoacademico_periodoacademicoId($m['periodoacademico_periodoacademicoId']);
-				$mymatricula->set_paralelo_paraleloId($m['paralelo_paraleloId']);
-				$mymatricula->set_tipomatricula_tipoMatriculaId($m['tipomatricula_tipoMatriculaId']);
-				$mymatricula->set_nivelacademico_NivelAcademicoQueCursaId($m['nivelacademico_NivelAcademicoQueCursaId']);
-				$mymatricula->set_recibepensiondiferenciada_recibePensionDiferenciadaId($m['recibepensiondiferenciada_recibePensionDiferenciadaId']);
-				$mymatricula->set_estudianteocupacion_estudianteOcupacionId($m['estudianteocupacion_estudianteOcupacionId']);
-				$mymatricula->set_bonodesarrollo_bonoDesarrolloId($m['bonodesarrollo_bonoDesarrolloId']);
-				$mymatricula->set_ingresosestudiante_ingresosestudianteId($m['ingresosestudiante_ingresosestudianteId']);
-				$mymatricula->set_harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid($m['harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid']);
-				$mymatricula->set_haperdidolagratuidad_HaPerdidoLaGratuidadId($m['haperdidolagratuidad_HaPerdidoLaGratuidadId']);
-				$mymatricula->set_ingresoTotalHogar($m['ingresoTotalHogar']);
-				$mymatricula->set_fkNivelFormacionMadre($m['fkNivelFormacionMadre']);
-				$mymatricula->set_fkNivelFormacionPadre($m['fkNivelFormacionPadre']);
-				$mymatricula->set_cantidadMiembrosHogar($m['cantidadMiembrosHogar']);
-				$mymatricula->set_matriculasOculto($m['matriculasOculto']);
-				$mymatricula->set_matriculasAccion($m['matriculasAccion']);
-				$mymatricula->set_matriculasfecha($m['matriculasfecha']);
-				$mymatricula->set_matriculasuser($m['matriculasuser']);
-				$listamatricula[]=$mymatricula;
-			}
-			return $listamatricula;
-	}
-	public  function existeMatricula($periodom,$cedestu){
-		$db=Db::conectar();
-		$select=$db->prepare("SELECT * FROM matriculas where periodoacademico_periodoacademicoId =:id AND estudiantes_numeroIdentificacion= :cedula");
-		$select->bindValue('id',$periodom);
-		$select->bindValue('cedula',$cedestu);
-		$select->execute();
-		if ($select->fetch()==0)return 0;
-			return 1;
-	}
-	public  function existe($id){
-		$db=Db::conectar();
-		$select=$db->prepare("SELECT * FROM matriculas where CodigoMatricula=:id");
-		$select->bindValue('id',$id);
-		$select->execute();
-		if ($select->fetch()==0)return 0;
-			return 1;
+class CrudMatriculas
+{
+	// constructor de la clase
+	public function __construct()
+	{
 	}
 
-	public  function obtenerMatricula($id , $periodo){
-			$db=Db::conectar();
-			$select=$db->prepare("SELECT * FROM matriculas where estudiantes_numeroIdentificacion=:id and periodoacademico_periodoacademicoId=:periodo;");
-			$select->bindValue('id',$id);
-			$select->bindValue('periodo',$periodo);
-			$select->execute();
-			$m=$select->fetch();
-			$mymatricula= new Matriculas();
-			$mymatricula->set_matriculasId($m['matriculasId']);
-			$mymatricula->set_CodigoMatricula($m['CodigoMatricula']);
-			$mymatricula->set_fechaMatricula($m['fechaMatricula']);
-			$mymatricula->set_montoCreditoEducativo($m['montoCreditoEducativo']);
-			$mymatricula->set_montoAyudaEconomica($m['montoAyudaEconomica']);
-			$mymatricula->set_fechainicioCarrera($m['fechainicioCarrera']);
-			$mymatricula->set_estudiantes_numeroIdentificacion($m['estudiantes_numeroIdentificacion']);
-			$mymatricula->set_carreras_carrerasId($m['carreras_carrerasId']);
-			$mymatricula->set_jornadasacademicas_JornadaAcademicaId($m['jornadasacademicas_JornadaAcademicaId']);
-			$mymatricula->set_periodoacademico_periodoacademicoId($m['periodoacademico_periodoacademicoId']);
-			$mymatricula->set_paralelo_paraleloId($m['paralelo_paraleloId']);
-			$mymatricula->set_tipomatricula_tipoMatriculaId($m['tipomatricula_tipoMatriculaId']);
-			$mymatricula->set_nivelacademico_NivelAcademicoQueCursaId($m['nivelacademico_NivelAcademicoQueCursaId']);
-			$mymatricula->set_recibepensiondiferenciada_recibePensionDiferenciadaId($m['recibepensiondiferenciada_recibePensionDiferenciadaId']);
-			$mymatricula->set_estudianteocupacion_estudianteOcupacionId($m['estudianteocupacion_estudianteOcupacionId']);
-			$mymatricula->set_bonodesarrollo_bonoDesarrolloId($m['bonodesarrollo_bonoDesarrolloId']);
-			$mymatricula->set_ingresosestudiante_ingresosestudianteId($m['ingresosestudiante_ingresosestudianteId']);
-			$mymatricula->set_harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid($m['harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid']);
-			$mymatricula->set_haperdidolagratuidad_HaPerdidoLaGratuidadId($m['haperdidolagratuidad_HaPerdidoLaGratuidadId']);
-			$mymatricula->set_ingresoTotalHogar($m['ingresoTotalHogar']);
-			$mymatricula->set_fkNivelFormacionMadre($m['fkNivelFormacionMadre']);
-			$mymatricula->set_fkNivelFormacionPadre($m['fkNivelFormacionPadre']);
-			$mymatricula->set_cantidadMiembrosHogar($m['cantidadMiembrosHogar']);
-			$mymatricula->set_matriculasOculto($m['matriculasOculto']);
-			$mymatricula->set_matriculasAccion($m['matriculasAccion']);
-			$mymatricula->set_matriculasfecha($m['matriculasfecha']);
-			$mymatricula->set_matriculasuser($m['matriculasuser']);
-			return $mymatricula;
+	public  function mostrar()
+	{
+		$db = Db::conectar();
+		$listamatricula = NULL;
+		$select = $db->query("SELECT * FROM matriculas");
+		foreach ($select->fetchAll() as $m) {
+			$mymatricula = new Matriculas();
+			$mymatricula->setMatriculasId($m['matriculasId']);
+			$mymatricula->setCodigoMatricula($m['codigoMatricula']);
+			$mymatricula->setFechaMatricula($m['fechaMatricula']);
+			$mymatricula->setMontoCreditoEducativo($m['montoCreditoEducativo']);
+			$mymatricula->setMontoAyudaEconomica($m['montoAyudaEconomica']);
+			$mymatricula->setFechainicioCarrera($m['fechainicioCarrera']);
+			$mymatricula->setEnumeroIdentificacion($m['enumeroIdentificacion']);
+			$mymatricula->setCcarrerasId($m['ccarrerasId']);
+			$mymatricula->setJjornadaAcademicaId($m['jjornadaAcademicaId']);
+			$mymatricula->setPperiodoacademicoId($m['pperiodoacademicoId']);
+			$mymatricula->setPparaleloId($m['pparaleloId']);
+			$mymatricula->setTtipoMatriculaId($m['ttipoMatriculaId']);
+			$mymatricula->setNnivelAcademicoQueCursaId($m['nnivelAcademicoQueCursaId']);
+			$mymatricula->setRrecibePensionDiferenciadaId($m['rrecibePensionDiferenciadaId']);
+			$mymatricula->setEestudianteOcupacionId($m['eestudianteOcupacionId']);
+			$mymatricula->setBbonoDesarrolloId($m['bbonoDesarrolloId']);
+			$mymatricula->setIingresosestudianteId($m['iingresosestudianteId']);
+			$mymatricula->setHhaRepetidoAlMenosUnaMateriaid($m['hhaRepetidoAlMenosUnaMateriaid']);
+			$mymatricula->setHhaPerdidoLaGratuidadId($m['hhaPerdidoLaGratuidadId']);
+			$mymatricula->setIngresoTotalHogar($m['ingresoTotalHogar']);
+			$mymatricula->setFkNivelFormacionMadre($m['fkNivelFormacionMadre']);
+			$mymatricula->setFkNivelFormacionPadre($m['fkNivelFormacionPadre']);
+			$mymatricula->setCantidadMiembrosHogar($m['cantidadMiembrosHogar']);
+			$mymatricula->setMatriculasOculto($m['matriculasOculto']);
+			$mymatricula->setMatriculasAccion($m['matriculasAccion']);
+			$mymatricula->setMatriculasfecha($m['matriculasfecha']);
+			$mymatricula->setMatriculasuser($m['matriculasuser']);
+
+			$listamatricula[] = $mymatricula;
 		}
- public  function insertar($matricula){
-	// $matricula=new Matriculas();
-			$db=Db::conectar();
+		return $listamatricula;
+	}
+	public  function mostrarlistafechasMatriculacion()
+	{
+		$db = Db::conectar();
+		$listamatricula = NULL;
+		$select = $db->query("SELECT fechaMatricula FROM `matriculas` GROUP BY fechaMatricula");
 
-			$insert=$db->prepare("INSERT INTO `matriculas`
+		foreach ($select->fetchAll() as $matricula) {
+			///
+			$mymatricula = ($matricula['fechaMatricula']);
+
+			////
+			$listamatricula[] = $mymatricula;
+		}
+		return $listamatricula;
+	}
+	public  function listaMatriculas($cedulaEstudiante)
+	{
+		$db = Db::conectar();
+		$listamatricula = array();
+		$select = $db->prepare("SELECT * FROM matriculas WHERE enumeroIdentificacion=:id ");
+		$select->bindValue('id', $cedulaEstudiante);
+		$select->execute();
+		foreach ($select->fetchAll() as $m) {
+			$mymatricula = new Matriculas();
+			$mymatricula->setMatriculasId($m['matriculasId']);
+			$mymatricula->setCodigoMatricula($m['codigoMatricula']);
+			$mymatricula->setFechaMatricula($m['fechaMatricula']);
+			$mymatricula->setMontoCreditoEducativo($m['montoCreditoEducativo']);
+			$mymatricula->setMontoAyudaEconomica($m['montoAyudaEconomica']);
+			$mymatricula->setFechainicioCarrera($m['fechainicioCarrera']);
+			$mymatricula->setEnumeroIdentificacion($m['enumeroIdentificacion']);
+			$mymatricula->setCcarrerasId($m['ccarrerasId']);
+			$mymatricula->setJjornadaAcademicaId($m['jjornadaAcademicaId']);
+			$mymatricula->setPperiodoacademicoId($m['pperiodoacademicoId']);
+			$mymatricula->setPparaleloId($m['pparaleloId']);
+			$mymatricula->setTtipoMatriculaId($m['ttipoMatriculaId']);
+			$mymatricula->setNnivelAcademicoQueCursaId($m['nnivelAcademicoQueCursaId']);
+			$mymatricula->setRrecibePensionDiferenciadaId($m['rrecibePensionDiferenciadaId']);
+			$mymatricula->setEestudianteOcupacionId($m['eestudianteOcupacionId']);
+			$mymatricula->setBbonoDesarrolloId($m['bbonoDesarrolloId']);
+			$mymatricula->setIingresosestudianteId($m['iingresosestudianteId']);
+			$mymatricula->setHhaRepetidoAlMenosUnaMateriaid($m['hhaRepetidoAlMenosUnaMateriaid']);
+			$mymatricula->setHhaPerdidoLaGratuidadId($m['hhaPerdidoLaGratuidadId']);
+			$mymatricula->setIngresoTotalHogar($m['ingresoTotalHogar']);
+			$mymatricula->setFkNivelFormacionMadre($m['fkNivelFormacionMadre']);
+			$mymatricula->setFkNivelFormacionPadre($m['fkNivelFormacionPadre']);
+			$mymatricula->setCantidadMiembrosHogar($m['cantidadMiembrosHogar']);
+			$mymatricula->setMatriculasOculto($m['matriculasOculto']);
+			$mymatricula->setMatriculasAccion($m['matriculasAccion']);
+			$mymatricula->setMatriculasfecha($m['matriculasfecha']);
+			$mymatricula->setMatriculasuser($m['matriculasuser']);
+			$listamatricula[] = $mymatricula;
+		}
+		return $listamatricula;
+	}
+	public  function listaFechasPorPeriodos($periodo2)
+	{
+		$db = Db::conectar();
+		$listamatricula = NULL;
+		$select = $db->prepare("SELECT fechaMatricula FROM `matriculas` WHERE pperiodoacademicoId=:id GROUP BY fechaMatricula");
+		$select->bindValue('id', $periodo2);
+		$select->execute();
+		foreach ($select->fetchAll() as $matricula) {
+			$mymatricula = ($matricula['fechaMatricula']);
+			$listamatricula[] = $mymatricula;
+		}
+		return $listamatricula;
+	}
+	public  function listaMatriculasporFecha($fechaMatricula1)
+	{
+		$db = Db::conectar();
+		$listamatricula = NULL;
+		$select = $db->prepare("SELECT * FROM matriculas WHERE fechaMatricula=:id ");
+		$select->bindValue('id', $fechaMatricula1);
+		$select->execute();
+		foreach ($select->fetchAll() as $m) {
+			$mymatricula = new Matriculas();
+			$mymatricula->setMatriculasId($m['matriculasId']);
+			$mymatricula->setCodigoMatricula($m['codigoMatricula']);
+			$mymatricula->setFechaMatricula($m['fechaMatricula']);
+			$mymatricula->setMontoCreditoEducativo($m['montoCreditoEducativo']);
+			$mymatricula->setMontoAyudaEconomica($m['montoAyudaEconomica']);
+			$mymatricula->setFechainicioCarrera($m['fechainicioCarrera']);
+			$mymatricula->setEnumeroIdentificacion($m['enumeroIdentificacion']);
+			$mymatricula->setCcarrerasId($m['ccarrerasId']);
+			$mymatricula->setJjornadaAcademicaId($m['jjornadaAcademicaId']);
+			$mymatricula->setPperiodoacademicoId($m['pperiodoacademicoId']);
+			$mymatricula->setPparaleloId($m['pparaleloId']);
+			$mymatricula->setTtipoMatriculaId($m['ttipoMatriculaId']);
+			$mymatricula->setNnivelAcademicoQueCursaId($m['nnivelAcademicoQueCursaId']);
+			$mymatricula->setRrecibePensionDiferenciadaId($m['rrecibePensionDiferenciadaId']);
+			$mymatricula->setEestudianteOcupacionId($m['eestudianteOcupacionId']);
+			$mymatricula->setBbonoDesarrolloId($m['bbonoDesarrolloId']);
+			$mymatricula->setIingresosestudianteId($m['iingresosestudianteId']);
+			$mymatricula->setHhaRepetidoAlMenosUnaMateriaid($m['hhaRepetidoAlMenosUnaMateriaid']);
+			$mymatricula->setHhaPerdidoLaGratuidadId($m['hhaPerdidoLaGratuidadId']);
+			$mymatricula->setIngresoTotalHogar($m['ingresoTotalHogar']);
+			$mymatricula->setFkNivelFormacionMadre($m['fkNivelFormacionMadre']);
+			$mymatricula->setFkNivelFormacionPadre($m['fkNivelFormacionPadre']);
+			$mymatricula->setCantidadMiembrosHogar($m['cantidadMiembrosHogar']);
+			$mymatricula->setMatriculasOculto($m['matriculasOculto']);
+			$mymatricula->setMatriculasAccion($m['matriculasAccion']);
+			$mymatricula->setMatriculasfecha($m['matriculasfecha']);
+			$mymatricula->setMatriculasuser($m['matriculasuser']);
+			$listamatricula[] = $mymatricula;
+		}
+		return $listamatricula;
+	}
+	public  function listaMatriculasporPeriodo($periodo1)
+	{
+		$db = Db::conectar();
+		$listamatricula = NULL;
+		$select = $db->prepare("SELECT * FROM matriculas WHERE pperiodoacademicoId=:id ");
+		$select->bindValue('id', $periodo1);
+		$select->execute();
+		foreach ($select->fetchAll() as $m) {
+			$mymatricula = new Matriculas();
+			$mymatricula->setMatriculasId($m['matriculasId']);
+			$mymatricula->setCodigoMatricula($m['codigoMatricula']);
+			$mymatricula->setFechaMatricula($m['fechaMatricula']);
+			$mymatricula->setMontoCreditoEducativo($m['montoCreditoEducativo']);
+			$mymatricula->setMontoAyudaEconomica($m['montoAyudaEconomica']);
+			$mymatricula->setFechainicioCarrera($m['fechainicioCarrera']);
+			$mymatricula->setEnumeroIdentificacion($m['enumeroIdentificacion']);
+			$mymatricula->setCcarrerasId($m['ccarrerasId']);
+			$mymatricula->setJjornadaAcademicaId($m['jjornadaAcademicaId']);
+			$mymatricula->setPperiodoacademicoId($m['pperiodoacademicoId']);
+			$mymatricula->setPparaleloId($m['pparaleloId']);
+			$mymatricula->setTtipoMatriculaId($m['ttipoMatriculaId']);
+			$mymatricula->setNnivelAcademicoQueCursaId($m['nnivelAcademicoQueCursaId']);
+			$mymatricula->setRrecibePensionDiferenciadaId($m['rrecibePensionDiferenciadaId']);
+			$mymatricula->setEestudianteOcupacionId($m['eestudianteOcupacionId']);
+			$mymatricula->setBbonoDesarrolloId($m['bbonoDesarrolloId']);
+			$mymatricula->setIingresosestudianteId($m['iingresosestudianteId']);
+			$mymatricula->setHhaRepetidoAlMenosUnaMateriaid($m['hhaRepetidoAlMenosUnaMateriaid']);
+			$mymatricula->setHhaPerdidoLaGratuidadId($m['hhaPerdidoLaGratuidadId']);
+			$mymatricula->setIngresoTotalHogar($m['ingresoTotalHogar']);
+			$mymatricula->setFkNivelFormacionMadre($m['fkNivelFormacionMadre']);
+			$mymatricula->setFkNivelFormacionPadre($m['fkNivelFormacionPadre']);
+			$mymatricula->setCantidadMiembrosHogar($m['cantidadMiembrosHogar']);
+			$mymatricula->setMatriculasOculto($m['matriculasOculto']);
+			$mymatricula->setMatriculasAccion($m['matriculasAccion']);
+			$mymatricula->setMatriculasfecha($m['matriculasfecha']);
+			$mymatricula->setMatriculasuser($m['matriculasuser']);
+			$listamatricula[] = $mymatricula;
+		}
+		return $listamatricula;
+	}
+	public  function listaMatriculasporCarreras($carrera1)
+	{
+		$db = Db::conectar();
+		$listamatricula = NULL;
+		$select = $db->prepare("SELECT * FROM matriculas WHERE ccarrerasId=:id ");
+		$select->bindValue('id', $carrera1);
+		$select->execute();
+		foreach ($select->fetchAll() as $m) {
+			$mymatricula = new Matriculas();
+			$mymatricula->setMatriculasId($m['matriculasId']);
+			$mymatricula->setCodigoMatricula($m['codigoMatricula']);
+			$mymatricula->setFechaMatricula($m['fechaMatricula']);
+			$mymatricula->setMontoCreditoEducativo($m['montoCreditoEducativo']);
+			$mymatricula->setMontoAyudaEconomica($m['montoAyudaEconomica']);
+			$mymatricula->setFechainicioCarrera($m['fechainicioCarrera']);
+			$mymatricula->setEnumeroIdentificacion($m['enumeroIdentificacion']);
+			$mymatricula->setCcarrerasId($m['ccarrerasId']);
+			$mymatricula->setJjornadaAcademicaId($m['jjornadaAcademicaId']);
+			$mymatricula->setPperiodoacademicoId($m['pperiodoacademicoId']);
+			$mymatricula->setPparaleloId($m['pparaleloId']);
+			$mymatricula->setTtipoMatriculaId($m['ttipoMatriculaId']);
+			$mymatricula->setNnivelAcademicoQueCursaId($m['nnivelAcademicoQueCursaId']);
+			$mymatricula->setRrecibePensionDiferenciadaId($m['rrecibePensionDiferenciadaId']);
+			$mymatricula->setEestudianteOcupacionId($m['eestudianteOcupacionId']);
+			$mymatricula->setBbonoDesarrolloId($m['bbonoDesarrolloId']);
+			$mymatricula->setIingresosestudianteId($m['iingresosestudianteId']);
+			$mymatricula->setHhaRepetidoAlMenosUnaMateriaid($m['hhaRepetidoAlMenosUnaMateriaid']);
+			$mymatricula->setHhaPerdidoLaGratuidadId($m['hhaPerdidoLaGratuidadId']);
+			$mymatricula->setIngresoTotalHogar($m['ingresoTotalHogar']);
+			$mymatricula->setFkNivelFormacionMadre($m['fkNivelFormacionMadre']);
+			$mymatricula->setFkNivelFormacionPadre($m['fkNivelFormacionPadre']);
+			$mymatricula->setCantidadMiembrosHogar($m['cantidadMiembrosHogar']);
+			$mymatricula->setMatriculasOculto($m['matriculasOculto']);
+			$mymatricula->setMatriculasAccion($m['matriculasAccion']);
+			$mymatricula->setMatriculasfecha($m['matriculasfecha']);
+			$mymatricula->setMatriculasuser($m['matriculasuser']);
+			$listamatricula[] = $mymatricula;
+		}
+		return $listamatricula;
+	}
+	public  function listaMatriculasporCursos($curso1)
+	{
+		$db = Db::conectar();
+		$listamatricula = NULL;
+		$select = $db->prepare("SELECT * FROM matriculas WHERE nnivelAcademicoQueCursaId=:id ");
+		$select->bindValue('id', $curso1);
+		$select->execute();
+		foreach ($select->fetchAll() as $m) {
+			$mymatricula = new Matriculas();
+			$mymatricula->setMatriculasId($m['matriculasId']);
+			$mymatricula->setCodigoMatricula($m['codigoMatricula']);
+			$mymatricula->setFechaMatricula($m['fechaMatricula']);
+			$mymatricula->setMontoCreditoEducativo($m['montoCreditoEducativo']);
+			$mymatricula->setMontoAyudaEconomica($m['montoAyudaEconomica']);
+			$mymatricula->setFechainicioCarrera($m['fechainicioCarrera']);
+			$mymatricula->setEnumeroIdentificacion($m['enumeroIdentificacion']);
+			$mymatricula->setCcarrerasId($m['ccarrerasId']);
+			$mymatricula->setJjornadaAcademicaId($m['jjornadaAcademicaId']);
+			$mymatricula->setPperiodoacademicoId($m['pperiodoacademicoId']);
+			$mymatricula->setPparaleloId($m['pparaleloId']);
+			$mymatricula->setTtipoMatriculaId($m['ttipoMatriculaId']);
+			$mymatricula->setNnivelAcademicoQueCursaId($m['nnivelAcademicoQueCursaId']);
+			$mymatricula->setRrecibePensionDiferenciadaId($m['rrecibePensionDiferenciadaId']);
+			$mymatricula->setEestudianteOcupacionId($m['eestudianteOcupacionId']);
+			$mymatricula->setBbonoDesarrolloId($m['bbonoDesarrolloId']);
+			$mymatricula->setIingresosestudianteId($m['iingresosestudianteId']);
+			$mymatricula->setHhaRepetidoAlMenosUnaMateriaid($m['hhaRepetidoAlMenosUnaMateriaid']);
+			$mymatricula->setHhaPerdidoLaGratuidadId($m['hhaPerdidoLaGratuidadId']);
+			$mymatricula->setIngresoTotalHogar($m['ingresoTotalHogar']);
+			$mymatricula->setFkNivelFormacionMadre($m['fkNivelFormacionMadre']);
+			$mymatricula->setFkNivelFormacionPadre($m['fkNivelFormacionPadre']);
+			$mymatricula->setCantidadMiembrosHogar($m['cantidadMiembrosHogar']);
+			$mymatricula->setMatriculasOculto($m['matriculasOculto']);
+			$mymatricula->setMatriculasAccion($m['matriculasAccion']);
+			$mymatricula->setMatriculasfecha($m['matriculasfecha']);
+			$mymatricula->setMatriculasuser($m['matriculasuser']);
+			$listamatricula[] = $mymatricula;
+		}
+		return $listamatricula;
+	}
+	public  function existeMatricula($periodom, $cedestu)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare("SELECT * FROM matriculas where pperiodoacademicoId =:id AND enumeroIdentificacion= :cedula");
+		$select->bindValue('id', $periodom);
+		$select->bindValue('cedula', $cedestu);
+		$select->execute();
+		if ($select->fetch() == 0) return 0;
+		return 1;
+	}
+	public  function existe($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare("SELECT * FROM matriculas where codigoMatricula=:id");
+		$select->bindValue('id', $id);
+		$select->execute();
+		if ($select->fetch() == 0) return 0;
+		return 1;
+	}
+
+	public  function obtenerMatricula($id, $periodo)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare("SELECT * FROM matriculas where enumeroIdentificacion=:id and pperiodoacademicoId=:periodo;");
+		$select->bindValue('id', $id);
+		$select->bindValue('periodo', $periodo);
+		$select->execute();
+		$m = $select->fetch();
+		$mymatricula = new Matriculas();
+		$mymatricula->setMatriculasId($m['matriculasId']);
+		$mymatricula->setCodigoMatricula($m['codigoMatricula']);
+		$mymatricula->setFechaMatricula($m['fechaMatricula']);
+		$mymatricula->setMontoCreditoEducativo($m['montoCreditoEducativo']);
+		$mymatricula->setMontoAyudaEconomica($m['montoAyudaEconomica']);
+		$mymatricula->setFechainicioCarrera($m['fechainicioCarrera']);
+		$mymatricula->setEnumeroIdentificacion($m['enumeroIdentificacion']);
+		$mymatricula->setCcarrerasId($m['ccarrerasId']);
+		$mymatricula->setJjornadaAcademicaId($m['jjornadaAcademicaId']);
+		$mymatricula->setPperiodoacademicoId($m['pperiodoacademicoId']);
+		$mymatricula->setPparaleloId($m['pparaleloId']);
+		$mymatricula->setTtipoMatriculaId($m['ttipoMatriculaId']);
+		$mymatricula->setNnivelAcademicoQueCursaId($m['nnivelAcademicoQueCursaId']);
+		$mymatricula->setRrecibePensionDiferenciadaId($m['rrecibePensionDiferenciadaId']);
+		$mymatricula->setEestudianteOcupacionId($m['eestudianteOcupacionId']);
+		$mymatricula->setBbonoDesarrolloId($m['bbonoDesarrolloId']);
+		$mymatricula->setIingresosestudianteId($m['iingresosestudianteId']);
+		$mymatricula->setHhaRepetidoAlMenosUnaMateriaid($m['hhaRepetidoAlMenosUnaMateriaid']);
+		$mymatricula->setHhaPerdidoLaGratuidadId($m['hhaPerdidoLaGratuidadId']);
+		$mymatricula->setIngresoTotalHogar($m['ingresoTotalHogar']);
+		$mymatricula->setFkNivelFormacionMadre($m['fkNivelFormacionMadre']);
+		$mymatricula->setFkNivelFormacionPadre($m['fkNivelFormacionPadre']);
+		$mymatricula->setCantidadMiembrosHogar($m['cantidadMiembrosHogar']);
+		$mymatricula->setMatriculasOculto($m['matriculasOculto']);
+		$mymatricula->setMatriculasAccion($m['matriculasAccion']);
+		$mymatricula->setMatriculasfecha($m['matriculasfecha']);
+		$mymatricula->setMatriculasuser($m['matriculasuser']);
+		return $mymatricula;
+	}
+	public  function insertar($matricula)
+	{
+		// $matricula=new Matriculas();
+		$db = Db::conectar();
+
+		$insert = $db->prepare("INSERT INTO `matriculas`
 			(`matriculasId`,
-			`CodigoMatricula`,
+			`codigoMatricula`,
 			`fechaMatricula`,
 			`montoCreditoEducativo`,
 			`montoAyudaEconomica`,
 			`fechainicioCarrera`,
-			`estudiantes_numeroIdentificacion`,
-			`carreras_carrerasId`,
-			`jornadasacademicas_JornadaAcademicaId`,
-			`periodoacademico_periodoacademicoId`,
-			`paralelo_paraleloId`,
-			`tipomatricula_tipoMatriculaId`,
-			`nivelacademico_NivelAcademicoQueCursaId`,
-			`recibepensiondiferenciada_recibePensionDiferenciadaId`,
-			`estudianteocupacion_estudianteOcupacionId`,
-			`bonodesarrollo_bonoDesarrolloId`,
-			`ingresosestudiante_ingresosestudianteId`,
-			`harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid`,
-			`haperdidolagratuidad_HaPerdidoLaGratuidadId`,
+			`enumeroIdentificacion`,
+			`ccarrerasId`,
+			`jjornadaAcademicaId`,
+			`pperiodoacademicoId`,
+			`pparaleloId`,
+			`ttipoMatriculaId`,
+			`nnivelAcademicoQueCursaId`,
+			`rrecibePensionDiferenciadaId`,
+			`eestudianteOcupacionId`,
+			`bbonoDesarrolloId`,
+			`iingresosestudianteId`,
+			`hhaRepetidoAlMenosUnaMateriaid`,
+			`hhaPerdidoLaGratuidadId`,
 			`ingresoTotalHogar`,
 			`fkNivelFormacionMadre`,
 			`fkNivelFormacionPadre`,
@@ -359,24 +374,24 @@ class CrudMatriculas{
 			`matriculasuser`)
 			VALUES
 			(:matriculasId1,
-			:CodigoMatricula1,
+			:codigoMatricula1,
 			:fechaMatricula1,
 			:montoCreditoEducativo1,
 			:montoAyudaEconomica1,
 			:fechainicioCarrera1,
-			:estudiantes_numeroIdentificacion1,
-			:carreras_carrerasId1,
-			:jornadasacademicas_JornadaAcademicaId1,
-			:periodoacademico_periodoacademicoId1,
-			:paralelo_paraleloId1,
-			:tipomatricula_tipoMatriculaId1,
-			:nivelacademico_NivelAcademicoQueCursaId1,
-			:recibepensiondiferenciada_recibePensionDiferenciadaId1,
-			:estudianteocupacion_estudianteOcupacionId1,
-			:bonodesarrollo_bonoDesarrolloId1,
-			:ingresosestudiante_ingresosestudianteId1,
-			:harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid1,
-			:haperdidolagratuidad_HaPerdidoLaGratuidadId1,
+			:enumeroIdentificacion1,
+			:ccarrerasId1,
+			:jjornadaAcademicaId1,
+			:pperiodoacademicoId1,
+			:pparaleloId1,
+			:ttipoMatriculaId1,
+			:nnivelAcademicoQueCursaId1,
+			:rrecibePensionDiferenciadaId1,
+			:eestudianteOcupacionId1,
+			:bbonoDesarrolloId1,
+			:iingresosestudianteId1,
+			:hhaRepetidoAlMenosUnaMateriaid1,
+			:hhaPerdidoLaGratuidadId1,
 			:ingresoTotalHogar1,
 			:fkNivelFormacionMadre1,
 			:fkNivelFormacionPadre1,
@@ -387,59 +402,60 @@ class CrudMatriculas{
 			:matriculasuser1);
 			");
 
-	$insert->bindValue('matriculasId1',$matricula->get_matriculasId());
-	$insert->bindValue('CodigoMatricula1',$matricula->get_codigoMatricula());
-	$insert->bindValue('fechaMatricula1',$matricula->get_fechaMatricula());
-	$insert->bindValue('montoCreditoEducativo1',$matricula->get_montoCreditoEducativo());
-	$insert->bindValue('montoAyudaEconomica1',$matricula->get_montoAyudaEconomica());
-	$insert->bindValue('fechainicioCarrera1',$matricula->get_fechainicioCarrera());
-	$insert->bindValue('estudiantes_numeroIdentificacion1',$matricula->get_estudiantes_numeroIdentificacion());
-	$insert->bindValue('carreras_carrerasId1',$matricula->get_carreras_carrerasId());
-	$insert->bindValue('jornadasacademicas_JornadaAcademicaId1',$matricula->get_jornadasAcademicas());
-	$insert->bindValue('periodoacademico_periodoacademicoId1',$matricula->get_periodoAcademic());
-	$insert->bindValue('paralelo_paraleloId1',$matricula->get_paralelo_paraleloId());
-	$insert->bindValue('tipomatricula_tipoMatriculaId1',$matricula->get_tipoMatricula_());
-	$insert->bindValue('nivelacademico_NivelAcademicoQueCursaId1',$matricula->get_nivelAcademico_NivelAcademicoQueCursaId());
-	$insert->bindValue('recibepensiondiferenciada_recibePensionDiferenciadaId1',$matricula->get_recibePensionDiferenciada());
-	$insert->bindValue('estudianteocupacion_estudianteOcupacionId1',$matricula->get_estudianteocupacion_estudianteOcupacionId());
-	$insert->bindValue('bonodesarrollo_bonoDesarrolloId1',$matricula->get_bonodesarrollo_bonoDesarrolloId());
-	$insert->bindValue('ingresosestudiante_ingresosestudianteId1',$matricula->get_ingresosestudiante());
-	$insert->bindValue('harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid1',$matricula->get_haRepetidoAlMenosUnaMateri());
-	$insert->bindValue('haperdidolagratuidad_HaPerdidoLaGratuidadId1',$matricula->get_haPerdidoLaGratuidad());
-	$insert->bindValue('ingresoTotalHogar1',$matricula->get_ingresoTotalHogar());
-	$insert->bindValue('fkNivelFormacionMadre1',$matricula->get_fkNivelFormacionMadre());
-	$insert->bindValue('fkNivelFormacionPadre1',$matricula->get_fkNivelFormacionPadre());
-	$insert->bindValue('cantidadMiembrosHogar1',$matricula->get_cantidadMiembrosHogar());
-	$insert->bindValue('matriculasOculto1',$matricula->get_matriculasOculto());
-	$insert->bindValue('matriculasAccion1',$matricula->get_matriculasAccion());
-	$insert->bindValue('matriculasfecha1',$matricula->get_matriculasfecha());
-	$insert->bindValue('matriculasuser1',$matricula->get_matriculasuser());
-	$insert->execute();
+		$insert->bindValue('matriculasId1', $matricula->getMatriculasId());
+		$insert->bindValue('codigoMatricula1', $matricula->getCodigoMatricula());
+		$insert->bindValue('fechaMatricula1', $matricula->getFechaMatricula());
+		$insert->bindValue('montoCreditoEducativo1', $matricula->getMontoCreditoEducativo());
+		$insert->bindValue('montoAyudaEconomica1', $matricula->getMontoAyudaEconomica());
+		$insert->bindValue('fechainicioCarrera1', $matricula->getFechainicioCarrera());
+		$insert->bindValue('enumeroIdentificacion1', $matricula->getEnumeroIdentificacion());
+		$insert->bindValue('ccarrerasId1', $matricula->getCcarrerasId());
+		$insert->bindValue('jjornadaAcademicaId1', $matricula->getJjornadaAcademicaId());
+		$insert->bindValue('pperiodoacademicoId1', $matricula->getPperiodoacademicoId());
+		$insert->bindValue('pparaleloId1', $matricula->getPparaleloId());
+		$insert->bindValue('ttipoMatriculaId1', $matricula->getTtipoMatriculaId());
+		$insert->bindValue('nnivelAcademicoQueCursaId1', $matricula->getNnivelAcademicoQueCursaId());
+		$insert->bindValue('rrecibePensionDiferenciadaId1', $matricula->getRrecibePensionDiferenciadaId());
+		$insert->bindValue('eestudianteOcupacionId1', $matricula->getEestudianteOcupacionId());
+		$insert->bindValue('bbonoDesarrolloId1', $matricula->getBbonoDesarrolloId());
+		$insert->bindValue('iingresosestudianteId1', $matricula->getIingresosestudianteId());
+		$insert->bindValue('hhaRepetidoAlMenosUnaMateriaid1', $matricula->getHhaRepetidoAlMenosUnaMateriaid());
+		$insert->bindValue('hhaPerdidoLaGratuidadId1', $matricula->getHhaPerdidoLaGratuidadId());
+		$insert->bindValue('ingresoTotalHogar1', $matricula->getIngresoTotalHogar());
+		$insert->bindValue('fkNivelFormacionMadre1', $matricula->getFkNivelFormacionMadre());
+		$insert->bindValue('fkNivelFormacionPadre1', $matricula->getFkNivelFormacionPadre());
+		$insert->bindValue('cantidadMiembrosHogar1', $matricula->getCantidadMiembrosHogar());
+		$insert->bindValue('matriculasOculto1', $matricula->getMatriculasOculto());
+		$insert->bindValue('matriculasAccion1', $matricula->getMatriculasAccion());
+		$insert->bindValue('matriculasfecha1', $matricula->getMatriculasfecha());
+		$insert->bindValue('matriculasuser1', $matricula->getMatriculasuser());
+		$insert->execute();
 	}
 
-	public  function actualizar($matricula){
-		$db=Db::conectar();
-			$actualizar=$db->prepare("UPDATE `matriculas`
+	public  function actualizar($matricula)
+	{
+		$db = Db::conectar();
+		$actualizar = $db->prepare("UPDATE `matriculas`
 			SET
 			`matriculasId` = :matriculasId1,
-			`CodigoMatricula` = :CodigoMatricula1,
+			`codigoMatricula` = :codigoMatricula1,
 			`fechaMatricula` = :fechaMatricula1,
 			`montoCreditoEducativo` = :montoCreditoEducativo1,
 			`montoAyudaEconomica` = :montoAyudaEconomica1,
 			`fechainicioCarrera` = :fechainicioCarrera1,
-			`estudiantes_numeroIdentificacion` = :estudiantes_numeroIdentificacion1,
-			`carreras_carrerasId` = :carreras_carrerasId1,
-			`jornadasacademicas_JornadaAcademicaId` = :jornadasacademicas_JornadaAcademicaId1,
-			`periodoacademico_periodoacademicoId` = :periodoacademico_periodoacademicoId1,
-			`paralelo_paraleloId` = :paralelo_paraleloId1,
-			`tipomatricula_tipoMatriculaId` = :tipomatricula_tipoMatriculaId1,
-			`nivelacademico_NivelAcademicoQueCursaId` = :nivelacademico_NivelAcademicoQueCursaId1,
-			`recibepensiondiferenciada_recibePensionDiferenciadaId` = :recibepensiondiferenciada_recibePensionDiferenciadaId1,
-			`estudianteocupacion_estudianteOcupacionId` = :estudianteocupacion_estudianteOcupacionId1,
-			`bonodesarrollo_bonoDesarrolloId` = :bonodesarrollo_bonoDesarrolloId1,
-			`ingresosestudiante_ingresosestudianteId` = :ingresosestudiante_ingresosestudianteId1,
-			`harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid` = :harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid1,
-			`haperdidolagratuidad_HaPerdidoLaGratuidadId` = :haperdidolagratuidad_HaPerdidoLaGratuidadId1,
+			`enumeroIdentificacion` = :enumeroIdentificacion1,
+			`ccarrerasId` = :ccarrerasId1,
+			`jjornadaAcademicaId` = :jjornadaAcademicaId1,
+			`pperiodoacademicoId` = :pperiodoacademicoId1,
+			`pparaleloId` = :pparaleloId1,
+			`ttipoMatriculaId` = :ttipoMatriculaId1,
+			`nnivelAcademicoQueCursaId` = :nnivelAcademicoQueCursaId1,
+			`rrecibePensionDiferenciadaId` = :rrecibePensionDiferenciadaId1,
+			`eestudianteOcupacionId` = :eestudianteOcupacionId1,
+			`bbonoDesarrolloId` = :bbonoDesarrolloId1,
+			`iingresosestudianteId` = :iingresosestudianteId1,
+			`hhaRepetidoAlMenosUnaMateriaid` = :hhaRepetidoAlMenosUnaMateriaid1,
+			`hhaPerdidoLaGratuidadId` = :hhaPerdidoLaGratuidadId1,
 			`ingresoTotalHogar` = :ingresoTotalHogar1,
 			`fkNivelFormacionMadre` = :fkNivelFormacionMadre1,
 			`fkNivelFormacionPadre` = :fkNivelFormacionPadre1,
@@ -450,42 +466,41 @@ class CrudMatriculas{
 			`matriculasuser` = :matriculasuser1
 			WHERE `matriculasId` = :matriculasId1;
 		");
-		$actualizar->bindValue('matriculasId1',$matricula->get_matriculasId());
-		$actualizar->bindValue('CodigoMatricula1',$matricula->get_codigoMatricula());
-		$actualizar->bindValue('fechaMatricula1',$matricula->get_fechaMatricula());
-		$actualizar->bindValue('montoCreditoEducativo1',$matricula->get_montoCreditoEducativo());
-		$actualizar->bindValue('montoAyudaEconomica1',$matricula->get_montoAyudaEconomica());
-		$actualizar->bindValue('fechainicioCarrera1',$matricula->get_fechainicioCarrera());
-		$actualizar->bindValue('estudiantes_numeroIdentificacion1',$matricula->get_estudiantes_numeroIdentificacion());
-		$actualizar->bindValue('carreras_carrerasId1',$matricula->get_carreras_carrerasId());
-		$actualizar->bindValue('jornadasacademicas_JornadaAcademicaId1',$matricula->get_jornadasAcademicas());
-		$actualizar->bindValue('periodoacademico_periodoacademicoId1',$matricula->get_periodoAcademic());
-		$actualizar->bindValue('paralelo_paraleloId1',$matricula->get_paralelo_paraleloId());
-		$actualizar->bindValue('tipomatricula_tipoMatriculaId1',$matricula->get_tipoMatricula_());
-		$actualizar->bindValue('nivelacademico_NivelAcademicoQueCursaId1',$matricula->get_nivelAcademico_NivelAcademicoQueCursaId());
-		$actualizar->bindValue('recibepensiondiferenciada_recibePensionDiferenciadaId1',$matricula->get_recibePensionDiferenciada());
-		$actualizar->bindValue('estudianteocupacion_estudianteOcupacionId1',$matricula->get_estudianteocupacion_estudianteOcupacionId());
-		$actualizar->bindValue('bonodesarrollo_bonoDesarrolloId1',$matricula->get_bonodesarrollo_bonoDesarrolloId());
-		$actualizar->bindValue('ingresosestudiante_ingresosestudianteId1',$matricula->get_ingresosestudiante());
-		$actualizar->bindValue('harepetidoalmenosunamateria_HaRepetidoAlMenosUnaMateriaid1',$matricula->get_haRepetidoAlMenosUnaMateri());
-		$actualizar->bindValue('haperdidolagratuidad_HaPerdidoLaGratuidadId1',$matricula->get_haPerdidoLaGratuidad());
-		$actualizar->bindValue('ingresoTotalHogar1',$matricula->get_ingresoTotalHogar());
-		$actualizar->bindValue('fkNivelFormacionMadre1',$matricula->get_fkNivelFormacionMadre());
-		$actualizar->bindValue('fkNivelFormacionPadre1',$matricula->get_fkNivelFormacionPadre());
-		$actualizar->bindValue('cantidadMiembrosHogar1',$matricula->get_cantidadMiembrosHogar());
-		$actualizar->bindValue('matriculasOculto1',$matricula->get_matriculasOculto());
-		$actualizar->bindValue('matriculasAccion1',$matricula->get_matriculasAccion());
-		$actualizar->bindValue('matriculasfecha1',$matricula->get_matriculasfecha());
-		$actualizar->bindValue('matriculasuser1',$matricula->get_matriculasuser());
-    $actualizar->execute();
+		$actualizar->bindValue('matriculasId1', $matricula->getMatriculasId());
+		$actualizar->bindValue('codigoMatricula1', $matricula->getCodigoMatricula());
+		$actualizar->bindValue('fechaMatricula1', $matricula->getFechaMatricula());
+		$actualizar->bindValue('montoCreditoEducativo1', $matricula->getMontoCreditoEducativo());
+		$actualizar->bindValue('montoAyudaEconomica1', $matricula->getMontoAyudaEconomica());
+		$actualizar->bindValue('fechainicioCarrera1', $matricula->getFechainicioCarrera());
+		$actualizar->bindValue('enumeroIdentificacion1', $matricula->getEnumeroIdentificacion());
+		$actualizar->bindValue('ccarrerasId1', $matricula->getCcarrerasId());
+		$actualizar->bindValue('jjornadaAcademicaId1', $matricula->getJjornadaAcademicaId());
+		$actualizar->bindValue('pperiodoacademicoId1', $matricula->getPperiodoacademicoId());
+		$actualizar->bindValue('pparaleloId1', $matricula->getPparaleloId());
+		$actualizar->bindValue('ttipoMatriculaId1', $matricula->getTtipoMatriculaId());
+		$actualizar->bindValue('nnivelAcademicoQueCursaId1', $matricula->getNnivelAcademicoQueCursaId());
+		$actualizar->bindValue('rrecibePensionDiferenciadaId1', $matricula->getRrecibePensionDiferenciadaId());
+		$actualizar->bindValue('eestudianteOcupacionId1', $matricula->getEestudianteOcupacionId());
+		$actualizar->bindValue('bbonoDesarrolloId1', $matricula->getBbonoDesarrolloId());
+		$actualizar->bindValue('iingresosestudianteId1', $matricula->getIingresosestudianteId());
+		$actualizar->bindValue('hhaRepetidoAlMenosUnaMateriaid1', $matricula->getHhaRepetidoAlMenosUnaMateriaid());
+		$actualizar->bindValue('hhaPerdidoLaGratuidadId1', $matricula->getHhaPerdidoLaGratuidadId());
+		$actualizar->bindValue('ingresoTotalHogar1', $matricula->getIngresoTotalHogar());
+		$actualizar->bindValue('fkNivelFormacionMadre1', $matricula->getFkNivelFormacionMadre());
+		$actualizar->bindValue('fkNivelFormacionPadre1', $matricula->getFkNivelFormacionPadre());
+		$actualizar->bindValue('cantidadMiembrosHogar1', $matricula->getCantidadMiembrosHogar());
+		$actualizar->bindValue('matriculasOculto1', $matricula->getMatriculasOculto());
+		$actualizar->bindValue('matriculasAccion1', $matricula->getMatriculasAccion());
+		$actualizar->bindValue('matriculasfecha1', $matricula->getMatriculasfecha());
+		$actualizar->bindValue('matriculasuser1', $matricula->getMatriculasuser());
+		$actualizar->execute();
 	}
 
-	  public  function eliminar($id){
-			$db=Db::conectar();
-			$eliminar=$db->prepare('DELETE FROM matriculas WHERE matriculasId=:id');
-			$eliminar->bindValue('id',$id);
-			$eliminar->execute();
-		}
-
+	public  function eliminar($id)
+	{
+		$db = Db::conectar();
+		$eliminar = $db->prepare('DELETE FROM matriculas WHERE matriculasId=:id');
+		$eliminar->bindValue('id', $id);
+		$eliminar->execute();
+	}
 }
-?>

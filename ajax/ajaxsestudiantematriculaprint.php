@@ -2,15 +2,13 @@
 
 require_once("../controladores/respuestasgenerales.php");
 session_start();
-
-function opcionmatriculaestudiantes(){
+$_SESSION['campbuscarest'] = $_POST['id'];
+function opcionmatriculaestudiantes()
+{
     echo '..\Templates\visorDatosEstudiante.php';
-
 }
-if ($_SESSION['user']!="") {
-    $_SESSION['campbuscarest']=$_POST['id'];
-	echo opcionmatriculaestudiantes();
- } else
- echo tiempoExedido();
+if ($_SESSION['user'] != "") {
 
-?>
+    echo opcionmatriculaestudiantes();
+} else
+    echo tiempoExedido();

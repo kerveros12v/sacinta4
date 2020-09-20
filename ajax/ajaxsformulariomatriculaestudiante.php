@@ -9,7 +9,6 @@ require_once("ajaxsselectjornadaacademica.php");
 require_once("ajaxsselectnivelacdemico.php");
 require_once("ajaxsselectparalelo.php");
 require_once("ajaxsselectniveldeformacion.php");
-require_once("ajaxsselectestudianteocupacion.php");
 require_once("ajaxsselectbonodesarrollo.php");
 require_once("ajaxsselectestudianteocupacion.php");
 require_once("ajaxsselectingresosestudiantes.php");
@@ -17,16 +16,21 @@ require_once("ajaxsselect2.php");
 
 use Crud\CrudMatriculas;
 use Crud\CrudPeriodoacademico;
-session_start();
-$crud1=new CrudPeriodoacademico();
-$cedula=isset($_SESSION['campbuscarest'])?$_SESSION['campbuscarest']:"";
 
-$periodo=isset($_SESSION['periodo'])?$crud1->obtenerPeriodoacademico($_SESSION['periodo']):$crud1->obtenerPeriodoAcademicoActual();
-function cargarcodigoMatricula($cedula,$periodo){
-    $sesion=isset($_SESSION['tipouser'])?$_SESSION['tipouser']:"est";
-    $crud=new CrudMatriculas();
-    $dato=$crud->obtenerMatricula($cedula,$periodo);
-    $r=ajaxs_select2().'
+session_start();
+//echo ("Periodo : " . $_SESSION['peridoactual']);
+
+$crud11 = new CrudPeriodoacademico();
+$cedula11 = isset($_SESSION['campbuscarest']) ? $_SESSION['campbuscarest'] : "";
+echo $_SESSION['tipouser'];
+$periodo = isset($_SESSION['periodo']) ? $crud11->obtenerPeriodoacademico($_SESSION['periodo']) : $crud11->obtenerPeriodoAcademicoActual();
+function cargarMatricula($cedula, $periodo)
+{
+
+    $sesion = isset($_SESSION['tipouser']) ? $_SESSION['tipouser'] : "est";
+    $crud = new CrudMatriculas();
+    $dato = $crud->obtenerMatricula($cedula, $periodo);
+    $r = ajaxs_select2() . '
     <td>
         <table>
             <tr class="tabtitulos">
@@ -34,7 +38,7 @@ function cargarcodigoMatricula($cedula,$periodo){
                     DATOS DE LA CARRERA Y NIVEL A MATICULARCE
                 </th>
             </tr>
-            <tr >
+            <tr>
                 <td>
                     <table>
                         <tr>
@@ -42,8 +46,8 @@ function cargarcodigoMatricula($cedula,$periodo){
                                 <table>
                                     <tr>
                                         <td>
-                                            <select class="selector"  name="periodoacademico" id="periodoacademico">
-                                                '.(($sesion=="est")?cargarperiodo(0):cargarperiodo(1)).'
+                                            <select class="selector" name="periodoacademico" id="periodoacademico">
+                                                ' . (($sesion == "est") ? cargarperiodo(0) : cargarperiodo(1)) . '
                                             </select>
                                         </td>
                                     </tr>
@@ -58,11 +62,10 @@ function cargarcodigoMatricula($cedula,$periodo){
                                 <table>
                                     <tr>
                                         <td>
-                                            <select  class="selector" name="jornadaAcademica" id="jornadaAcademica">
-                                                '.cargarJornadaAcademica($dato->get_jornadasacademicas_JornadaAcademicaId()).'
+                                            <select class="selector" name="jornadaAcademica" id="jornadaAcademica">
+                                                ' . cargarJornadaAcademica($dato->getJjornadaAcademicaId()) . '
                                             </select>
                                         </td>
-
                                     </tr>
                                     <tr>
                                         <th>
@@ -83,7 +86,7 @@ function cargarcodigoMatricula($cedula,$periodo){
                                 <table>
                                     <tr>
                                         <td>
-                                            <input type="date" name="fechaMatricula" id="fechaMatricula"  required="required" value="'.$dato->get_fechaMatricula().'"/>
+                                            <input type="date" name="fechaMatricula" id="fechaMatricula" required="required" value="' . $dato->getFechaMatricula() . '" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -97,7 +100,7 @@ function cargarcodigoMatricula($cedula,$periodo){
                                 <table>
                                     <tr>
                                         <td>
-                                            <input type="date" name="fechacarrera" id= "fechacarrera" readonly="readonly"  required="required" value="'.$dato->get_fechainicioCarrera().'" />
+                                            <input type="date" name="fechacarrera" id="fechacarrera" readonly="readonly" required="required" value="' . $dato->getFechainicioCarrera() . '" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -111,32 +114,39 @@ function cargarcodigoMatricula($cedula,$periodo){
                     </table>
                 <td>
             </tr>
+            <!--------->
             <tr>
                 <td>
                     <table>
-                        <tr>
-                            <td>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <select  class="selector" name="carreras" id="carreras">
-                                                '.( cargarCarrera($dato->get_carreras_carrerasId())).'
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>
-                                            <label class="etiqueta1">CARRERA</label>
-                                        </th>
-                                    </tr>
-                                </table>
-                            </td>
-                            <td>
+                    <tr>
+                        <td>
                             <table>
                                 <tr>
                                     <td>
-                                        <select class="selector"  name="tipoMatricula" id="tipoMatricula">
-                                            '.cargartipoMatricula($dato->get_tipomatricula_tipoMatriculaId()).'
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <select class="selector" name="carreras" id="carreras">
+                                                        ' . (cargarCarrera($dato->getCcarrerasId())) . '
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <label class="etiqueta1">CARRERA</label>
+                                                </th>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <select class="selector" name="tipoMatricula" id="tipoMatricula">
+                                            ' . cargartipoMatricula($dato->getTtipoMatriculaId()) . '
                                         </select>
                                     </td>
                                 </tr>
@@ -148,48 +158,10 @@ function cargarcodigoMatricula($cedula,$periodo){
                             </table>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <table>
-                                <tr>
-                                    <td>
-                                        <select class="selector"  name="nivelacademico" id="nivelacademico">
-                                            '.cargarnivelAcademico($dato->get_nivelAcademico_NivelAcademicoQueCursaId()).'
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <label class="etiqueta1">NIVEL ACADEMICO QUE CURSA</label>
-                                    </th>
-                                </tr>
-                            </table>
-                        </td>
-                        <td >
-                            <table>
-                                <tr>
-                                    <td>
-                                        <select class="selector"  name="paralelo" id="paralelo">
-                                            '.cargarparalelo($dato->get_paralelo_paraleloId()).'
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <label class="etiqueta1">PARALELO</label>
-                                    </th>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-            <tr class="tabtitulos">
-                <th>
-                    NIVEL DE FORMACION FAMILIAR
-                </th>
+                    </table>
+                </td>
             </tr>
+            <!----->
             <tr>
                 <td>
                     <table>
@@ -198,8 +170,54 @@ function cargarcodigoMatricula($cedula,$periodo){
                                 <table>
                                     <tr>
                                         <td>
-                                            <select class="selector"  name="formacionpadre" id="formacionpadre">
-                                                '.cargarnivelformacion($dato->get_fkNivelFormacionPadre()).'
+                                            <select class="selector" name="nivelacademico" id="nivelacademico">
+                                                ' . cargarnivelAcademico($dato->getNnivelAcademicoQueCursaId()) . '
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <label class="etiqueta1">NIVEL ACADEMICO QUE CURSA</label>
+                                        </th>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <select class="selector" name="paralelo" id="paralelo">
+                                                ' . cargarparalelo($dato->getPparaleloId()) . '
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <label class="etiqueta1">PARALELO</label>
+                                        </th>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="tabtitulos">
+                <th>
+                    NIVEL DE FORMACION FAMILIAR
+                </th>
+            </tr>
+            <!----->
+            <tr>
+                <td>
+                    <table>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <select class="selector" name="formacionpadre" id="formacionpadre">
+                                                ' . cargarnivelformacion($dato->getFkNivelFormacionPadre()) . '
                                             </select>
                                         </td>
                                     </tr>
@@ -214,8 +232,8 @@ function cargarcodigoMatricula($cedula,$periodo){
                                 <table>
                                     <tr>
                                         <td>
-                                            <select class="selector"  name="formacionmadre" id="formacionmadre">
-                                                '.cargarnivelformacion($dato->get_fkNivelFormacionMadre()).'
+                                            <select class="selector" name="formacionmadre" id="formacionmadre">
+                                                ' . cargarnivelformacion($dato->getFkNivelFormacionMadre()) . '
                                             </select>
                                         </td>
                                     </tr>
@@ -239,23 +257,24 @@ function cargarcodigoMatricula($cedula,$periodo){
                 <td>
                     <table>
                         <tr>
-	                        <td>
-	                        	¿RECIBE EL BONO DE DESARROLLO HUMANO?
-	                        </td>
                             <td>
-                                <select  class="selector" name="bonoDesarrollo" id="bonoDesarrollo">
-                                    '.cargarbonodesarrollo($dato->get_bonodesarrollo_bonoDesarrolloId()).'
+                                ¿RECIBE EL BONO DE DESARROLLO HUMANO?
+                            </td>
+                            <td>
+                                <select class="selector" name="bonoDesarrollo" id="bonoDesarrollo">
+                                    ' . cargarbonodesarrollo($dato->getBbonoDesarrolloId()) . '
                                 </select>
-	                        </td>
+                            </td>
                         </tr>
                     </table>
                 </td>
             </tr>
             <tr class="tabtitulos">
                 <th>
-                   ESTADO LABORAL
+                    ESTADO LABORAL
                 </th>
             </tr>
+            <!------>
             <tr>
                 <td>
                     <table>
@@ -264,8 +283,8 @@ function cargarcodigoMatricula($cedula,$periodo){
                                 <table>
                                     <tr>
                                         <td>
-                                            <select class="selector"  name="estudianteocupacion" id="estudianteocupacion">
-                                                '.cargarestudianteocupacion($dato->get_estudianteocupacion_estudianteOcupacionId()).'
+                                            <select class="selector" name="estudianteocupacion" id="estudianteocupacion">
+                                                ' . cargarestudianteocupacion($dato->getEestudianteOcupacionId()) . '
                                             </select>
                                         </td>
                                     </tr>
@@ -276,13 +295,12 @@ function cargarcodigoMatricula($cedula,$periodo){
                                     </tr>
                                 </table>
                             </td>
-
                             <td>
                                 <table>
                                     <tr>
                                         <td>
-                                            <select  class="selector" name="estudianteingresos" id="estudianteingresos">
-                                                '.cargaringresosEstudiantes($dato->get_ingresosestudiante_ingresosestudianteId()).'
+                                            <select class="selector" name="estudianteingresos" id="estudianteingresos">
+                                                ' . cargaringresosEstudiantes($dato->getIingresosestudianteId()) . '
                                             </select>
                                         </td>
                                     <tr>
@@ -291,11 +309,15 @@ function cargarcodigoMatricula($cedula,$periodo){
                                             <label class="etiqueta1">OCUPACION DE LOS INGRESOS DEL ESTUDIANTE : </label>
                                         </th>
                                     </tr>
-                            </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
         </table>
-
     </td>';
-return $r;
+    return $r;
 }
-echo cargarcodigoMatricula($cedula,$periodo->get_periodoacademicoId());
 
+echo cargarMatricula($cedula11, $periodo->getPeriodoacademicoId());

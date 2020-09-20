@@ -8,6 +8,7 @@ $(document).ready(function(){
   cargarCodMatricula();
   cargarformMatricula();
   cargarformtrabajo();
+
   cargarmenu();
   //cargarpaisest2();
 });
@@ -171,7 +172,7 @@ function cargarDatosCampo(url1){
     $('#contenedordatos').html(cargar)
   })
   .fail(function(){
-    alert('Hubo un error al cargar el Menu')
+    alert('Hubo un error al cargar el url:'+url1)
   })
 }
 function registrarEstudiante(){
@@ -186,11 +187,8 @@ function registrarEstudiante(){
   var estadoCivil=$('#estadoCivil').val();
   var lstsangre=$('#lstsangre').val();
   var fechanaci=$('#fechanaci').val();
-  var paisNacionalidad=$('#paisNacionalidad').val();
-  var provinciaNacionalidad=$('#provinciaNacionalidad').val();
   var cantonNacionalidad=$('#cantonNacionalidad').val();
   var categoraMigratoria=$('#categoraMigratoria').val();
-  var etnia=$('#etnia').val();
   var pueblonacionalidad=$('#pueblonacionalidad').val();
   var lstidioma=$('#lstidioma').val();
   var email1=$('#email1').val();
@@ -212,11 +210,8 @@ function registrarEstudiante(){
     'estadoCivil':estadoCivil,
     'lstsangre':lstsangre,
     'fechanaci':fechanaci,
-    'paisNacionalidad':paisNacionalidad,
-    'provinciaNacionalidad':provinciaNacionalidad,
     'cantonNacionalidad':cantonNacionalidad,
     'categoraMigratoria':categoraMigratoria,
-    'etnia':etnia,
     'pueblonacionalidad':pueblonacionalidad,
     'lstidioma':lstidioma,
     'email1':email1,
@@ -320,136 +315,6 @@ function cargafotoestudiante(){
   })
 
 }
-function cargarpaisest1() {
-  $.ajax({
-    type: 'POST',
-    url: '../ajax/ajaxsselectpaisprint.php'
-
-  })
-    .done(function (cargar) {
-      $('#paisNacionalidad').html(cargar);
-      cargarProvinciasest1();
-    })
-    .fail(function () {
-      alert('Hubo un error al cargar')
-    });
-
-}
-
-function cargarpaisest2() {
-  $.ajax({
-    type: 'POST',
-    url: '../ajax/ajaxsselectpaisprint.php'
-
-  })
-    .done(function (cargar) {
-      $('#paisRecidencia').html(cargar);
-      cargarProvinciasest2();
-    })
-    .fail(function () {
-      alert('Hubo un error al cargar')
-    });
-
-}
-
-function cargarProvinciasest1() {
-
-    var id = $('#paisNacionalidad').val();
-    console.log("pais seleccionado: "+id);
-    $.ajax({
-      type: 'POST',
-      url: '../ajax/ajaxsselectprovinciaprint.php',
-      data: { 'id': id }
-    })
-      .done(function (cargar) {
-        $('#provinciaNacionalidad').html(cargar);
-        cargarCantonest1();
-
-      })
-      .fail(function () {
-        alert('Hubo un error al cargar la lista de Provincias')
-      })
-
-}
-function cargarProvinciasest2() {
-
-    var id = $('#paisRecidencia').val();
-    console.log("paisRecidencia seleccionado: "+id);
-    $.ajax({
-      type: 'POST',
-      url: '../ajax/ajaxsselectprovinciaprint.php',
-      data: { 'id': id }
-    })
-      .done(function (cargar) {
-        $('#provinciaRecidencia').html(cargar);
-        cargarCantonest2();
-      })
-      .fail(function () {
-        alert('Hubo un error al cargar la lista de Provincias')
-      })
-
-
-}
-function cargarCantonest2() {
-
-    var id = $('#provinciaRecidencia').val();
-    console.log("provinciaRecidencia seleccionado: "+id);
-    $.ajax({
-      type: 'POST',
-      url: '../ajax/ajaxsselectcantonprint.php',
-      data: {
-        'canton': -1,
-        'provincia': id
-      }
-    })
-      .done(function (cargar) {
-        $('#cantonRecidencia').html(cargar);
-      })
-      .fail(function () {
-        alert('Hubo un error al cargar la lista de Provincias')
-      })
-
-}
-function cargarCantonest1() {
-
-    var id = $('#provinciaNacionalidad').val();
-    $.ajax({
-      type: 'POST',
-      url: '../ajax/ajaxsselectcantonprint.php',
-      data: {
-        'canton': -1,
-        'provincia': id
-      }
-    })
-      .done(function (cargar) {
-        $('#cantonNacionalidad').html(cargar)
-        parroquiaRecidencia()
-      })
-      .fail(function () {
-        alert('Hubo un error al cargar la lista de Provincias')
-      })
-
-}
-
-function parroquiaRecidencia() {
-
-  var id = $('#cantonRecidencia').val();
-  console.log("cantonRecidencia seleccionado: "+id);
-/*
-  $.ajax({
-    type: 'POST',
-    url: '../ajax/ajaxsselectparroquiasprint.php',
-    data: { 'id': id }
-  })
-    .done(function (cargar) {
-      $('#parroquiaRecidencia').html(cargar);
-    })
-    .fail(function () {
-      alert('Hubo un error al cargar la lista de Provincias')
-    })
-*/
-}
-
 
 function registrardisapacidadEstudiante(){
   var CarnetConadisId=$('#CarnetConadisId').val();

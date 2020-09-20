@@ -15,6 +15,7 @@ function opcionTipodocumento()
         $datos->setPueblonacionalidadId($_POST['id']);
         $datos->setPueblonacionalidad(strtoupper($_POST['nom']));
         $datos->setPueblonacionalidadescodigo($_POST['cod']);
+        $datos->setPnetnia($_POST['pnetnia']);
         $datos->setPueblonacionalidadOculto($_POST['eliminar']);
         $datos->setPueblonacionalidadAccion($_POST['actualizar']);
         $datos->setPueblonacionalidadfecha(date("Y-m-d"));

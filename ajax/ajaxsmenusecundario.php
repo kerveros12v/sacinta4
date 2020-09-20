@@ -24,7 +24,7 @@ try {
             asort($lstpermisos);
             foreach ($lstpermisos as $dp) {
                 if ($lp1 == $dp->getDepartamentosSubdivision()) {
-                    echo ('<li><a href="' . $dp->getUrl() . '" target="contenedor1">' . $dp->getEtiqueta()  . '</a></li>');
+                    echo ('<a href="' . $dp->getUrl() . '" target="contenedor1">' . $dp->getEtiqueta()  . '</a>');
                 }
             }
         }

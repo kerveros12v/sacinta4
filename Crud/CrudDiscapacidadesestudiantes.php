@@ -4,6 +4,7 @@ namespace Crud;
 
 require_once("conexion.php");
 require_once("../clasesphp/Discapacidadesestudiantes.php");
+
 use Crud\Db;
 use Clasesphp\Discapacidadesestudiantes;
 
@@ -21,20 +22,19 @@ class CrudDiscapacidadesestudiantes
 		$db = Db::conectar();
 		$listadiscapacidadesestudiantes = null;
 		$select = $db->query("SELECT * FROM `discapacidadesestudiantes`");
-
+		//, , , , , , , , ,
 		foreach ($select->fetchAll() as $discapacidadesestudiantes) {
 			$mydiscapacidadesestudiantes = new Discapacidadesestudiantes();
-			$mydiscapacidadesestudiantes->set_discapacidadesestudiantesid($discapacidadesestudiantes['discapacidadesestudiantesid']);
-			$mydiscapacidadesestudiantes->set_CarnetConadisId($discapacidadesestudiantes['CarnetConadisId']);
-			$mydiscapacidadesestudiantes->set_fkEstudiantesNumeroIdentificacion($discapacidadesestudiantes['fkEstudiantesNumeroIdentificacion']);
-			$mydiscapacidadesestudiantes->set_fkDiscapacidadDiscapacidadId($discapacidadesestudiantes['fkDiscapacidadDiscapacidadId']);
-			$mydiscapacidadesestudiantes->set_fkTipoDiscapacidadTipoDiscapacidadId($discapacidadesestudiantes['fkTipoDiscapacidadTipoDiscapacidadId']);
-			$mydiscapacidadesestudiantes->set_porcentajeDiscapacidad($discapacidadesestudiantes['porcentajeDiscapacidad']);
-			$mydiscapacidadesestudiantes->set_discapacidadestperiodo($discapacidadesestudiantes['discapacidadestperiodo']);
-			$mydiscapacidadesestudiantes->set_discapacidadesestudiantesOculto($discapacidadesestudiantes['discapacidadesestudiantesOculto']);
-			$mydiscapacidadesestudiantes->set_discapacidadesestudiantesAccion($discapacidadesestudiantes['discapacidadesestudiantesAccion']);
-			$mydiscapacidadesestudiantes->set_discapacidadesestudiantesfecha($discapacidadesestudiantes['discapacidadesestudiantesfecha']);
-			$mydiscapacidadesestudiantes->set_discapacidadesestudiantesuser($discapacidadesestudiantes['discapacidadesestudiantesuser']);
+			$mydiscapacidadesestudiantes->setDiscapacidadesestudiantesid($discapacidadesestudiantes['discapacidadesestudiantesid']);
+			$mydiscapacidadesestudiantes->setCarnetConadisId($discapacidadesestudiantes['carnetConadisId']);
+			$mydiscapacidadesestudiantes->setFkEstudiantesNumeroIdentificacion($discapacidadesestudiantes['fkEstudiantesNumeroIdentificacion']);
+			$mydiscapacidadesestudiantes->setFkTipoDiscapacidadTipoDiscapacidadId($discapacidadesestudiantes['fkTipoDiscapacidadTipoDiscapacidadId']);
+			$mydiscapacidadesestudiantes->setPorcentajeDiscapacidad($discapacidadesestudiantes['porcentajeDiscapacidad']);
+			$mydiscapacidadesestudiantes->setDiscapacidadestperiodo($discapacidadesestudiantes['discapacidadestperiodo']);
+			$mydiscapacidadesestudiantes->setDiscapacidadesestudiantesOculto($discapacidadesestudiantes['discapacidadesestudiantesOculto']);
+			$mydiscapacidadesestudiantes->setDiscapacidadesestudiantesAccion($discapacidadesestudiantes['discapacidadesestudiantesAccion']);
+			$mydiscapacidadesestudiantes->setDiscapacidadesestudiantesfecha($discapacidadesestudiantes['discapacidadesestudiantesfecha']);
+			$mydiscapacidadesestudiantes->setDiscapacidadesestudiantesuser($discapacidadesestudiantes['discapacidadesestudiantesuser']);
 
 			////
 			$listadiscapacidadesestudiantes[] = $mydiscapacidadesestudiantes;
@@ -47,9 +47,8 @@ class CrudDiscapacidadesestudiantes
 		$actualizar = $db->prepare("UPDATE `discapacidadesestudiantes`
 		SET
 		`discapacidadesestudiantesid` = :discapacidadesestudiantesid1,
-		`CarnetConadisId` = :CarnetConadisId1,
+		`carnetConadisId` = :carnetConadisId1,
 		`fkEstudiantesNumeroIdentificacion` = :fkEstudiantesNumeroIdentificacion1,
-		`fkDiscapacidadDiscapacidadId` = :fkDiscapacidadDiscapacidadId1,
 		`fkTipoDiscapacidadTipoDiscapacidadId` = :fkTipoDiscapacidadTipoDiscapacidadId1,
 		`porcentajeDiscapacidad` = :porcentajeDiscapacidad1,
 		`discapacidadestperiodo` = :discapacidadestperiodo1,
@@ -62,7 +61,6 @@ class CrudDiscapacidadesestudiantes
 		$actualizar->bindValue('discapacidadesestudiantesid1', $discapacidad->get_discapacidadesestudiantesid());
 		$actualizar->bindValue('CarnetConadisId1', $discapacidad->get_CarnetConadisId());
 		$actualizar->bindValue('fkEstudiantesNumeroIdentificacion1', $discapacidad->get_fkEstudiantesNumeroIdentificacion());
-		$actualizar->bindValue('fkDiscapacidadDiscapacidadId1', $discapacidad->get_fkDiscapacidadDiscapacidadId());
 		$actualizar->bindValue('fkTipoDiscapacidadTipoDiscapacidadId1', $discapacidad->get_fkTipoDiscapacidadTipoDiscapacidadId());
 		$actualizar->bindValue('porcentajeDiscapacidad1', $discapacidad->get_porcentajeDiscapacidad());
 		$actualizar->bindValue('discapacidadestperiodo1', $discapacidad->get_discapacidadestperiodo());
@@ -72,7 +70,7 @@ class CrudDiscapacidadesestudiantes
 		$actualizar->bindValue('discapacidadesestudiantesuser1', $discapacidad->get_discapacidadesestudiantesuser());
 		$actualizar->execute();
 	}
-	public  function existe($id,$periodo)
+	public  function existe($id, $periodo)
 	{
 		$db = Db::conectar();
 		$select = $db->prepare("SELECT * FROM discapacidadesestudiantes where fkEstudiantesNumeroIdentificacion=:id AND discapacidadestperiodo=:periodo;");
@@ -91,18 +89,16 @@ class CrudDiscapacidadesestudiantes
 		$select->execute();
 		$discapacidadesestudiantes = $select->fetch();
 		$mydiscapacidadesestudiantes = new Discapacidadesestudiantes();
-		$mydiscapacidadesestudiantes->set_discapacidadesestudiantesid($discapacidadesestudiantes['discapacidadesestudiantesid']);
-		$mydiscapacidadesestudiantes->set_CarnetConadisId($discapacidadesestudiantes['CarnetConadisId']);
-		$mydiscapacidadesestudiantes->set_fkEstudiantesNumeroIdentificacion($discapacidadesestudiantes['fkEstudiantesNumeroIdentificacion']);
-		$mydiscapacidadesestudiantes->set_fkDiscapacidadDiscapacidadId($discapacidadesestudiantes['fkDiscapacidadDiscapacidadId']);
-		$mydiscapacidadesestudiantes->set_fkTipoDiscapacidadTipoDiscapacidadId($discapacidadesestudiantes['fkTipoDiscapacidadTipoDiscapacidadId']);
-		$mydiscapacidadesestudiantes->set_porcentajeDiscapacidad($discapacidadesestudiantes['porcentajeDiscapacidad']);
-		$mydiscapacidadesestudiantes->set_discapacidadestperiodo($discapacidadesestudiantes['discapacidadestperiodo']);
-		$mydiscapacidadesestudiantes->set_discapacidadesestudiantesOculto($discapacidadesestudiantes['discapacidadesestudiantesOculto']);
-		$mydiscapacidadesestudiantes->set_discapacidadesestudiantesAccion($discapacidadesestudiantes['discapacidadesestudiantesAccion']);
-		$mydiscapacidadesestudiantes->set_discapacidadesestudiantesfecha($discapacidadesestudiantes['discapacidadesestudiantesfecha']);
-		$mydiscapacidadesestudiantes->set_discapacidadesestudiantesuser($discapacidadesestudiantes['discapacidadesestudiantesuser']);
-
+		$mydiscapacidadesestudiantes->setDiscapacidadesestudiantesid($discapacidadesestudiantes['discapacidadesestudiantesid']);
+		$mydiscapacidadesestudiantes->setCarnetConadisId($discapacidadesestudiantes['carnetConadisId']);
+		$mydiscapacidadesestudiantes->setFkEstudiantesNumeroIdentificacion($discapacidadesestudiantes['fkEstudiantesNumeroIdentificacion']);
+		$mydiscapacidadesestudiantes->setFkTipoDiscapacidadTipoDiscapacidadId($discapacidadesestudiantes['fkTipoDiscapacidadTipoDiscapacidadId']);
+		$mydiscapacidadesestudiantes->setPorcentajeDiscapacidad($discapacidadesestudiantes['porcentajeDiscapacidad']);
+		$mydiscapacidadesestudiantes->setDiscapacidadestperiodo($discapacidadesestudiantes['discapacidadestperiodo']);
+		$mydiscapacidadesestudiantes->setDiscapacidadesestudiantesOculto($discapacidadesestudiantes['discapacidadesestudiantesOculto']);
+		$mydiscapacidadesestudiantes->setDiscapacidadesestudiantesAccion($discapacidadesestudiantes['discapacidadesestudiantesAccion']);
+		$mydiscapacidadesestudiantes->setDiscapacidadesestudiantesfecha($discapacidadesestudiantes['discapacidadesestudiantesfecha']);
+		$mydiscapacidadesestudiantes->setDiscapacidadesestudiantesuser($discapacidadesestudiantes['discapacidadesestudiantesuser']);
 		return $mydiscapacidadesestudiantes;
 	}
 	public  function insertar($discapacidad)
@@ -111,9 +107,8 @@ class CrudDiscapacidadesestudiantes
 
 		$insert = $db->prepare("INSERT INTO `discapacidadesestudiantes`
 		(`discapacidadesestudiantesid`,
-		`CarnetConadisId`,
+		`carnetConadisId`,
 		`fkEstudiantesNumeroIdentificacion`,
-		`fkDiscapacidadDiscapacidadId`,
 		`fkTipoDiscapacidadTipoDiscapacidadId`,
 		`porcentajeDiscapacidad`,
 		`discapacidadestperiodo`,
@@ -123,9 +118,8 @@ class CrudDiscapacidadesestudiantes
 		`discapacidadesestudiantesuser`)
 		VALUES
 		(:discapacidadesestudiantesid1,
-		:CarnetConadisId1,
+		:carnetConadisId1,
 		:fkEstudiantesNumeroIdentificacion1,
-		:fkDiscapacidadDiscapacidadId1,
 		:fkTipoDiscapacidadTipoDiscapacidadId1,
 		:porcentajeDiscapacidad1,
 		:discapacidadestperiodo1,
@@ -133,17 +127,16 @@ class CrudDiscapacidadesestudiantes
 		:discapacidadesestudiantesAccion1,
 		:discapacidadesestudiantesfecha1,
 		:discapacidadesestudiantesuser1);");
-		$insert->bindValue('discapacidadesestudiantesid1', $discapacidad->get_discapacidadesestudiantesid());
-		$insert->bindValue('CarnetConadisId1', $discapacidad->get_CarnetConadisId());
-		$insert->bindValue('fkEstudiantesNumeroIdentificacion1', $discapacidad->get_fkEstudiantesNumeroIdentificacion());
-		$insert->bindValue('fkDiscapacidadDiscapacidadId1', $discapacidad->get_fkDiscapacidadDiscapacidadId());
-		$insert->bindValue('fkTipoDiscapacidadTipoDiscapacidadId1', $discapacidad->get_fkTipoDiscapacidadTipoDiscapacidadId());
-		$insert->bindValue('porcentajeDiscapacidad1', $discapacidad->get_porcentajeDiscapacidad());
-		$insert->bindValue('discapacidadestperiodo1', $discapacidad->get_discapacidadestperiodo());
-		$insert->bindValue('discapacidadesestudiantesOculto1', $discapacidad->get_discapacidadesestudiantesOculto());
-		$insert->bindValue('discapacidadesestudiantesAccion1', $discapacidad->get_discapacidadesestudiantesAccion());
-		$insert->bindValue('discapacidadesestudiantesfecha1', $discapacidad->get_discapacidadesestudiantesfecha());
-		$insert->bindValue('discapacidadesestudiantesuser1', $discapacidad->get_discapacidadesestudiantesuser());
+		$insert->bindValue('discapacidadesestudiantesid1', $discapacidad->getDiscapacidadesestudiantesid());
+		$insert->bindValue('CarnetConadisId1', $discapacidad->getCarnetConadisId());
+		$insert->bindValue('fkEstudiantesNumeroIdentificacion1', $discapacidad->getFkEstudiantesNumeroIdentificacion());
+		$insert->bindValue('fkTipoDiscapacidadTipoDiscapacidadId1', $discapacidad->getFkTipoDiscapacidadTipoDiscapacidadId());
+		$insert->bindValue('porcentajeDiscapacidad1', $discapacidad->getPorcentajeDiscapacidad());
+		$insert->bindValue('discapacidadestperiodo1', $discapacidad->getDiscapacidadestperiodo());
+		$insert->bindValue('discapacidadesestudiantesOculto1', $discapacidad->getDiscapacidadesestudiantesOculto());
+		$insert->bindValue('discapacidadesestudiantesAccion1', $discapacidad->getDiscapacidadesestudiantesAccion());
+		$insert->bindValue('discapacidadesestudiantesfecha1', $discapacidad->getDiscapacidadesestudiantesfecha());
+		$insert->bindValue('discapacidadesestudiantesuser1', $discapacidad->getDiscapacidadesestudiantesuser());
 		$insert->execute();
 	}
 	public  function eliminar($id)

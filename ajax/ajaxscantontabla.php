@@ -12,23 +12,24 @@ function cargarCanton($opt, $p)
 {
     $crudc = new CrudCantones();
     $listacanton = null;
-    if ($opt == -1) $listacanton = $crudc->mostrar();
-    else $listacanton = $crudc->mostrarlistapoProvincia($opt);
+    $listacanton = $crudc->mostrarlistapoProvincia($opt);
     $dato = new Cantones();
-    $lista = ' <tr class="ui-widget-header">
-    <th>
-        Codigo
-    </th>
-    <th>
-        Canton
-    </th>
-    <th>
-        PROVINCIA
-    </th>
-    <th>
-        ' . ajaxs_select2() . '
-    </th>
-</tr>
+
+    if ($opt != 0)
+        $lista = ' <tr class="ui-widget-header">
+        <th>
+            Codigo
+        </th>
+        <th>
+            Canton
+        </th>
+        <th>
+            PROVINCIA
+        </th>
+        <th>
+            ' . ajaxs_select2() . '
+        </th>
+    </tr>
                         <tr>
                             <td>
                                 <input type="text" class="camptext1" id="cantoncodigo" name="cantoncodigo"   value=""  required="required" />

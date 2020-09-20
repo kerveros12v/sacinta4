@@ -1,7 +1,6 @@
 $(document).ready(function () {
   cargarpais();
-  cargarProvincias();
-  cargartabla();
+
 
 });
 
@@ -28,14 +27,12 @@ function cargartabla1() {
 
 }
 function cargartabla() {
-  $('#provinciacanton').on('change', function () {
-    var id = $('#provinciacanton').val();
-    var p = $('#paiscanton').val();
+     var p = $('#paiscanton').val();
     $.ajax({
       type: 'POST',
       url: '../ajax/ajaxscantontabla.php',
       data: {
-        'id': id,
+        'id': 0,
         'p': p
       }
     })
@@ -46,7 +43,7 @@ function cargartabla() {
         alert('Hubo un error al cargar')
       });
 
-  })
+
 
 }
 
@@ -67,7 +64,7 @@ function cargarpais() {
 
 function cargarProvincias() {
 
-  $('#paiscanton').on('change', function () {
+
     var id = $('#paiscanton').val()
     $.ajax({
       type: 'POST',
@@ -76,13 +73,12 @@ function cargarProvincias() {
     })
       .done(function (cargar) {
         $('#provinciacanton').html(cargar)
-
-        cargartabla1();
+        cargartabla()
       })
       .fail(function () {
         alert('Hubo un error al cargar la lista de Provincias')
       })
-  })
+
 }
 function registro() {
   var cod = $('#cantoncodigo').val();
@@ -107,7 +103,7 @@ function registro() {
         height: 250,
         buttons: {
           Aceptar: function () {
-            cargartabla1()
+            cargartabla1();
             $(this).dialog("close");
 
           }
@@ -117,7 +113,7 @@ function registro() {
     .fail(function () {
       alert('Hubo un error al cargar de Perfiles')
     });
-  cargarProvincias();
+ // cargarProvincias();
 }
 function actualizar(dato) {
   var cod = $('#cantoncodigo' + dato).val();

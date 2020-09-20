@@ -1,3 +1,4 @@
+/*
 .sidebar_2 {
     float: left;
     display: block;
@@ -5,14 +6,36 @@
     width: 25%;
 
 }
+*/
 #contenedor1{
-    width: 87.5%;
+    width: 86%;
     height: 98%;
     position: fixed;
     top: 0%;
     bottom: 0%;
-    left: 12.5%;
+    left: 17%;
     right: 1%;
     border: none;
 
 }
+.sidebar_2 {
+   width: 17%; /* Set a width if you like */
+/*height: 100%;*/
+  }
+
+  .sidebar_2 a {
+    background-color: rgb(5, 5, 5); /* Grey background color */
+    color: white; /* Black text color */
+    display: block; /* Make the links appear below each other */
+    padding: 7px; /* Add some padding */
+    text-decoration: none; /* Remove underline from links */
+  }
+
+  .sidebar_2 a:hover {
+    background-color: rgb(204, 31, 31); /* Dark grey background on mouse-over */
+  }
+
+  .sidebar_2 a.active {
+    background-color: #4CAF50; /* Add a green color to the "active/current" link */
+    color: white;
+  }

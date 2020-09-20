@@ -6,14 +6,20 @@ require_once("ajaxsselectparentesco.php");
 require_once("ajaxsselect2.php");
 
 session_start();
+
 $crud1 = new \Crud\CrudPeriodoacademico();
+
 $cedula = isset($_SESSION['campbuscarest']) ? $_SESSION['campbuscarest'] : "";
-$periodo = isset($_SESSION['periodo']) ? $periodo = $crudperiodoaca->obtenerPeriodoacademico($_SESSION['periodo']) : $periodo = $crud1->obtenerPeriodoAcademicoActual();
+echo ("<script>console.log('Cedula Recibida:" . $cedula . "');</script>");
+
+$periodo =  isset($_SESSION['campbuscarperiodo']) ? $_SESSION['campbuscarperiodo'] : $crud1->obtenerPeriodoAcademicoActual()->getPeriodoacademicoId();
+echo ("<script>console.log('Periodo Recibido:" . $periodo . "');</script>");
 
 function cargarContactoEmergencia($cedula, $periodo)
 {
     $crud = new \Crud\CrudContactosemergencia();
     $dato = $crud->obtenerContactoEmergencia($cedula, $periodo);
+    //echo ("<script>console.log('" . $dato . "');</script>");
     $r = ajaxs_select2();
     $r .= '
     <td>
@@ -87,4 +93,9 @@ function cargarContactoEmergencia($cedula, $periodo)
     </td>';
     return $r;
 }
-echo cargarContactoEmergencia($cedula, $periodo->get_periodoacademicoId());
+try {
+
+    echo cargarContactoEmergencia($cedula, $periodo);
+} catch (\Throwable $e) {
+    echo $e;
+}

@@ -17,6 +17,7 @@ function cargartabla(){
   function registro(){
     var cod= $('#pueblonacionalidadescodigo').val();
     var nom=$('#pueblonacionalidad').val();
+    var pnetnia=$('#pnetnia').val();
     $.ajax({
       type: 'POST',
       url: '../controladores/registrotablapueblonacionalidad.php',
@@ -24,6 +25,7 @@ function cargartabla(){
       'id':null,
       'cod':cod,
       'nom':nom,
+      'pnetnia':pnetnia,
       'eliminar':0,
       'actualizar':0,
       'opt':1}
@@ -49,6 +51,8 @@ function cargartabla(){
 
         var cod= $('#pueblonacionalidadescodigo'+dato).val();
         var nom=$('#pueblonacionalidad'+dato).val();
+        var pnetnia=$('#pnetnia'+dato).val();
+
         $.ajax({
           type: 'POST',
           url: '../controladores/registrotablapueblonacionalidad.php',
@@ -56,6 +60,7 @@ function cargartabla(){
           'id':dato,
           'cod':cod,
           'nom':nom,
+          'pnetnia':pnetnia,
           'eliminar':0,
           'actualizar':1,
           'opt':2}
@@ -81,13 +86,16 @@ function cargartabla(){
 
         var cod= $('#pueblonacionalidadescodigo'+dato).val();
         var nom=$('#pueblonacionalidad'+dato).val();
+        var pnetnia=$('#pnetnia'+dato).val();
+
         $.ajax({
           type: 'POST',
           url: '../controladores/registrotablapueblonacionalidad.php',
           data:{
-            'id':dato,
-            'cod':cod,
-            'nom':nom,
+          'id':dato,
+          'cod':cod,
+          'nom':nom,
+          'pnetnia':pnetnia,
             'eliminar':1,
             'actualizar':2,
             'opt':0}

@@ -4,12 +4,12 @@ require("../Crud/CrudProvincia.php");
 use Crud\CrudProvincias;
 use Clasesphp\Provincias;
 
-function cargarProvincias($opt)
+function cargarProvincias($opt, $pais)
 {
     $oCrudprovinciaRecidencia = new CrudProvincias();
-    $listaprovinciaRecidencia = $oCrudprovinciaRecidencia->mostrar();
+    $listaprovinciaRecidencia = $oCrudprovinciaRecidencia->mostrarlistaporPais($pais);
     $provinciaRecidencia = new Provincias();
-    $lista = '<option selected="selected" value=0><label>Seleccione una Provincia</label></option>"';
+    $lista = '<option selected="selected" value=-1><label>Seleccione una Provincia</label></option>"';
     foreach ($listaprovinciaRecidencia as $provinciaRecidencia) {
         if ($opt == $provinciaRecidencia->getProvinciaId()) {
             $lista .= "<option selected='selected' value='" . $provinciaRecidencia->getProvinciaId() . "'><label>" . (($provinciaRecidencia->getProvincia())) . "</label></option>";
@@ -26,7 +26,7 @@ function cargarProvinciasporpais($opt)
     $oCrudprovinciaRecidencia = new CrudProvincias();
     $listaprovinciaRecidencia = $oCrudprovinciaRecidencia->mostrarlistaporPais($opt);
     $provinciaRecidencia = new Provincias();
-    $lista = '<option selected="selected" value=0><label>Seleccione una Provincia</label></option>"';
+    $lista = '<option selected="selected" value="0"><label>Seleccione una Provincia</label></option>"';
     foreach ($listaprovinciaRecidencia as $provinciaRecidencia) {
         $lista .= "<option value='" . $provinciaRecidencia->getProvinciaId() . "'><label>" . (($provinciaRecidencia->getProvincia())) . "</label></option>";
     }
@@ -37,7 +37,7 @@ function cargarProvincias_pais($opt, $provincia)
     $oCrudprovinciaRecidencia = new CrudProvincias();
     $listaprovinciaRecidencia = $oCrudprovinciaRecidencia->mostrarlistaporPais($opt);
     $provinciaRecidencia = new Provincias();
-    $lista = '<option selected="selected" value=0><label>Seleccione una Provincia</label></option>"';
+    $lista = '<option selected="selected" value="0"><label>Seleccione una Provincia</label></option>"';
     foreach ($listaprovinciaRecidencia as $provinciaRecidencia) {
         if ($provincia == $provinciaRecidencia->getProvinciaId()) {
             $lista .= "<option selected='selected' value='" . $provinciaRecidencia->getProvinciaId() . "'><label>" . (($provinciaRecidencia->getProvincia())) . "</label></option>";

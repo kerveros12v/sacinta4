@@ -1,19 +1,25 @@
 <?php
-//require_once("../Crud/CrudEstudiante.php");
-//require_once("../Crud/CrudPeriodoacademico.php");
+require_once("../Crud/CrudEstudiante.php");
+require_once("../Crud/CrudPeriodoacademico.php");
+require_once("respuestasgenerales.php");
 
-//use \Crud\CrudEstudiantes;
-//use \Crud\CrudPeriodoacademico;
+use Crud\CrudEstudiantes;
+use \Crud\CrudPeriodoacademico;
 
 try {
 
   session_start();
   $usuario_1 = $_POST['username'];
   $clave_1 = $_POST['password'];
-  //$crudperiodoactuallogin = new CrudPeriodoacademico();
-  //$periodo = $crudperiodoactuallogin->obtenerPeriodoAcademicoActual();
-  ////////////////////////////////////
-
+  $crudperiodoactuallogin = new CrudPeriodoacademico();
+  $periodo = $crudperiodoactuallogin->obtenerPeriodoAcademicoActual();
+  $_SESSION['peridoactual'] = $periodo->getPeriodoacademicoId();
+  $_SESSION['campbuscarperiodo'] = $periodo->getPeriodoacademicoId();
+  $_SESSION['campbuscarest'] = "0";
+  $_SESSION['tipouser'] = "";
+  $_SESSION['acceso'] = "";
+  $_SESSION['est'] = "";
+  $_SESSION['user'] = "";
   if ($usuario_1 == "admin" && $clave_1 == "admin") {
     $_SESSION['user'] = "DESARROLLADOR";
     $_SESSION['tipouser'] = "DESS";
@@ -21,7 +27,7 @@ try {
     cargarplantilla();
   } else {
 
-    /*
+
     $crudest1 = new CrudEstudiantes();
 
     //Seccion donde se coloca el crudPersonal
@@ -29,17 +35,17 @@ try {
     //Seccion donde se coloca el crudDocente
     $crudDocente = null;
     if ($crudest1->existe($usuario_1)) {
-    $est2 = $crudest1->obtenerEstudiantes($usuario_1);
-    if ($crudest1->login($usuario_1, md5($clave_1)) == 1) {
-    $_SESSION['user'] = $est2->get_numeroIdentificacion();
-    $_SESSION['est'] = $est2->get_numeroIdentificacion();
-    $_SESSION['tipouser'] = "est";
-    $_SESSION['acceso'] = $est2->get_accesodepartamento_codigo();
-    $_SESSION['campbuscarest'] = $est2->get_numeroIdentificacion();
-    $_SESSION['peridoactual'] = $periodo->get_periodoacademicoId();
-    $_SESSION['campbuscarperiodo'] = $periodo->get_periodoacademicoId();
-    cargarplantilla();
-    }
+      $est2 = $crudest1->obtenerEstudiantes($usuario_1);
+      if ($crudest1->login($usuario_1, md5($clave_1)) == 1) {
+        $_SESSION['user'] = $est2->getPrimerApellido() . " " . $est2->getSegundoApellido() . " " . $est2->getPrimerNombre() . " " . $est2->getSegundoNombre();
+        $_SESSION['est'] = $est2->getNumeroIdentificacion();
+        $_SESSION['campbuscarest'] = $est2->getNumeroIdentificacion();
+        $_SESSION['tipouser'] = "est";
+        $_SESSION['acceso'] = $est2->getAccesodepartamentoCodigo();
+
+
+        cargarplantilla();
+      }
     }
     /*
     if($crudDocente->existe($usuario_1)){
@@ -69,6 +75,7 @@ try {
     }
      */
   }
+  echo imprimecooke();
 } catch (Exception $ex) {
   echo $ex;
 }

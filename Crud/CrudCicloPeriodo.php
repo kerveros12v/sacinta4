@@ -4,6 +4,7 @@ namespace Crud;
 
 require_once("conexion.php");
 require_once("../clasesphp/CicloPeriodo.php");
+
 use Crud\Db;
 use Clasesphp\CicloPeriodo;
 
@@ -12,7 +13,6 @@ class CrudCicloPeriodo
 	// constructor de la clase
 	public function __construct()
 	{
-		$db = Db::conectar();
 	}
 
 	public function mostrar()
@@ -22,13 +22,13 @@ class CrudCicloPeriodo
 		$select = $db->query("SELECT * FROM `cicloperiodo`");
 		foreach ($select->fetchAll() as $clicloperiodo) {
 			$myclicloperiodo = new CicloPeriodo();
-			$myclicloperiodo->set_idcicloperiodo($clicloperiodo['idcicloperiodo']);
-			$myclicloperiodo->set_cicloperiodocodigo($clicloperiodo['cicloperiodocodigo']);
-			$myclicloperiodo->set_ciclo($clicloperiodo['ciclo']);
-			$myclicloperiodo->set_cicloperiodoOculto($clicloperiodo['cicloperiodoOculto']);
-			$myclicloperiodo->set_cicloperiodoAccion($clicloperiodo['cicloperiodoAccion']);
-			$myclicloperiodo->set_cicloperiodofecha($clicloperiodo['cicloperiodofecha']);
-			$myclicloperiodo->set_cicloperiodouser($clicloperiodo['cicloperiodouser']);
+			$myclicloperiodo->setIdcicloperiodo($clicloperiodo['idcicloperiodo']);
+			$myclicloperiodo->setCicloperiodocodigo($clicloperiodo['cicloperiodocodigo']);
+			$myclicloperiodo->setCiclo($clicloperiodo['ciclo']);
+			$myclicloperiodo->setCicloperiodoOculto($clicloperiodo['cicloperiodoOculto']);
+			$myclicloperiodo->setCicloperiodoAccion($clicloperiodo['cicloperiodoAccion']);
+			$myclicloperiodo->setCicloperiodofecha($clicloperiodo['cicloperiodofecha']);
+			$myclicloperiodo->setCicloperiodouser($clicloperiodo['cicloperiodouser']);
 
 			$listaclicloperiodo[] = $myclicloperiodo;
 		}
@@ -51,14 +51,13 @@ class CrudCicloPeriodo
 		$select->execute();
 		$clicloperiodo = $select->fetch();
 		$myclicloperiodo = new CicloPeriodo();
-		$myclicloperiodo->set_idcicloperiodo($clicloperiodo['idcicloperiodo']);
-		$myclicloperiodo->set_cicloperiodocodigo($clicloperiodo['cicloperiodocodigo']);
-		$myclicloperiodo->set_ciclo($clicloperiodo['ciclo']);
-		$myclicloperiodo->set_cicloperiodoOculto($clicloperiodo['cicloperiodoOculto']);
-		$myclicloperiodo->set_cicloperiodoAccion($clicloperiodo['cicloperiodoAccion']);
-		$myclicloperiodo->set_cicloperiodofecha($clicloperiodo['cicloperiodofecha']);
-		$myclicloperiodo->set_cicloperiodouser($clicloperiodo['cicloperiodouser']);
-
+		$myclicloperiodo->setIdcicloperiodo($clicloperiodo['idcicloperiodo']);
+		$myclicloperiodo->setCicloperiodocodigo($clicloperiodo['cicloperiodocodigo']);
+		$myclicloperiodo->setCiclo($clicloperiodo['ciclo']);
+		$myclicloperiodo->setCicloperiodoOculto($clicloperiodo['cicloperiodoOculto']);
+		$myclicloperiodo->setCicloperiodoAccion($clicloperiodo['cicloperiodoAccion']);
+		$myclicloperiodo->setCicloperiodofecha($clicloperiodo['cicloperiodofecha']);
+		$myclicloperiodo->setCicloperiodouser($clicloperiodo['cicloperiodouser']);
 		return $myclicloperiodo;
 	}
 	public function obtenerDato($id)
@@ -75,15 +74,23 @@ class CrudCicloPeriodo
 	public function actualizar($clicloperiodo)
 	{
 		$db = Db::conectar();
-		$clicloperiodo = new CicloPeriodo();
-		$actualizar = $db->prepare('UPDATE canton SET `cantonId`=:id,`canton`=:clicloperiodo WHERE cantonId=:id');
-		$actualizar->bindValue('idcicloperiodo1', $clicloperiodo->get_idcicloperiodo());
-		$actualizar->bindValue('cicloperiodocodigo1', $clicloperiodo->get_cicloperiodocodigo());
-		$actualizar->bindValue('ciclo1', $clicloperiodo->get_ciclo());
-		$actualizar->bindValue('cicloperiodoOculto1', $clicloperiodo->get_cicloperiodoOculto());
-		$actualizar->bindValue('cicloperiodoAccion1', $clicloperiodo->get_cicloperiodoAccion());
-		$actualizar->bindValue('cicloperiodofecha1', $clicloperiodo->get_cicloperiodofecha());
-		$actualizar->bindValue('cicloperiodouser1', $clicloperiodo->get_cicloperiodouser());
+		$actualizar = $db->prepare('UPDATE `cicloperiodo`
+		SET
+		`idcicloperiodo` = :idcicloperiodo1,
+		`cicloperiodocodigo` = :cicloperiodocodigo1,
+		`ciclo` = :ciclo1,
+		`cicloperiodoOculto` = :cicloperiodoOculto1,
+		`cicloperiodoAccion` = :cicloperiodoAccion1,
+		`cicloperiodofecha` = :cicloperiodofecha1,
+		`cicloperiodouser` = :cicloperiodouser1
+		WHERE `idcicloperiodo` = :idcicloperiodo1;');
+		$actualizar->bindValue('idcicloperiodo1', $clicloperiodo->getIdcicloperiodo());
+		$actualizar->bindValue('cicloperiodocodigo1', $clicloperiodo->getCicloperiodocodigo());
+		$actualizar->bindValue('ciclo1', $clicloperiodo->getCiclo());
+		$actualizar->bindValue('cicloperiodoOculto1', $clicloperiodo->getCicloperiodoOculto());
+		$actualizar->bindValue('cicloperiodoAccion1', $clicloperiodo->getCicloperiodoAccion());
+		$actualizar->bindValue('cicloperiodofecha1', $clicloperiodo->getCicloperiodofecha());
+		$actualizar->bindValue('cicloperiodouser1', $clicloperiodo->getCicloperiodouser());
 		$actualizar->execute();
 	}
 	public function insertar($clicloperiodo)
@@ -93,13 +100,13 @@ class CrudCicloPeriodo
 				(`idcicloperiodo`,`cicloperiodocodigo`,`ciclo`,`cicloperiodoOculto`,`cicloperiodoAccion`,`cicloperiodofecha`,`cicloperiodouser`)
 				VALUES
 				(:idcicloperiodo1,:cicloperiodocodigo1,:ciclo1,:cicloperiodoOculto1,:cicloperiodoAccion1,:cicloperiodofecha1,:cicloperiodouser1);');
-		$insert->bindValue('idcicloperiodo1', $clicloperiodo->get_idcicloperiodo());
-		$insert->bindValue('cicloperiodocodigo1', $clicloperiodo->get_cicloperiodocodigo());
-		$insert->bindValue('ciclo1', $clicloperiodo->get_ciclo());
-		$insert->bindValue('cicloperiodoOculto1', $clicloperiodo->get_cicloperiodoOculto());
-		$insert->bindValue('cicloperiodoAccion1', $clicloperiodo->get_cicloperiodoAccion());
-		$insert->bindValue('cicloperiodofecha1', $clicloperiodo->get_cicloperiodofecha());
-		$insert->bindValue('cicloperiodouser1', $clicloperiodo->get_cicloperiodouser());
+		$insert->bindValue('idcicloperiodo1', $clicloperiodo->getIdcicloperiodo());
+		$insert->bindValue('cicloperiodocodigo1', $clicloperiodo->getCicloperiodocodigo());
+		$insert->bindValue('ciclo1', $clicloperiodo->getCiclo());
+		$insert->bindValue('cicloperiodoOculto1', $clicloperiodo->getCicloperiodoOculto());
+		$insert->bindValue('cicloperiodoAccion1', $clicloperiodo->getCicloperiodoAccion());
+		$insert->bindValue('cicloperiodofecha1', $clicloperiodo->getCicloperiodofecha());
+		$insert->bindValue('cicloperiodouser1', $clicloperiodo->getCicloperiodouser());
 
 		$insert->execute();
 	}

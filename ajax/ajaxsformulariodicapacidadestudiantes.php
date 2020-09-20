@@ -113,4 +113,3 @@ try{
 catch(\Exception $e){
 echo "<script>console.log('".$e."');</script>";
 }
-?>

@@ -39,7 +39,7 @@ function opcioncanton()
         }
         echo (tiempoExedido());
     } catch (Exception $e) {
-        return $e;
+        return "¡Seleccione primero una Provincia!";
     }
 }
 echo opcioncanton();

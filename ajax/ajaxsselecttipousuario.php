@@ -12,10 +12,10 @@ function cargartipoUsuario($opt)
     $dato = new TipoUsuario();
     $lista = '<option disabled><label>Seleccione un Usuario</label></option>"';
     foreach ($listausuario as $dato) {
-        if ($opt == $dato->get_idtipousuario()) {
-            $lista .= " <option selected='selected' value='" . $dato->get_idtipousuario() . "'><label>" . ($dato->get_tipousuario()) . "</label></option>";
+        if ($opt == $dato->getIdtipousuario()) {
+            $lista .= " <option selected='selected' value='" . $dato->getIdtipousuario() . "'><label>" . ($dato->getTipousuario()) . "</label></option>";
         } else {
-            $lista .= " <option value='" . $dato->get_idtipousuario() . "'><label>" . ($dato->get_tipousuario()) . "</label></option>";
+            $lista .= " <option value='" . $dato->getIdtipousuario() . "'><label>" . ($dato->getTipousuario()) . "</label></option>";
         }
     }
     return $lista;
