@@ -15,6 +15,7 @@ class Carreras
 	private $carreraAccion;
 	private $carrerafecha;
 	private $carrerauser;
+	private $carrerasinstituto;
 	/**
 	 * Class constructor.
 	 */
@@ -244,5 +245,25 @@ class Carreras
 	public function __toString()
 	{
 		return $this->carrera;
+	}
+
+	/**
+	 * Get the value of carrerasinstituto
+	 */
+	public function getCarrerasinstituto()
+	{
+		return $this->carrerasinstituto;
+	}
+
+	/**
+	 * Set the value of carrerasinstituto
+	 *
+	 * @return  self
+	 */
+	public function setCarrerasinstituto($carrerasinstituto)
+	{
+		$this->carrerasinstituto = $carrerasinstituto;
+
+		return $this;
 	}
 }

@@ -4,7 +4,7 @@ namespace Clasesphp;
 
 class Asignaturas
 {
-	private $AsignaturasId;
+	private $asignaturasId;
 	private $codigoMateria;
 	private $materia;
 	private $asignaturasOculto;
@@ -24,7 +24,7 @@ class Asignaturas
 	 */
 	public function getAsignaturasId()
 	{
-		return $this->AsignaturasId;
+		return $this->asignaturasId;
 	}
 
 	/**
@@ -32,9 +32,9 @@ class Asignaturas
 	 *
 	 * @return  self
 	 */
-	public function setAsignaturasId($AsignaturasId)
+	public function setAsignaturasId($asignaturasId)
 	{
-		$this->AsignaturasId = $AsignaturasId;
+		$this->asignaturasId = $asignaturasId;
 
 		return $this;
 	}

@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
     <link href="../vendor/select2/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../vendor/select2/select2/dist/js/select2.min.js"></script>
-    <script type="text/javascript" src="../js/ajaxsprovincias.js"></script>
+    <script type="text/javascript" src="../js/ajaxsCarreras.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function($) {
             $(document).ready(function() {
@@ -36,7 +36,7 @@
                                 Seleccione la Institucion:
                             </td>
                             <td>
-                                <select class="selector" id="paisprovincia" name="paisprovincia"></select>
+                                <select class="selector" id="selectinstituion" name="selectinstituion" onchange=" cargartabla()"></select>
                             </td>
                         </tr>
                     </table>
@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <td>
-                    <table id=contenedorprovincias class="ui-widget ui-widget-content " title="Perfiles Registradas Actualmente:">
+                    <table id="contenedorcarreras" class="ui-widget ui-widget-content " title="Perfiles Registradas Actualmente:">
 
                     </table>
                 </td>

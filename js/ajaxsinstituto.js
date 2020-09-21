@@ -65,7 +65,7 @@ function actualizar(dato) {
     type: 'POST',
     url: '../controladores/registrotablainstituto.php',
     data: {
-      'id': null,
+      'id': dato,
       'cod': cod,
       'nom': nom,
       'canton': canton,
@@ -102,7 +102,7 @@ function eliminar(dato) {
     type: 'POST',
     url: '../controladores/registrotablainstituto.php',
     data: {
-      'id': null,
+      'id': dato,
       'cod': cod,
       'nom': nom,
       'canton': canton,

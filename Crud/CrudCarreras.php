@@ -22,8 +22,6 @@ class CrudCarreras
 
 		foreach ($select->fetchAll() as $carreras) {
 			$mycarreras = new Carreras();
-			//carrerasId, codigoCarreras, carrera, estado, carreraTituloAOptener, fktipoCarrerasId, fkmodalidadCarreraId, carreraOculto, carreraAccion, carrerafecha, carrerauser
-
 			$mycarreras->setCarrerasId($carreras['carrerasId']);
 			$mycarreras->setCarrera($carreras['carrera']);
 			$mycarreras->setCodigoCarreras($carreras['codigoCarreras']);
@@ -31,6 +29,34 @@ class CrudCarreras
 			$mycarreras->setEstado($carreras['estado']);
 			$mycarreras->setFkmodalidadCarreraId($carreras['fkmodalidadCarreraId']);
 			$mycarreras->setFktipoCarrerasId($carreras['fktipoCarrerasId']);
+			$mycarreras->setCarrerasinstituto($carreras['carrerasinstituto']);
+			$mycarreras->setCarreraOculto($carreras['carreraOculto']);
+			$mycarreras->setCarreraAccion($carreras['carreraAccion']);
+			$mycarreras->setCarrerafecha($carreras['carrerafecha']);
+			$mycarreras->setCarrerauser($carreras['carrerauser']);
+			////
+			$listacarreras[] = $mycarreras;
+		}
+		return $listacarreras;
+	}
+	public function mostrarlistaporInstitutos($id)
+	{
+		//echo("<script>console.log('Dato recibido en el crud: ".$id."');</script>");
+		$db = Db::conectar();
+		$listacarreras = NULL;
+		$select = $db->prepare("SELECT * FROM `carreras` WHERE carrerasinstituto=:id");
+		$select->bindValue('id', $id);
+		$select->execute();
+		foreach ($select->fetchAll() as $carreras) {
+			$mycarreras = new Carreras();
+			$mycarreras->setCarrerasId($carreras['carrerasId']);
+			$mycarreras->setCarrera($carreras['carrera']);
+			$mycarreras->setCodigoCarreras($carreras['codigoCarreras']);
+			$mycarreras->setCarreraTituloAOptener($carreras['carreraTituloAOptener']);
+			$mycarreras->setEstado($carreras['estado']);
+			$mycarreras->setFkmodalidadCarreraId($carreras['fkmodalidadCarreraId']);
+			$mycarreras->setFktipoCarrerasId($carreras['fktipoCarrerasId']);
+			$mycarreras->setCarrerasinstituto($carreras['carrerasinstituto']);
 			$mycarreras->setCarreraOculto($carreras['carreraOculto']);
 			$mycarreras->setCarreraAccion($carreras['carreraAccion']);
 			$mycarreras->setCarrerafecha($carreras['carrerafecha']);
@@ -56,6 +82,7 @@ class CrudCarreras
 		$mycarreras->setEstado($carreras['estado']);
 		$mycarreras->setFkmodalidadCarreraId($carreras['fkmodalidadCarreraId']);
 		$mycarreras->setFktipoCarrerasId($carreras['fktipoCarrerasId']);
+		$mycarreras->setCarrerasinstituto($carreras['carrerasinstituto']);
 		$mycarreras->setCarreraOculto($carreras['carreraOculto']);
 		$mycarreras->setCarreraAccion($carreras['carreraAccion']);
 		$mycarreras->setCarrerafecha($carreras['carrerafecha']);
@@ -79,6 +106,7 @@ class CrudCarreras
 		$mycarreras->setEstado($carreras['estado']);
 		$mycarreras->setFkmodalidadCarreraId($carreras['fkmodalidadCarreraId']);
 		$mycarreras->setFktipoCarrerasId($carreras['fktipoCarrerasId']);
+		$mycarreras->setCarrerasinstituto($carreras['carrerasinstituto']);
 		$mycarreras->setCarreraOculto($carreras['carreraOculto']);
 		$mycarreras->setCarreraAccion($carreras['carreraAccion']);
 		$mycarreras->setCarrerafecha($carreras['carrerafecha']);
@@ -89,29 +117,31 @@ class CrudCarreras
 	{
 		$db = Db::conectar();
 		$insert = $db->prepare("INSERT INTO `carreras`
-			(`carrerasId`,
-			`codigoCarreras`,
-			`carrera`,
-			`estado`,
-			`carreraTituloAOptener`,
-			`fktipoCarrerasId`,
-			`fkmodalidadCarreraId`,
-			`carreraOculto`,
-			`carreraAccion`,
-			`carrerafecha`,
-			`carrerauser`)
-			VALUES
-			(:carrerasId1,
-			:codigoCarreras1,
-			:carrera1,
-			:estado1,
-			:carreraTituloAOptener1,
-			:fktipoCarrerasId1,
-			:fkmodalidadCarreraId1,
-			:carreraOculto1,
-			:carreraAccion1,
-			:carrerafecha1,
-			:carrerauser1);");
+		(`carrerasId`,
+		`codigoCarreras`,
+		`carrera`,
+		`estado`,
+		`carreraTituloAOptener`,
+		`fktipoCarrerasId`,
+		`fkmodalidadCarreraId`,
+		`carrerasinstituto`,
+		`carreraOculto`,
+		`carreraAccion`,
+		`carrerafecha`,
+		`carrerauser`)
+		VALUES
+		(:carrerasId1,
+		:codigoCarreras1,
+		:carrera1,
+		:estado1,
+		:carreraTituloAOptener1,
+		:fktipoCarrerasId1,
+		:fkmodalidadCarreraId1,
+		:carrerasinstituto1,
+		:carreraOculto1,
+		:carreraAccion1,
+		:carrerafecha1,
+		:carrerauser1);");
 
 		$insert->bindValue('carrerasId1', $carrera->getCarrerasId());
 		$insert->bindValue('codigoCarreras1', $carrera->getCodigoCarreras());
@@ -120,6 +150,7 @@ class CrudCarreras
 		$insert->bindValue('carreraTituloAOptener1', $carrera->getCarreraTituloAOptener());
 		$insert->bindValue('fktipoCarrerasId1', $carrera->getFktipoCarrerasId());
 		$insert->bindValue('fkmodalidadCarreraId1', $carrera->getFkmodalidadCarreraId());
+		$insert->bindValue('carrerasinstituto1', $carrera->getCarrerasinstituto());
 		$insert->bindValue('carreraOculto1', $carrera->getCarreraOculto());
 		$insert->bindValue('carreraAccion1', $carrera->getCarreraAccion());
 		$insert->bindValue('carrerafecha1', $carrera->getCarrerafecha());
@@ -138,6 +169,7 @@ class CrudCarreras
 		`carreraTituloAOptener` = :carreraTituloAOptener1,
 		`fktipoCarrerasId` = :fktipoCarrerasId1,
 		`fkmodalidadCarreraId` = :fkmodalidadCarreraId1,
+		`carrerasinstituto` = :carrerasinstituto1,
 		`carreraOculto` = :carreraOculto1,
 		`carreraAccion` = :carreraAccion1,
 		`carrerafecha` = :carrerafecha1,
@@ -151,6 +183,7 @@ class CrudCarreras
 		$actualizar->bindValue('carreraTituloAOptener1', $carrera->getCarreraTituloAOptener());
 		$actualizar->bindValue('fktipoCarrerasId1', $carrera->getFktipoCarrerasId());
 		$actualizar->bindValue('fkmodalidadCarreraId1', $carrera->getFkmodalidadCarreraId());
+		$actualizar->bindValue('carrerasinstituto1', $carrera->getCarrerasinstituto());
 		$actualizar->bindValue('carreraOculto1', $carrera->getCarreraOculto());
 		$actualizar->bindValue('carreraAccion1', $carrera->getCarreraAccion());
 		$actualizar->bindValue('carrerafecha1', $carrera->getCarrerafecha());
