@@ -199,4 +199,16 @@ class Bachilleratos
 
 		return $this;
 	}
+	public function __toString()
+	{
+		return $this->bachilleratoId . "-" .
+			$this->fkEstudiantesNumeroIdentificacion . "-" .
+			$this->fkTiposBacilleratotiposBacilleratoId . "-" .
+			$this->anioGraduacion . "-" .
+			$this->colegiosidColegios . "-" .
+			$this->bachilleratoOculto . "-" .
+			$this->bachilleratoAccion . "-" .
+			$this->bachilleratofecha . "-" .
+			$this->bachilleratouser;
+	}
 }

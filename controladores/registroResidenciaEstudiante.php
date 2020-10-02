@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
-require_once("../clasesphp/Estudiantes.php");
-require_once('../Crud/CrudEstudiante.php');
+require_once("../clasesphp/Residenciaestudiantes.php");
+require_once('../Crud/CrudResidenciaestudiantes.php');
 require_once("respuestasgenerales.php");
 
 use Clasesphp\Residenciaestudiantes;
@@ -12,7 +12,7 @@ function datosrecargadosresidencia($dato)
 {
 	$dato->setFknumeroIdentificacion($_SESSION['campbuscarest']);
 	$dato->setDireccionDomiciliariaResidencia(strtoupper(trim($_POST['direcciondomi'])));
-	$dato->setCodigoPostal(strtoupper((trim($_POST['parroquiaRecidencia']))));
+	$dato->setCodigoPostal($_POST['parroquia']);
 	$dato->setFkperiodo($_SESSION['campbuscarperiodo']);
 	$dato->setResidenciaestudiantesOculto($_POST['eliminar']);
 	$dato->setResidenciaestudiantesAccion($_POST['actualizar']);
@@ -34,7 +34,9 @@ function opcionresidenciaestudiante()
 					$dato = datosrecargadosresidencia($dato);
 					$crud->insertar($dato);
 					return (guardarR());
-				} else $opcion = 2;
+				} else {
+					$opcion = 2;
+				}
 			}
 			if ($opcion == 2) {
 				$dato = $crud->obtenerresidenciaestudiantes($_SESSION['campbuscarest'], $_SESSION['campbuscarperiodo']);
@@ -54,4 +56,8 @@ function opcionresidenciaestudiante()
 		return $e;
 	}
 }
-echo opcionresidenciaestudiante();
+try {
+	echo opcionresidenciaestudiante();
+} catch (\Throwable $e) {
+	echo $e;
+}

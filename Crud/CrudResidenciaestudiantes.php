@@ -76,72 +76,60 @@ class CrudResidenciaestudiantes
 	{
 		$db = Db::conectar();
 		$actualizar = $db->prepare('UPDATE `residenciaestudiantes`
-			SET
-			`ResidenciaEstudiantesId` = :ResidenciaEstudiantesId1,
-			`Estudiantes_numeroIdentificacion` = :Estudiantes_numeroIdentificacion1,
-			`paisResidencia` = :paisResidencia1,
-			`provinciaResidencia` = :provinciaResidencia1,
-			`cantonResidencia` = :cantonResidencia1,
-			`direccionDomiciliariaResidencia` = :direccionDomiciliariaResidencia1,
-			`codigoPostal` = :codigoPostal1,
-			`periodo` = :periodo1,
-			`residenciaestudiantesOculto` = :residenciaestudiantesOculto1,
-			`residenciaestudiantesAccion` = :residenciaestudiantesAccion1,
-			`residenciaestudiantesfecha` = :residenciaestudiantesfecha1,
-			`residenciaestudiantesuser` = :residenciaestudiantesuser1
-			WHERE `ResidenciaEstudiantesId` = :ResidenciaEstudiantesId1');
-		$actualizar->bindValue('id', $residenciaestudiantes1->getResidenciaEstudiantesId());
-		$actualizar->bindValue('num', $residenciaestudiantes1->getFknumeroIdentificacion());
-		$actualizar->bindValue('direccion', $residenciaestudiantes1->getDireccionDomiciliariaResidencia());
-		$actualizar->bindValue('codigop', $residenciaestudiantes1->getCodigoPostal());
-		$actualizar->bindValue('per1', $residenciaestudiantes1->getFkperiodo());
-		$actualizar->bindValue('oculto', $residenciaestudiantes1->getResidenciaestudiantesOculto());
-		$actualizar->bindValue('accion', $residenciaestudiantes1->getResidenciaestudiantesAccion());
-		$actualizar->bindValue('fecha', $residenciaestudiantes1->getResidenciaestudiantesfecha());
-		$actualizar->bindValue('user', $residenciaestudiantes1->getResidenciaestudiantesuser());
+		SET
+		`residenciaEstudiantesId` = :residenciaEstudiantesId1,
+		`fknumeroIdentificacion` = :fknumeroIdentificacion1,
+		`direccionDomiciliariaResidencia` = :direccionDomiciliariaResidencia1,
+		`codigoPostal` = :codigoPostal1,
+		`fkperiodo` = :fkperiodo1,
+		`residenciaestudiantesOculto` = :residenciaestudiantesOculto1,
+		`residenciaestudiantesAccion` = :residenciaestudiantesAccion1,
+		`residenciaestudiantesfecha` = :residenciaestudiantesfecha1,
+		`residenciaestudiantesuser` = :residenciaestudiantesuser1
+		WHERE `residenciaEstudiantesId` = :residenciaEstudiantesId1;');
+		$actualizar->bindValue('residenciaEstudiantesId1', $residenciaestudiantes1->getResidenciaEstudiantesId());
+		$actualizar->bindValue('fknumeroIdentificacion1', $residenciaestudiantes1->getFknumeroIdentificacion());
+		$actualizar->bindValue('direccionDomiciliariaResidencia1', $residenciaestudiantes1->getDireccionDomiciliariaResidencia());
+		$actualizar->bindValue('codigoPostal1', $residenciaestudiantes1->getCodigoPostal());
+		$actualizar->bindValue('fkperiodo1', $residenciaestudiantes1->getFkperiodo());
+		$actualizar->bindValue('residenciaestudiantesOculto1', $residenciaestudiantes1->getResidenciaestudiantesOculto());
+		$actualizar->bindValue('residenciaestudiantesAccion1', $residenciaestudiantes1->getResidenciaestudiantesAccion());
+		$actualizar->bindValue('residenciaestudiantesfecha1', $residenciaestudiantes1->getResidenciaestudiantesfecha());
+		$actualizar->bindValue('residenciaestudiantesuser1', $residenciaestudiantes1->getResidenciaestudiantesuser());
 		$actualizar->execute();
 	}
 	public  function insertar($residenciaestudiantes1)
 	{
 		$db = Db::conectar();
 		$insert = $db->prepare('INSERT INTO `residenciaestudiantes`
-			(`ResidenciaEstudiantesId`,
-			`Estudiantes_numeroIdentificacion`,
-			`paisResidencia`,
-			`provinciaResidencia`,
-			`cantonResidencia`,
-			`direccionDomiciliariaResidencia`,
-			`codigoPostal`,
-			`periodo`,
-			`residenciaestudiantesOculto`,
-			`residenciaestudiantesAccion`,
-			`residenciaestudiantesfecha`,
-			`residenciaestudiantesuser`)
-			VALUES
-			(:ResidenciaEstudiantesId1,
-			:Estudiantes_numeroIdentificacion1,
-			:paisResidencia1,
-			:provinciaResidencia1,
-			:cantonResidencia1,
-			:direccionDomiciliariaResidencia1,
-			:codigoPostal1,
-			:periodo1,
-			:residenciaestudiantesOculto1,
-			:residenciaestudiantesAccion1,
-			:residenciaestudiantesfecha1,
-			:residenciaestudiantesuser1);');
-		$insert->bindValue('ResidenciaEstudiantesId1', $residenciaestudiantes1->get_residenciaEstudiantesId());
-		$insert->bindValue('Estudiantes_numeroIdentificacion1', $residenciaestudiantes1->get_estudiantes_numeroIdentificacion());
-		$insert->bindValue('paisResidencia1', $residenciaestudiantes1->get_paisResidencia());
-		$insert->bindValue('provinciaResidencia1', $residenciaestudiantes1->get_provinciaResidencia());
-		$insert->bindValue('cantonResidencia1', $residenciaestudiantes1->get_cantonResidencia());
-		$insert->bindValue('direccionDomiciliariaResidencia1', $residenciaestudiantes1->get_direccionDomiciliariaResidencia());
-		$insert->bindValue('codigoPostal1', $residenciaestudiantes1->get_codigoPostal());
-		$insert->bindValue('periodo1', $residenciaestudiantes1->get_periodo());
-		$insert->bindValue('residenciaestudiantesOculto1', $residenciaestudiantes1->get_residenciaestudiantesOculto());
-		$insert->bindValue('residenciaestudiantesAccion1', $residenciaestudiantes1->get_residenciaestudiantesAccion());
-		$insert->bindValue('residenciaestudiantesfecha1', $residenciaestudiantes1->get_residenciaestudiantesfecha());
-		$insert->bindValue('residenciaestudiantesuser1', $residenciaestudiantes1->get_residenciaestudiantesuser());
+		(`residenciaEstudiantesId`,
+		`fknumeroIdentificacion`,
+		`direccionDomiciliariaResidencia`,
+		`codigoPostal`,
+		`fkperiodo`,
+		`residenciaestudiantesOculto`,
+		`residenciaestudiantesAccion`,
+		`residenciaestudiantesfecha`,
+		`residenciaestudiantesuser`)
+		VALUES
+		(:residenciaEstudiantesId1,
+		:fknumeroIdentificacion1,
+		:direccionDomiciliariaResidencia1,
+		:codigoPostal1,
+		:fkperiodo1,
+		:residenciaestudiantesOculto1,
+		:residenciaestudiantesAccion1,
+		:residenciaestudiantesfecha1,
+		:residenciaestudiantesuser1);');
+		$insert->bindValue('residenciaEstudiantesId1', $residenciaestudiantes1->getResidenciaEstudiantesId());
+		$insert->bindValue('fknumeroIdentificacion1', $residenciaestudiantes1->getFknumeroIdentificacion());
+		$insert->bindValue('direccionDomiciliariaResidencia1', $residenciaestudiantes1->getDireccionDomiciliariaResidencia());
+		$insert->bindValue('codigoPostal1', $residenciaestudiantes1->getCodigoPostal());
+		$insert->bindValue('fkperiodo1', $residenciaestudiantes1->getFkperiodo());
+		$insert->bindValue('residenciaestudiantesOculto1', $residenciaestudiantes1->getResidenciaestudiantesOculto());
+		$insert->bindValue('residenciaestudiantesAccion1', $residenciaestudiantes1->getResidenciaestudiantesAccion());
+		$insert->bindValue('residenciaestudiantesfecha1', $residenciaestudiantes1->getResidenciaestudiantesfecha());
+		$insert->bindValue('residenciaestudiantesuser1', $residenciaestudiantes1->getResidenciaestudiantesuser());
 		$insert->execute();
 	}
 	public  function eliminar($id)

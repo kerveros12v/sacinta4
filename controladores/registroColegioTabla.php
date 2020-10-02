@@ -12,6 +12,7 @@ function opcioncolegios()
     try {
         $dato = new Colegios();
         $crud = new CrudColegios();
+        $lstcolegio = $crud->mostrar();
 
 
         $dato->setIdColegios(trim($_POST['id']));

@@ -12,8 +12,6 @@ class CrudPaises
 	// constructor de la clase
 	public function __construct()
 	{
-		$db = Db::conectar();
-		$select = $db->query("SET NAMES 'utf8'");
 	}
 	public function mostrar()
 	{

@@ -1,13 +1,18 @@
 <?php
 
+
+
 require_once("../Crud/CrudContactosemergencia.php");
 require_once("../Crud/CrudPeriodoacademico.php");
 require_once("ajaxsselectparentesco.php");
 require_once("ajaxsselect2.php");
 
+use Crud\CrudContactosemergencia;
+use Crud\CrudPeriodoacademico;
+
 session_start();
 
-$crud1 = new \Crud\CrudPeriodoacademico();
+$crud1 = new CrudPeriodoacademico();
 
 $cedula = isset($_SESSION['campbuscarest']) ? $_SESSION['campbuscarest'] : "";
 echo ("<script>console.log('Cedula Recibida:" . $cedula . "');</script>");
@@ -17,7 +22,7 @@ echo ("<script>console.log('Periodo Recibido:" . $periodo . "');</script>");
 
 function cargarContactoEmergencia($cedula, $periodo)
 {
-    $crud = new \Crud\CrudContactosemergencia();
+    $crud = new CrudContactosemergencia();
     $dato = $crud->obtenerContactoEmergencia($cedula, $periodo);
     //echo ("<script>console.log('" . $dato . "');</script>");
     $r = ajaxs_select2();

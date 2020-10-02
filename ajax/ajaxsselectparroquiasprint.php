@@ -6,5 +6,3 @@ if ($_SESSION['user']!="" ||$_SESSION['campbuscarest']!="") {
     echo "<script> console.log('Dato enviado al servidor: ".$_POST['id']."');</script>";
     echo cargarParroquia1($_POST['id']);
  }
-
-?>

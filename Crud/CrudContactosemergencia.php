@@ -25,8 +25,8 @@ class CrudContactosemergencia
 			$mycontactoEmergencia->setContactosEmergenciaId($contactoEmergencia['contactosEmergenciaId']);
 			$mycontactoEmergencia->setNombreContactoEmergencia($contactoEmergencia['nombreContactoEmergencia']);
 			$mycontactoEmergencia->setNumeroContactosEmergencia($contactoEmergencia['numeroContactosEmergencia']);
-			$mycontactoEmergencia->setParentescosIdParentescos($contactoEmergencia['Parentescos_idParentescos']);
-			$mycontactoEmergencia->setEstudiantesNumeroIdentificacion($contactoEmergencia['Estudiantes_numeroIdentificacion']);
+			$mycontactoEmergencia->setParentescosIdParentescos($contactoEmergencia['parentescos_idParentescos']);
+			$mycontactoEmergencia->setEstudiantesNumeroIdentificacion($contactoEmergencia['estudiantes_numeroIdentificacion']);
 			$mycontactoEmergencia->setContactosperiodo($contactoEmergencia['contactosperiodo']);
 			$mycontactoEmergencia->setContactosemergenciaOculto($contactoEmergencia['contactosemergenciaOculto']);
 			$mycontactoEmergencia->setContactosemergenciaAccion($contactoEmergencia['contactosemergenciaAccion']);
@@ -37,11 +37,12 @@ class CrudContactosemergencia
 		}
 		return $listacontactoEmergencia;
 	}
-	public  function existe($id)
+	public  function existe($id, $periodo)
 	{
 		$db = Db::conectar();
-		$select = $db->prepare("SELECT * FROM `contactosemergencia` where Estudiantes_numeroIdentificacion=:id");
+		$select = $db->prepare("SELECT * FROM `contactosemergencia` where estudiantes_numeroIdentificacion=:id AND contactosperiodo=:periodo");
 		$select->bindValue('id', $id);
+		$select->bindValue('periodo', $periodo);
 		$select->execute();
 		if ($select->fetch() == 0) return 0;
 		return 1;
@@ -49,7 +50,7 @@ class CrudContactosemergencia
 	public  function obtenerContactoEmergencia($id, $periodo)
 	{
 		$db = Db::conectar();
-		$select = $db->prepare("SELECT * FROM `contactosemergencia` WHERE Estudiantes_numeroIdentificacion =:id AND contactosperiodo=:periodo;");
+		$select = $db->prepare("SELECT * FROM `contactosemergencia` WHERE estudiantes_numeroIdentificacion =:id AND contactosperiodo=:periodo;");
 		$select->bindValue('id', $id);
 		$select->bindValue('periodo', $periodo);
 		$select->execute();
@@ -59,14 +60,13 @@ class CrudContactosemergencia
 		$mycontactoEmergencia->setContactosEmergenciaId($contactoEmergencia['contactosEmergenciaId']);
 		$mycontactoEmergencia->setNombreContactoEmergencia($contactoEmergencia['nombreContactoEmergencia']);
 		$mycontactoEmergencia->setNumeroContactosEmergencia($contactoEmergencia['numeroContactosEmergencia']);
-		$mycontactoEmergencia->setParentescosIdParentescos($contactoEmergencia['Parentescos_idParentescos']);
-		$mycontactoEmergencia->setEstudiantesNumeroIdentificacion($contactoEmergencia['Estudiantes_numeroIdentificacion']);
+		$mycontactoEmergencia->setParentescosIdParentescos($contactoEmergencia['parentescos_idParentescos']);
+		$mycontactoEmergencia->setEstudiantesNumeroIdentificacion($contactoEmergencia['estudiantes_numeroIdentificacion']);
 		$mycontactoEmergencia->setContactosperiodo($contactoEmergencia['contactosperiodo']);
 		$mycontactoEmergencia->setContactosemergenciaOculto($contactoEmergencia['contactosemergenciaOculto']);
 		$mycontactoEmergencia->setContactosemergenciaAccion($contactoEmergencia['contactosemergenciaAccion']);
 		$mycontactoEmergencia->setContactosemergenciafecha($contactoEmergencia['contactosemergenciafecha']);
 		$mycontactoEmergencia->setContactosemergenciauser($contactoEmergencia['contactosemergenciauser']);
-
 		return $mycontactoEmergencia;
 	}
 	public  function insertar($contactoEmergencia)
@@ -74,32 +74,32 @@ class CrudContactosemergencia
 
 		$db = Db::conectar();
 		$insert = $db->prepare("INSERT INTO `contactosemergencia`
-			(`contactosEmergenciaId`,
-			`nombreContactoEmergencia`,
-			`numeroContactosEmergencia`,
-			`estudiantes_numeroIdentificacion`,
-			`parentescos_idParentescos`,
-			`contactosperiodo`,
-			`contactosemergenciaOculto`,
-			`contactosemergenciaAccion`,
-			`contactosemergenciafecha`,
-			`contactosemergenciauser`)
-			VALUES
-			(:contactosEmergenciaId1,
-			:nombreContactoEmergencia1,
-			:numeroContactosEmergencia1,
-			:estudiantes_numeroIdentificacion1,
-			:parentescos_idParentescos1,
-			:contactosperiodo1,
-			:contactosemergenciaOculto1,
-			:contactosemergenciaAccion1,
-			:contactosemergenciafecha1,
-			:contactosemergenciauser1);");
+		(`contactosEmergenciaId`,
+		`nombreContactoEmergencia`,
+		`numeroContactosEmergencia`,
+		`estudiantes_numeroIdentificacion`,
+		`parentescos_idParentescos`,
+		`contactosperiodo`,
+		`contactosemergenciaOculto`,
+		`contactosemergenciaAccion`,
+		`contactosemergenciafecha`,
+		`contactosemergenciauser`)
+		VALUES
+		(:contactosEmergenciaId1,
+		:nombreContactoEmergencia1,
+		:numeroContactosEmergencia1,
+		:estudiantes_numeroIdentificacion1,
+		:parentescos_idParentescos1,
+		:contactosperiodo1,
+		:contactosemergenciaOculto1,
+		:contactosemergenciaAccion1,
+		:contactosemergenciafecha1,
+		:contactosemergenciauser1);");
 		$insert->bindValue('contactosEmergenciaId1', $contactoEmergencia->getContactosEmergenciaId());
-		$insert->bindValue('numeroContactosEmergencia1', $contactoEmergencia->getNumeroContactosEmergencia());
 		$insert->bindValue('nombreContactoEmergencia1', $contactoEmergencia->getNombreContactoEmergencia());
-		$insert->bindValue('parentescos_idParentescos1', $contactoEmergencia->getParentescosIdParentescos());
+		$insert->bindValue('numeroContactosEmergencia1', $contactoEmergencia->getNumeroContactosEmergencia());
 		$insert->bindValue('estudiantes_numeroIdentificacion1', $contactoEmergencia->getEstudiantesNumeroIdentificacion());
+		$insert->bindValue('parentescos_idParentescos1', $contactoEmergencia->getParentescosIdParentescos());
 		$insert->bindValue('contactosperiodo1', $contactoEmergencia->getContactosperiodo());
 		$insert->bindValue('contactosemergenciaOculto1', $contactoEmergencia->getContactosemergenciaOculto());
 		$insert->bindValue('contactosemergenciaAccion1', $contactoEmergencia->getContactosemergenciaAccion());
@@ -123,24 +123,25 @@ class CrudContactosemergencia
 		`contactosemergenciaAccion` = :contactosemergenciaAccion1,
 		`contactosemergenciafecha` = :contactosemergenciafecha1,
 		`contactosemergenciauser` = :contactosemergenciauser1
-		WHERE `contactosEmergenciaId` = :contactosEmergenciaId1;");
-		$actualizar->bindValue('contactosEmergenciaId1', $contactoEmergencia->get_contactosEmergenciaId());
-		$actualizar->bindValue('numeroContactosEmergencia1', $contactoEmergencia->get_numeroContactosEmergencia());
-		$actualizar->bindValue('nombreContactoEmergencia1', $contactoEmergencia->get_nombreContactoEmergencia());
-		$actualizar->bindValue('parentescos_idParentescos1', $contactoEmergencia->get_Parentescos_idParentescos());
-		$actualizar->bindValue('estudiantes_numeroIdentificacion1', $contactoEmergencia->get_Estudiantes_numeroIdentificacion());
-		$actualizar->bindValue('contactosperiodo1', $contactoEmergencia->get_contactosperiodo());
-		$actualizar->bindValue('contactosemergenciaOculto1', $contactoEmergencia->get_contactosemergenciaOculto());
-		$actualizar->bindValue('contactosemergenciaAccion1', $contactoEmergencia->get_contactosemergenciaAccion());
-		$actualizar->bindValue('contactosemergenciafecha1', $contactoEmergencia->get_contactosemergenciafecha());
-		$actualizar->bindValue('contactosemergenciauser1', $contactoEmergencia->get_contactosemergenciauser());
+		WHERE `contactosEmergenciaId` = :contactosEmergenciaId1 AND contactosperiodo=:contactosperiodo1;");
+		$actualizar->bindValue('contactosEmergenciaId1', $contactoEmergencia->getContactosEmergenciaId());
+		$actualizar->bindValue('nombreContactoEmergencia1', $contactoEmergencia->getNombreContactoEmergencia());
+		$actualizar->bindValue('numeroContactosEmergencia1', $contactoEmergencia->getNumeroContactosEmergencia());
+		$actualizar->bindValue('estudiantes_numeroIdentificacion1', $contactoEmergencia->getEstudiantesNumeroIdentificacion());
+		$actualizar->bindValue('parentescos_idParentescos1', $contactoEmergencia->getParentescosIdParentescos());
+		$actualizar->bindValue('contactosperiodo1', $contactoEmergencia->getContactosperiodo());
+		$actualizar->bindValue('contactosemergenciaOculto1', $contactoEmergencia->getContactosemergenciaOculto());
+		$actualizar->bindValue('contactosemergenciaAccion1', $contactoEmergencia->getContactosemergenciaAccion());
+		$actualizar->bindValue('contactosemergenciafecha1', $contactoEmergencia->getContactosemergenciafecha());
+		$actualizar->bindValue('contactosemergenciauser1', $contactoEmergencia->getContactosemergenciauser());
 		$actualizar->execute();
 	}
-	public  function eliminar($id)
+	public  function eliminar($id, $periodo1)
 	{
 		$db = Db::conectar();
-		$eliminar = $db->prepare('DELETE FROM `contactosemergencia` WHERE Estudiantes_numeroIdentificacion1=:id');
+		$eliminar = $db->prepare('DELETE FROM `contactosemergencia` WHERE estudiantes_numeroIdentificacion1=:id AND contactosperiodo1=:periodo1');
 		$eliminar->bindValue('id', $id);
+		$eliminar->bindValue('periodo1', $periodo1);
 		$eliminar->execute();
 	}
 }

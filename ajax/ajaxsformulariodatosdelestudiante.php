@@ -52,6 +52,7 @@ function cargarformulario($cedula)
 		$provest = $crudprov->obtenerProvincia($cantonet->getCantonprovincia());
 		$paisest = $crudpais->obtenerPaises($provest->getProvinciapais());
 		$pueblo = $crudpueblo->obtenerpuebloNacionalidad($dato->getFkPuebloNacionalidadId());
+		echo "<script>console.log('pueblo servidor: " . $pueblo->getPueblonacionalidadId() . " etnia servidor: " . $pueblo->getPnetnia() . "')</script>";
 	} else {
 
 		echo "<script>console.log('No se pudo encontrar al estudiante: " . $cedula . "')</script>";
@@ -391,7 +392,7 @@ function cargarformulario($cedula)
 					<table>
 						<tr>
 							<td>
-								<select  class="selector" name="pueblonacionalidad" id="pueblonacionalidad">
+								<select  class="selector" name="pueblonacionalidad" id="pueblonacionalidad" onchange="selectpueblo()">
 									' . cargarPuebloEtnia($dato->getFkPuebloNacionalidadId(), $pueblo->getPnetnia()) . '
 								</select>
 							</td>

@@ -23,9 +23,10 @@
   <div class="sidebar_2">
     <div id="foto" name="foto">
       <a href="#" onclick="cargafotoestudiante()">IMAGEN</a>
+      <div id="nav1">
+      </div>
     </div>
-    <div id="nav1" class="sidebar_2">
-    </div>
+
   </div>
   <div style="padding-left: 10px;">
     <table class="contenedor1" border="1">

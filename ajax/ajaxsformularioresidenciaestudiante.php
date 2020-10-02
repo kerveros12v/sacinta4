@@ -117,7 +117,7 @@ function cargarresidenciaestudiante($cedula, $periodo)
                             <table>
                                 <tr>
                                     <td>
-                                        <select class="selector"  name="parroquiaRecidencia" id="parroquiaRecidencia">
+                                        <select class="selector"  name="parroquiaRecidencia1" id="parroquiaRecidencia1">
                                             ' . cargarParroquia($parroquia->getIdparroquias(), $cantonet->getCantonId()) . '
                                         </select>
                                      </td>

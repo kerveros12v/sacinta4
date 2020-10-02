@@ -220,4 +220,17 @@ class Contactosemergencia
 
 		return $this;
 	}
+	public function __toString()
+	{
+		return 	"contactosEmergenciaId: {" . $this->contactosEmergenciaId;
+		"}nombreContactoEmergencia:{" . $this->nombreContactoEmergencia;
+		"}numeroContactosEmergencia:{" . $this->numeroContactosEmergencia;
+		"}estudiantesNumeroIdentificacion:{" . $this->estudiantesNumeroIdentificacion;
+		"}parentescosIdParentescos:{" . $this->parentescosIdParentescos;
+		"}contactosperiodo:{" . $this->contactosperiodo;
+		"}contactosemergenciaOculto:{" . $this->contactosemergenciaOculto;
+		"}contactosemergenciaAccion:{" . $this->contactosemergenciaAccion;
+		"}contactosemergenciafecha:{" . $this->contactosemergenciafecha;
+		"}contactosemergenciauser:{" . $this->contactosemergenciauser . "}";
+	}
 }

@@ -254,7 +254,7 @@ class CrudEstudiantes
 			`estudiantesAccion` = :estudiantesAccion1,
 			`estudiantesfecha` = :estudiantesfecha1,
 			`estudiantesuser` = :estudiantesuser1
-			WHERE `numeroIdentificacion` = :fktipodocumentoId1;
+			WHERE `numeroIdentificacion` = :numeroIdentificacion1;
 
 			"
 		);

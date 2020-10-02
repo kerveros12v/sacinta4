@@ -44,20 +44,25 @@ function opciondatosestudiante()
 		$crud = new CrudEstudiantes();
 		$opcion = $_POST['opt'];
 		if ($_SESSION['user'] != "" || $_SESSION['campbuscarest'] != "") {
+
 			if ($opcion == 1) {
 				if ($crud->existe($_SESSION['campbuscarest']) == 0) {
 					$dato = datosrecargados($dato);
 					$dato->setUsuarioEstudiantes($_POST['ced']);
 					$dato->setPasswordEstudiantes(md5($_POST['ced']));
 					$dato->setAccesodepartamentoCodigo(2);
-					//echo ("<script>console.log(".$dato->__toString().")<\script>");
+					echo ("<script>console.log('Ingreso al insertar " . $dato->__toString() . "');<\script>");
 					$crud->insertar($dato);
 					return (guardarR());
-				} else $opcion = 2;
+				} else {
+					$opcion = 2;
+					echo ("<script>console.log('cambio a la opcion de actualizar ');<\script>");
+				}
 			}
 			if ($opcion == 2) {
 				$dato = $crud->obtenerEstudiantes($_SESSION['campbuscarest']);
 				$dato = datosrecargados($dato);
+				echo ("<script>console.log('Ingreso al actualizar" . $dato->__toString() . "');<\script>");
 				$crud->actualizar($dato);
 				return (actualizarR());
 			}
