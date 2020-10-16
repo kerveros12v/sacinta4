@@ -283,4 +283,42 @@ class SetecCondicionVida
 
         return $this;
     }
+    public function formatoArray()
+    {
+        $myarray = array(
+            'idSetecCondiciondeVida' => $this->idSetecCondiciondeVida,
+            'setecCondiciondeVidaCedula' => $this->setecCondiciondeVidaCedula,
+            'setecCondiciondeVidaFecha' => $this->setecCondiciondeVidaFecha,
+            'setecjefehogar' => $this->setecjefehogar,
+            'setecseguromedico' => $this->setecseguromedico,
+            'setecnumhijos' => $this->setecnumhijos,
+            'setechijomayor' => $this->setechijomayor,
+            'setecAsistenciaInstitucion' => $this->setecAsistenciaInstitucion,
+            'setecvivienda' => $this->setecvivienda,
+            'setecMienbrosHogar' => $this->setecMienbrosHogar,
+            'setecLuz' => $this->setecLuz,
+            'setecAgua' => $this->setecAgua,
+            'setecInternet' => $this->setecInternet
+        );
+        return $myarray;
+    }
+    public function formatoJSON()
+    {
+        $myarray = array(
+            'idSetecCondiciondeVida' => $this->idSetecCondiciondeVida,
+            'setecCondiciondeVidaCedula' => $this->setecCondiciondeVidaCedula,
+            'setecCondiciondeVidaFecha' => $this->setecCondiciondeVidaFecha,
+            'setecjefehogar' => $this->setecjefehogar,
+            'setecseguromedico' => $this->setecseguromedico,
+            'setecnumhijos' => $this->setecnumhijos,
+            'setechijomayor' => $this->setechijomayor,
+            'setecAsistenciaInstitucion' => $this->setecAsistenciaInstitucion,
+            'setecvivienda' => $this->setecvivienda,
+            'setecMienbrosHogar' => $this->setecMienbrosHogar,
+            'setecLuz' => $this->setecLuz,
+            'setecAgua' => $this->setecAgua,
+            'setecInternet' => $this->setecInternet
+        );
+        return json_encode($myarray);
+    }
 }

@@ -472,4 +472,60 @@ class SetecAspirante
 
         return $this;
     }
+    public function formatoJSON()
+    {
+        $myarray = array(
+            'numeroidentificacionsetec' => $this->numeroidentificacionsetec,
+            'primerApellidosetec' => $this->primerApellidosetec,
+            'segundoApellidosetec' => $this->segundoApellidosetec,
+            'primerNombresetec' => $this->primerNombresetec,
+            'segundoNombresetec' => $this->segundoNombresetec,
+            'fechanacimiento' => $this->fechanacimiento,
+            'fkgenerosetec' => $this->fkgenerosetec,
+            'fkformacionArtesano' => $this->fkformacionArtesano,
+            'instruccionRegistroCivil' => $this->instruccionRegistroCivil,
+            'setecaspiinstriccionseleccionada' => $this->setecaspiinstriccionseleccionada,
+            'parroquiasetec' => $this->parroquiasetec,
+            'direccionsetec' => $this->direccionsetec,
+            'correoelectronicoSetec' => $this->correoelectronicoSetec,
+            'telefonosetec' => $this->telefonosetec,
+            'celularsetec' => $this->celularsetec,
+            'fktipodiscapacidad' => $this->fktipodiscapacidad,
+            'fksocioempleo' => $this->fksocioempleo,
+            'idaccesodepartamento' => $this->idaccesodepartamento,
+            'setecaspiranteOculto' => $this->setecaspiranteOculto,
+            'setecaspiranteAccion' => $this->setecaspiranteAccion,
+            'setecaspirantefecha' => $this->setecaspirantefecha,
+            'setecaspiranteuser' => $this->setecaspiranteuser
+        );
+        return json_encode($myarray);
+    }
+    public function formatoArray()
+    {
+        $myarray = array(
+            'numeroidentificacionsetec' => $this->numeroidentificacionsetec,
+            'primerApellidosetec' => $this->primerApellidosetec,
+            'segundoApellidosetec' => $this->segundoApellidosetec,
+            'primerNombresetec' => $this->primerNombresetec,
+            'segundoNombresetec' => $this->segundoNombresetec,
+            'fechanacimiento' => $this->fechanacimiento,
+            'fkgenerosetec' => $this->fkgenerosetec,
+            'fkformacionArtesano' => $this->fkformacionArtesano,
+            'instruccionRegistroCivil' => $this->instruccionRegistroCivil,
+            'setecaspiinstriccionseleccionada' => $this->setecaspiinstriccionseleccionada,
+            'parroquiasetec' => $this->parroquiasetec,
+            'direccionsetec' => $this->direccionsetec,
+            'correoelectronicoSetec' => $this->correoelectronicoSetec,
+            'telefonosetec' => $this->telefonosetec,
+            'celularsetec' => $this->celularsetec,
+            'fktipodiscapacidad' => $this->fktipodiscapacidad,
+            'fksocioempleo' => $this->fksocioempleo,
+            'idaccesodepartamento' => $this->idaccesodepartamento,
+            'setecaspiranteOculto' => $this->setecaspiranteOculto,
+            'setecaspiranteAccion' => $this->setecaspiranteAccion,
+            'setecaspirantefecha' => $this->setecaspirantefecha,
+            'setecaspiranteuser' => $this->setecaspiranteuser
+        );
+        return $myarray;
+    }
 }

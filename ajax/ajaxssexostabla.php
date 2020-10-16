@@ -48,15 +48,5 @@ function cargarSexosT()
 if ($_SESSION['user'] != "") {
 	echo cargarSexosT();
 } else {
-	echo '<tr>
-		<td>
-		</td>
-		<td>
-		</td>
-		<td>
-		</td>
-		<td>
-			' . tiempoExedido() . '
-		</td>
-	</tr>';
+	echo  tiempoExedido();
 }

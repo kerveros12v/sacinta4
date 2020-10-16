@@ -158,4 +158,31 @@ class SetecOcupacion
 
         return $this;
     }
+
+    public function formatoJSON()
+    {
+        $myarray = array(
+            'setecOcupacionId' => $this->setecOcupacionId,
+            'fkaspirantesetec' => $this->fkaspirantesetec,
+            'fktipoOcupacion' => $this->fktipoOcupacion,
+            'setecocupacionAsignada' => $this->setecocupacionAsignada,
+            'fkestadoOcupacional' => $this->fkestadoOcupacional,
+            'horasTrabajadasxSemana' => $this->horasTrabajadasxSemana,
+            'fkareadepartamento' => $this->fkareadepartamento
+        );
+        return json_encode($myarray);
+    }
+    public function formatoArray()
+    {
+        $myarray = array(
+            'setecOcupacionId' => $this->setecOcupacionId,
+            'fkaspirantesetec' => $this->fkaspirantesetec,
+            'fktipoOcupacion' => $this->fktipoOcupacion,
+            'setecocupacionAsignada' => $this->setecocupacionAsignada,
+            'fkestadoOcupacional' => $this->fkestadoOcupacional,
+            'horasTrabajadasxSemana' => $this->horasTrabajadasxSemana,
+            'fkareadepartamento' => $this->fkareadepartamento
+        );
+        return ($myarray);
+    }
 }

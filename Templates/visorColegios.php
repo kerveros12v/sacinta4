@@ -25,6 +25,7 @@
 </head>
 
 <body>
+    <div class="loader"></div>
     <div id="dialog" style="display: none;" title="Respuesta del servidor">
         <p id="dialog-confirm"></p>
     </div>

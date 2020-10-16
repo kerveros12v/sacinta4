@@ -1,0 +1,74 @@
+<?php
+require_once("../Crud/CrudPeriodoacademico.php");
+require_once("../controladores/respuestasgenerales.php");
+
+use Crud\CrudPeriodoacademico;
+
+session_start();
+$_SESSION['campbuscarest'] = $_POST['cedula'];
+if ($_SESSION['campbuscarperiodo'] == "") {
+	$crudperiodoaca = new CrudPeriodoacademico();
+	$periodo1 = $crudperiodoaca->obtenerPeriodoAcademicoActual();
+	$_SESSION['campbuscarperiodo'] = $periodo1->getPeriodoacademicoId();
+	echo imprimecooke();
+}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+	<meta http-equiv="Content-type" content="text/html; " />
+	<title>Matriculacion Estudiante</title>
+
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../css/cssmatricula1.css" />
+	<link rel="stylesheet" type="text/css" href="../css/cssPlantilla.css" />
+	<script type="text/javascript" src="../vendor/select2/select2/dist/js/select2.min.js"></script>
+	<link href="../vendor/select2/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/ajaxssetecaspiranteselect.js"></script>
+	<script type="text/javascript" src="../js/ajaxsSetecAspirante.js"></script>
+</head>
+
+<body id="formulario1">
+
+	<?php
+	if (!isset($_SESSION['user'])) {
+		# code...
+		echo '<div class="sidebar1">
+		<div class="sidebar1">
+			<a href="#" target="contenedor"><img src="../img/logo-principal.png"  name="logo" width="110" height="60" id="logo"  /></a>
+			<h1 href="#">Formulario Registro Aspirante Setec </h1>
+		</div>
+		<div class="sidebar2">
+			<ul class="nav">
+				<li>
+					  <a id="salir" onclick="salirregistro()">Salir</a>
+				</li>
+	  		</ul>
+		</div>
+
+  </div>';
+	}
+
+	?>
+
+	<div class="cuerpo">
+		<form method="POST">
+			<table border="1">
+				<tr id="setecaspirante"></tr>
+
+			</table>
+
+			<input type="button" value="Guardar" id="btnguardar" onclick="registro()">
+
+		</form>
+	</div>
+
+</body>
+
+
+
+</html>

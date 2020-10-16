@@ -178,4 +178,20 @@ class Tipodiscapacidad
 
 		return $this;
 	}
+	public function formatoJSON()
+	{
+		$myarray = array(
+			'tipoDiscapacidadid' => $this->tipoDiscapacidadid,
+			'tipoDiscapacidad' => $this->tipoDiscapacidad
+		);
+		return json_encode($myarray);
+	}
+	public function formatoArray()
+	{
+		$myarray = array(
+			'tipoDiscapacidadid' => $this->tipoDiscapacidadid,
+			'tipoDiscapacidad' => $this->tipoDiscapacidad
+		);
+		return $myarray;
+	}
 }

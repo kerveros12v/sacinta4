@@ -6,6 +6,7 @@ $(document).ready(function () {
 
 function cargartabla1() {
 
+
   var id = $('#cantonColegio').val();
   $.ajax({
     type: 'POST',
@@ -16,7 +17,7 @@ function cargartabla1() {
   })
     .done(function (cargar) {
       $('#contenedorColegios').html(cargar)
-    })
+  })
     .fail(function () {
       alert('Hubo un error al cargar')
     });
@@ -33,7 +34,7 @@ function cargartabla() {
     })
       .done(function (cargar) {
         $('#contenedorColegios').html(cargar)
-      })
+    })
       .fail(function () {
         alert('Hubo un error al cargar')
       });

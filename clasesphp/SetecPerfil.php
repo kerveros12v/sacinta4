@@ -157,4 +157,20 @@ class SetecPerfil
 
         return $this;
     }
+    public function formatoJSON()
+    {
+        $myarray = array(
+            'idsetecperfil' => $this->idsetecperfil,
+            'setecperfilnombre' => $this->setecperfilnombre
+        );
+        return json_encode($myarray);
+    }
+    public function formatoArray()
+    {
+        $myarray = array(
+            'idsetecperfil' => $this->idsetecperfil,
+            'setecperfilnombre' => $this->setecperfilnombre
+        );
+        return ($myarray);
+    }
 }

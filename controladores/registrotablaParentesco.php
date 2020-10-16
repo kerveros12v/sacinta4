@@ -19,7 +19,7 @@ function opcionparentesco()
         $crud = new CrudParentescos();
 
         $datos->setIdParentescos($_POST['id']);
-        $datos->setParentesco($_POST['nom']);
+        $datos->setParentesco(strtoupper($_POST['nom']));
         $datos->setParentescocodigo($_POST['cod']);
         $datos->setParentescosOculto($_POST['eliminar']);
         $datos->setParentescosAccion($_POST['actualizar']);

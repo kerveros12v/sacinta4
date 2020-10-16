@@ -179,4 +179,32 @@ class SetecEncuestador
 
         return $this;
     }
+    public function formatoJSON()
+    {
+        $myarray = array(
+            'idnumIdentificacion' => $this->idnumIdentificacion,
+            'nombre' => $this->nombre,
+            'etnias_etniaId' => $this->etniasEtniaId,
+            'setecencuestadorperfil' => $this->setecencuestadorperfil,
+            'setecencuestadorOculto' => $this->setecencuestadorOculto,
+            'setecencuestadorAccion' => $this->setecencuestadorAccion,
+            'setecencuestadorfecha' => $this->setecencuestadorfecha,
+            'setecencuestadoruser' => $this->setecencuestadoruser
+        );
+        return json_encode($myarray);
+    }
+    public function formatoArray()
+    {
+        $myarray = array(
+            'idnumIdentificacion' => $this->idnumIdentificacion,
+            'nombre' => $this->nombre,
+            'etnias_etniaId' => $this->etniasEtniaId,
+            'setecencuestadorperfil' => $this->setecencuestadorperfil,
+            'setecencuestadorOculto' => $this->setecencuestadorOculto,
+            'setecencuestadorAccion' => $this->setecencuestadorAccion,
+            'setecencuestadorfecha' => $this->setecencuestadorfecha,
+            'setecencuestadoruser' => $this->setecencuestadoruser
+        );
+        return $myarray;
+    }
 }

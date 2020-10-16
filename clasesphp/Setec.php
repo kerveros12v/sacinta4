@@ -5,7 +5,6 @@ namespace Clasesphp;
 class Setec
 {
 
-
     private $idsetec;
     private $setecAspiranteNumeroidentificacionsetec;
     private $fksetecEncuestador;
@@ -242,5 +241,39 @@ class Setec
         $this->setecuser = $setecuser;
 
         return $this;
+    }
+    public function formatoJSON()
+    {
+        $myarray = array(
+            'idsetec' => $this->idsetec,
+            'setecAspiranteNumeroidentificacionsetec' => $this->setecAspiranteNumeroidentificacionsetec,
+            'fksetecEncuestador' => $this->fksetecEncuestador,
+            'setecCertificacionIdsetecCertificacion' => $this->setecCertificacionIdsetecCertificacion,
+            'setecfkcondiciondevida' => $this->setecfkcondiciondevida,
+            'setecfkcondicionlaboral' => $this->setecfkcondicionlaboral,
+            'fksecestadocertificacion' => $this->fksecestadocertificacion,
+            'setecOculto' => $this->setecOculto,
+            'setecAccion' => $this->setecAccion,
+            'setecfecha' => $this->setecfecha,
+            'setecuser' => $this->setecuser
+        );
+        return json_encode($myarray);
+    }
+    public function formatoArray()
+    {
+        $myarray = array(
+            'idsetec' => $this->idsetec,
+            'setecAspiranteNumeroidentificacionsetec' => $this->setecAspiranteNumeroidentificacionsetec,
+            'fksetecEncuestador' => $this->fksetecEncuestador,
+            'setecCertificacionIdsetecCertificacion' => $this->setecCertificacionIdsetecCertificacion,
+            'setecfkcondiciondevida' => $this->setecfkcondiciondevida,
+            'setecfkcondicionlaboral' => $this->setecfkcondicionlaboral,
+            'fksecestadocertificacion' => $this->fksecestadocertificacion,
+            'setecOculto' => $this->setecOculto,
+            'setecAccion' => $this->setecAccion,
+            'setecfecha' => $this->setecfecha,
+            'setecuser' => $this->setecuser
+        );
+        return $myarray;
     }
 }

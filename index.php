@@ -34,7 +34,7 @@
 
             <td class="m1login"><a href="Templates/opcionesMatriculacion.php"><img src="img/matricula_1.png" width="419" height="185" />Matriculacion</a></td>
 
-            <td class="m1login"><a href="Templates/visorSetec.php"><img src="img/logo2018setec.jpg" width="419" height="185" />Setec</a></td>
+            <td class="m1login"><a href="Templates/opcionesSetecAspirante.php"><img src="img/logo2018setec.jpg" width="419" height="185" />Setec</a></td>
 
             <td><a href="Templates/login.php">Acceso sistema</a></td>
 

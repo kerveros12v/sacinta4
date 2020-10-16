@@ -283,4 +283,42 @@ class SetecCertificacion
 
       return $this;
    }
+   public function formatoJSON()
+   {
+      $myarray = array(
+         'idsetecCertificacion' => $this->idsetecCertificacion,
+         'fkidsetecperfil' => $this->fkidsetecperfil,
+         'fechaprueba' => $this->fechaprueba,
+         'horaprueba' => $this->horaprueba,
+         'costoCertidicacion' => $this->costoCertidicacion,
+         'setecLugardondeExaminado' => $this->setecLugardondeExaminado,
+         'setecnombreEmpresaLugar' => $this->setecnombreEmpresaLugar,
+         'setecdireccionEmpresa' => $this->setecdireccionEmpresa,
+         'setecTelefonoEmpresa' => $this->setecTelefonoEmpresa,
+         'seteccertificacionOculto' => $this->seteccertificacionOculto,
+         'seteccertificacionAccion' => $this->seteccertificacionAccion,
+         'seteccertificacionfecha' => $this->seteccertificacionfecha,
+         'seteccertificacionuser' => $this->seteccertificacionuser
+      );
+      return json_encode($myarray);
+   }
+   public function formatoArray()
+   {
+      $myarray = array(
+         'idsetecCertificacion' => $this->idsetecCertificacion,
+         'fkidsetecperfil' => $this->fkidsetecperfil,
+         'fechaprueba' => $this->fechaprueba,
+         'horaprueba' => $this->horaprueba,
+         'costoCertidicacion' => $this->costoCertidicacion,
+         'setecLugardondeExaminado' => $this->setecLugardondeExaminado,
+         'setecnombreEmpresaLugar' => $this->setecnombreEmpresaLugar,
+         'setecdireccionEmpresa' => $this->setecdireccionEmpresa,
+         'setecTelefonoEmpresa' => $this->setecTelefonoEmpresa,
+         'seteccertificacionOculto' => $this->seteccertificacionOculto,
+         'seteccertificacionAccion' => $this->seteccertificacionAccion,
+         'seteccertificacionfecha' => $this->seteccertificacionfecha,
+         'seteccertificacionuser' => $this->seteccertificacionuser
+      );
+      return $myarray;
+   }
 }

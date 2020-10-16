@@ -157,4 +157,14 @@ class Sexos
 
 		return $this;
 	}
+	public function formatoJSON()
+	{
+		$myarray = array('sexoId' => $this->sexoId, 'sexo' => $this->sexo);
+		return json_encode($myarray);
+	}
+	public function formatoArray()
+	{
+		$myarray = array('sexoId' => $this->sexoId, 'sexo' => $this->sexo);
+		return ($myarray);
+	}
 }

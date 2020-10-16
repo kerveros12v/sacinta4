@@ -199,4 +199,34 @@ class SetecExperienciaLaboral
 
         return $this;
     }
+    public function formatoJSON()
+    {
+        $myarray = array(
+            'idsetecExperienciaLaboral' => $this->idsetecExperienciaLaboral,
+            'fknumidentificacion' => $this->fknumidentificacion,
+            'experiencianombreEmpresa' => $this->experiencianombreEmpresa,
+            'tiempodetrabajo' => $this->tiempodetrabajo,
+            'setecactividadRealizada' => $this->setecactividadRealizada,
+            'splOculto' => $this->splOculto,
+            'splAccion' => $this->splAccion,
+            'splfecha' => $this->splfecha,
+            'spluser' => $this->spluser
+        );
+        return json_encode($myarray);
+    }
+    public function formatoArray()
+    {
+        $myarray = array(
+            'idsetecExperienciaLaboral' => $this->idsetecExperienciaLaboral,
+            'fknumidentificacion' => $this->fknumidentificacion,
+            'experiencianombreEmpresa' => $this->experiencianombreEmpresa,
+            'tiempodetrabajo' => $this->tiempodetrabajo,
+            'setecactividadRealizada' => $this->setecactividadRealizada,
+            'splOculto' => $this->splOculto,
+            'splAccion' => $this->splAccion,
+            'splfecha' => $this->splfecha,
+            'spluser' => $this->spluser
+        );
+        return ($myarray);
+    }
 }

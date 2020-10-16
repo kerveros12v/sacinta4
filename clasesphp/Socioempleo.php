@@ -136,4 +136,20 @@ class SocioEmpleo
 
         return $this;
     }
+    public function formatoJSON()
+    {
+        $myarray = array(
+            'idsocioempleo' => $this->idsocioempleo,
+            'socioEmpleoregistro' => $this->socioEmpleoregistro
+        );
+        return json_encode($myarray);
+    }
+    public function formatoArray()
+    {
+        $myarray = array(
+            'idsocioempleo' => $this->idsocioempleo,
+            'socioEmpleoregistro' => $this->socioEmpleoregistro
+        );
+        return $myarray;
+    }
 }
