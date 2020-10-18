@@ -1,13 +1,13 @@
 $(document).ready(function () {
   cargarFormulario();
- // cargarDiscapaidadEstudiante();
+  cargarDiscapaidadEstudiante();
   cargarResidenciaEstudiante();
   cargarContactoEmergenciaEstudiante();
   cargarBachilleratoEstudiantes();
- // cargarTitulotercernivelEstudiante();
-  //cargarCodMatricula();
-  //cargarformMatricula();
-  //cargarformtrabajo();
+  cargarTitulotercernivelEstudiante();
+  cargarCodMatricula();
+  cargarformMatricula();
+  cargarformtrabajo();
 
   cargarmenu();
   //cargarpaisest2();
@@ -29,20 +29,22 @@ function mostrarReporteMatricula() {
 
   //window.open("../reportes/formularioMatriculacionEstudiante.php?cedula="+$('#ced').val(), "Formulario de Matriculacion", "width=1000, height=1000")
   registrarEstudiante();
-  //registrardisapacidadEstudiante();
+  registrardisapacidadEstudiante();
   registrarresisenciaEstudiante();
+  registrarTituloTercernivel();
   //window.Location('../reportes/formularioMatriculacionEstudiante.php','top', "Formulario de Matriculacion", "width=100%, height=100%,location=no");
   registrarContactoEmergencia();
-registrarBachillerato();
+  registrarBachillerato();
+  registrarTrabajo();
   cargarFormulario();
- // cargarDiscapaidadEstudiante();
+  cargarDiscapaidadEstudiante();
   cargarResidenciaEstudiante();
   cargarContactoEmergenciaEstudiante();
- // cargarBachilleratoEstudiantes();
- // cargarTitulotercernivelEstudiante();
+  cargarBachilleratoEstudiantes();
+  cargarTitulotercernivelEstudiante();
   //cargarCodMatricula();
-  //cargarformMatricula();
-  //cargarformtrabajo();
+  cargarformMatricula();
+  cargarformtrabajo();
 }
 function cargarFormulario() {
   $.ajax({
@@ -314,8 +316,7 @@ function cargafotoestudiante() {
 }
 
 function registrardisapacidadEstudiante() {
-  var CarnetConadisId = $('#CarnetConadisId').val();
-  var fkDiscapacidadDiscapacidadId = $('#fkDiscapacidadDiscapacidadId').val();
+  var carnetConadisId = $('#carnetConadisId').val();
   var fkTipoDiscapacidadTipoDiscapacidadId = $('#fkTipoDiscapacidadTipoDiscapacidadId').val();
   var porcentajeDiscapacidad = $('#porcentajeDiscapacidad').val();
 
@@ -323,8 +324,7 @@ function registrardisapacidadEstudiante() {
     type: 'POST',
     url: '../controladores/registroDiscapacidadEstudiante.php',
     data: {
-      'CarnetConadisId': CarnetConadisId,
-      'fkDiscapacidadDiscapacidadId': fkDiscapacidadDiscapacidadId,
+      'carnetConadisId': carnetConadisId,
       'fkTipoDiscapacidadTipoDiscapacidadId': fkTipoDiscapacidadTipoDiscapacidadId,
       'porcentajeDiscapacidad': porcentajeDiscapacidad,
       'actualizar': 0,
@@ -374,7 +374,7 @@ function registrarContactoEmergencia() {
   var nomcontactoemergen = $('#nomcontactoemergen').val();
   var numcontacto = $('#numcontacto').val();
   var parentesco1 = $('#parentesco1').val();
-  console.log("Datos a enviar de contacto de emergencia: {"+nomcontactoemergen+"}"+"{"+numcontacto+"}"+"{"+parentesco1+"}");
+  console.log("Datos a enviar de contacto de emergencia: {" + nomcontactoemergen + "}" + "{" + numcontacto + "}" + "{" + parentesco1 + "}");
   $.ajax({
     type: 'POST',
     url: '../controladores/registroContactoEmergenciaEstudiante.php',
@@ -406,6 +406,47 @@ function registrarBachillerato() {
       'colegio': colegio,
       'fkTiposBacilleratotiposBacilleratoId': fkTiposBacilleratotiposBacilleratoId,
       'graduacion': graduacion,
+      'actualizar': 0,
+      'eliminar': 0,
+      'opt': 1
+    }
+  })
+    .done(function (cargar) {
+      return cargar;
+    })
+    .fail(function () {
+      alert('Hubo un error al cargar de Perfiles')
+    })
+}
+function registrarTrabajo() {
+  var trabajo = $('#trabajo').val();
+  var sectrabajo = $('#sectrabajo').val();
+  $.ajax({
+    type: 'POST',
+    url: '../controladores/registroTrabajoEstudiante.php',
+    data: {
+      'trabajo': trabajo,
+      'sectrabajo': sectrabajo,
+      'actualizar': 0,
+      'eliminar': 0,
+      'opt': 1
+    }
+  })
+    .done(function (cargar) {
+      return cargar;
+    })
+    .fail(function () {
+      alert('Hubo un error al cargar de Perfiles')
+    })
+}
+function registrarTituloTercernivel() {
+  var tituloSuperior = $('#tituloSuperior').val();
+
+  $.ajax({
+    type: 'POST',
+    url: '../controladores/registroEstudiantetitulotercernivel.php',
+    data: {
+      'tituloSuperior': tituloSuperior,
       'actualizar': 0,
       'eliminar': 0,
       'opt': 1

@@ -19,3 +19,14 @@ function cargarTipoDiscapacidad($opt)
     }
     return $lista;
 }
+function cargarTipoDiscapacidadbool($opt)
+{
+    $oCrudtipodiscap = new CrudTipoDiscapacidad();
+    $listdiscapa = $oCrudtipodiscap->mostrar();
+    $tipodiscapa = new Tipodiscapacidad();
+    $lista = '';
+    foreach ($listdiscapa as $tipodiscapa) {
+        if ($opt == $tipodiscapa->getTipodiscapacidadbool()) $lista .= " <option selected='selected'  value='" . $tipodiscapa->getTipoDiscapacidadid() . "'><label>" ./**/ ($tipodiscapa->getTipoDiscapacidad()) . "</label></option>";
+    }
+    return $lista;
+}

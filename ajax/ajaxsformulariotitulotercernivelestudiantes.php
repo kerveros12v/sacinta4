@@ -5,10 +5,11 @@ require_once("ajaxsselect2.php");
 
 session_start();
 
-function cargarestudiantetitulotercernivel($cedula){
-    $crud=new \Crud\CrudEstudiantestitulotercernivel();
-    $dato=$crud->obtenerEstudiantestitulotercernivel($cedula);
-    $r=ajaxs_select2().'
+function cargarestudiantetitulotercernivel($cedula)
+{
+	$crud = new \Crud\CrudEstudiantestitulotercernivel();
+	$dato = $crud->obtenerEstudiantestitulotercernivel($cedula);
+	$r = ajaxs_select2() . '
 	<td>
 		<table width=100%>
 			<tr class="tabtitulos">
@@ -22,7 +23,7 @@ function cargarestudiantetitulotercernivel($cedula){
 						<tr>
 							<td>
 								<select class="selector"  name="tituloSuperior" id="tituloSuperior">
-									'.cargartituloTercerNivel($dato->get_estudiantesTituloTercerNivelid()).'
+									' . cargartituloTercerNivel($dato->getEtnTituloTercerNivelId()) . '
 								</select>
 							</td>
 						</tr>
@@ -37,13 +38,12 @@ function cargarestudiantetitulotercernivel($cedula){
 		</table>
 	</td>
     ';
-return $r;
+	return $r;
 }
-try{
-	$cedula=isset($_SESSION['campbuscarest'])?$_SESSION['campbuscarest']:"";
+
+try {
+	$cedula = isset($_SESSION['campbuscarest']) ? $_SESSION['campbuscarest'] : "";
 	echo cargarestudiantetitulotercernivel($cedula);
+} catch (\Throwable $e) {
+	echo $e;
 }
-catch(\Exception $e ){
-echo $e;
-}
-?>

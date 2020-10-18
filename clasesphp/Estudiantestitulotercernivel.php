@@ -157,4 +157,14 @@ class Estudiantestitulotercernivel
 
 		return $this;
 	}
+	public function __toString()
+	{
+		return 	"etnid{" . $this->etnid .
+			"}estudiantesNumeroIdentificacion{" . $this->estudiantesNumeroIdentificacion .
+			"}etnTituloTercerNivelId{" . $this->etnTituloTercerNivelId .
+			"}etnOculto{" . $this->etnOculto .
+			"}etnAccion{" . $this->etnAccion .
+			"}etnfecha{" . $this->etnfecha .
+			"}etnuser{" . $this->etnuser . "}";
+	}
 }

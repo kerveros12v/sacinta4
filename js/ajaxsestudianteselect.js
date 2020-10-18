@@ -178,3 +178,24 @@ function cargarColegio() {
       alert('Hubo un error al cargar la lista de Provincias')
     })
 }
+
+
+
+function discapacidadbool() {
+
+  var id = $('#fkDiscapacidadDiscapacidadId').val();
+  console.log("Discapacidad Si/No: "+id);
+  $.ajax({
+    type: 'POST',
+    url: '../ajax/ajaxsselectdiscapacidadprint.php',
+    data: {
+        'id': id
+    }
+  })
+    .done(function (cargar) {
+      $('#fkTipoDiscapacidadTipoDiscapacidadId').html(cargar);
+    })
+    .fail(function () {
+      alert('Hubo un error al cargar la lista de Discapacidad')
+    })
+}

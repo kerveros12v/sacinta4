@@ -1,57 +1,73 @@
 <?php
 require_once("../clasesphp/Discapacidadesestudiantes.php");
 require_once("../Crud/CrudDiscapacidadesestudiantes.php");
+require_once("../clasesphp/Discapacidad.php");
+require_once("../Crud/CrudDiscapacidad.php");
+require_once("../clasesphp/Tipodiscapacidad.php");
+require_once("../Crud/CrudTipoDiscapacidad.php");
 require_once("respuestasgenerales.php");
 
 use Clasesphp\Discapacidadesestudiantes;
 use Crud\CrudDiscapacidadesestudiantes;
+use Clasesphp\Discapacidad;
+use Crud\CrudDiscapacidad;
+use Crud\CrudTipoDiscapacidad;
 
 session_start();
 function datosrecargadosdiscapacidadestudiante($dato)
 {
-	$dato->set_CarnetConadisId($_POST['CarnetConadisId']);
-	$dato->set_fkEstudiantesNumeroIdentificacion($_SESSION['campbuscarest']);
-	$dato->set_fkDiscapacidadDiscapacidadId($_POST['fkDiscapacidadDiscapacidadId']);
-	$dato->set_fkTipoDiscapacidadTipoDiscapacidadId($_POST['fkTipoDiscapacidadTipoDiscapacidadId']);
-	$dato->set_porcentajeDiscapacidad($_POST['porcentajeDiscapacidad']);
-	$dato->set_discapacidadestperiodo($_SESSION['campbuscarperiodo']);
-	$dato->set_discapacidadesestudiantesOculto($_POST['eliminar']);
-	$dato->set_discapacidadesestudiantesAccion($_POST['actualizar']);
-	$dato->set_discapacidadesestudiantesfecha(date("Y-m-d"));
-	$dato->set_discapacidadesestudiantesuser((isset($_SESSION['tipouser'])) ? $_SESSION['tipouser'] . $_SESSION['user'] : $_SESSION['campbuscarest']);
-	return $dato;
+	$cruddiscapacidad1 = new CrudDiscapacidad();
+	$crudTipodiscapacidad = new CrudTipoDiscapacidad();
+	$auxtipodiscapacidad = $crudTipodiscapacidad->obtenerTipoDiscapacidad($_POST['fkTipoDiscapacidadTipoDiscapacidadId']);
 
+	$auxdiscapacidad = $cruddiscapacidad1->obtenerDiscapacidad($auxtipodiscapacidad->getTipodiscapacidadbool());
+	if ($auxdiscapacidad->getDiscapacidadbool() == 0) {
+		$dato->setPorcentajeDiscapacidad(0);
+		$dato->setCarnetConadisId("NA");
+	} else {
+		$dato->setPorcentajeDiscapacidad($_POST['porcentajeDiscapacidad']);
+		if (!isset($_POST['carnetConadisId']))
+			$dato->setCarnetConadisId($_POST['carnetConadisId']);
+		else
+			$dato->setCarnetConadisId("NA");
+	}
+	$dato->setFkEstudiantesNumeroIdentificacion($_SESSION['campbuscarest']);
+	$dato->setFkTipoDiscapacidadTipoDiscapacidadId($auxtipodiscapacidad->getTipoDiscapacidadid());
+	$dato->setDiscapacidadestperiodo($_SESSION['campbuscarperiodo']);
+	$dato->setDiscapacidadesestudiantesOculto($_POST['eliminar']);
+	$dato->setDiscapacidadesestudiantesAccion($_POST['actualizar']);
+	$dato->setDiscapacidadesestudiantesfecha(date("Y-m-d"));
+	$dato->setDiscapacidadesestudiantesuser((isset($_SESSION['tipouser'])) ? $_SESSION['tipouser'] . $_SESSION['user'] : $_SESSION['campbuscarest']);
+	return $dato;
 }
 function opciondatosestudiante()
 {
 	try {
 		$dato = new Discapacidadesestudiantes();
 		$crud = new CrudDiscapacidadesestudiantes();
+
 		$opcion = $_POST['opt'];
 		if ($_SESSION['user'] != "" || $_SESSION['campbuscarest'] != "") {
 			if ($opcion == 1) {
 				$dato = $crud->obtenerdiscapacidadesestudiantes($_SESSION['campbuscarest'], $_SESSION['campbuscarperiodo']);
-				if ($dato->get_discapacidadesestudiantesid() != null) {
-					echo("<script> console.log('Respuesta desde el registro(insrtar): ".$dato->__toString()."');</script>");
-					$opcion=2;
-				}else{
+				if ($dato->getDiscapacidadesestudiantesid() != null) {
+					$opcion = 2;
+				} else {
 					$dato = datosrecargadosdiscapacidadestudiante($dato);
 					$crud->insertar($dato);
 					return (guardarR());
 				}
-
-
 			}
 			if ($opcion == 2) {
 				$dato = $crud->obtenerdiscapacidadesestudiantes($_SESSION['campbuscarest'], $_SESSION['campbuscarperiodo']);
 				$dato = datosrecargadosdiscapacidadestudiante($dato);
-				echo("<script> console.log('Respuesta desde el registro(actualizar): ".$dato->__toString()."');</script>");
+
 				$crud->actualizar($dato);
-				return (actualizarR());
+				return (actualizarR() . "-> " . $dato);
 			}
 
 			if ($opcion == optEliminar()) {
-				$crud->eliminar($dato->get_CarnetConadisId());
+				$crud->eliminar($dato->getCarnetConadisId());
 				return (eliminarR());
 			}
 		} else {
@@ -62,6 +78,6 @@ function opciondatosestudiante()
 	}
 }
 $dato = new Discapacidadesestudiantes();
-$dato =datosrecargadosdiscapacidadestudiante($dato);
+$dato = datosrecargadosdiscapacidadestudiante($dato);
 //echo "<script> console.log('respuesta registro: ".$dato."')</script>";
 echo opciondatosestudiante();

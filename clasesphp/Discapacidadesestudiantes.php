@@ -220,4 +220,13 @@ class Discapacidadesestudiantes
 
 		return $this;
 	}
+	public function __toString()
+	{
+		return "discapacidadesestudiantesid{" . $this->discapacidadesestudiantesid . "}carnetConadisId{" .
+			$this->carnetConadisId . "}fkEstudiantesNumeroIdentificacion{" .
+			$this->fkEstudiantesNumeroIdentificacion . "}fkTipoDiscapacidadTipoDiscapacidadId{" .
+			$this->fkTipoDiscapacidadTipoDiscapacidadId . "}porcentajeDiscapacidad{" .
+			$this->porcentajeDiscapacidad . "}discapacidadestperiodo{" .
+			$this->discapacidadestperiodo . "}";
+	}
 }

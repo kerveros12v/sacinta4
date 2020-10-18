@@ -22,7 +22,6 @@ session_start();
 
 $crud11 = new CrudPeriodoacademico();
 $cedula11 = isset($_SESSION['campbuscarest']) ? $_SESSION['campbuscarest'] : "";
-echo $_SESSION['tipouser'];
 $periodo = isset($_SESSION['periodo']) ? $crud11->obtenerPeriodoacademico($_SESSION['periodo']) : $crud11->obtenerPeriodoAcademicoActual();
 function cargarMatricula($cedula, $periodo)
 {

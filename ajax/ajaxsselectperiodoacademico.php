@@ -11,15 +11,15 @@ function cargarperiodo($opt)
     $lista = '<option disabled><label>Seleccione un Periodo academico</label></option>"';
     if ($opt == 0) {
         $periodo = $crud1->obtenerPeriodoAcademicoActual();
-        $lista .= "<option selected='selected' value='" . $periodo->getPeriodoacademicoId() . "'><label>" . (($periodo->getPeriodoAcademico())) . "</label></option>";
+        $lista .= "<option selected='selected' value='" . $periodo->getPeriodoacademicoId() . "'><label>" . (($periodo->getCodigoPeriodo())) . "</label></option>";
     } else {
         $listapeiodos = $crud1->mostrar();
         $periodo = new Periodoacademico();
         foreach ($listapeiodos as $periodo) {
             if ($periodo->getActual() == 1) {
-                $lista .= "<option selected='selected' value='" . $periodo->getPeriodoacademicoId() . "'><label>" . (($periodo->getPeriodoAcademico())) . "</label></option>";
+                $lista .= "<option selected='selected' value='" . $periodo->getPeriodoacademicoId() . "'><label>" . (($periodo->getCodigoPeriodo())) . "</label></option>";
             } else {
-                $lista .= "<option value='" . $periodo->getPeriodoacademicoId() . "'><label>" . (($periodo->getPeriodoAcademico())) . "</label></option>";
+                $lista .= "<option value='" . $periodo->getPeriodoacademicoId() . "'><label>" . (($periodo->getCodigoPeriodo())) . "</label></option>";
             }
         }
     }

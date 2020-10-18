@@ -58,16 +58,16 @@ class CrudDiscapacidadesestudiantes
 		`discapacidadesestudiantesuser` = :discapacidadesestudiantesuser1
 		WHERE `discapacidadesestudiantesid` = :discapacidadesestudiantesid1;");
 
-		$actualizar->bindValue('discapacidadesestudiantesid1', $discapacidad->get_discapacidadesestudiantesid());
-		$actualizar->bindValue('CarnetConadisId1', $discapacidad->get_CarnetConadisId());
-		$actualizar->bindValue('fkEstudiantesNumeroIdentificacion1', $discapacidad->get_fkEstudiantesNumeroIdentificacion());
-		$actualizar->bindValue('fkTipoDiscapacidadTipoDiscapacidadId1', $discapacidad->get_fkTipoDiscapacidadTipoDiscapacidadId());
-		$actualizar->bindValue('porcentajeDiscapacidad1', $discapacidad->get_porcentajeDiscapacidad());
-		$actualizar->bindValue('discapacidadestperiodo1', $discapacidad->get_discapacidadestperiodo());
-		$actualizar->bindValue('discapacidadesestudiantesOculto1', $discapacidad->get_discapacidadesestudiantesOculto());
-		$actualizar->bindValue('discapacidadesestudiantesAccion1', $discapacidad->get_discapacidadesestudiantesAccion());
-		$actualizar->bindValue('discapacidadesestudiantesfecha1', $discapacidad->get_discapacidadesestudiantesfecha());
-		$actualizar->bindValue('discapacidadesestudiantesuser1', $discapacidad->get_discapacidadesestudiantesuser());
+		$actualizar->bindValue('discapacidadesestudiantesid1', $discapacidad->getDiscapacidadesestudiantesid());
+		$actualizar->bindValue('carnetConadisId1', $discapacidad->getCarnetConadisId());
+		$actualizar->bindValue('fkEstudiantesNumeroIdentificacion1', $discapacidad->getFkEstudiantesNumeroIdentificacion());
+		$actualizar->bindValue('fkTipoDiscapacidadTipoDiscapacidadId1', $discapacidad->getFkTipoDiscapacidadTipoDiscapacidadId());
+		$actualizar->bindValue('porcentajeDiscapacidad1', $discapacidad->getPorcentajeDiscapacidad());
+		$actualizar->bindValue('discapacidadestperiodo1', $discapacidad->getDiscapacidadestperiodo());
+		$actualizar->bindValue('discapacidadesestudiantesOculto1', $discapacidad->getDiscapacidadesestudiantesOculto());
+		$actualizar->bindValue('discapacidadesestudiantesAccion1', $discapacidad->getDiscapacidadesestudiantesAccion());
+		$actualizar->bindValue('discapacidadesestudiantesfecha1', $discapacidad->getDiscapacidadesestudiantesfecha());
+		$actualizar->bindValue('discapacidadesestudiantesuser1', $discapacidad->getDiscapacidadesestudiantesuser());
 		$actualizar->execute();
 	}
 	public  function existe($id, $periodo)
@@ -128,7 +128,7 @@ class CrudDiscapacidadesestudiantes
 		:discapacidadesestudiantesfecha1,
 		:discapacidadesestudiantesuser1);");
 		$insert->bindValue('discapacidadesestudiantesid1', $discapacidad->getDiscapacidadesestudiantesid());
-		$insert->bindValue('CarnetConadisId1', $discapacidad->getCarnetConadisId());
+		$insert->bindValue('carnetConadisId1', $discapacidad->getCarnetConadisId());
 		$insert->bindValue('fkEstudiantesNumeroIdentificacion1', $discapacidad->getFkEstudiantesNumeroIdentificacion());
 		$insert->bindValue('fkTipoDiscapacidadTipoDiscapacidadId1', $discapacidad->getFkTipoDiscapacidadTipoDiscapacidadId());
 		$insert->bindValue('porcentajeDiscapacidad1', $discapacidad->getPorcentajeDiscapacidad());

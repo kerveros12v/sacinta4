@@ -37,7 +37,7 @@ try {
     if ($crudest1->existe($usuario_1)) {
       $est2 = $crudest1->obtenerEstudiantes($usuario_1);
       if ($crudest1->login($usuario_1, md5($clave_1)) == 1) {
-        $_SESSION['user'] = $est2->getPrimerApellido() . " " . $est2->getSegundoApellido() . " " . $est2->getPrimerNombre() . " " . $est2->getSegundoNombre();
+        $_SESSION['user'] = $est2->getPrimerApellido() . " " . $est2->getPrimerNombre();
         $_SESSION['est'] = $est2->getNumeroIdentificacion();
         $_SESSION['campbuscarest'] = $est2->getNumeroIdentificacion();
         $_SESSION['tipouser'] = "est";

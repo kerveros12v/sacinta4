@@ -25,7 +25,7 @@ class CrudBachillerato
 			$mybachillerato = new Bachilleratos();
 			$mybachillerato->setBachilleratoId($bachillerato['bachilleratoId']);
 			$mybachillerato->setFkEstudiantesNumeroIdentificacion($bachillerato['fkEstudiantesNumeroIdentificacion']);
-			$mybachillerato->getFkTiposBacilleratotiposBacilleratoId($bachillerato['fkTiposBacilleratotiposBacilleratoId']);
+			$mybachillerato->setFkTiposBacilleratotiposBacilleratoId($bachillerato['fkTiposBacilleratotiposBacilleratoId']);
 			$mybachillerato->setAnioGraduacion($bachillerato['anioGraduacion']);
 			$mybachillerato->setColegiosidColegios($bachillerato['colegios_idColegios']);
 			$mybachillerato->setBachilleratoOculto($bachillerato['bachilleratoOculto']);
@@ -55,7 +55,7 @@ class CrudBachillerato
 		$mybachillerato = new Bachilleratos();
 		$mybachillerato->setBachilleratoId($bachillerato['bachilleratoId']);
 		$mybachillerato->setFkEstudiantesNumeroIdentificacion($bachillerato['fkEstudiantesNumeroIdentificacion']);
-		$mybachillerato->getFkTiposBacilleratotiposBacilleratoId($bachillerato['fkTiposBacilleratotiposBacilleratoId']);
+		$mybachillerato->setFkTiposBacilleratotiposBacilleratoId($bachillerato['fkTiposBacilleratotiposBacilleratoId']);
 		$mybachillerato->setAnioGraduacion($bachillerato['anioGraduacion']);
 		$mybachillerato->setColegiosidColegios($bachillerato['colegios_idColegios']);
 		$mybachillerato->setBachilleratoOculto($bachillerato['bachilleratoOculto']);

@@ -9,16 +9,15 @@ use Crud\CrudEstudianteTrabajo;
 use Crud\CrudPeriodoacademico;
 
 session_start();
-$crud1=new CrudPeriodoacademico();
-$cedula=isset($_SESSION['campbuscarest'])?$_SESSION['campbuscarest']:"";
-
-$periodo=isset($_SESSION['periodo'])?$crud1->obtenerPeriodoacademico($_SESSION['periodo']):$crud1->obtenerPeriodoAcademicoActual();
-function cargartrabajoestudiante($cedula,$periodo){
-    $sesion=isset($_SESSION['tipouser'])?$_SESSION['tipouser']:"est";
-    $crud=new CrudEstudianteTrabajo();
-	$dato=$crud->obtenerEstudianteTrabajo($cedula,$periodo);
-	$r=ajaxs_select2();
-	$r.='
+$crud1 = new CrudPeriodoacademico();
+$cedula = $_SESSION['campbuscarest'];
+$periodo = ($_SESSION['campbuscarperiodo']);
+function cargartrabajoestudiante($cedula, $periodo)
+{
+	$crud = new CrudEstudianteTrabajo();
+	$dato = $crud->obtenerEstudianteTrabajo($cedula, $periodo);
+	$r = ajaxs_select2();
+	$r .= '
 	<td>
 		<table width=100%>
 			<tr class="tabtitulos">
@@ -34,7 +33,7 @@ function cargartrabajoestudiante($cedula,$periodo){
 								<table>
 									<tr>
     									<td >
-											<input type="text" name="trabajo" id="trabajo" value="'.($dato->get_nomempresa()==""||$dato->get_nomempresa()==null?"NA":$dato->get_nomempresa()).'" />
+											<input type="text" name="trabajo" id="trabajo" value="' . $dato->getNomempresa() . '" />
 										</td>
 									</tr>
 									<tr>
@@ -49,7 +48,7 @@ function cargartrabajoestudiante($cedula,$periodo){
 									<tr>
 										<td >
 											<select class="selector"  name="sectrabajo" id="sectrabajo">
-												'.cargarsectoreconomico($dato->get_sectoreconomico()).'
+												' . cargarsectoreconomico($dato->getSectoreconomico()) . '
 											</select>
 										</td>
 									</tr>
@@ -67,7 +66,11 @@ function cargartrabajoestudiante($cedula,$periodo){
 		</table>
 	</td>
  ';
-return $r;
+	return $r;
 }
-echo cargartrabajoestudiante($cedula,$periodo->get_periodoacademicoId());
+try {
 
+	echo cargartrabajoestudiante($cedula, $periodo);
+} catch (\Throwable $e) {
+	echo $e;
+}
