@@ -15,8 +15,8 @@ function cargardatosMatricula($cedula, $periodo)
     $crud = new CrudMatriculas();
     $dato = $crud->obtenerMatricula($cedula, $periodo);
     $r = ajaxs_select2();
-    if ($dato->getCodigoMatricula() != "" && $dato->getCodigoMatricula() != null) {
-        $r .= '
+
+    $r .= '
     <td>
     <table class="tabtitulos">
         <tr>
@@ -29,7 +29,6 @@ function cargardatosMatricula($cedula, $periodo)
         </tr>
     </table>
 </td>';
-    }
     return $r;
 }
 echo cargardatosMatricula($cedula, $periodo->getPeriodoacademicoId());

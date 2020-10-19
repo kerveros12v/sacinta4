@@ -36,13 +36,14 @@ function mostrarReporteMatricula() {
   registrarContactoEmergencia();
   registrarBachillerato();
   registrarTrabajo();
+  registrarMatricula();
   cargarFormulario();
   cargarDiscapaidadEstudiante();
   cargarResidenciaEstudiante();
   cargarContactoEmergenciaEstudiante();
   cargarBachilleratoEstudiantes();
   cargarTitulotercernivelEstudiante();
-  //cargarCodMatricula();
+  cargarCodMatricula();
   cargarformMatricula();
   cargarformtrabajo();
 }
@@ -459,4 +460,62 @@ function registrarTituloTercernivel() {
       alert('Hubo un error al cargar de Perfiles')
     })
 }
-
+function registrarMatricula() {
+  var periodoacademico = $('#periodoacademico').val();
+  var jornadaAcademica = $('#jornadaAcademica').val();
+  var fechaMatricula = $('#fechaMatricula').val();
+  var fechacarrera = $('#fechacarrera').val();
+  var carreras = $('#carreras').val();
+  var tipoMatricula = $('#tipoMatricula').val();
+  var nivelacademico = $('#nivelacademico').val();
+  var paralelo = $('#paralelo').val();
+  var formacionpadre = $('#formacionpadre').val();
+  var formacionmadre = $('#formacionmadre').val();
+  var bonoDesarrollo = $('#bonoDesarrollo').val();
+  var estudianteocupacion = $('#estudianteocupacion').val();
+  var estudianteingresos = $('#estudianteingresos').val();
+  var penciond = $('#penciond').val();
+  var creditoe = $('#creditoe').val();
+  var ayudaeco = $('#ayudaeco').val();
+  var totalingresos = $('#totalingresos').val();
+  var miembroshogar = $('#miembroshogar').val();
+  var nivelperdido = $('#nivelperdido').val();
+  var gratuidad = $('#gratuidad').val();
+  var cedula=$('#ced').val();
+  $.ajax({
+    type: 'POST',
+    url: '../controladores/registroTablaMatricula.php',
+    data: {
+      'periodoacademico':periodoacademico,
+      'jornadaAcademica':jornadaAcademica,
+      'fechaMatricula':fechaMatricula,
+      'fechacarrera':fechacarrera,
+      'carreras':carreras,
+      'tipoMatricula':tipoMatricula,
+      'nivelacademico':nivelacademico,
+      'paralelo':paralelo,
+      'formacionpadre':formacionpadre,
+      'formacionmadre':formacionmadre,
+      'bonoDesarrollo':bonoDesarrollo,
+      'estudianteocupacion':estudianteocupacion,
+      'estudianteingresos':estudianteingresos,
+      'penciond':penciond,
+      'creditoe':creditoe,
+      'ayudaeco':ayudaeco,
+      'totalingresos':totalingresos,
+      'miembroshogar':miembroshogar,
+      'nivelperdido':nivelperdido,
+      'gratuidad':gratuidad,
+      'cedula':cedula,
+      'actualizar': 0,
+      'eliminar': 0,
+      'opt': 1
+    }
+  })
+    .done(function (cargar) {
+      return cargar;
+    })
+    .fail(function () {
+      alert('Hubo un error al cargar de Perfiles')
+    })
+}

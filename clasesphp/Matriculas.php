@@ -577,4 +577,34 @@ class Matriculas
 
 		return $this;
 	}
+	public function __toString()
+	{
+		return "}matriculasId{" . $this->matriculasId .
+			"}codigoMatricula{" . $this->codigoMatricula .
+			"}fechaMatricula{" . $this->fechaMatricula .
+			"}montoCreditoEducativo{" . $this->montoCreditoEducativo .
+			"}montoAyudaEconomica{" . $this->montoAyudaEconomica .
+			"}fechainicioCarrera{" . $this->fechainicioCarrera .
+			"}enumeroIdentificacion{" . $this->enumeroIdentificacion .
+			"}ccarrerasId{" . $this->ccarrerasId .
+			"}jjornadaAcademicaId{" . $this->jjornadaAcademicaId .
+			"}pperiodoacademicoId{" . $this->pperiodoacademicoId .
+			"}pparaleloId{" . $this->pparaleloId .
+			"}ttipoMatriculaId{" . $this->ttipoMatriculaId .
+			"}nnivelAcademicoQueCursaId{" . $this->nnivelAcademicoQueCursaId .
+			"}rrecibePensionDiferenciadaId{" . $this->rrecibePensionDiferenciadaId .
+			"}eestudianteOcupacionId{" . $this->eestudianteOcupacionId .
+			"}bbonoDesarrolloId{" . $this->bbonoDesarrolloId .
+			"}iingresosestudianteId{" . $this->iingresosestudianteId .
+			"}hhaRepetidoAlMenosUnaMateriaid{" . $this->hhaRepetidoAlMenosUnaMateriaid .
+			"}hhaPerdidoLaGratuidadId{" . $this->hhaPerdidoLaGratuidadId .
+			"}ingresoTotalHogar{" . $this->ingresoTotalHogar .
+			"}fkNivelFormacionMadre{" . $this->fkNivelFormacionMadre .
+			"}fkNivelFormacionPadre{" . $this->fkNivelFormacionPadre .
+			"}cantidadMiembrosHogar{" . $this->cantidadMiembrosHogar .
+			"}matriculasOculto{" . $this->matriculasOculto .
+			"}matriculasAccion{" . $this->matriculasAccion .
+			"}matriculasfecha{" . $this->matriculasfecha .
+			"}matriculasuser{" . $this->matriculasuser . "}";
+	}
 }

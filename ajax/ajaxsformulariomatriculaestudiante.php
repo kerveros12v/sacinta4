@@ -12,6 +12,9 @@ require_once("ajaxsselectniveldeformacion.php");
 require_once("ajaxsselectbonodesarrollo.php");
 require_once("ajaxsselectestudianteocupacion.php");
 require_once("ajaxsselectingresosestudiantes.php");
+require_once("ajaxsselectperdiolagratuidad.php");
+require_once("ajaxsselectrepetidounamateria.php");
+
 require_once("ajaxsselect2.php");
 
 use Crud\CrudMatriculas;
@@ -99,7 +102,7 @@ function cargarMatricula($cedula, $periodo)
                                 <table>
                                     <tr>
                                         <td>
-                                            <input type="date" name="fechacarrera" id="fechacarrera" readonly="readonly" required="required" value="' . $dato->getFechainicioCarrera() . '" />
+                                            <input type="date" name="fechacarrera" id="fechacarrera"  required="required" value="' . $dato->getFechainicioCarrera() . '" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -201,6 +204,48 @@ function cargarMatricula($cedula, $periodo)
                     </table>
                 </td>
             </tr>
+            <!-------->
+            <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <select class="selector" name="gratuidad" id="gratuidad">
+                                            ' . cargarHaperdidolagratuidad($dato->getHhaPerdidoLaGratuidadId()) . '
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <label class="etiqueta1">HA PERDIDO LA GRATUIDAD</label>
+                                    </th>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <select class="selector" name="nivelperdido" id="nivelperdido">
+                                            ' . cargarHarepetidoalmenosunamateria($dato->getHhaRepetidoAlMenosUnaMateriaid()) . '
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <label class="etiqueta1">HA REPETIDO AL MENOS UNA MATERIA</label>
+                                    </th>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!------>
             <tr class="tabtitulos">
                 <th>
                     NIVEL DE FORMACION FAMILIAR
@@ -257,17 +302,82 @@ function cargarMatricula($cedula, $periodo)
                     <table>
                         <tr>
                             <td>
-                                ¿RECIBE EL BONO DE DESARROLLO HUMANO?
-                            </td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            ¿RECIBE EL BONO DE DESARROLLO HUMANO?
+                                        </td>
+                                        <td>
+                                            <select class="selector" name="bonoDesarrollo" id="bonoDesarrollo">
+                                                ' . cargarbonodesarrollo($dato->getBbonoDesarrolloId()) . '
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            ¿RECIBE PENCION DIFENRENCIADA?
+                                        </td>
+                                        <td>
+                                            <select class="selector" name="penciond" id="penciond">
+                                                ' . cargarbonodesarrollo($dato->getBbonoDesarrolloId()) . '
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
                             <td>
-                                <select class="selector" name="bonoDesarrollo" id="bonoDesarrollo">
-                                    ' . cargarbonodesarrollo($dato->getBbonoDesarrolloId()) . '
-                                </select>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="text" name="creditoe" id="creditoe" readonly="readonly" required="required" value="' . (($dato->getMontoCreditoEducativo() == "" || $dato->getMontoCreditoEducativo() == null) ? "0" : $dato->getMontoCreditoEducativo()) . '" />
+                                        </td>
+                                        <td>
+                                            <input type="text" name="ayudaeco" id="ayudaeco" readonly="readonly" required="required" value="' . (($dato->getMontoAyudaEconomica() == "" || $dato->getMontoAyudaEconomica() == null) ? "0" : $dato->getMontoAyudaEconomica()) . '" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                        <label class="etiqueta1"> MONTO DE CREDITO EDUCATIVO</label>
+                                        </th>
+                                        <th>
+                                        <label class="etiqueta1"> MONTO DE AYUDA ECONOMICA</label>
+                                        </th>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                     </table>
                 </td>
             </tr>
+            <tr class="tabtitulos">
+                <th>
+                    ESTADO FAMILIAR
+                </th>
+            </tr>
+            <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <input type="text" name="miembroshogar" id="miembroshogar"  required="required" value="' . $dato->getMontoCreditoEducativo() . '" />
+                        </td>
+                        <td>
+                            <input type="text" name="totalingresos" id="totalingresos"  required="required" value="' . $dato->getMontoCreditoEducativo() . '" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                        <label class="etiqueta1">CANTIDAD DE MIENBROS EN SU HOGAR</label>
+                        </th>
+                        <th>
+                        <label class="etiqueta1"> TOTAL DE INGRESOS EN SU HOGAR</label>
+                        </th>
+                    </tr>
+                </table>
+            </td>
+        </tr>
             <tr class="tabtitulos">
                 <th>
                     ESTADO LABORAL
