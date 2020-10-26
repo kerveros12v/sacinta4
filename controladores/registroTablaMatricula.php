@@ -8,7 +8,7 @@ use Crud\CrudMatriculas;
 
 function cargarregistroMatricula($mymatricula)
 {
-    $mymatricula->setCodigoMatricula($_POST['codmatricula']);
+    // $mymatricula->setCodigoMatricula($_POST['codmatricula']);
     $mymatricula->setPperiodoacademicoId($_POST['periodoacademico']);
     $mymatricula->setJjornadaAcademicaId($_POST['jornadaAcademica']);
     $mymatricula->setFechaMatricula($_POST['fechaMatricula']);
@@ -42,7 +42,7 @@ function opcionMatricula()
     $crud = new CrudMatriculas();
     $opcion = $_POST['opt'];
     if ($opcion == 1) {
-        if ($crud->existe($_SESSION['campbuscarest'], $_POST['periodoacademico']) == 0) {
+        if ($crud->existe($_SESSION['campbuscarest'], $_SESSION['campbuscarperiodo']) == 0) {
             cargarregistroMatricula($dato);
             $dato->setMatriculasId(null);
             $crud->insertar($dato);
@@ -51,9 +51,10 @@ function opcionMatricula()
         $opcion = 2;
     }
     if ($opcion == 2) {
-        if ($crud->existe($_SESSION['campbuscarest'], $_POST['periodoacademico']) == 0) {
-            $dato = $crud->obtenerMatricula($_SESSION['campbuscarest'], $_POST['periodoacademico']);
-            $dato = cargarregistroMatricula($dato);
+        if ($crud->existe($_SESSION['campbuscarest'], $_SESSION['campbuscarperiodo']) == 1) {
+            $dato = $crud->obtenerMatricula($_SESSION['campbuscarest'], $_SESSION['campbuscarperiodo']);
+            //echo $dato;
+            cargarregistroMatricula($dato);
             $crud->actualizar($dato);
             return (actualizarR());
         }
@@ -62,7 +63,7 @@ function opcionMatricula()
     if ($opcion == optEliminar()) {
         if ($crud->existe($_SESSION['campbuscarest'], $_POST['periodoacademico']) == 0) {
             $dato = $crud->obtenerMatricula($_SESSION['campbuscarest'], $_POST['periodoacademico']);
-            $dato = cargarregistroMatricula($dato);
+            cargarregistroMatricula($dato);
             //$crud->eliminar($dato->getMatriculasId());
             return (eliminarR());
         }

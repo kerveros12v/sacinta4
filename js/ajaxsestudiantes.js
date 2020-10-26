@@ -27,16 +27,17 @@ function salirmatricula() {
 function mostrarReporteMatricula() {
 
 
-  //window.open("../reportes/formularioMatriculacionEstudiante.php?cedula="+$('#ced').val(), "Formulario de Matriculacion", "width=1000, height=1000")
   registrarEstudiante();
   registrardisapacidadEstudiante();
   registrarresisenciaEstudiante();
   registrarTituloTercernivel();
-  //window.Location('../reportes/formularioMatriculacionEstudiante.php','top', "Formulario de Matriculacion", "width=100%, height=100%,location=no");
   registrarContactoEmergencia();
   registrarBachillerato();
   registrarTrabajo();
   registrarMatricula();
+    //window.Location('../reportes/formularioMatriculacionEstudiante.php','top', "Formulario de Matriculacion", "width=100%, height=100%,location=no");
+  window.open("../reportes/formularioMatriculacionEstudiante.php?cedula="+$('#ced').val(), "Formulario de Matriculacion", "width=1000, height=1000")
+
   cargarFormulario();
   cargarDiscapaidadEstudiante();
   cargarResidenciaEstudiante();

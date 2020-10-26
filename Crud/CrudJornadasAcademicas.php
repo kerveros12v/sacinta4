@@ -52,11 +52,11 @@ class CrudJornadasAcademicas
 	public function obtenerDato($id)
 	{
 		$db = Db::conectar();
-		$select = $db->prepare('SELECT * FROM jornadasacademicas WHERE jornadaAcademicaId=:id');
+		$select = $db->prepare('SELECT jornadaAcademica FROM jornadasacademicas WHERE jornadaAcademicaId=:id');
 		$select->bindValue('id', $id);
 		$select->execute();
 		$jornadasAcademicas = $select->fetch();
-		$myjornadasAcademicas = ($jornadasAcademicas['JornadaAcademica']);
+		$myjornadasAcademicas = ($jornadasAcademicas['jornadaAcademica']);
 
 		return $myjornadasAcademicas;
 	}

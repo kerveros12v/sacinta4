@@ -579,7 +579,7 @@ class Matriculas
 	}
 	public function __toString()
 	{
-		return "}matriculasId{" . $this->matriculasId .
+		return "matriculasId{" . $this->matriculasId .
 			"}codigoMatricula{" . $this->codigoMatricula .
 			"}fechaMatricula{" . $this->fechaMatricula .
 			"}montoCreditoEducativo{" . $this->montoCreditoEducativo .

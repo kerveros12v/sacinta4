@@ -284,23 +284,36 @@ class CrudMatriculas
 	public  function existeMatricula($periodom, $cedestu)
 	{
 		$db = Db::conectar();
-		$select = $db->prepare("SELECT * FROM matriculas where pperiodoacademicoId =:id AND enumeroIdentificacion= :cedula");
+		$select = $db->prepare("SELECT * FROM matriculas where pperiodoacademicoId =:id AND enumeroIdentificacion= :cedula;");
 		$select->bindValue('id', $periodom);
 		$select->bindValue('cedula', $cedestu);
 		$select->execute();
 		if ($select->fetch() == 0) return 0;
 		return 1;
 	}
-	public  function existe($id)
+	public  function existe($id, $periodo)
 	{
 		$db = Db::conectar();
-		$select = $db->prepare("SELECT * FROM matriculas where codigoMatricula=:id");
+		$select = $db->prepare("SELECT * FROM matriculas where enumeroIdentificacion=:id and pperiodoacademicoId=:periodo;");
 		$select->bindValue('id', $id);
+		$select->bindValue('periodo', $periodo);
 		$select->execute();
 		if ($select->fetch() == 0) return 0;
 		return 1;
 	}
+	public  function obtenerCodigoMatricula($id, $periodo)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare("SELECT codigoMatricula FROM matriculas where enumeroIdentificacion=:id and pperiodoacademicoId=:periodo;");
+		$select->bindValue('id', $id);
+		$select->bindValue('periodo', $periodo);
+		$select->execute();
+		$m = $select->fetch();
 
+		$mymatricula = ($m['codigoMatricula']);
+
+		return $mymatricula;
+	}
 	public  function obtenerMatricula($id, $periodo)
 	{
 		$db = Db::conectar();
@@ -436,7 +449,6 @@ class CrudMatriculas
 		$db = Db::conectar();
 		$actualizar = $db->prepare("UPDATE `matriculas`
 		SET
-		`matriculasId` = :matriculasId1,
 		`codigoMatricula` = :codigoMatricula1,
 		`fechaMatricula` = :fechaMatricula1,
 		`montoCreditoEducativo` = :montoCreditoEducativo1,

@@ -64,7 +64,7 @@ class CrudSectorEconomico
 		$select->bindValue('id', $id);
 		$select->execute();
 		$sectoreconomico = $select->fetch();
-		$mysectoreconomico = $sectoreconomico['SectorEconomico'];
+		$mysectoreconomico = $sectoreconomico['sectorEconomico'];
 
 		return $mysectoreconomico;
 	}

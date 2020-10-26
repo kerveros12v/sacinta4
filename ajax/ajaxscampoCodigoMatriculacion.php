@@ -8,12 +8,12 @@ use Crud\CrudPeriodoacademico;
 
 session_start();
 $crud1 = new CrudPeriodoacademico();
-$cedula = isset($_SESSION['est']) ? $_SESSION['est'] : "";
-$periodo = isset($_SESSION['periodo']) ? $crud1->obtenerPeriodoacademico($_SESSION['periodo']) : $crud1->obtenerPeriodoAcademicoActual();
+$cedula = $_SESSION['campbuscarest'];
+$periodo = $_SESSION['campbuscarperiodo'];
 function cargardatosMatricula($cedula, $periodo)
 {
     $crud = new CrudMatriculas();
-    $dato = $crud->obtenerMatricula($cedula, $periodo);
+    $dato = $crud->obtenerCodigoMatricula($cedula, $periodo);
     $r = ajaxs_select2();
 
     $r .= '
@@ -24,11 +24,15 @@ function cargardatosMatricula($cedula, $periodo)
                 Codigo de Matricula:
             </td>
             <td>
-                <input type="text" class="codmatricula" id="codmatricula" name="codmatricula"  readonly="readonly" value="' . $dato->getCodigoMatricula() . '" />
+                <input type="text" class="codmatricula" id="codmatricula" name="codmatricula"  readonly="readonly" value="' . $dato . '" />
             </td>
         </tr>
     </table>
 </td>';
     return $r;
 }
-echo cargardatosMatricula($cedula, $periodo->getPeriodoacademicoId());
+try {
+    echo cargardatosMatricula($cedula, $periodo);
+} catch (\Throwable $e) {
+    echo $e;
+}
