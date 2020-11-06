@@ -35,8 +35,8 @@ function mostrarReporteMatricula() {
   registrarBachillerato();
   registrarTrabajo();
   registrarMatricula();
-    //window.Location('../reportes/formularioMatriculacionEstudiante.php','top', "Formulario de Matriculacion", "width=100%, height=100%,location=no");
-  window.open("../reportes/formularioMatriculacionEstudiante.php?cedula="+$('#ced').val(), "Formulario de Matriculacion", "width=1000, height=1000")
+  //window.Location('../reportes/formularioMatriculacionEstudiante.php','top', "Formulario de Matriculacion", "width=100%, height=100%,location=no");
+  window.open("../reportes/formularioMatriculacionEstudiante.php?cedula=" + $('#ced').val(), "Formulario de Matriculacion", "width=1000, height=1000")
 
   cargarFormulario();
   cargarDiscapaidadEstudiante();
@@ -273,33 +273,24 @@ function registrarEstudianteUsuario(dato) {
 
 //muestra la interface de carga de foto del estudiante
 function cargarEstudiantefoto() {
-  var imgsubirest = $('#imgsubirest').val();
-
+  var formData = new FormData();
+  var files = $('#image')[0].files[0];
+  formData.append('file',files);
   $.ajax({
-    type: 'POST',
-    url: '../controladores/registroEstudiante.php',
-    data: {
-      'imgsubirest': imgsubirest,
-      'actualizar': 1,
-      'eliminar': 0,
-      'opt': 3
-    }
-  })
-    .done(function (cargar) {
-      $('#dialog-confirm').html(cargar)
-      $("#dialog").dialog({
-        height: 250,
-        buttons: {
-          Aceptar: function () {
-            $(this).dialog("close");
-
+      url: '../controladores/registroEstudianteFoto.php',
+      type: 'post',
+      data: formData,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+          if (response != 0) {
+              $(".card-img-top").attr("src", response);
+          } else {
+              alert('Formato de imagen incorrecto.');
           }
-        }
-      })
-    })
-    .fail(function () {
-      alert('Hubo un error al cargar de Perfiles')
-    })
+      }
+  });
+  return false;
 }
 //sube la foto del estudiante
 function cargafotoestudiante() {
@@ -316,7 +307,6 @@ function cargafotoestudiante() {
     })
 
 }
-
 function registrardisapacidadEstudiante() {
   var carnetConadisId = $('#carnetConadisId').val();
   var fkTipoDiscapacidadTipoDiscapacidadId = $('#fkTipoDiscapacidadTipoDiscapacidadId').val();
@@ -482,32 +472,32 @@ function registrarMatricula() {
   var miembroshogar = $('#miembroshogar').val();
   var nivelperdido = $('#nivelperdido').val();
   var gratuidad = $('#gratuidad').val();
-  var cedula=$('#ced').val();
+  var cedula = $('#ced').val();
   $.ajax({
     type: 'POST',
     url: '../controladores/registroTablaMatricula.php',
     data: {
-      'periodoacademico':periodoacademico,
-      'jornadaAcademica':jornadaAcademica,
-      'fechaMatricula':fechaMatricula,
-      'fechacarrera':fechacarrera,
-      'carreras':carreras,
-      'tipoMatricula':tipoMatricula,
-      'nivelacademico':nivelacademico,
-      'paralelo':paralelo,
-      'formacionpadre':formacionpadre,
-      'formacionmadre':formacionmadre,
-      'bonoDesarrollo':bonoDesarrollo,
-      'estudianteocupacion':estudianteocupacion,
-      'estudianteingresos':estudianteingresos,
-      'penciond':penciond,
-      'creditoe':creditoe,
-      'ayudaeco':ayudaeco,
-      'totalingresos':totalingresos,
-      'miembroshogar':miembroshogar,
-      'nivelperdido':nivelperdido,
-      'gratuidad':gratuidad,
-      'cedula':cedula,
+      'periodoacademico': periodoacademico,
+      'jornadaAcademica': jornadaAcademica,
+      'fechaMatricula': fechaMatricula,
+      'fechacarrera': fechacarrera,
+      'carreras': carreras,
+      'tipoMatricula': tipoMatricula,
+      'nivelacademico': nivelacademico,
+      'paralelo': paralelo,
+      'formacionpadre': formacionpadre,
+      'formacionmadre': formacionmadre,
+      'bonoDesarrollo': bonoDesarrollo,
+      'estudianteocupacion': estudianteocupacion,
+      'estudianteingresos': estudianteingresos,
+      'penciond': penciond,
+      'creditoe': creditoe,
+      'ayudaeco': ayudaeco,
+      'totalingresos': totalingresos,
+      'miembroshogar': miembroshogar,
+      'nivelperdido': nivelperdido,
+      'gratuidad': gratuidad,
+      'cedula': cedula,
       'actualizar': 0,
       'eliminar': 0,
       'opt': 1

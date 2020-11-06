@@ -14,6 +14,7 @@ class Empresas
 	private $fechaConvenio;
 	private $contactoEmpresa;
 	private $correoEmpresas;
+	private $departamentocoodinador;
 	private $empresasOculto;
 	private $empresasAccion;
 	private $empresasfecha;
@@ -301,6 +302,26 @@ class Empresas
 	public function setEmpresasuser($empresasuser)
 	{
 		$this->empresasuser = $empresasuser;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of departamentocoodinador
+	 */
+	public function getDepartamentocoodinador()
+	{
+		return $this->departamentocoodinador;
+	}
+
+	/**
+	 * Set the value of departamentocoodinador
+	 *
+	 * @return  self
+	 */
+	public function setDepartamentocoodinador($departamentocoodinador)
+	{
+		$this->departamentocoodinador = $departamentocoodinador;
 
 		return $this;
 	}

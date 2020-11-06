@@ -67,6 +67,17 @@ class CrudGeneros
 
 		return $mygenero;
 	}
+	public function obtenerCodigo($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT generoscodigo FROM generos WHERE generoId=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$generos1 = $select->fetch();
+		$mygenero = $generos1['generoscodigo'];
+
+		return $mygenero;
+	}
 	public function actualizar($generos1)
 	{
 		$db = Db::conectar();

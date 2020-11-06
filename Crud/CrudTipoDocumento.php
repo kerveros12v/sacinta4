@@ -68,6 +68,17 @@ class CrudTipodocumento
 
 		return $mytipoDocumento1;
 	}
+	public function obtenerCodigo($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT * FROM tiposdocumentos WHERE tipoDocumentoId=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$tipoDocumento1 = $select->fetch();
+		$mytipoDocumento1 = ($tipoDocumento1['tipoDocumentocodigo']);
+
+		return $mytipoDocumento1;
+	}
 	public function actualizar($tipoDocumento1)
 	{
 		$db = Db::conectar();

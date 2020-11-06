@@ -22,7 +22,9 @@
 
   <div class="sidebar_2">
     <div id="foto" name="foto">
-      <a href="#" onclick="cargafotoestudiante()">IMAGEN</a>
+      <a href="#" onclick="cargafotoestudiante()">
+      <img src="../ajax/ajaxsestudiantefoto.php" height="200px" width="200px"/>
+    </a>
       <div id="nav1">
       </div>
     </div>

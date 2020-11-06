@@ -67,6 +67,17 @@ class CrudEtnia
 
 		return $myetnias1;
 	}
+	public function obtenerCodigo($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT etniascodigo FROM etnias WHERE etniaId=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$etnias1 = $select->fetch();
+		$myetnias1 = $etnias1['etniascodigo'];
+
+		return $myetnias1;
+	}
 
 	public function actualizar($etnias1)
 	{

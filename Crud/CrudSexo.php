@@ -68,6 +68,17 @@ class CrudSexo
 
 		return $mysexo;
 	}
+	public function obtenerCodigo($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT sexocodigo FROM sexo WHERE sexoId=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$sexos1 = $select->fetch();
+		$mysexo = ($sexos1['sexocodigo']);
+
+		return $mysexo;
+	}
 	public function actualizar($sexos1)
 	{
 		$db = Db::conectar();

@@ -67,7 +67,17 @@ class CrudEStadoCivil
 
 		return $myEstadosciviles;
 	}
+	public function obtenerCodigo($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT estadoscivilcodigo FROM estadosciviles WHERE estadoCivilId=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$estadosciviles1 = $select->fetch();
+		$myEstadosciviles = $estadosciviles1['estadoscivilcodigo'];
 
+		return $myEstadosciviles;
+	}
 	public function actualizar($estadosciviles1)
 	{
 		$db = Db::conectar();

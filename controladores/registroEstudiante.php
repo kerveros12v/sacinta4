@@ -67,12 +67,14 @@ function opciondatosestudiante()
 				return (actualizarR());
 			}
 			if ($opcion == 3) {
-				if (isset($_POST['imgsubirest'])) {
+				if (isset($_FILES['imgsubirest'])) {
+					/*
 					$imgContenido =  base64_encode(file_get_contents($_FILES['imagen']['tmp_name']));
 					$dato = isset($_SESSION['campbuscarest']) ? $dato = $crud->obtenerEstudiantes($_SESSION['campbuscarest']) : $dato->setFktipodocumentoId(null);
 					$dato->setEstudiantesimg($imgContenido);
 					echo ("<script>console.log(Datos autocargados" . $dato->__toString() . ");</script>");
 					$crud->actualizar($dato);
+					*/
 					return (actualizarFoto());
 				} else {
 					return "Por favor seleccione imagen a subir.";

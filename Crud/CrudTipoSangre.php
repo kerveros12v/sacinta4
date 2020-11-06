@@ -57,6 +57,17 @@ class CrudTipoSangre
 		$mytipossangre->setTipossangreuser($tipossangre1['tipossangreuser']);
 		return $mytipossangre;
 	}
+	public function obtenerCodigo($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT tipossangrescodigo FROM tipossangres WHERE tipoSangreId=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$tipossangre1 = $select->fetch();
+		$mytipossangre = ($tipossangre1['tipossangrescodigo']);
+
+		return $mytipossangre;
+	}
 	public function obtenerDato($id)
 	{
 		$db = Db::conectar();

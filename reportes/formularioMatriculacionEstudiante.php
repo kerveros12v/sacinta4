@@ -208,7 +208,10 @@ try {
   /***
    *pagina 1
    ****/
-
+  $pdf->SetXY(75, 30);
+  $pdf->SetFont('Arial', 'B', 10);
+  //$pdf->Rect(189, 30, 15, 8, 'C');
+  $pdf->Cell(0, 1, utf8_decode('FORMULARIO DE MATRICULACION'), 0, 1, 'J', false);
   $pdf->SetXY(165, 35);
   $pdf->SetFont('Arial', '', 10);
   //$pdf->Rect(189, 30, 15, 8, 'C');

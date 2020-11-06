@@ -120,7 +120,8 @@ class CrudEstudiantes
 		$select->bindValue('id', $id);
 		$select->execute();
 		$estudiantes1 = $select->fetch();
-		return $estudiantes1;
+		$myestudiantes=($estudiantes1['estudiantesimg']);
+		return $myestudiantes;
 	}
 	public  function obtenerPermisosEstudiante($id, $pass)
 	{
@@ -286,6 +287,23 @@ class CrudEstudiantes
 		$actualizar->bindValue('estudiantesuser1', $estudiantes1->getEstudiantesuser());
 
 		$actualizar->execute();
+	}
+
+	public  function insertarImagen($estudiantes1, $img)
+	{
+		$db = Db::conectar();
+		$actualizar = $db->prepare(
+			"UPDATE `estudiantes`
+			SET
+			`estudiantesimg` = :estudiantesimg1
+			WHERE `numeroIdentificacion` = :numeroIdentificacion1;"
+		);
+		$actualizar->bindValue('numeroIdentificacion1', $estudiantes1);
+		$actualizar->bindValue('estudiantesimg1', $img);
+
+
+		$actualizar->execute();
+		return $actualizar->execute();
 	}
 	public  function eliminar($id)
 	{

@@ -27,8 +27,7 @@ class PlantillaReportes extends \FPDF\FPDF
         $this->Cell(190, -7, utf8_decode("NELSON TORRES"), 0, 0, 'C');
         $this->Ln(5);
         $this->Cell(190, -7, utf8_decode("(CÓDIGO: 2189)"), 0, 0, 'C');
-        $this->Ln(9);
-        $this->Cell(190, -7, utf8_decode("FORMULARIO DE MATRÍCULA"), 0, 0, 'C');
+
         $this->Ln(4);
 
         $this->Image('../img/logointformulario.png', 163, 7, 42, 17);
