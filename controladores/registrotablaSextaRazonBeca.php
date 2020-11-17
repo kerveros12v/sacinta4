@@ -15,6 +15,7 @@ function opcionSextaRazonBeca()
 
         $datos->setSextaRazonBecaId($_POST['id']);
         $datos->setSextaRazonBeca(strtoupper($_POST['nom']));
+        $datos->setSextarazonbecabool($_POST['bool']);
         $datos->setSextarazonbecacodigo($_POST['cod']);
         $datos->setSextarazonbecaOculto($_POST['eliminar']);
         $datos->setSextarazonbecaAccion($_POST['actualizar']);

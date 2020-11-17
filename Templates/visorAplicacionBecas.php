@@ -11,7 +11,7 @@
   <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 
-  <script type="text/javascript" src="../js/ajaxsbecacuartarazon.js"></script>
+  <script type="text/javascript" src="../js/ajaxsestudiantebecaslistado.js"></script>
 
 </head>
 
@@ -19,15 +19,9 @@
   <div id="dialog" style="display: none;" title="Respuesta del servidor">
     <p id="dialog-confirm"></p>
   </div>
+  <input type="button" id="nuevo" onclick="registro()" value="Nuevo Registro" class="btnunico">
   <table class="ui-widget ui-widget-content" title="Perfiles Registradas Actualmente:">
-    <tr class="ui-widget-header">
-      <th></th>
-      <th>Cedula</th>
-      <th>Apellidos y Nombres del Estudiante</th>
-      <th></th>
-
-    </tr>
-    <tbody id="contenedorcuarta">
+    <tbody id="contenedorbecastabla">
     </tbody>
   </table>
 </body>

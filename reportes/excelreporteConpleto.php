@@ -36,7 +36,21 @@ require_once("../Crud/CrudEtnia.php");
 require_once("../Crud/CrudTipoSangre.php");
 require_once("../Crud/CrudTipoDiscapacidad.php");
 require_once("../Crud/CrudDiscapacidad.php");
-
+require_once("../Crud/CrudAplicacionBecas.php");
+require_once("../Crud/CrudTipoBeca.php");
+require_once("../Crud/CrudPrimeraRazonBeca.php");
+require_once("../Crud/CrudTipoColegio.php");
+require_once("../Crud/CrudPaises.php");
+require_once("../Crud/CrudParroquia.php");
+require_once("../Crud/CrudProvincia.php");
+require_once("../Crud/CrudCanton.php");
+require_once("../Crud/CrudPrimeraRazonBeca.php");
+require_once("../Crud/CrudSegundaaRazonBeca.php");
+require_once("../Crud/CrudTerceraRazonBeca.php");
+require_once("../Crud/CrudCuartaRazonBeca.php");
+require_once("../Crud/CrudQuintaRazonBeca.php");
+require_once("../Crud/CrudSextaRazonBeca.php");
+require_once("../Crud/CrudFinanciamientobeca.php");
 /*require_once("../clasesphp/Vinculacionsociedad.php");
 require_once("../Crud/CrudVinculacion.php");
 
@@ -55,31 +69,57 @@ use Clasesphp\EstudianteTrabajo;
 use Clasesphp\Matriculas;
 use Clasesphp\Periodoacademico;
 use Clasesphp\Residenciaestudiantes;
+use Crud\CrudAplicacionbecas;
+use Crud\CrudBachillerato;
+use Crud\CrudCantones;
 use Crud\CrudCarreras;
 use Crud\CrudColegios;
+use Crud\CrudContactosemergencia;
+use Crud\CrudCuartarazonbeca;
+use Crud\CrudDiscapacidad;
 use Crud\CrudDiscapacidadesestudiantes;
 use Crud\CrudEStadoCivil;
 use Crud\CrudEstudiantes;
 use Crud\CrudEstudianteTrabajo;
 use Crud\CrudEtnia;
+use Crud\CrudFinanciamientobeca;
 use Crud\CrudGeneros;
 use Crud\CrudMatriculas;
+use Crud\CrudPaises;
+use Crud\CrudParroquia;
 use Crud\CrudPeriodoacademico;
+use Crud\CrudPrimeraRazonBeca;
+use Crud\CrudProvincias;
 use Crud\CrudPuebloNacionalidad;
+use Crud\CrudQuintarazonbeca;
 use Crud\CrudResidenciaestudiantes;
+use Crud\CrudsegundarazonBeca;
 use Crud\CrudSexo;
+use Crud\CrudSextarazonbeca;
+use Crud\CrudTercerarazonbeca;
+use Crud\CrudTipoBeca;
+use Crud\CrudTipocolegio;
 use Crud\CrudTipoDiscapacidad;
 use Crud\CrudTipodocumento;
 use Crud\CrudTipoSangre;
 
 session_start();
+function calulotiempoperiodo($f1, $f2)
+{
+
+  $edad1 = abs(strtotime($f2) - strtotime($f1));
+  $years = floor($edad1 / (365 * 60 * 60 * 24));
+  $months = floor(($edad1 - ($years * 365 * 60 * 60 * 24)) / (30 * 60 * 60 * 24));
+  $day = floor(($edad1 - ($years * 365 * 60 * 60 * 24) - ($months * 30 * 60 * 60 * 24)) / (60 * 60 * 24));
+  return $years . '-' . $months . '-' . $day;
+}
 try {
 
   $documento = new Spreadsheet();
   $documento
     ->getProperties()
     ->setCreator('INSTITUTO TECNOLÓGICO SUPERIOR NELSON TORRES')
-    ->setLastModifiedBy($_SESSION['tipouser']) // última vez modificado por
+    ->setLastModifiedBy($_SESSION['tipouser'] . $_SESSION['user']) // última vez modificado por
     ->setTitle('Matriz de Matriculacion')
     ->setSubject('Consolodado')
     ->setDescription('Estudiantes Matriculados')
@@ -119,12 +159,35 @@ try {
   $crudetnia = new CrudEtnia();
   $crudtiposangre = new CrudTipoSangre();
   $crudtipodiscapacidad = new CrudTipoDiscapacidad();
+  $crudaplicacionbeca = new CrudAplicacionbecas();
+  $crudtipobeca = new CrudTipoBeca();
+  $crudprimeraRazonBeca = new CrudPrimeraRazonBeca();
   $periodo = $crudPeriodoacademico->obtenerPeriodoAcademicoActual();
-
+  $crudesdicapacitado = new CrudDiscapacidad();
+  $crudtipocolegio = new CrudTipocolegio();
   $listamatricula = $crudMatricula->listaMatriculasporPeriodo($periodo->getPeriodoacademicoId());
   $matric = new Matriculas();
-
-
+  $crudpais = new CrudPaises();
+  $crudprovincia = new CrudProvincias();
+  $crudcanton = new CrudCantones();
+  $crudparroquia = new CrudParroquia();
+  $crudContactoEmergencia = new CrudContactosemergencia();
+  $crudbacille = new CrudBachillerato();
+  $crudprimerarazon = new CrudPrimeraRazonBeca();
+  $crudsegundarazon = new CrudsegundarazonBeca();
+  $crudtercerarazon = new CrudTercerarazonbeca();
+  $crudcuartarazon = new CrudCuartarazonbeca();
+  $crudquintarazon = new CrudQuintarazonbeca();
+  $crudsextarazon = new CrudSextarazonbeca();
+  $crudfinanciamientobeca = new CrudFinanciamientobeca();
+  $primerarazonbeca = "";
+  $segundarazonbeca = "";
+  $tercerarazonbeca = "";
+  $cuartarazonbeca = "";
+  $quintarazonbeca = "";
+  $sextarazonbeca = "";
+  $financiamientob = "";
+  $tipobeca = "";
   $hoja = $documento->getActiveSheet();
 
   $hoja->setCellValue('A1', 'tipoDocumentoId');
@@ -192,20 +255,57 @@ try {
   $hoja->setCellValue('BK1', 'cantidadMiembrosHogar');
 
   $fila = 2;
-
+  $periodo = $crudPeriodoacademico->obtenerPeriodoAcademicoActual();
   foreach ($listamatricula as $matric) {
+
     $estudiante = $crudEstudiantes->obtenerEstudiantes($matric->getEnumeroIdentificacion());
     $residencia = $crudResidenciaestudiantes->obtenerresidenciaestudiantes($estudiante->getNumeroIdentificacion(), $periodo->getPeriodoacademicoId());
+    $parroquiaresi = $crudparroquia->obtenerParroquia($residencia->getCodigoPostal());
+    $cantonresi  = $crudcanton->obtenerCanton($parroquiaresi->getParroquiasCanton());
+    $provinciaresi  = $crudprovincia->obtenerProvincia($cantonresi->getCantonprovincia());
+    $paisresi  = $crudpais->obtenerPaises($provinciaresi->getProvinciapais());
+    $cantonnacim = $crudcanton->obtenerCanton($estudiante->getFkCantonNacimientoId());
+    $provincianacim = $crudprovincia->obtenerProvincia($cantonnacim->getCantonprovincia());
+    $paisnacim = $crudpais->obtenerPaises($provincianacim->getProvinciapais());
     $discapacidad = $crudDiscapacidadesestudiantes->obtenerdiscapacidadesestudiantes($estudiante->getNumeroIdentificacion(), $periodo->getPeriodoacademicoId());
+    $bachiller = $crudbacille->obtenerBachillerato($estudiante->getNumeroIdentificacion());
     $colegio1 = $crudColegios->obtenerColegio($bachiller->getColegiosidColegios());
-    $periodo = $crudPeriodoacademico->obtenerPeriodoAcademicoActual();
     $matricula = $crudMatricula->obtenerMatricula($estudiante->getNumeroIdentificacion(), $periodo->getPeriodoacademicoId());
     $carrera = $crudcarrera->obtenerCarrerasporId($matricula->getCcarrerasId());
     $trabajo = $crudEstudianteTrabajo->obtenerEstudianteTrabajo($estudiante->getNumeroIdentificacion(), $periodo->getPeriodoacademicoId());
+    //Seccion de Aplcacion Beca con validacion de no existir
+    $aplicacionbeca = $crudaplicacionbeca->obtenerBecaactivo(1, $estudiante->getNumeroIdentificacion());
 
-    ///Agragacion de ceros en los codigos de pais provincia canton
+    if ($crudaplicacionbeca->existeActivo(1, $estudiante->getNumeroIdentificacion()) == 1) {
+      $primeraRazonBeca = $crudprimeraRazonBeca->obtenerCodigo($aplicacionbeca->getFkprimeraRazonBecaId());
+      $segundarazonbeca = $crudsegundarazon->obtenerCodigo($aplicacionbeca->getFksegundaRazonBecaId());
+      $tercerarazonbeca = $crudtercerarazon->obtenerCodigo($aplicacionbeca->getFkterceraRazonBecaId());
+      $cuartarazonbeca = $crudcuartarazon->obtenerCodigo($aplicacionbeca->getFkcuartaRazonBecaId());
+      $quintarazonbeca = $crudquintarazon->obtenerCodigo($aplicacionbeca->getFkquintaRazonBecaId());
+      $sextarazonbeca = $crudsextarazon->obtenerCodigo($aplicacionbeca->getFksextaRazonBecaId());
+      $tipobeca = $crudtipobeca->obtenerCodigo($aplicacionbeca->getFktipoBecaId());
+      $financiamientob = $crudfinanciamientobeca->obtenerCodigo($aplicacionbeca->getFkfinanciamientoBecaid());
+    } else {
+      $primeraRazonBeca = $crudprimeraRazonBeca->obtenerCodigobool(0);
+      $segundarazonbeca = $crudsegundarazon->obtenerCodigobool(0);
+      $tercerarazonbeca = $crudtercerarazon->obtenerCodigobool(0);
+      $cuartarazonbeca = $crudcuartarazon->obtenerCodigobool(0);
+      $quintarazonbeca = $crudquintarazon->obtenerCodigobool(0);
+      $sextarazonbeca = $crudsextarazon->obtenerCodigobool(0);
+      $tipobeca = $crudtipobeca->obtenerboolCodigo(0);
+      $financiamientob = $crudfinanciamientobeca->obtenerCodigobool(0);
+      $aplicacionbeca->setMontoBeca(0);
+      $aplicacionbeca->setPorcientoBecaCoberturaArancel(0);
+      $aplicacionbeca->setPorcientoBecaCoberturaManuntencion(0);
+    }
+
+
+
+    $tipodiscapacidad = $crudtipodiscapacidad->obtenerTipoDiscapacidad($discapacidad->getFkTipoDiscapacidadTipoDiscapacidadId());
+    $esdicapacitado = $crudesdicapacitado->obtenerDiscapacidad($tipodiscapacidad->getTipodiscapacidadbool());
     $pueblonacionalidad = $crudpueblonacionalidad->obtenerpuebloNacionalidad($estudiante->getFkPuebloNacionalidadId());
-    //$objPHPExcel->setActiveSheetIndex(0);
+    $contacemer = $crudContactoEmergencia->obtenerContactoEmergencia($estudiante->getNumeroIdentificacion(), $periodo->getPeriodoacademicoId());
+
     $hoja->setCellValue('A' . $fila, $crudtipoducumento->obtenerCodigo($estudiante->getFktipodocumentoId())); //'tipoDocumentoId'
     $hoja->setCellValue('B' . $fila, $estudiante->getNumeroIdentificacion()); //'numeroIdentificacion'
     $hoja->setCellValue('C' . $fila, utf8_encode($estudiante->getPrimerApellido())); // 'primerApellido'
@@ -218,25 +318,25 @@ try {
     $hoja->setCellValue('J' . $fila, $crudetnia->obtenerCodigo($pueblonacionalidad->getPnetnia())); // 'etniaId')
     $hoja->setCellValue('K' . $fila, $pueblonacionalidad->getPueblonacionalidadescodigo()); // 'pueblonacionalidadId')
     $hoja->setCellValue('L' . $fila, $crudtiposangre->obtenerCodigo($estudiante->getFkTipoSangreId())); // 'tipoSangre')
-    //$hoja->setCellValue('M'.$fila,$discapacidad->getdisca());// 'discapacidad')
+    $hoja->setCellValue('M' . $fila, $esdicapacitado->getDiscapacidadcodigo()); // 'discapacidad')
     $hoja->setCellValue('N' . $fila, $discapacidad->getPorcentajeDiscapacidad()); // 'porcentajeDiscapacidad')
     $hoja->setCellValue('O' . $fila, $discapacidad->getCarnetConadisId()); // 'numCarnetConadis')
-    $hoja->setCellValue('P' . $fila, $discapacidad->getFkTipoDiscapacidadTipoDiscapacidadId()); // 'tipoDiscapacidad')
+    $hoja->setCellValue('P' . $fila, $tipodiscapacidad->getTdcodigo()); // 'tipoDiscapacidad')
     $hoja->setCellValue('Q' . $fila, $estudiante->getFechaNacimiento()); // 'fechaNacimiento')
-    //$hoja->setCellValue('R'.$fila,$paisnacionalidad);// 'paisNacionalidadId')
-    //$hoja->setCellValue('S'.$fila,$provincianacionalidad);// 'provinciaNacimientoId')
-    // $hoja->setCellValue('T' . $fila, $cantonnacionalidad); // 'cantonNacimientoId')
-    //$hoja->setCellValue('U'.$fila,$paisresidencia);// 'paisResidenciaId')
-    //$hoja->setCellValue('V'.$fila,$provinciaresidencia);// 'provinciaResidenciaId')
-    //$hoja->setCellValue('W'.$fila,$cantonresidencia);// 'cantonResidenciaId')
-    $hoja->setCellValue('X' . $fila, $colegio1->getTipoColegioTipoColegioId()); // 'tipoColegioId')
+    $hoja->setCellValue('R' . $fila, $paisnacim->getPaisescodigo()); // 'paisNacionalidadId')
+    $hoja->setCellValue('S' . $fila, $provincianacim->getProvinciacodigo()); // 'provinciaNacimientoId')
+    $hoja->setCellValue('T' . $fila, $cantonnacim->getCantoncodigo()); // 'cantonNacimientoId')
+    $hoja->setCellValue('U' . $fila, $paisresi->getPaisescodigo()); // 'paisResidenciaId')
+    $hoja->setCellValue('V' . $fila, $provinciaresi->getProvinciacodigo()); // 'provinciaResidenciaId')
+    $hoja->setCellValue('W' . $fila, $cantonresi->getCantoncodigo()); // 'cantonResidenciaId')
+    $hoja->setCellValue('X' . $fila, $crudtipocolegio->obtenerCodigo($colegio1->getTipoColegioTipoColegioId())); // 'tipoColegioId')
     $hoja->setCellValue('Y' . $fila, $carrera->getFkmodalidadCarreraId()); // 'modalidadCarrera')
     $hoja->setCellValue('Z' . $fila, $matricula->getJjornadaAcademicaId()); // 'jornadaCarrera')
     $hoja->setCellValue('AA' . $fila, $matricula->getFechainicioCarrera()); // 'fechaInicioCarrera')
     $hoja->setCellValue('AB' . $fila, $matricula->getFechaMatricula()); // 'fechaMatrícula')
     $hoja->setCellValue('AC' . $fila, $matricula->getTtipoMatriculaId()); // 'tipoMatriculaId')
     $hoja->setCellValue('AD' . $fila, $matricula->getNnivelAcademicoQueCursaId()); // 'nivelAcademicoQueCursa')
-    //$hoja->setCellValue('AE'.$fila,$periodo->());// 'duracionPeriodoAcademico')
+    $hoja->setCellValue('AE' . $fila, calulotiempoperiodo($periodo->getFechaInicio(), $periodo->getfechafin())); // 'duracionPeriodoAcademico')
     $hoja->setCellValue('AF' . $fila, $matricula->getHhaRepetidoAlMenosUnaMateriaid()); // 'haRepetidoAlMenosUnaMateria')
     $hoja->setCellValue('AG' . $fila, $matricula->getPparaleloId()); // 'paraleloId')
     $hoja->setCellValue('AH' . $fila, $matricula->getHhaPerdidoLaGratuidadId()); // 'haPerdidoLaGratuidad')
@@ -248,17 +348,17 @@ try {
     $hoja->setCellValue('AN' . $fila, 'NA'); // 'nroHorasPracticasPreprofesionalesPorPeriodo')
     $hoja->setCellValue('AO' . $fila, 'NA'); // 'entornoInstitucionalPracticasProfesionales')
     $hoja->setCellValue('AP' . $fila, 'NA'); // 'sectorEconomicoPracticaProfesional')
-    $hoja->setCellValue('AQ' . $fila, 'NA'); // 'tipoBecaId')
-    $hoja->setCellValue('AR' . $fila, 'NA'); // 'primeraRazonBecaId')
-    $hoja->setCellValue('AS' . $fila, 'NA'); // 'segundaRazonBecaId')
-    $hoja->setCellValue('AT' . $fila, 'NA'); // 'terceraRazonBecaId')
-    $hoja->setCellValue('AU' . $fila, 'NA'); // 'cuartaRazonBecaId')
-    $hoja->setCellValue('AV' . $fila, 'NA'); // 'quintaRazonBecaId')
-    $hoja->setCellValue('AW' . $fila, 'NA'); // 'sextaRazonBecaId')
-    $hoja->setCellValue('AX' . $fila, 'NA'); // 'montoBeca')
-    $hoja->setCellValue('AY' . $fila, 'NA'); //'porcientoBecaCoberturaArancel')
-    $hoja->setCellValue('AZ' . $fila, 'NA'); //'porcientoBecaCoberturaManuntencion')
-    $hoja->setCellValue('BA' . $fila, 'NA'); //'financiamientoBeca'
+    $hoja->setCellValue('AQ' . $fila, $tipobeca); // 'tipoBecaId')
+    $hoja->setCellValue('AR' . $fila, $primeraRazonBeca); // 'primeraRazonBecaId')
+    $hoja->setCellValue('AS' . $fila, $segundarazonbeca); // 'segundaRazonBecaId')
+    $hoja->setCellValue('AT' . $fila, $tercerarazonbeca); // 'terceraRazonBecaId')
+    $hoja->setCellValue('AU' . $fila, $cuartarazonbeca); // 'cuartaRazonBecaId')
+    $hoja->setCellValue('AV' . $fila, $quintarazonbeca); // 'quintaRazonBecaId')
+    $hoja->setCellValue('AW' . $fila, $sextarazonbeca); // 'sextaRazonBecaId')
+    $hoja->setCellValue('AX' . $fila, $aplicacionbeca->getMontoBeca()); // 'montoBeca')
+    $hoja->setCellValue('AY' . $fila, $aplicacionbeca->getPorcientoBecaCoberturaArancel()); //'porcientoBecaCoberturaArancel')
+    $hoja->setCellValue('AZ' . $fila, $aplicacionbeca->getPorcientoBecaCoberturaManuntencion()); //'porcientoBecaCoberturaManuntencion')
+    $hoja->setCellValue('BA' . $fila, $financiamientob); //'financiamientoBeca'
     $hoja->setCellValue('BB' . $fila, $matricula->getMontoAyudaEconomica()); //'montoAyudaEconomica'
     $hoja->setCellValue('BC' . $fila, $matricula->getMontoCreditoEducativo()); //'montoCreditoEducativo'
     $hoja->setCellValue('BD' . $fila, 'NA'); //'participaEnProyectoVinculacionSociedad'

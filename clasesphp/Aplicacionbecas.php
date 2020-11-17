@@ -22,6 +22,11 @@ class Aplicacionbecas
 	private $aplicacionbecasAccion;
 	private $aplicacionbecasfecha;
 	private $aplicacionbecasuser;
+	private $abfechainicio;
+	private $abfechafin;
+	private $abperiodo;
+	private $abobservaciones;
+	private $abactivo;
 	/**
 	 * Class constructor.
 	 */
@@ -386,6 +391,106 @@ class Aplicacionbecas
 	public function setIdAplicacionBecas($idAplicacionBecas)
 	{
 		$this->idAplicacionBecas = $idAplicacionBecas;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of abactivo
+	 */
+	public function getAbactivo()
+	{
+		return $this->abactivo;
+	}
+
+	/**
+	 * Set the value of abactivo
+	 *
+	 * @return  self
+	 */
+	public function setAbactivo($abactivo)
+	{
+		$this->abactivo = $abactivo;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of abobservaciones
+	 */
+	public function getAbobservaciones()
+	{
+		return $this->abobservaciones;
+	}
+
+	/**
+	 * Set the value of abobservaciones
+	 *
+	 * @return  self
+	 */
+	public function setAbobservaciones($abobservaciones)
+	{
+		$this->abobservaciones = $abobservaciones;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of abperiodo
+	 */
+	public function getAbperiodo()
+	{
+		return $this->abperiodo;
+	}
+
+	/**
+	 * Set the value of abperiodo
+	 *
+	 * @return  self
+	 */
+	public function setAbperiodo($abperiodo)
+	{
+		$this->abperiodo = $abperiodo;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of abfechafin
+	 */
+	public function getAbfechafin()
+	{
+		return $this->abfechafin;
+	}
+
+	/**
+	 * Set the value of abfechafin
+	 *
+	 * @return  self
+	 */
+	public function setAbfechafin($abfechafin)
+	{
+		$this->abfechafin = $abfechafin;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of abfechainicio
+	 */
+	public function getAbfechainicio()
+	{
+		return $this->abfechainicio;
+	}
+
+	/**
+	 * Set the value of abfechainicio
+	 *
+	 * @return  self
+	 */
+	public function setAbfechainicio($abfechainicio)
+	{
+		$this->abfechainicio = $abfechainicio;
 
 		return $this;
 	}

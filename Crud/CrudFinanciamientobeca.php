@@ -29,6 +29,7 @@ class CrudFinanciamientobeca
 			$myfinanciamientobecaBeca->setFinanciamientobecaAccion($financiamientobeca['financiamientobecaAccion']);
 			$myfinanciamientobecaBeca->setFinanciamientobecafecha($financiamientobeca['financiamientobecafecha']);
 			$myfinanciamientobecaBeca->setFinanciamientobecauser($financiamientobeca['financiamientobecauser']);
+			$myfinanciamientobecaBeca->setFinanciamientobecabool($financiamientobeca['financiamientobecabool']);
 			$listafinanciamientobeca[] = $myfinanciamientobecaBeca;
 		}
 
@@ -50,9 +51,34 @@ class CrudFinanciamientobeca
 		$myfinanciamientobecaBeca->setFinanciamientobecaAccion($financiamientobeca['financiamientobecaAccion']);
 		$myfinanciamientobecaBeca->setFinanciamientobecafecha($financiamientobeca['financiamientobecafecha']);
 		$myfinanciamientobecaBeca->setFinanciamientobecauser($financiamientobeca['financiamientobecauser']);
+		$myfinanciamientobecaBeca->setFinanciamientobecabool($financiamientobeca['financiamientobecabool']);
 		return $myfinanciamientobecaBeca;
 	}
+	//
+	public function obtenerDatobool($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT financiamientoBeca FROM financiamientobeca WHERE financiamientobecabool=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$financiamientobeca = $select->fetch();
 
+		$myfinanciamientobecaBeca = ($financiamientobeca['financiamientoBeca']);
+
+		return $myfinanciamientobecaBeca;
+	}
+	public function obtenerCodigobool($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT financiamientobecacodigo FROM financiamientobeca WHERE financiamientobecabool=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$financiamientobeca = $select->fetch();
+
+		$myfinanciamientobecaBeca = ($financiamientobeca['financiamientobecacodigo']);
+
+		return $myfinanciamientobecaBeca;
+	}
 	public function obtenerDato($id)
 	{
 		$db = Db::conectar();
@@ -62,6 +88,18 @@ class CrudFinanciamientobeca
 		$financiamientobeca = $select->fetch();
 
 		$myfinanciamientobecaBeca = ($financiamientobeca['financiamientoBeca']);
+
+		return $myfinanciamientobecaBeca;
+	}
+	public function obtenerCodigo($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT financiamientobecacodigo FROM financiamientobeca WHERE financiamientoBecaid=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$financiamientobeca = $select->fetch();
+
+		$myfinanciamientobecaBeca = ($financiamientobeca['financiamientobecacodigo']);
 
 		return $myfinanciamientobecaBeca;
 	}
@@ -77,7 +115,8 @@ class CrudFinanciamientobeca
 		`financiamientobecaOculto` = :financiamientobecaOculto1,
 		`financiamientobecaAccion` = :financiamientobecaAccion1,
 		`financiamientobecafecha` = :financiamientobecafecha1,
-		`financiamientobecauser` = :financiamientobecauser1
+		`financiamientobecauser` = :financiamientobecauser1,
+		`financiamientobecabool`=:financiamientobecabool1
 		WHERE `financiamientoBecaid` = :financiamientoBecaid1;');
 		$actualizar->bindValue('financiamientoBecaid1', $financiamientobeca->getFinanciamientoBecaid());
 		$actualizar->bindValue('financiamientobecacodigo1', $financiamientobeca->getFinanciamientobecacodigo());
@@ -86,6 +125,7 @@ class CrudFinanciamientobeca
 		$actualizar->bindValue('financiamientobecaAccion1', $financiamientobeca->getFinanciamientobecaAccion());
 		$actualizar->bindValue('financiamientobecafecha1', $financiamientobeca->getFinanciamientobecafecha());
 		$actualizar->bindValue('financiamientobecauser1', $financiamientobeca->getFinanciamientobecauser());
+		$actualizar->bindValue('financiamientobecabool1', $financiamientobeca->getFinanciamientobecabool());
 		$actualizar->execute();
 	}
 
@@ -99,7 +139,8 @@ class CrudFinanciamientobeca
 		`financiamientobecaOculto`,
 		`financiamientobecaAccion`,
 		`financiamientobecafecha`,
-		`financiamientobecauser`)
+		`financiamientobecauser`,
+		`financiamientobecabool`)
 		VALUES
 		(:financiamientoBecaid1,
 		:financiamientobecacodigo1,
@@ -107,7 +148,8 @@ class CrudFinanciamientobeca
 		:financiamientobecaOculto1,
 		:financiamientobecaAccion1,
 		:financiamientobecafecha1,
-		:financiamientobecauser1);');
+		:financiamientobecauser1,
+		:financiamientobecabool1);');
 		$insert->bindValue('financiamientoBecaid1', $financiamientobeca->getFinanciamientoBecaid());
 		$insert->bindValue('financiamientobecacodigo1', $financiamientobeca->getFinanciamientobecacodigo());
 		$insert->bindValue('financiamientoBeca1', $financiamientobeca->getFinanciamientoBeca());
@@ -115,6 +157,7 @@ class CrudFinanciamientobeca
 		$insert->bindValue('financiamientobecaAccion1', $financiamientobeca->getFinanciamientobecaAccion());
 		$insert->bindValue('financiamientobecafecha1', $financiamientobeca->getFinanciamientobecafecha());
 		$insert->bindValue('financiamientobecauser1', $financiamientobeca->getFinanciamientobecauser());
+		$insert->bindValue('financiamientobecabool1', $financiamientobeca->getFinanciamientobecabool());
 		$insert->execute();
 	}
 

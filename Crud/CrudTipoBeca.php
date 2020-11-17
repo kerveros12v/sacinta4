@@ -28,6 +28,7 @@ class CrudTipoBeca
 			$mytipobeca->setTipobecaAccion($tipobeca['tipobecaAccion']);
 			$mytipobeca->setTipobecafecha($tipobeca['tipobecafecha']);
 			$mytipobeca->setTipobecauser($tipobeca['tipobecauser']);
+			$mytipobeca->setTipobecabool(($tipobeca['tipobecabool']));
 			$listatipobeca[] = $mytipobeca;
 		}
 		return $listatipobeca;
@@ -54,6 +55,8 @@ class CrudTipoBeca
 		$mytipobeca->setTipobecaAccion($tipobeca['tipobecaAccion']);
 		$mytipobeca->setTipobecafecha($tipobeca['tipobecafecha']);
 		$mytipobeca->setTipobecauser($tipobeca['tipobecauser']);
+		$mytipobeca->setTipobecabool(($tipobeca['tipobecabool']));
+
 
 		return $mytipobeca;
 	}
@@ -65,6 +68,39 @@ class CrudTipoBeca
 		$select->execute();
 		$tipobeca = $select->fetch();
 		$mytipobeca = ($tipobeca['tipoBeca']);
+
+		return $mytipobeca;
+	}
+	public function obtenerCodigo($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT tipobecacodigo FROM tipobeca WHERE tipobecaId=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$tipobeca = $select->fetch();
+		$mytipobeca = ($tipobeca['tipobecacodigo']);
+
+		return $mytipobeca;
+	}
+	public function obtenerDatobool($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT tipoBeca FROM tipobeca WHERE tipobecabool=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$tipobeca = $select->fetch();
+		$mytipobeca = ($tipobeca['tipoBeca']);
+
+		return $mytipobeca;
+	}
+	public function obtenerboolCodigo($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT tipobecacodigo FROM tipobeca WHERE tipobecabool=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$tipobeca = $select->fetch();
+		$mytipobeca = ($tipobeca['tipobecacodigo']);
 
 		return $mytipobeca;
 	}
@@ -80,7 +116,8 @@ class CrudTipoBeca
 			`tipobecaOculto` = :tipobecaOculto1,
 			`tipobecaAccion` = :tipobecaAccion1,
 			`tipobecafecha` = :tipobecafecha1,
-			`tipobecauser` = :tipobecauser1
+			`tipobecauser` = :tipobecauser1,
+			`tipobecabool`=:tipobecabool1
 			WHERE `tipoBecaId` = :tipoBecaId1;');
 		$actualizar->bindValue('tipoBecaId1', $tipobeca->getTipoBecaId());
 		$actualizar->bindValue('tipobecacodigo1', $tipobeca->getTipobecacodigo());
@@ -89,6 +126,7 @@ class CrudTipoBeca
 		$actualizar->bindValue('tipobecaAccion1', $tipobeca->getTipobecaAccion());
 		$actualizar->bindValue('tipobecafecha1', $tipobeca->getTipobecafecha());
 		$actualizar->bindValue('tipobecauser1', $tipobeca->getTipobecauser());
+		$actualizar->bindValue('tipobecabool1', $tipobeca->getTipobecabool());
 		$actualizar->execute();
 	}
 	public function insertar($tipobeca)
@@ -101,7 +139,8 @@ class CrudTipoBeca
 			`tipobecaOculto`,
 			`tipobecaAccion`,
 			`tipobecafecha`,
-			`tipobecauser`)
+			`tipobecauser`,
+			`tipobecabool`)
 			VALUES
 			(:tipoBecaId1,
 			:tipobecacodigo1,
@@ -109,7 +148,8 @@ class CrudTipoBeca
 			:tipobecaOculto1,
 			:tipobecaAccion1,
 			:tipobecafecha1,
-			:tipobecauser1);');
+			:tipobecauser1,
+			:tipobecabool1);');
 		$insert->bindValue('tipoBecaId1', $tipobeca->getTipoBecaId());
 		$insert->bindValue('tipobecacodigo1', $tipobeca->getTipobecacodigo());
 		$insert->bindValue('tipoBeca1', $tipobeca->getTipoBeca());
@@ -117,6 +157,7 @@ class CrudTipoBeca
 		$insert->bindValue('tipobecaAccion1', $tipobeca->getTipobecaAccion());
 		$insert->bindValue('tipobecafecha1', $tipobeca->getTipobecafecha());
 		$insert->bindValue('tipobecauser1', $tipobeca->getTipobecauser());
+		$insert->bindValue('tipobecabool1', $tipobeca->getTipobecabool());
 		$insert->execute();
 	}
 }

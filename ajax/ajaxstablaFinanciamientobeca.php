@@ -20,6 +20,11 @@ function cargartablagetfinanciamientoBeca()
         <input type="text" id="financiamientoBeca" name="financiamientoBeca"  value=""/>
     </td>
     <td>
+        <select class="selector"  id="tipobecabool" name="tipobecabool">
+            ' . boolselect(1) . '
+        </select>
+    </td>
+    <td>
         <input type="button" value="Guardar" id="btnguardar" class="btnunico" onclick="registro()">
     </td>
 </tr>
@@ -36,6 +41,11 @@ function cargartablagetfinanciamientoBeca()
         </td>
         <td>
             <input type="text" id="financiamientoBeca' . $dato->getFinanciamientoBecaid() . '" name="financiamientoBeca' . $dato->getFinanciamientoBecaid() . '"  value="' . $dato->getFinanciamientoBeca() . '"/>
+        </td>
+        <td>
+            <select class="selector"  id="financiamientobecabool' . $dato->getFinanciamientoBecaid() . '" name="financiamientobecabool' . $dato->getFinanciamientoBecaid() . '">
+                ' . boolselect($dato->getFinanciamientobecabool()) . '
+            </select>
         </td>
         <td class="unilinea">
         <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getFinanciamientoBecaid() . ')">

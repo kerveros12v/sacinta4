@@ -11,6 +11,7 @@ class Quintarazonbeca
 	private $quintarazonbecaAccion;
 	private $quintarazonbecafecha;
 	private $quintarazonbecauser;
+	private $quintarazonbecabool;
 	/**
 	 * Class constructor.
 	 */
@@ -154,6 +155,26 @@ class Quintarazonbeca
 	public function setQuintarazonbecauser($quintarazonbecauser)
 	{
 		$this->quintarazonbecauser = $quintarazonbecauser;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of quintarazonbecabool
+	 */
+	public function getQuintarazonbecabool()
+	{
+		return $this->quintarazonbecabool;
+	}
+
+	/**
+	 * Set the value of quintarazonbecabool
+	 *
+	 * @return  self
+	 */
+	public function setQuintarazonbecabool($quintarazonbecabool)
+	{
+		$this->quintarazonbecabool = $quintarazonbecabool;
 
 		return $this;
 	}

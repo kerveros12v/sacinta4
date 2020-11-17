@@ -19,12 +19,14 @@ function cargartabla(){
 
     var codigo=$('#tipobecacodigo').val()
     var nom=$('#tipoBeca').val()
+    var bool=$('#tipobecabool').val()
     $.ajax({
       type: 'POST',
       url: '../controladores/registrotablaTipobeca.php',
       data:{'id':null,
       'nom':nom,
       'cod':codigo,
+      'bool':bool,
       'actualizar':1,
       'eliminar':0,
       'opt':1}
@@ -50,12 +52,14 @@ function cargartabla(){
 
     var codigo=$('#tipobecacodigo'+dato).val()
     var nom=$('#tipoBeca'+dato).val()
+    var bool=$('#tipobecabool'+dato).val()
     $.ajax({
       type: 'POST',
       url: '../controladores/registrotablaTipobeca.php',
       data:{'id':dato,
       'nom':nom,
       'cod':codigo,
+      'bool':bool,
       'actualizar':1,
       'eliminar':0,
       'opt':2}
@@ -80,12 +84,14 @@ function cargartabla(){
     function eliminar(dato){
       var codigo=$('#tipobecacodigo'+dato).val()
       var nom=$('#tipoBeca'+dato).val()
+      var bool=$('#tipobecabool'+dato).val()
       $.ajax({
         type: 'POST',
         url: '../controladores/registrotablaTipobeca.php',
         data:{'id':dato,
         'nom':nom,
         'cod':codigo,
+        'bool':bool,
         'actualizar':2,
         'eliminar':1,
         'opt':0}

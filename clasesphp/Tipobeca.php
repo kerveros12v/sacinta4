@@ -11,6 +11,7 @@ class Tipobeca
 	private $tipobecaAccion;
 	private $tipobecafecha;
 	private $tipobecauser;
+	private $tipobecabool;
 	/**
 	 * Class constructor.
 	 */
@@ -154,6 +155,26 @@ class Tipobeca
 	public function setTipobecauser($tipobecauser)
 	{
 		$this->tipobecauser = $tipobecauser;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of tipobecabool
+	 */
+	public function getTipobecabool()
+	{
+		return $this->tipobecabool;
+	}
+
+	/**
+	 * Set the value of tipobecabool
+	 *
+	 * @return  self
+	 */
+	public function setTipobecabool($tipobecabool)
+	{
+		$this->tipobecabool = $tipobecabool;
 
 		return $this;
 	}

@@ -20,7 +20,7 @@ function opcionFinanciamientobeca()
         $datos->setFinanciamientobecaAccion($_POST['actualizar']);
         $datos->setFinanciamientobecafecha(date("Y-m-d"));
         $datos->setFinanciamientobecauser($_SESSION['tipouser'] . $_SESSION['user']);
-
+        $datos->setFinanciamientobecabool($_POST['financiamientobecabool']);
         $opcion = $_POST['opt'];
 
         if ($_SESSION['user'] != "") {

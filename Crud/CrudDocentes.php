@@ -3,52 +3,73 @@
 namespace Crud;
 
 require_once("conexion.php");
-require_once("../clasesphp/Estudiantes.php");
+require_once("../clasesphp/Docentes.php");
 
+use Clasesphp\Docentes;
 use Crud\Db;
-use Clasesphp\Estudiantes;
 
-class CrudEstudiantes
+class CrudDocentes
 {
 	// constructor de la clase
 	public  function __construct()
 	{
 	}
-
 	public  function mostrar()
 	{
 		$db = Db::conectar();
 		$listaestudiantes = null;
-		$select = $db->query("SELECT * FROM estudiantes");
-		foreach ($select->fetchAll() as $estudiantes1) {
-			$myestudiantes = new Estudiantes();
-			$myestudiantes->setFktipodocumentoId($estudiantes1['fktipodocumentoId']);
-			$myestudiantes->setNumeroIdentificacion($estudiantes1['numeroIdentificacion']);
-			$myestudiantes->setPrimerApellido($estudiantes1['primerApellido']);
-			$myestudiantes->setSegundoApellido($estudiantes1['segundoApellido']);
-			$myestudiantes->setPrimerNombre($estudiantes1['primerNombre']);
-			$myestudiantes->setSegundoNombre($estudiantes1['segundoNombre']);
-			$myestudiantes->setFksexoId($estudiantes1['fksexoId']);
-			$myestudiantes->setFkGeneroId($estudiantes1['fkGeneroId']);
-			$myestudiantes->setFkEstadoCivilId($estudiantes1['fkEstadoCivilId']);
-			$myestudiantes->setFkPuebloNacionalidadId($estudiantes1['fkPuebloNacionalidadId']);
-			$myestudiantes->setFkTipoSangreId($estudiantes1['fkTipoSangreId']);
-			$myestudiantes->setFechaNacimiento($estudiantes1['fechaNacimiento']);
-			$myestudiantes->setFkCantonNacimientoId($estudiantes1['fkCantonNacimientoId']);
-			$myestudiantes->setCorreoElectronico($estudiantes1['correoElectronico']);
-			$myestudiantes->setNumeroCelular($estudiantes1['numeroCelular']);
-			$myestudiantes->setNumeroComvencional($estudiantes1['numeroComvencional']);
-			$myestudiantes->setUsuarioEstudiantes($estudiantes1['usuarioEstudiantes']);
-			$myestudiantes->setPasswordEstudiantes($estudiantes1['passwordEstudiantes']);
-			$myestudiantes->setCategoriaMigratoriaId($estudiantes1['categoriaMigratoria_categoriaMigratoriaId']);
-			$myestudiantes->setIdiomas($estudiantes1['idiomas']);
-			$myestudiantes->setAccesodepartamentoCodigo($estudiantes1['accesodepartamento_codigo']);
-			//$myestudiantes->set_estudiantesimg($estudiantes1['estudiantesimg']);
-			$myestudiantes->setEstudiantesOculto($estudiantes1['estudiantesOculto']);
-			$myestudiantes->setEstudiantesAccion($estudiantes1['estudiantesAccion']);
-			$myestudiantes->setEstudiantesfecha($estudiantes1['estudiantesfecha']);
-			$myestudiantes->setEstudiantesuser($estudiantes1['estudiantesuser']);
-
+		$select = $db->query("SELECT * FROM docentes");
+		foreach ($select->fetchAll() as $docentes1) {
+			$myestudiantes = new Docentes();
+			$myestudiantes->setTipodocumentoId($docentes1['tipodocumentoId']);
+			$myestudiantes->setNumeroIdentificacion($docentes1['numeroIdentificacion']);
+			$myestudiantes->setPrimerApellido($docentes1['primerApellido']);
+			$myestudiantes->setSegundoApellido($docentes1['segundoApellido']);
+			$myestudiantes->setPrimerNombre($docentes1['primerNombre']);
+			$myestudiantes->setSegundoNombre($docentes1['segundoNombre']);
+			$myestudiantes->setFkDocenteSexoId($docentes1['fkDocenteSexoId']);
+			$myestudiantes->setFkDocenteGeneroId($docentes1['fkDocenteGeneroId']);
+			$myestudiantes->setFkDocenteEstadocivilId($docentes1['fkDocenteEstadocivilId']);
+			$myestudiantes->setFkDocentePuebloNacionalidadId($docentes1['fkDocentePuebloNacionalidadId']);
+			$myestudiantes->setDireccionDomiciliaria($docentes1['direccionDomiciliaria']);
+			$myestudiantes->setFkDocenteProvinciaSufragio($docentes1['fkDocenteProvinciaSufragio']);
+			$myestudiantes->setNumeroCelular($docentes1['numeroCelular']);
+			$myestudiantes->setCorreoElectronico($docentes1['correoElectronico']);
+			$myestudiantes->setNumDomicilio($docentes1['numDomicilio']);
+			$myestudiantes->setFkDocenteTipoEnfermedadCatastroficaId($docentes1['fkDocenteTipoEnfermedadCatastroficaId']);
+			$myestudiantes->setFechaNacimiento($docentes1['fechaNacimiento']);
+			$myestudiantes->setFkDocentePaisNacionalidadId($docentes1['fkDocentePaisNacionalidadId']);
+			$myestudiantes->setFechaIngresoIES($docentes1['fechaIngresoIES']);
+			$myestudiantes->setFechaSalidaIES($docentes1['fechaSalidaIES']);
+			$myestudiantes->setFkDocenteRelacionLaboralIESId($docentes1['fkDocenteRelacionLaboralIESId']);
+			$myestudiantes->setFkDocenteEscalafonDocenteId($docentes1['fkDocenteEscalafonDocenteId']);
+			$myestudiantes->setFkDocenteIngresoConConcursoMeritosId($docentes1['fkDocenteIngresoConConcursoMeritosId']);
+			$myestudiantes->setFkDocenteCargoDirectivoId($docentes1['fkDocenteCargoDirectivoId']);
+			$myestudiantes->setNombreUnidadAcademica($docentes1['nombreUnidadAcademica']);
+			$myestudiantes->setNroasignaturasdocente($docentes1['nroasignaturasdocente']);
+			$myestudiantes->setNroHorasLaborablesSemanaEnCarreraPrograma($docentes1['nroHorasLaborablesSemanaEnCarreraPrograma']);
+			$myestudiantes->setNroHorasClaseSemanaCarreraPrograma($docentes1['nroHorasClaseSemanaCarreraPrograma']);
+			$myestudiantes->setNroHorasInvestigacionSemanaCarreraPrograma($docentes1['nroHorasInvestigacionSemanaCarreraPrograma']);
+			$myestudiantes->setNroHorasAdministrativasSemanaCarreraPrograma($docentes1['nroHorasAdministrativasSemanaCarreraPrograma']);
+			$myestudiantes->setNroHorasOtrasActividadesSemanaCarreraPrograma($docentes1['nroHorasOtrasActividadesSemanaCarreraPrograma']);
+			$myestudiantes->setNroHorasVinculacionSociedad($docentes1['nroHorasVinculacionSociedad']);
+			$myestudiantes->setSalarioMensual($docentes1['salarioMensual']);
+			$myestudiantes->setFkDocenteDocenciaTecnicoSuperiorId($docentes1['fkDocenteDocenciaTecnicoSuperiorId']);
+			$myestudiantes->setFkDocenteDocenciaTecnologicoId($docentes1['fkDocenteDocenciaTecnologicoId']);
+			$myestudiantes->setFkDocenteEstaEnPeriodoSabaticoId($docentes1['fkDocenteEstaEnPeriodoSabaticoId']);
+			$myestudiantes->setFechaInicioPeriodoSabatico($docentes1['fechaInicioPeriodoSabatico']);
+			$myestudiantes->setFkDocenteEstaCursandoEstudiosId($docentes1['fkDocenteEstaCursandoEstudiosId']);
+			$myestudiantes->setFkDocenteInstitucionDondeCursaEstudiosId($docentes1['fkDocenteInstitucionDondeCursaEstudiosId']);
+			$myestudiantes->setFkDocentePaisEstudiosId($docentes1['fkDocentePaisEstudiosId']);
+			$myestudiantes->setTituloAObtener($docentes1['tituloAObtener']);
+			$myestudiantes->setUsuarioDocentes($docentes1['usuarioDocentes']);
+			$myestudiantes->setPasswordDocentes($docentes1['passwordDocentes']);
+			$myestudiantes->setNiveDeFormacionId($docentes1['niveDeFormacionId']);
+			$myestudiantes->setAccesodepartamentoIdaccesodepartamento($docentes1['accesodepartamento_idaccesodepartamento']);
+			$myestudiantes->setDocentesOculto($docentes1['docentesOculto']);
+			$myestudiantes->setDocentesAccion($docentes1['docentesAccion']);
+			$myestudiantes->setDocentesfecha($docentes1['docentesfecha']);
+			$myestudiantes->setDocentesuser($docentes1['docentesuser']);
 			////
 			$listaestudiantes[] = $myestudiantes;
 		}
@@ -81,35 +102,35 @@ class CrudEstudiantes
 		$select = $db->prepare("SELECT * FROM estudiantes where numeroIdentificacion=:id;");
 		$select->bindValue('id', $id);
 		$select->execute();
-		$estudiantes1 = $select->fetch();
+		$docentes1 = $select->fetch();
 		$myestudiantes = new Estudiantes();
 		///--------------------------------------------------
-		$myestudiantes->setFktipodocumentoId($estudiantes1['fktipodocumentoId']);
-		$myestudiantes->setNumeroIdentificacion($estudiantes1['numeroIdentificacion']);
-		$myestudiantes->setPrimerApellido($estudiantes1['primerApellido']);
-		$myestudiantes->setSegundoApellido($estudiantes1['segundoApellido']);
-		$myestudiantes->setPrimerNombre($estudiantes1['primerNombre']);
-		$myestudiantes->setSegundoNombre($estudiantes1['segundoNombre']);
-		$myestudiantes->setFksexoId($estudiantes1['fksexoId']);
-		$myestudiantes->setFkGeneroId($estudiantes1['fkGeneroId']);
-		$myestudiantes->setFkEstadoCivilId($estudiantes1['fkEstadoCivilId']);
-		$myestudiantes->setFkPuebloNacionalidadId($estudiantes1['fkPuebloNacionalidadId']);
-		$myestudiantes->setFkTipoSangreId($estudiantes1['fkTipoSangreId']);
-		$myestudiantes->setFechaNacimiento($estudiantes1['fechaNacimiento']);
-		$myestudiantes->setFkCantonNacimientoId($estudiantes1['fkCantonNacimientoId']);
-		$myestudiantes->setCorreoElectronico($estudiantes1['correoElectronico']);
-		$myestudiantes->setNumeroCelular($estudiantes1['numeroCelular']);
-		$myestudiantes->setNumeroComvencional($estudiantes1['numeroComvencional']);
-		$myestudiantes->setUsuarioEstudiantes($estudiantes1['usuarioEstudiantes']);
-		$myestudiantes->setPasswordEstudiantes($estudiantes1['passwordEstudiantes']);
-		$myestudiantes->setCategoriaMigratoriaId($estudiantes1['categoriaMigratoria_categoriaMigratoriaId']);
-		$myestudiantes->setIdiomas($estudiantes1['idiomas']);
-		$myestudiantes->setAccesodepartamentoCodigo($estudiantes1['accesodepartamento_codigo']);
-		//$myestudiantes->set_estudiantesimg($estudiantes1['estudiantesimg']);
-		$myestudiantes->setEstudiantesOculto($estudiantes1['estudiantesOculto']);
-		$myestudiantes->setEstudiantesAccion($estudiantes1['estudiantesAccion']);
-		$myestudiantes->setEstudiantesfecha($estudiantes1['estudiantesfecha']);
-		$myestudiantes->setEstudiantesuser($estudiantes1['estudiantesuser']);
+		$myestudiantes->setFktipodocumentoId($docentes1['fktipodocumentoId']);
+		$myestudiantes->setNumeroIdentificacion($docentes1['numeroIdentificacion']);
+		$myestudiantes->setPrimerApellido($docentes1['primerApellido']);
+		$myestudiantes->setSegundoApellido($docentes1['segundoApellido']);
+		$myestudiantes->setPrimerNombre($docentes1['primerNombre']);
+		$myestudiantes->setSegundoNombre($docentes1['segundoNombre']);
+		$myestudiantes->setFksexoId($docentes1['fksexoId']);
+		$myestudiantes->setFkGeneroId($docentes1['fkGeneroId']);
+		$myestudiantes->setFkEstadoCivilId($docentes1['fkEstadoCivilId']);
+		$myestudiantes->setFkPuebloNacionalidadId($docentes1['fkPuebloNacionalidadId']);
+		$myestudiantes->setFkTipoSangreId($docentes1['fkTipoSangreId']);
+		$myestudiantes->setFechaNacimiento($docentes1['fechaNacimiento']);
+		$myestudiantes->setFkCantonNacimientoId($docentes1['fkCantonNacimientoId']);
+		$myestudiantes->setCorreoElectronico($docentes1['correoElectronico']);
+		$myestudiantes->setNumeroCelular($docentes1['numeroCelular']);
+		$myestudiantes->setNumeroComvencional($docentes1['numeroComvencional']);
+		$myestudiantes->setUsuarioEstudiantes($docentes1['usuarioEstudiantes']);
+		$myestudiantes->setPasswordEstudiantes($docentes1['passwordEstudiantes']);
+		$myestudiantes->setCategoriaMigratoriaId($docentes1['categoriaMigratoria_categoriaMigratoriaId']);
+		$myestudiantes->setIdiomas($docentes1['idiomas']);
+		$myestudiantes->setAccesodepartamentoCodigo($docentes1['accesodepartamento_codigo']);
+		//$myestudiantes->set_estudiantesimg($docentes1['estudiantesimg']);
+		$myestudiantes->setEstudiantesOculto($docentes1['estudiantesOculto']);
+		$myestudiantes->setEstudiantesAccion($docentes1['estudiantesAccion']);
+		$myestudiantes->setEstudiantesfecha($docentes1['estudiantesfecha']);
+		$myestudiantes->setEstudiantesuser($docentes1['estudiantesuser']);
 		///----------------------------------------------
 		return $myestudiantes;
 	}
@@ -119,8 +140,8 @@ class CrudEstudiantes
 		$select = $db->prepare("SELECT estudiantesimg FROM estudiantes where numeroIdentificacion=:id;");
 		$select->bindValue('id', $id);
 		$select->execute();
-		$estudiantes1 = $select->fetch();
-		return $estudiantes1;
+		$docentes1 = $select->fetch();
+		return $docentes1;
 	}
 	public  function obtenerPermisosEstudiante($id, $pass)
 	{
@@ -129,12 +150,12 @@ class CrudEstudiantes
 		$select->bindValue('id', $id);
 		$select->bindValue('pass', $pass);
 		$select->execute();
-		$estudiantes1 = $select->fetch();
+		$docentes1 = $select->fetch();
 		///
-		$myestudiantes = ($estudiantes1['numeroIdentificacion']);
+		$myestudiantes = ($docentes1['numeroIdentificacion']);
 		return $myestudiantes;
 	}
-	public function insertar($estudiantes1)
+	public function insertar($docentes1)
 	{
 
 		$db = Db::conectar();
@@ -182,8 +203,8 @@ class CrudEstudiantes
 		:correoElectronico1,
 		:numeroCelular1,
 		:numeroComvencional1,
-		:usuarioEstudiantes1,
-		:passwordEstudiantes1,
+		:usuariodocentes1,
+		:passworddocentes1,
 		:categoriaMigratoria_categoriaMigratoriaId1,
 		:idiomas1,
 		:accesodepartamento_codigo1,
@@ -192,37 +213,37 @@ class CrudEstudiantes
 		:estudiantesAccion1,
 		:estudiantesfecha1,
 		:estudiantesuser1);');
-		$insert->bindValue('fktipodocumentoId1', $estudiantes1->getFktipodocumentoId());
-		$insert->bindValue('numeroIdentificacion1', $estudiantes1->getNumeroIdentificacion());
-		$insert->bindValue('primerApellido1', $estudiantes1->getPrimerApellido());
-		$insert->bindValue('segundoApellido1', $estudiantes1->getSegundoApellido());
-		$insert->bindValue('primerNombre1', $estudiantes1->getPrimerNombre());
-		$insert->bindValue('segundoNombre1', $estudiantes1->getSegundoNombre());
-		$insert->bindValue('fksexoId1', $estudiantes1->getFksexoId());
-		$insert->bindValue('fkGeneroId1', $estudiantes1->getFkGeneroId());
-		$insert->bindValue('fkEstadoCivilId1', $estudiantes1->getFkEstadoCivilId());
-		$insert->bindValue('fkPuebloNacionalidadId1', $estudiantes1->getFkPuebloNacionalidadId());
-		$insert->bindValue('fkTipoSangreId1', $estudiantes1->getFkTipoSangreId());
-		$insert->bindValue('fechaNacimiento1', $estudiantes1->getFechaNacimiento());
-		$insert->bindValue('fkCantonNacimientoId1', $estudiantes1->getFkCantonNacimientoId());
-		$insert->bindValue('correoElectronico1', $estudiantes1->getCorreoElectronico());
-		$insert->bindValue('numeroCelular1', $estudiantes1->getNumeroCelular());
-		$insert->bindValue('numeroComvencional1', $estudiantes1->getNumeroComvencional());
-		$insert->bindValue('usuarioEstudiantes1', $estudiantes1->getUsuarioEstudiantes());
+		$insert->bindValue('fktipodocumentoId1', $docentes1->getFktipodocumentoId());
+		$insert->bindValue('numeroIdentificacion1', $docentes1->getNumeroIdentificacion());
+		$insert->bindValue('primerApellido1', $docentes1->getPrimerApellido());
+		$insert->bindValue('segundoApellido1', $docentes1->getSegundoApellido());
+		$insert->bindValue('primerNombre1', $docentes1->getPrimerNombre());
+		$insert->bindValue('segundoNombre1', $docentes1->getSegundoNombre());
+		$insert->bindValue('fksexoId1', $docentes1->getFksexoId());
+		$insert->bindValue('fkGeneroId1', $docentes1->getFkGeneroId());
+		$insert->bindValue('fkEstadoCivilId1', $docentes1->getFkEstadoCivilId());
+		$insert->bindValue('fkPuebloNacionalidadId1', $docentes1->getFkPuebloNacionalidadId());
+		$insert->bindValue('fkTipoSangreId1', $docentes1->getFkTipoSangreId());
+		$insert->bindValue('fechaNacimiento1', $docentes1->getFechaNacimiento());
+		$insert->bindValue('fkCantonNacimientoId1', $docentes1->getFkCantonNacimientoId());
+		$insert->bindValue('correoElectronico1', $docentes1->getCorreoElectronico());
+		$insert->bindValue('numeroCelular1', $docentes1->getNumeroCelular());
+		$insert->bindValue('numeroComvencional1', $docentes1->getNumeroComvencional());
+		$insert->bindValue('usuariodocentes1', $docentes1->getUsuarioEstudiantes());
 		$insert->bindValue('estudiantesimg1', NULL);
-		$insert->bindValue('passwordEstudiantes1', $estudiantes1->getPasswordEstudiantes());
-		$insert->bindValue('categoriaMigratoria_categoriaMigratoriaId1', $estudiantes1->getCategoriaMigratoriaId());
-		$insert->bindValue('idiomas1', $estudiantes1->getIdiomas());
-		$insert->bindValue('accesodepartamento_codigo1', $estudiantes1->getAccesodepartamentoCodigo());
-		$insert->bindValue('estudiantesOculto1', $estudiantes1->getEstudiantesOculto());
-		$insert->bindValue('estudiantesAccion1', $estudiantes1->getEstudiantesAccion());
-		$insert->bindValue('estudiantesfecha1', $estudiantes1->getEstudiantesfecha());
-		$insert->bindValue('estudiantesuser1', $estudiantes1->getEstudiantesuser());
+		$insert->bindValue('passworddocentes1', $docentes1->getPasswordEstudiantes());
+		$insert->bindValue('categoriaMigratoria_categoriaMigratoriaId1', $docentes1->getCategoriaMigratoriaId());
+		$insert->bindValue('idiomas1', $docentes1->getIdiomas());
+		$insert->bindValue('accesodepartamento_codigo1', $docentes1->getAccesodepartamentoCodigo());
+		$insert->bindValue('estudiantesOculto1', $docentes1->getEstudiantesOculto());
+		$insert->bindValue('estudiantesAccion1', $docentes1->getEstudiantesAccion());
+		$insert->bindValue('estudiantesfecha1', $docentes1->getEstudiantesfecha());
+		$insert->bindValue('estudiantesuser1', $docentes1->getEstudiantesuser());
 
 		$insert->execute();
 	}
 
-	public  function actualizar($estudiantes1)
+	public  function actualizar($docentes1)
 	{
 		$db = Db::conectar();
 		$actualizar = $db->prepare(
@@ -244,8 +265,8 @@ class CrudEstudiantes
 			`correoElectronico` = :correoElectronico1,
 			`numeroCelular` = :numeroCelular1,
 			`numeroComvencional` = :numeroComvencional1,
-			`usuarioEstudiantes` = :usuarioEstudiantes1,
-			`passwordEstudiantes` = :passwordEstudiantes1,
+			`usuarioEstudiantes` = :usuariodocentes1,
+			`passwordEstudiantes` = :passworddocentes1,
 			`categoriaMigratoria_categoriaMigratoriaId` = :categoriaMigratoria_categoriaMigratoriaId1,
 			`idiomas` = :idiomas1,
 			`accesodepartamento_codigo` = :accesodepartamento_codigo1,
@@ -258,32 +279,32 @@ class CrudEstudiantes
 
 			"
 		);
-		$actualizar->bindValue('fktipodocumentoId1', $estudiantes1->getFktipodocumentoId());
-		$actualizar->bindValue('numeroIdentificacion1', $estudiantes1->getNumeroIdentificacion());
-		$actualizar->bindValue('primerApellido1', $estudiantes1->getPrimerApellido());
-		$actualizar->bindValue('segundoApellido1', $estudiantes1->getSegundoApellido());
-		$actualizar->bindValue('primerNombre1', $estudiantes1->getPrimerNombre());
-		$actualizar->bindValue('segundoNombre1', $estudiantes1->getSegundoNombre());
-		$actualizar->bindValue('fksexoId1', $estudiantes1->getFksexoId());
-		$actualizar->bindValue('fkGeneroId1', $estudiantes1->getFkGeneroId());
-		$actualizar->bindValue('fkEstadoCivilId1', $estudiantes1->getFkEstadoCivilId());
-		$actualizar->bindValue('fkPuebloNacionalidadId1', $estudiantes1->getFkPuebloNacionalidadId());
-		$actualizar->bindValue('fkTipoSangreId1', $estudiantes1->getFkTipoSangreId());
-		$actualizar->bindValue('fechaNacimiento1', $estudiantes1->getFechaNacimiento());
-		$actualizar->bindValue('fkCantonNacimientoId1', $estudiantes1->getFkCantonNacimientoId());
-		$actualizar->bindValue('correoElectronico1', $estudiantes1->getCorreoElectronico());
-		$actualizar->bindValue('numeroCelular1', $estudiantes1->getNumeroCelular());
-		$actualizar->bindValue('numeroComvencional1', $estudiantes1->getNumeroComvencional());
-		$actualizar->bindValue('usuarioEstudiantes1', $estudiantes1->getUsuarioEstudiantes());
+		$actualizar->bindValue('fktipodocumentoId1', $docentes1->getFktipodocumentoId());
+		$actualizar->bindValue('numeroIdentificacion1', $docentes1->getNumeroIdentificacion());
+		$actualizar->bindValue('primerApellido1', $docentes1->getPrimerApellido());
+		$actualizar->bindValue('segundoApellido1', $docentes1->getSegundoApellido());
+		$actualizar->bindValue('primerNombre1', $docentes1->getPrimerNombre());
+		$actualizar->bindValue('segundoNombre1', $docentes1->getSegundoNombre());
+		$actualizar->bindValue('fksexoId1', $docentes1->getFksexoId());
+		$actualizar->bindValue('fkGeneroId1', $docentes1->getFkGeneroId());
+		$actualizar->bindValue('fkEstadoCivilId1', $docentes1->getFkEstadoCivilId());
+		$actualizar->bindValue('fkPuebloNacionalidadId1', $docentes1->getFkPuebloNacionalidadId());
+		$actualizar->bindValue('fkTipoSangreId1', $docentes1->getFkTipoSangreId());
+		$actualizar->bindValue('fechaNacimiento1', $docentes1->getFechaNacimiento());
+		$actualizar->bindValue('fkCantonNacimientoId1', $docentes1->getFkCantonNacimientoId());
+		$actualizar->bindValue('correoElectronico1', $docentes1->getCorreoElectronico());
+		$actualizar->bindValue('numeroCelular1', $docentes1->getNumeroCelular());
+		$actualizar->bindValue('numeroComvencional1', $docentes1->getNumeroComvencional());
+		$actualizar->bindValue('usuariodocentes1', $docentes1->getUsuarioEstudiantes());
 		$actualizar->bindValue('estudiantesimg1', NULL);
-		$actualizar->bindValue('passwordEstudiantes1', $estudiantes1->getPasswordEstudiantes());
-		$actualizar->bindValue('categoriaMigratoria_categoriaMigratoriaId1', $estudiantes1->getCategoriaMigratoriaId());
-		$actualizar->bindValue('idiomas1', $estudiantes1->getIdiomas());
-		$actualizar->bindValue('accesodepartamento_codigo1', $estudiantes1->getAccesodepartamentoCodigo());
-		$actualizar->bindValue('estudiantesOculto1', $estudiantes1->getEstudiantesOculto());
-		$actualizar->bindValue('estudiantesAccion1', $estudiantes1->getEstudiantesAccion());
-		$actualizar->bindValue('estudiantesfecha1', $estudiantes1->getEstudiantesfecha());
-		$actualizar->bindValue('estudiantesuser1', $estudiantes1->getEstudiantesuser());
+		$actualizar->bindValue('passworddocentes1', $docentes1->getPasswordEstudiantes());
+		$actualizar->bindValue('categoriaMigratoria_categoriaMigratoriaId1', $docentes1->getCategoriaMigratoriaId());
+		$actualizar->bindValue('idiomas1', $docentes1->getIdiomas());
+		$actualizar->bindValue('accesodepartamento_codigo1', $docentes1->getAccesodepartamentoCodigo());
+		$actualizar->bindValue('estudiantesOculto1', $docentes1->getEstudiantesOculto());
+		$actualizar->bindValue('estudiantesAccion1', $docentes1->getEstudiantesAccion());
+		$actualizar->bindValue('estudiantesfecha1', $docentes1->getEstudiantesfecha());
+		$actualizar->bindValue('estudiantesuser1', $docentes1->getEstudiantesuser());
 
 		$actualizar->execute();
 	}

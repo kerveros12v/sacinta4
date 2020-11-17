@@ -107,6 +107,7 @@ use Crud\CrudTipoSangre;
 use Crud\CrudTituloTercerNivel;
 use Reporte\PlantillaReportes;
 
+session_start();
 function caluloEdadr($f1, $f2)
 {
 
@@ -178,7 +179,7 @@ try {
   $bachillerato = new Bachilleratos();
   $tipoBachillerato = new Tiposbacillerato();
   $colegio = new Colegios();
-  $est = $crudEst->obtenerEstudiantes($_GET['cedula']);
+  $est = $crudEst->obtenerEstudiantes($_SESSION['campbuscarest']);
   $periodoacademico = $crudperiodoaca->obtenerPeriodoAcademicoActual();
   $matricula = $crudmatricula->obtenerMatricula($est->getNumeroIdentificacion(), $periodoacademico->getPeriodoacademicoId());
   $resi = $crudResidencia->obtenerresidenciaestudiantes($est->getNumeroIdentificacion(), $periodoacademico->getPeriodoacademicoId());
@@ -297,8 +298,8 @@ try {
   $pdf->SetFont('Arial', 'B', 12); //B
   $pdf->Rect(150, 86, 53, 8, 'C');
   $pdf->Cell(0, 0, utf8_decode('10. Código postal:'), 0, 1);
-  $pdf->SetXY(185, 90);
-  $pdf->SetFont('Arial', '', 12);
+  $pdf->SetXY(188, 90);
+  $pdf->SetFont('Arial', '', 11);
   $pdf->Rect(6, 38, 197, 8, 'C');
   $pdf->Cell(0, 0, $parroquia->getParroquiascodigo(), 0, 1);
   // 11. En caso de emergencia contactar a:

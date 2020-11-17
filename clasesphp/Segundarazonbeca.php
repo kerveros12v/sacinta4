@@ -11,6 +11,7 @@ class Segundarazonbeca
 	private $segundarazonbecaAccion;
 	private $segundarazonbecafecha;
 	private $segundarazonbecauser;
+	private $segundarazonbecabool;
 	/**
 	 * Class constructor.
 	 */
@@ -154,6 +155,26 @@ class Segundarazonbeca
 	public function setSegundarazonbecauser($segundarazonbecauser)
 	{
 		$this->segundarazonbecauser = $segundarazonbecauser;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of segundarazonbecabool
+	 */
+	public function getSegundarazonbecabool()
+	{
+		return $this->segundarazonbecabool;
+	}
+
+	/**
+	 * Set the value of segundarazonbecabool
+	 *
+	 * @return  self
+	 */
+	public function setSegundarazonbecabool($segundarazonbecabool)
+	{
+		$this->segundarazonbecabool = $segundarazonbecabool;
 
 		return $this;
 	}

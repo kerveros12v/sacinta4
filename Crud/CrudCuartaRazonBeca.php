@@ -29,6 +29,7 @@ class CrudCuartarazonbeca
 			$mycuartarazonBeca->setCuartarazonbecaAccion($cuartarazon['cuartarazonbecaAccion']);
 			$mycuartarazonBeca->setCuartarazonbecafecha($cuartarazon['cuartarazonbecafecha']);
 			$mycuartarazonBeca->setCuartarazonbecauser($cuartarazon['cuartarazonbecauser']);
+			$mycuartarazonBeca->setCuartarazonbecabool($cuartarazon['cuartarazonbecabool']);
 			$listacuartarazon[] = $mycuartarazonBeca;
 		}
 
@@ -50,10 +51,34 @@ class CrudCuartarazonbeca
 		$mycuartarazonBeca->setCuartarazonbecaAccion($cuartarazon['cuartarazonbecaAccion']);
 		$mycuartarazonBeca->setCuartarazonbecafecha($cuartarazon['cuartarazonbecafecha']);
 		$mycuartarazonBeca->setCuartarazonbecauser($cuartarazon['cuartarazonbecauser']);
+		$mycuartarazonBeca->setCuartarazonbecabool($cuartarazon['cuartarazonbecabool']);
 
 		return $mycuartarazonBeca;
 	}
+	public function obtenerDatobool($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT cuartaRazonBeca FROM cuartarazonbeca WHERE cuartarazonbecabool=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$cuartarazon = $select->fetch();
 
+		$mycuartarazonBeca = ($cuartarazon['cuartaRazonBeca']);
+
+		return $mycuartarazonBeca;
+	}
+	public function obtenerCodigobool($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT cuartarazonbecacodigo FROM cuartarazonbeca WHERE cuartarazonbecabool=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$cuartarazon = $select->fetch();
+
+		$mycuartarazonBeca = ($cuartarazon['cuartarazonbecacodigo']);
+
+		return $mycuartarazonBeca;
+	}
 	public function obtenerDato($id)
 	{
 		$db = Db::conectar();
@@ -63,6 +88,18 @@ class CrudCuartarazonbeca
 		$cuartarazon = $select->fetch();
 
 		$mycuartarazonBeca = ($cuartarazon['cuartaRazonBeca']);
+
+		return $mycuartarazonBeca;
+	}
+	public function obtenerCodigo($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT cuartarazonbecacodigo FROM cuartarazonbeca WHERE cuartaRazonBecaId=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$cuartarazon = $select->fetch();
+
+		$mycuartarazonBeca = ($cuartarazon['cuartarazonbecacodigo']);
 
 		return $mycuartarazonBeca;
 	}
@@ -78,7 +115,8 @@ class CrudCuartarazonbeca
 		`cuartarazonbecaOculto` = :cuartarazonbecaOculto1,
 		`cuartarazonbecaAccion` = :cuartarazonbecaAccion1,
 		`cuartarazonbecafecha` = :cuartarazonbecafecha1,
-		`cuartarazonbecauser` = :cuartarazonbecauser1
+		`cuartarazonbecauser` = :cuartarazonbecauser1,
+		`cuartarazonbecabool`=:cuartarazonbecabool1
 		WHERE `cuartaRazonBecaId` = :cuartaRazonBecaId1;');
 		$actualizar->bindValue('cuartaRazonBecaId1', $cuartarazon->getCuartaRazonBecaId());
 		$actualizar->bindValue('cuartarazonbecacodigo1', $cuartarazon->getCuartarazonbecacodigo());
@@ -87,6 +125,7 @@ class CrudCuartarazonbeca
 		$actualizar->bindValue('cuartarazonbecaAccion1', $cuartarazon->getCuartarazonbecaAccion());
 		$actualizar->bindValue('cuartarazonbecafecha1', $cuartarazon->getCuartarazonbecafecha());
 		$actualizar->bindValue('cuartarazonbecauser1', $cuartarazon->getCuartarazonbecauser());
+		$actualizar->bindValue('cuartarazonbecabool1', $cuartarazon->getCuartarazonbecabool());
 		$actualizar->execute();
 	}
 
@@ -100,7 +139,8 @@ class CrudCuartarazonbeca
 		`cuartarazonbecaOculto`,
 		`cuartarazonbecaAccion`,
 		`cuartarazonbecafecha`,
-		`cuartarazonbecauser`)
+		`cuartarazonbecauser`,
+		`cuartarazonbecabool`)
 		VALUES
 		(:cuartaRazonBecaId1,
 		:cuartarazonbecacodigo1,
@@ -108,7 +148,8 @@ class CrudCuartarazonbeca
 		:cuartarazonbecaOculto1,
 		:cuartarazonbecaAccion1,
 		:cuartarazonbecafecha1,
-		:cuartarazonbecauser1);');
+		:cuartarazonbecauser1,
+		:cuartarazonbecabool1);');
 		$insert->bindValue('cuartaRazonBecaId1', $cuartarazon->getCuartaRazonBecaId());
 		$insert->bindValue('cuartarazonbecacodigo1', $cuartarazon->getCuartarazonbecacodigo());
 		$insert->bindValue('cuartaRazonBeca1', $cuartarazon->getCuartaRazonBeca());
@@ -116,6 +157,8 @@ class CrudCuartarazonbeca
 		$insert->bindValue('cuartarazonbecaAccion1', $cuartarazon->getCuartarazonbecaAccion());
 		$insert->bindValue('cuartarazonbecafecha1', $cuartarazon->getCuartarazonbecafecha());
 		$insert->bindValue('cuartarazonbecauser1', $cuartarazon->getCuartarazonbecauser());
+		$insert->bindValue('cuartarazonbecabool1', $cuartarazon->getCuartarazonbecabool());
+
 		$insert->execute();
 	}
 

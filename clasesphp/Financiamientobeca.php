@@ -11,6 +11,7 @@ class Financiamientobeca
 	private $financiamientobecaAccion;
 	private $financiamientobecafecha;
 	private $financiamientobecauser;
+	private $financiamientobecabool;
 	/**
 	 * Class constructor.
 	 */
@@ -154,6 +155,26 @@ class Financiamientobeca
 	public function setFinanciamientobecauser($financiamientobecauser)
 	{
 		$this->financiamientobecauser = $financiamientobecauser;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of financiamientobecabool
+	 */
+	public function getFinanciamientobecabool()
+	{
+		return $this->financiamientobecabool;
+	}
+
+	/**
+	 * Set the value of financiamientobecabool
+	 *
+	 * @return  self
+	 */
+	public function setFinanciamientobecabool($financiamientobecabool)
+	{
+		$this->financiamientobecabool = $financiamientobecabool;
 
 		return $this;
 	}

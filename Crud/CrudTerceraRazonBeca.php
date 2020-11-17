@@ -29,6 +29,7 @@ class CrudTercerarazonbeca
 			$mytercerarazonBeca->setTercerarazonbecaAccion($tercerarazon['tercerarazonbecaAccion']);
 			$mytercerarazonBeca->setTercerarazonbecafecha($tercerarazon['tercerarazonbecafecha']);
 			$mytercerarazonBeca->setTercerarazonbecauser($tercerarazon['tercerarazonbecauser']);
+			$mytercerarazonBeca->setTercerarazonbecabool($tercerarazon['tercerarazonbecabool']);
 			$listatercerarazon[] = $mytercerarazonBeca;
 		}
 
@@ -50,10 +51,34 @@ class CrudTercerarazonbeca
 		$mytercerarazonBeca->setTercerarazonbecaAccion($tercerarazon['tercerarazonbecaAccion']);
 		$mytercerarazonBeca->setTercerarazonbecafecha($tercerarazon['tercerarazonbecafecha']);
 		$mytercerarazonBeca->setTercerarazonbecauser($tercerarazon['tercerarazonbecauser']);
+		$mytercerarazonBeca->setTercerarazonbecabool($tercerarazon['tercerarazonbecabool']);
 
 		return $mytercerarazonBeca;
 	}
+	public function obtenerDatobool($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT terceraRazonBeca FROM tercerarazonbeca WHERE tercerarazonbecabool=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$tercerarazon = $select->fetch();
 
+		$mytercerarazonBeca = ($tercerarazon['terceraRazonBeca']);
+
+		return $mytercerarazonBeca;
+	}
+	public function obtenerCodigobool($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT tercerarazonbecacodigo FROM tercerarazonbeca WHERE tercerarazonbecabool=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$tercerarazon = $select->fetch();
+
+		$mytercerarazonBeca = ($tercerarazon['tercerarazonbecacodigo']);
+
+		return $mytercerarazonBeca;
+	}
 	public function obtenerDato($id)
 	{
 		$db = Db::conectar();
@@ -66,7 +91,18 @@ class CrudTercerarazonbeca
 
 		return $mytercerarazonBeca;
 	}
+	public function obtenerCodigo($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT tercerarazonbecacodigo FROM tercerarazonbeca WHERE terceraRazonBecaId=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$tercerarazon = $select->fetch();
 
+		$mytercerarazonBeca = ($tercerarazon['tercerarazonbecacodigo']);
+
+		return $mytercerarazonBeca;
+	}
 	public function actualizar($tercerarazon)
 	{
 		$db = Db::conectar();
@@ -78,7 +114,8 @@ class CrudTercerarazonbeca
 		`tercerarazonbecaOculto` = :tercerarazonbecaOculto1,
 		`tercerarazonbecaAccion` = :tercerarazonbecaAccion1,
 		`tercerarazonbecafecha` = :tercerarazonbecafecha1,
-		`tercerarazonbecauser` = :tercerarazonbecauser1
+		`tercerarazonbecauser` = :tercerarazonbecauser1,
+		`tercerarazonbecabool`=:tercerarazonbecabool1
 		WHERE `terceraRazonBecaId` = :terceraRazonBecaId1;');
 		$actualizar->bindValue('terceraRazonBecaId1', $tercerarazon->getTerceraRazonBecaId());
 		$actualizar->bindValue('tercerarazonbecacodigo1', $tercerarazon->getTercerarazonbecacodigo());
@@ -87,6 +124,8 @@ class CrudTercerarazonbeca
 		$actualizar->bindValue('tercerarazonbecaAccion1', $tercerarazon->getTercerarazonbecaAccion());
 		$actualizar->bindValue('tercerarazonbecafecha1', $tercerarazon->getTercerarazonbecafecha());
 		$actualizar->bindValue('tercerarazonbecauser1', $tercerarazon->getTercerarazonbecauser());
+		$actualizar->bindValue('tercerarazonbecabool1', $tercerarazon->getTercerarazonbecabool());
+
 		$actualizar->execute();
 	}
 
@@ -100,7 +139,8 @@ class CrudTercerarazonbeca
 		`tercerarazonbecaOculto`,
 		`tercerarazonbecaAccion`,
 		`tercerarazonbecafecha`,
-		`tercerarazonbecauser`)
+		`tercerarazonbecauser`,
+		`tercerarazonbecabool`)
 		VALUES
 		(:terceraRazonBecaId1,
 		:tercerarazonbecacodigo1,
@@ -108,7 +148,8 @@ class CrudTercerarazonbeca
 		:tercerarazonbecaOculto1,
 		:tercerarazonbecaAccion1,
 		:tercerarazonbecafecha1,
-		:tercerarazonbecauser1);');
+		:tercerarazonbecauser1,
+		:tercerarazonbecabool1);');
 		$insert->bindValue('terceraRazonBecaId1', $tercerarazon->getTerceraRazonBecaId());
 		$insert->bindValue('tercerarazonbecacodigo1', $tercerarazon->getTercerarazonbecacodigo());
 		$insert->bindValue('terceraRazonBeca1', $tercerarazon->getTerceraRazonBeca());
@@ -116,6 +157,8 @@ class CrudTercerarazonbeca
 		$insert->bindValue('tercerarazonbecaAccion1', $tercerarazon->getTercerarazonbecaAccion());
 		$insert->bindValue('tercerarazonbecafecha1', $tercerarazon->getTercerarazonbecafecha());
 		$insert->bindValue('tercerarazonbecauser1', $tercerarazon->getTercerarazonbecauser());
+		$insert->bindValue('tercerarazonbecabool1', $tercerarazon->getTercerarazonbecabool());
+
 		$insert->execute();
 	}
 

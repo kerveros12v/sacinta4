@@ -29,6 +29,7 @@ class CrudSextarazonbeca
 			$mysextarazonBeca->setSextarazonbecaAccion($sextarazon['sextarazonbecaAccion']);
 			$mysextarazonBeca->setSextarazonbecafecha($sextarazon['sextarazonbecafecha']);
 			$mysextarazonBeca->setSextarazonbecauser($sextarazon['sextarazonbecauser']);
+			$mysextarazonBeca->setSextarazonbecabool($sextarazon['sextarazonbecabool']);
 			$listasextarazon[] = $mysextarazonBeca;
 		}
 
@@ -50,6 +51,7 @@ class CrudSextarazonbeca
 		$mysextarazonBeca->setSextarazonbecaAccion($sextarazon['sextarazonbecaAccion']);
 		$mysextarazonBeca->setSextarazonbecafecha($sextarazon['sextarazonbecafecha']);
 		$mysextarazonBeca->setSextarazonbecauser($sextarazon['sextarazonbecauser']);
+		$mysextarazonBeca->setSextarazonbecabool($sextarazon['sextarazonbecabool']);
 
 		return $mysextarazonBeca;
 	}
@@ -66,7 +68,42 @@ class CrudSextarazonbeca
 
 		return $mysextarazonBeca;
 	}
+	public function obtenerCodigo($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT sextarazonbecacodigo FROM sextarazonbeca WHERE sextaRazonBecaId=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$sextarazon = $select->fetch();
 
+		$mysextarazonBeca = ($sextarazon['sextarazonbecacodigo']);
+
+		return $mysextarazonBeca;
+	}
+	public function obtenerDatobool($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT sextaRazonBeca FROM sextarazonbeca WHERE sextarazonbecabool=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$sextarazon = $select->fetch();
+
+		$mysextarazonBeca = ($sextarazon['sextaRazonBeca']);
+
+		return $mysextarazonBeca;
+	}
+	public function obtenerCodigobool($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT sextarazonbecacodigo FROM sextarazonbeca WHERE sextarazonbecabool=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$sextarazon = $select->fetch();
+
+		$mysextarazonBeca = ($sextarazon['sextarazonbecacodigo']);
+
+		return $mysextarazonBeca;
+	}
 	public function actualizar($sextarazon)
 	{
 		$db = Db::conectar();
@@ -78,7 +115,8 @@ class CrudSextarazonbeca
 		`sextarazonbecaOculto` = :sextarazonbecaOculto1,
 		`sextarazonbecaAccion` = :sextarazonbecaAccion1,
 		`sextarazonbecafecha` = :sextarazonbecafecha1,
-		`sextarazonbecauser` = :sextarazonbecauser1
+		`sextarazonbecauser` = :sextarazonbecauser1,
+		`sextarazonbecabool`=:sextarazonbecabool1
 		WHERE `sextaRazonBecaId` = :sextaRazonBecaId1;');
 		$actualizar->bindValue('sextaRazonBecaId1', $sextarazon->getSextaRazonBecaId());
 		$actualizar->bindValue('sextarazonbecacodigo1', $sextarazon->getSextarazonbecacodigo());
@@ -87,6 +125,7 @@ class CrudSextarazonbeca
 		$actualizar->bindValue('sextarazonbecaAccion1', $sextarazon->getSextarazonbecaAccion());
 		$actualizar->bindValue('sextarazonbecafecha1', $sextarazon->getSextarazonbecafecha());
 		$actualizar->bindValue('sextarazonbecauser1', $sextarazon->getSextarazonbecauser());
+		$actualizar->bindValue('sextarazonbecabool1', $sextarazon->getSextarazonbecabool());
 		$actualizar->execute();
 	}
 
@@ -100,7 +139,8 @@ class CrudSextarazonbeca
 		`sextarazonbecaOculto`,
 		`sextarazonbecaAccion`,
 		`sextarazonbecafecha`,
-		`sextarazonbecauser`)
+		`sextarazonbecauser`,
+		`sextarazonbecabool`)
 		VALUES
 		(:sextaRazonBecaId1,
 		:sextaRazonBeca1,
@@ -108,7 +148,8 @@ class CrudSextarazonbeca
 		:sextarazonbecaOculto1,
 		:sextarazonbecaAccion1,
 		:sextarazonbecafecha1,
-		:sextarazonbecauser1);');
+		:sextarazonbecauser1,
+		:sextarazonbecabool1);');
 		$insert->bindValue('sextaRazonBecaId1', $sextarazon->getSextaRazonBecaId());
 		$insert->bindValue('sextarazonbecacodigo1', $sextarazon->getSextarazonbecacodigo());
 		$insert->bindValue('sextaRazonBeca1', $sextarazon->getSextaRazonBeca());
@@ -116,6 +157,7 @@ class CrudSextarazonbeca
 		$insert->bindValue('sextarazonbecaAccion1', $sextarazon->getSextarazonbecaAccion());
 		$insert->bindValue('sextarazonbecafecha1', $sextarazon->getSextarazonbecafecha());
 		$insert->bindValue('sextarazonbecauser1', $sextarazon->getSextarazonbecauser());
+		$insert->bindValue('sextarazonbecabool1', $sextarazon->getSextarazonbecabool());
 		$insert->execute();
 	}
 

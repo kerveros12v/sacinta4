@@ -29,6 +29,7 @@ class CrudQuintarazonbeca
 			$myquintarazonBeca->setQuintarazonbecaAccion($quintarazon['quintarazonbecaAccion']);
 			$myquintarazonBeca->setQuintarazonbecafecha($quintarazon['quintarazonbecafecha']);
 			$myquintarazonBeca->setQuintarazonbecauser($quintarazon['quintarazonbecauser']);
+			$myquintarazonBeca->setQuintarazonbecabool($quintarazon['quintarazonbecabool']);
 			$listaquintarazon[] = $myquintarazonBeca;
 		}
 
@@ -50,10 +51,34 @@ class CrudQuintarazonbeca
 		$myquintarazonBeca->setQuintarazonbecaAccion($quintarazon['quintarazonbecaAccion']);
 		$myquintarazonBeca->setQuintarazonbecafecha($quintarazon['quintarazonbecafecha']);
 		$myquintarazonBeca->setQuintarazonbecauser($quintarazon['quintarazonbecauser']);
+		$myquintarazonBeca->setQuintarazonbecabool($quintarazon['quintarazonbecabool']);
 
 		return $myquintarazonBeca;
 	}
+	public function obtenerDatobool($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT quintaRazonBeca FROM quintarazonbeca WHERE quintarazonbecabool=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$quintarazon = $select->fetch();
 
+		$myquintarazonBeca = ($quintarazon['quintaRazonBeca']);
+
+		return $myquintarazonBeca;
+	}
+	public function obtenerCodigobool($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT quintarazonbecacoldigo FROM quintarazonbeca WHERE quintarazonbecabool=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$quintarazon = $select->fetch();
+
+		$myquintarazonBeca = ($quintarazon['quintarazonbecacoldigo']);
+
+		return $myquintarazonBeca;
+	}
 	public function obtenerDato($id)
 	{
 		$db = Db::conectar();
@@ -66,7 +91,18 @@ class CrudQuintarazonbeca
 
 		return $myquintarazonBeca;
 	}
+	public function obtenerCodigo($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT quintarazonbecacoldigo FROM quintarazonbeca WHERE quintaRazonBecaId=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$quintarazon = $select->fetch();
 
+		$myquintarazonBeca = ($quintarazon['quintarazonbecacoldigo']);
+
+		return $myquintarazonBeca;
+	}
 	public function actualizar($quintarazon)
 	{
 		$db = Db::conectar();
@@ -78,7 +114,8 @@ class CrudQuintarazonbeca
 		`quintarazonbecaOculto` = :quintarazonbecaOculto1,
 		`quintarazonbecaAccion` = :quintarazonbecaAccion1,
 		`quintarazonbecafecha` = :quintarazonbecafecha1,
-		`quintarazonbecauser` = :quintarazonbecauser1
+		`quintarazonbecauser` = :quintarazonbecauser1,
+		`quintarazonbecabool`=:quintarazonbecabool1
 		WHERE `quintaRazonBecaId` = :quintaRazonBecaId1;');
 		$actualizar->bindValue('quintaRazonBecaId1', $quintarazon->getQuintaRazonBecaId());
 		$actualizar->bindValue('quintarazonbecacoldigo1', $quintarazon->getQuintarazonbecacoldigo());
@@ -87,6 +124,7 @@ class CrudQuintarazonbeca
 		$actualizar->bindValue('quintarazonbecaAccion1', $quintarazon->getQuintarazonbecaAccion());
 		$actualizar->bindValue('quintarazonbecafecha1', $quintarazon->getQuintarazonbecafecha());
 		$actualizar->bindValue('quintarazonbecauser1', $quintarazon->getQuintarazonbecauser());
+		$actualizar->bindValue('quintarazonbecabool1', $quintarazon->getQuintarazonbecabool());
 		$actualizar->execute();
 	}
 
@@ -100,7 +138,8 @@ class CrudQuintarazonbeca
 		`quintarazonbecaOculto`,
 		`quintarazonbecaAccion`,
 		`quintarazonbecafecha`,
-		`quintarazonbecauser`)
+		`quintarazonbecauser`,
+		`quintarazonbecabool`)
 		VALUES
 		(:quintaRazonBecaId1,
 		:quintarazonbecacoldigo1,
@@ -108,7 +147,8 @@ class CrudQuintarazonbeca
 		:quintarazonbecaOculto1,
 		:quintarazonbecaAccion1,
 		:quintarazonbecafecha1,
-		:quintarazonbecauser1);');
+		:quintarazonbecauser1,
+		:quintarazonbecabool1);');
 		$insert->bindValue('quintaRazonBecaId1', $quintarazon->getQuintaRazonBecaId());
 		$insert->bindValue('quintarazonbecacoldigo1', $quintarazon->getQuintarazonbecacoldigo());
 		$insert->bindValue('quintaRazonBeca1', $quintarazon->getQuintaRazonBeca());
@@ -116,6 +156,7 @@ class CrudQuintarazonbeca
 		$insert->bindValue('quintarazonbecaAccion1', $quintarazon->getQuintarazonbecaAccion());
 		$insert->bindValue('quintarazonbecafecha1', $quintarazon->getQuintarazonbecafecha());
 		$insert->bindValue('quintarazonbecauser1', $quintarazon->getQuintarazonbecauser());
+		$insert->bindValue('quintarazonbecabool1', $quintarazon->getQuintarazonbecabool());
 		$insert->execute();
 	}
 

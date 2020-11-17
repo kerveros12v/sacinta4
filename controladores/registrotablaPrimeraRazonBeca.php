@@ -16,6 +16,7 @@ function opcionPrimeraRazonBeca()
         $datos->setPrimeraRazonBecaId($_POST['id']);
         $datos->setPrimeraRazonBeca(strtoupper($_POST['nom']));
         $datos->setPrimerarazonbecacodigo($_POST['cod']);
+        $datos->setPrimerarazonbecabool($_POST['bool']);
         $datos->setPrimerarazonbecaOculto($_POST['eliminar']);
         $datos->setPrimerarazonbecaAccion($_POST['actualizar']);
         $datos->setPrimerarazonbecafecha(date("Y-m-d"));

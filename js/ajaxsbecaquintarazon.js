@@ -17,6 +17,7 @@ function cargartabla() {
 function registro() {
   var cod = $('#quintarazonbecacoldigo').val();
   var nom = $('#quintaRazonBeca').val();
+  var bool = $('#quintarazonbecabool').val();
   $.ajax({
     type: 'POST',
     url: '../controladores/registrotablaQuintaRazonBeca.php',
@@ -24,6 +25,7 @@ function registro() {
       'id': null,
       'cod': cod,
       'nom': nom,
+      'bool': bool,
       'eliminar': 0,
       'actualizar': 0,
       'opt': 1
@@ -50,6 +52,7 @@ function actualizar(dato) {
 
   var cod = $('#quintarazonbecacoldigo' + dato).val();
   var nom = $('#quintaRazonBeca' + dato).val();
+  var bool = $('#quintarazonbecabool'+dato).val();
   $.ajax({
     type: 'POST',
     url: '../controladores/registrotablaQuintaRazonBeca.php',
@@ -57,6 +60,7 @@ function actualizar(dato) {
       'id': dato,
       'cod': cod,
       'nom': nom,
+      'bool': bool,
       'eliminar': 0,
       'actualizar': 1,
       'opt': 2
@@ -83,6 +87,7 @@ function eliminar(dato) {
 
   var cod = $('#quintarazonbecacoldigo' + dato).val();
   var nom = $('#quintaRazonBeca' + dato).val();
+  var bool = $('#quintarazonbecabool'+dato).val();
   $.ajax({
     type: 'POST',
     url: '../controladores/registrotablaQuintaRazonBeca.php',
@@ -90,6 +95,7 @@ function eliminar(dato) {
       'id': dato,
       'cod': cod,
       'nom': nom,
+      'bool': bool,
       'eliminar': 1,
       'actualizar': 2,
       'opt': 0

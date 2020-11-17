@@ -11,6 +11,7 @@ class Cuartarazonbeca
 	private $cuartarazonbecaAccion;
 	private $cuartarazonbecafecha;
 	private $cuartarazonbecauser;
+	private $cuartarazonbecabool;
 	/**
 	 * Class constructor.
 	 */
@@ -154,6 +155,26 @@ class Cuartarazonbeca
 	public function setCuartarazonbecauser($cuartarazonbecauser)
 	{
 		$this->cuartarazonbecauser = $cuartarazonbecauser;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of cuartarazonbecabool
+	 */
+	public function getCuartarazonbecabool()
+	{
+		return $this->cuartarazonbecabool;
+	}
+
+	/**
+	 * Set the value of cuartarazonbecabool
+	 *
+	 * @return  self
+	 */
+	public function setCuartarazonbecabool($cuartarazonbecabool)
+	{
+		$this->cuartarazonbecabool = $cuartarazonbecabool;
 
 		return $this;
 	}

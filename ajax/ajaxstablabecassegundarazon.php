@@ -20,6 +20,11 @@ function cargartablasegundarazonBeca()
         <input type="text" id="segundaRazonBeca" name="segundaRazonBeca"  value=""/>
     </td>
     <td>
+    <select class="selector"  id="discapacidadbool" name="discapacidadbool">
+       ' . boolselect(1) . '
+       </select>
+       </td>
+    <td>
         <input type="button" value="Guardar" id="btnguardar" class="btnunico" onclick="registro()">
     </td>
 </tr>
@@ -37,6 +42,11 @@ function cargartablasegundarazonBeca()
         <td>
             <input type="text" id="segundaRazonBeca' . $dato->getSegundaRazonBecaId() . '" name="segundaRazonBeca' . $dato->getSegundaRazonBecaId() . '"  value="' . $dato->getSegundaRazonBeca() . '"/>
         </td>
+        <td>
+        <select class="selector"  id="segundarazonbecabool' . $dato->getSegundaRazonBecaId() . '" name="segundarazonbecabool' . $dato->getSegundaRazonBecaId() . '">
+           ' . boolselect($dato->getSegundarazonbecabool()) . '
+           </select>
+           </td>
         <td class="unilinea">
         <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getSegundaRazonBecaId() . ')">
          <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getSegundaRazonBecaId() . ')">

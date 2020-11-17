@@ -11,6 +11,7 @@ class Sextarazonbeca
 	private $sextarazonbecaAccion;
 	private $sextarazonbecafecha;
 	private $sextarazonbecauser;
+	private $sextarazonbecabool;
 	/**
 	 * Class constructor.
 	 */
@@ -154,6 +155,26 @@ class Sextarazonbeca
 	public function setSextarazonbecauser($sextarazonbecauser)
 	{
 		$this->sextarazonbecauser = $sextarazonbecauser;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of sextarazonbecabool
+	 */
+	public function getSextarazonbecabool()
+	{
+		return $this->sextarazonbecabool;
+	}
+
+	/**
+	 * Set the value of sextarazonbecabool
+	 *
+	 * @return  self
+	 */
+	public function setSextarazonbecabool($sextarazonbecabool)
+	{
+		$this->sextarazonbecabool = $sextarazonbecabool;
 
 		return $this;
 	}

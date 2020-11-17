@@ -69,7 +69,17 @@ class CrudTipocolegio
 
 		return $mytipocolegio;
 	}
+	public function obtenerCodigo($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT `tipocolegiocodigo` FROM `tipocolegio` WHERE `tipoColegioId`=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$tipocolegio = $select->fetch();
+		$mytipocolegio = $tipocolegio['tipocolegiocodigo'];
 
+		return $mytipocolegio;
+	}
 	public function actualizar($tipocolegio)
 	{
 		$db = Db::conectar();

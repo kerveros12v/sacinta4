@@ -1,7 +1,7 @@
 <?php
 
 namespace Clasesphp;
-
+//idCursos, cursoscodigo, fkcarrerasId, fkparaleloId, fknivelAcademicoQueCursaId, fkjJornadaAcademicaId, cursosOculto, cursosAccion, cursosfecha, cursosuser
 class Cursos
 {
 	private $idCursos;
@@ -14,6 +14,7 @@ class Cursos
 	private $cursosAccion;
 	private $cursosfecha;
 	private $cursosuser;
+	private $fkperiodo;
 	/**
 	 * Class constructor.
 	 */
@@ -217,6 +218,26 @@ class Cursos
 	public function setCursosuser($cursosuser)
 	{
 		$this->cursosuser = $cursosuser;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of fkperiodo
+	 */
+	public function getFkperiodo()
+	{
+		return $this->fkperiodo;
+	}
+
+	/**
+	 * Set the value of fkperiodo
+	 *
+	 * @return  self
+	 */
+	public function setFkperiodo($fkperiodo)
+	{
+		$this->fkperiodo = $fkperiodo;
 
 		return $this;
 	}

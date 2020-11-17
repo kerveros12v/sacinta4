@@ -8,9 +8,10 @@
   <link rel="stylesheet" type="text/css" href="../css/cssmatricula1.css" />
   <script type="text/javascript" src="../js/jquery.js"></script>
   <script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+  <!--
   <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-
+-->
   <script type="text/javascript" src="../js/ajaxsempresa.js"></script>
 
 </head>
@@ -25,7 +26,7 @@
   <table class="ui-widget ui-widget-content" title="Perfiles Registradas Actualmente:">
     <tr class="ui-widget-header">
       <th></th>
-      <th>Nombre de la empresa</th>
+      <th>Nombre de la Empresa</th>
       <th>Reprecentante Legal</th>
       <th></th>
     </tr>

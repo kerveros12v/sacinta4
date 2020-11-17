@@ -17,6 +17,8 @@ function cargartabla() {
 function registro() {
   var cod = $('#financiamientobecacodigo').val();
   var nom = $('#financiamientoBeca').val();
+  var financiamientobecabool = $('#financiamientobecabool').val();
+
   $.ajax({
     type: 'POST',
     url: '../controladores/registrotablaFinanciamientobeca.php',
@@ -24,6 +26,7 @@ function registro() {
       'id': null,
       'cod': cod,
       'nom': nom,
+      'financiamientobecabool':financiamientobecabool,
       'eliminar': 0,
       'actualizar': 0,
       'opt': 1
@@ -50,6 +53,7 @@ function actualizar(dato) {
 
   var cod = $('#financiamientobecacodigo' + dato).val();
   var nom = $('#financiamientoBeca' + dato).val();
+  var financiamientobecabool = $('#financiamientobecabool'+ dato).val();
   $.ajax({
     type: 'POST',
     url: '../controladores/registrotablaFinanciamientobeca.php',
@@ -57,6 +61,7 @@ function actualizar(dato) {
       'id': dato,
       'cod': cod,
       'nom': nom,
+      'financiamientobecabool':financiamientobecabool,
       'eliminar': 0,
       'actualizar': 1,
       'opt': 2
@@ -83,6 +88,7 @@ function eliminar(dato) {
 
   var cod = $('#financiamientobecacodigo' + dato).val();
   var nom = $('#financiamientoBeca' + dato).val();
+  var financiamientobecabool = $('#financiamientobecabool'+ dato).val();
   $.ajax({
     type: 'POST',
     url: '../controladores/registrotablaFinanciamientobeca.php',
@@ -90,6 +96,7 @@ function eliminar(dato) {
       'id': dato,
       'cod': cod,
       'nom': nom,
+      'financiamientobecabool':financiamientobecabool,
       'eliminar': 1,
       'actualizar': 2,
       'opt': 0

@@ -34,6 +34,27 @@ function boolselect($o)
 
     return $s;
 }
+function boolestadoactual($o)
+{
+    $s = "";
+    $lstarray = array('ACTIVO', 'NEGADO', 'EN PROCESO DE ACREDITACION', 'FINALIZADO');
+    for ($i = 0; $i < 4; $i++) {
+        if ($o == $i) {
+            $s .= " <option selected='selected' value='" . $i . "'><label>" . $lstarray[$i] . "</label></option>";
+        } else {
+            $s .= " <option  value='" . $i . "'><label>" . $lstarray[$i] . "</label></option>";
+        }
+    }
+
+
+    return $s;
+}
+function boolestadoactualdetalle($o)
+{
+    //$s = "";
+    $lstarray = array('ACTIVO', 'NEGADO', 'EN PROCESO DE ACREDITACION', 'FINALIZADO');
+    return $lstarray[$o];
+}
 function dialogo($respuesta)
 {
     $resultado =  $respuesta;

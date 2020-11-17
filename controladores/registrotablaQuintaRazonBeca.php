@@ -16,6 +16,7 @@ function opcionQuintarazonbeca()
         $datos->setQuintaRazonBecaId($_POST['id']);
         $datos->setQuintaRazonBeca(strtoupper($_POST['nom']));
         $datos->setQuintarazonbecacoldigo($_POST['cod']);
+        $datos->setQuintarazonbecabool($_POST['bool']);
         $datos->setQuintarazonbecaOculto($_POST['eliminar']);
         $datos->setQuintarazonbecaAccion($_POST['actualizar']);
         $datos->setQuintarazonbecafecha(date("Y-m-d"));

@@ -15,6 +15,7 @@ function opcionSegundarazonbeca()
 
         $datos->setSegundaRazonBecaId($_POST['id']);
         $datos->setSegundaRazonBeca(strtoupper($_POST['nom']));
+        $datos->setSegundarazonbecabool($_POST['bool']);
         $datos->setSegundarazonbecacodigo($_POST['cod']);
         $datos->setSegundarazonbecaOculto($_POST['eliminar']);
         $datos->setSegundarazonbecaAccion($_POST['actualizar']);

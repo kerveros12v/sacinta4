@@ -11,6 +11,7 @@ class Tercerarazonbeca
 	private $tercerarazonbecaAccion;
 	private $tercerarazonbecafecha;
 	private $tercerarazonbecauser;
+	private $tercerarazonbecabool;
 	/**
 	 * Class constructor.
 	 */
@@ -156,6 +157,26 @@ class Tercerarazonbeca
 	public function setTercerarazonbecauser($tercerarazonbecauser)
 	{
 		$this->tercerarazonbecauser = $tercerarazonbecauser;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of tercerarazonbecabool
+	 */
+	public function getTercerarazonbecabool()
+	{
+		return $this->tercerarazonbecabool;
+	}
+
+	/**
+	 * Set the value of tercerarazonbecabool
+	 *
+	 * @return  self
+	 */
+	public function setTercerarazonbecabool($tercerarazonbecabool)
+	{
+		$this->tercerarazonbecabool = $tercerarazonbecabool;
 
 		return $this;
 	}

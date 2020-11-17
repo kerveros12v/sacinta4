@@ -16,6 +16,7 @@ function opcionTipodocumento()
         $datos->setTipoBecaId($_POST['id']);
         $datos->setTipoBeca(strtoupper($_POST['nom']));
         $datos->setTipobecacodigo($_POST['cod']);
+        $datos->setTipobecabool($_POST['bool']);
         $datos->setTipobecaOculto($_POST['eliminar']);
         $datos->setTipobecaAccion($_POST['actualizar']);
         $datos->setTipobecafecha(date("Y-m-d"));

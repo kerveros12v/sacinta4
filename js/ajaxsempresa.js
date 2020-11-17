@@ -8,7 +8,7 @@ function cargartabla() {
 
   })
     .done(function (cargar) {
-      $('#contenedorbimestre').html(cargar)
+      $('#contenedorempresa').html(cargar)
     })
     .fail(function () {
       alert('Hubo un error al cargar')

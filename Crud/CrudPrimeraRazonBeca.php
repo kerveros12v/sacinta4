@@ -29,6 +29,7 @@ class CrudPrimeraRazonBeca
 			$myprimeraRazonBeca->setPrimerarazonbecaAccion($primerarazon['primerarazonbecaAccion']);
 			$myprimeraRazonBeca->setPrimerarazonbecafecha($primerarazon['primerarazonbecafecha']);
 			$myprimeraRazonBeca->setPrimerarazonbecauser($primerarazon['primerarazonbecauser']);
+			$myprimeraRazonBeca->setPrimerarazonbecabool($primerarazon['primerarazonbecabool']);
 			$listaprimerarazon[] = $myprimeraRazonBeca;
 		}
 
@@ -50,10 +51,34 @@ class CrudPrimeraRazonBeca
 		$myprimeraRazonBeca->setPrimerarazonbecaAccion($primerarazon['primerarazonbecaAccion']);
 		$myprimeraRazonBeca->setPrimerarazonbecafecha($primerarazon['primerarazonbecafecha']);
 		$myprimeraRazonBeca->setPrimerarazonbecauser($primerarazon['primerarazonbecauser']);
+		$myprimeraRazonBeca->setPrimerarazonbecabool($primerarazon['primerarazonbecabool']);
 
 		return $myprimeraRazonBeca;
 	}
+	public function obtenerDatobool($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT primeraRazonBeca FROM primerarazonbeca WHERE primerarazonbecabool=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$primerarazon = $select->fetch();
 
+		$myprimeraRazonBeca = ($primerarazon['primeraRazonBeca']);
+
+		return $myprimeraRazonBeca;
+	}
+	public function obtenerCodigobool($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT primerarazonbecacodigo FROM primerarazonbeca WHERE primerarazonbecabool=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$primerarazon = $select->fetch();
+
+		$myprimeraRazonBeca = ($primerarazon['primerarazonbecacodigo']);
+
+		return $myprimeraRazonBeca;
+	}
 	public function obtenerDato($id)
 	{
 		$db = Db::conectar();
@@ -66,7 +91,18 @@ class CrudPrimeraRazonBeca
 
 		return $myprimeraRazonBeca;
 	}
+	public function obtenerCodigo($id)
+	{
+		$db = Db::conectar();
+		$select = $db->prepare('SELECT primerarazonbecacodigo FROM primerarazonbeca WHERE primeraRazonBecaId=:id');
+		$select->bindValue('id', $id);
+		$select->execute();
+		$primerarazon = $select->fetch();
 
+		$myprimeraRazonBeca = ($primerarazon['primerarazonbecacodigo']);
+
+		return $myprimeraRazonBeca;
+	}
 	public function actualizar($primerarazon)
 	{
 		$db = Db::conectar();
@@ -78,7 +114,8 @@ class CrudPrimeraRazonBeca
 		`primerarazonbecaOculto` = :primerarazonbecaOculto1,
 		`primerarazonbecaAccion` = :primerarazonbecaAccion1,
 		`primerarazonbecafecha` = :primerarazonbecafecha1,
-		`primerarazonbecauser` = :primerarazonbecauser1
+		`primerarazonbecauser` = :primerarazonbecauser1,
+		`primerarazonbecabool`=:primerarazonbecabool1
 		WHERE `primeraRazonBecaId` = :primeraRazonBecaId1;');
 		$actualizar->bindValue('primeraRazonBecaId1', $primerarazon->getPrimeraRazonBecaId());
 		$actualizar->bindValue('primerarazonbecacodigo1', $primerarazon->getPrimerarazonbecacodigo());
@@ -87,6 +124,7 @@ class CrudPrimeraRazonBeca
 		$actualizar->bindValue('primerarazonbecaAccion1', $primerarazon->getPrimerarazonbecaAccion());
 		$actualizar->bindValue('primerarazonbecafecha1', $primerarazon->getPrimerarazonbecafecha());
 		$actualizar->bindValue('primerarazonbecauser1', $primerarazon->getPrimerarazonbecauser());
+		$actualizar->bindValue('primerarazonbecabool1', $primerarazon->getPrimerarazonbecabool());
 		$actualizar->execute();
 	}
 
@@ -100,7 +138,8 @@ class CrudPrimeraRazonBeca
 		`primerarazonbecaOculto`,
 		`primerarazonbecaAccion`,
 		`primerarazonbecafecha`,
-		`primerarazonbecauser`)
+		`primerarazonbecauser`,
+		`primerarazonbecabool`)
 		VALUES
 		(:primeraRazonBecaId1,
 		:primerarazonbecacodigo1,
@@ -108,7 +147,8 @@ class CrudPrimeraRazonBeca
 		:primerarazonbecaOculto1,
 		:primerarazonbecaAccion1,
 		:primerarazonbecafecha1,
-		:primerarazonbecauser1);');
+		:primerarazonbecauser1,
+		:primerarazonbecabool1);');
 		$insert->bindValue('primeraRazonBecaId1', $primerarazon->getPrimeraRazonBecaId());
 		$insert->bindValue('primerarazonbecacodigo1', $primerarazon->getPrimerarazonbecacodigo());
 		$insert->bindValue('primeraRazonBeca1', $primerarazon->getPrimeraRazonBeca());
@@ -116,6 +156,8 @@ class CrudPrimeraRazonBeca
 		$insert->bindValue('primerarazonbecaAccion1', $primerarazon->getPrimerarazonbecaAccion());
 		$insert->bindValue('primerarazonbecafecha1', $primerarazon->getPrimerarazonbecafecha());
 		$insert->bindValue('primerarazonbecauser1', $primerarazon->getPrimerarazonbecauser());
+		$insert->bindValue('primerarazonbecabool1', $primerarazon->getPrimerarazonbecabool());
+
 		$insert->execute();
 	}
 

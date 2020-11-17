@@ -11,6 +11,7 @@ class PrimeraRazonBeca
 	private $primerarazonbecaAccion;
 	private $primerarazonbecafecha;
 	private $primerarazonbecauser;
+	private $primerarazonbecabool;
 	/**
 	 * Class constructor.
 	 */
@@ -154,6 +155,26 @@ class PrimeraRazonBeca
 	public function setPrimerarazonbecauser($primerarazonbecauser)
 	{
 		$this->primerarazonbecauser = $primerarazonbecauser;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of primerarazonbecabool
+	 */
+	public function getPrimerarazonbecabool()
+	{
+		return $this->primerarazonbecabool;
+	}
+
+	/**
+	 * Set the value of primerarazonbecabool
+	 *
+	 * @return  self
+	 */
+	public function setPrimerarazonbecabool($primerarazonbecabool)
+	{
+		$this->primerarazonbecabool = $primerarazonbecabool;
 
 		return $this;
 	}

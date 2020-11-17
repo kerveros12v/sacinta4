@@ -16,6 +16,7 @@ function opcionTercerarazonbeca()
         $datos->setTerceraRazonBecaId($_POST['id']);
         $datos->setTerceraRazonBeca(strtoupper($_POST['nom']));
         $datos->setTercerarazonbecacodigo($_POST['cod']);
+        $datos->setTercerarazonbecabool($_POST['bool']);
         $datos->setTercerarazonbecaOculto($_POST['eliminar']);
         $datos->setTercerarazonbecaAccion($_POST['actualizar']);
         $datos->setTercerarazonbecafecha(date("Y-m-d"));

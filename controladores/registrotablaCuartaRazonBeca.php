@@ -16,6 +16,7 @@ function opcionCuartarazonbeca()
         $datos->setCuartaRazonBecaId($_POST['id']);
         $datos->setCuartaRazonBeca(strtoupper($_POST['nom']));
         $datos->setCuartarazonbecacodigo($_POST['cod']);
+        $datos->setCuartarazonbecabool($_POST['bool']);
         $datos->setCuartarazonbecaOculto($_POST['eliminar']);
         $datos->setCuartarazonbecaAccion($_POST['actualizar']);
         $datos->setCuartarazonbecafecha(date("Y-m-d"));
