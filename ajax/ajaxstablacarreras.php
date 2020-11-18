@@ -14,6 +14,28 @@ function cargarCarrerast($id)
 	$listacarreras = $ocrudcarreras->mostrarlistaporInstitutos($id);
 	//$dato = new Carreras();
 	$lista = '
+	<tr class="ui-widget-header">
+	<th>
+	</th>
+	<th>
+		Codigo
+	</th>
+	<th>
+		Carrera
+	</th>
+	<th>
+		Titulo a Optener
+	</th>
+	<th>
+		Tipo de Carrera
+	</th>
+	<th>
+		Modalidad
+	</th>
+	<th>
+		Estado
+	</th>
+	</tr>
 	<tr>
 		<td>
 		' . ajaxs_select2() . '
@@ -49,7 +71,7 @@ function cargarCarrerast($id)
 	</tr>';
 	foreach ($listacarreras as $dato) {
 		$lista .= '
-		<tr>
+		<tr >
 		<td>
 		</td>
 		<td>
@@ -78,8 +100,16 @@ function cargarCarrerast($id)
 			<input type="text" class="camptext1" id="estado' . $dato->getCarrerasId() . '" name="estado' . $dato->getCarrerasId() . '" required="required" value="' . $dato->getEstado() . '" />
 		</td>
 		<td class="unilinea">
-        <input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getCarrerasId() . ')">
-         <input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getCarrerasId() . ')">
+			<table>
+			<tr>
+			<td>
+			<input type="button" value="Actualizar" id="btnactualizar" class="btndoble" onclick="actualizar(' . $dato->getCarrerasId() . ')">
+			</td>
+			<td>
+			<input type="button" value="Eliminar" id="btneliminar" class="btndoble" onclick="eliminar(' . $dato->getCarrerasId() . ')">
+			</td>
+			</tr>
+			</table>
         </td>
 	</tr>';
 	}

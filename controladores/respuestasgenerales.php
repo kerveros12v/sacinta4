@@ -72,3 +72,12 @@ function imprimecooke()
         . "}user: {" . $_SESSION['user']
         . "}');</script>");
 }
+function fechaEnRango($fechainicio, $fechafinal, $fecha)
+{
+    $date_start = strtotime($fechainicio);
+    $date_end = strtotime($fechafinal);
+    $date_now = strtotime($fecha);
+    if (($date_now >= $date_start) && ($date_now <= $date_end))
+        return true;
+    return false;
+}

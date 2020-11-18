@@ -1,4 +1,8 @@
 // JavaScript Document
+$(document).ready(function(){
+	cargarcarreras();
+	cargarfechas();
+});
 function validarcedula() {
 
         var cad = document.getElementById("cedula").value.trim();
@@ -29,3 +33,29 @@ function validarcedula() {
         }
 
 }
+function cargarcarreras() {
+	$.ajax({
+	  type: 'GET',
+	  url: '../ajax/ajaxsselectcarrerasprint.php'
+
+	})
+	  .done(function (cargar) {
+		$('#carrera').html(cargar)
+	  })
+	  .fail(function () {
+		alert('Hubo un error al cargar')
+	  });
+  }
+  function cargarfechas() {
+	$.ajax({
+	  type: 'GET',
+	  url: '../ajax/ajaxsselectmatriculasporfecha.php'
+
+	})
+	  .done(function (cargar) {
+		$('#fechamatricula').html(cargar)
+	  })
+	  .fail(function () {
+		alert('Hubo un error al cargar')
+	  });
+  }
