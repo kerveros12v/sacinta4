@@ -13,24 +13,24 @@ class PlantillaReportes extends \FPDF\FPDF
     {
 
         // Logo
-        $this->Image('../img/condorlogo.png', 0, -32, 237, 0, 'PNG');
-        $this->Image('../img/logo-senescyt-educacion-superior-ecuador.png', 6, 8, 42, 17);
+        $this->Image('../img/formato2020.png', 0, -10, 210, 305, 'PNG');
+        // $this->Image('../img/logo-senescyt-educacion-superior-ecuador.png', 6, 8, 42, 17);
         // Arial bold 15
-        $this->SetFont('Times', 'B', 10.5);
+        $this->SetFont('Arial', 'B', 10.5);
         // Movernos a la derecha
         $this->Cell(80);
         // Título
-        $this->Cell(30, -6, utf8_decode("SUBSECRETARÍA DE FORMACIÓN TÉCNICA Y TECNOLÓGICA"), 0, 0, 'C');
-        $this->Ln(6);
-        $this->Cell(190, -7, utf8_decode("INSTITUTO TECNOLÓGICO SUPERIOR"), 0, 0, 'C');
-        $this->Ln(5);
+        // $this->Cell(30, -6, utf8_decode("SUBSECRETARÍA DE FORMACIÓN TÉCNICA Y TECNOLÓGICA"), 0, 0, 'C');
+        $this->Ln(3);
+        $this->Cell(190, 20, utf8_decode("INSTITUTO TECNOLÓGICO SUPERIOR NELSON TORRES"), 0, 0, 'C');
+        /*$this->Ln(5);
         $this->Cell(190, -7, utf8_decode("NELSON TORRES"), 0, 0, 'C');
         $this->Ln(5);
         $this->Cell(190, -7, utf8_decode("(CÓDIGO: 2189)"), 0, 0, 'C');
-
+*/
         $this->Ln(4);
 
-        $this->Image('../img/logointformulario.png', 163, 7, 42, 17);
+        $this->Image('../img/logointformulario.png', 30, 22, 30, 12);
         // Salto de línea
         $this->Ln(1);
         $w = array(40, 35, 45, 40);
