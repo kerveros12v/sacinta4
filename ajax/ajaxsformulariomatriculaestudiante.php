@@ -361,10 +361,10 @@ function cargarMatricula($cedula, $periodo)
                 <table>
                     <tr>
                         <td>
-                            <input type="text" name="miembroshogar" id="miembroshogar"  required="required" value="' . $dato->getMontoCreditoEducativo() . '" />
+                            <input type="text" name="miembroshogar" id="miembroshogar"  required="required" value="' . $dato->getCantidadMiembrosHogar() . '" />
                         </td>
                         <td>
-                            <input type="text" name="totalingresos" id="totalingresos"  required="required" value="' . $dato->getMontoCreditoEducativo() . '" />
+                            <input type="text" name="totalingresos" id="totalingresos"  required="required" value="' . $dato->getIngresoTotalHogar() . '" />
                         </td>
                     </tr>
                     <tr>

@@ -36,6 +36,16 @@ class Google_Service_Localservices_Resource_DetailedLeadReports extends Google_S
    * @opt_param int endDate.day Day of a month. Must be from 1 to 31 and valid for
    * the year and month, or 0 to specify a year by itself or a year and month
    * where the day isn't significant.
+   * @opt_param int endDate.month Month of a year. Must be from 1 to 12, or 0 to
+   * specify a year without a month and day.
+   * @opt_param int endDate.year Year of the date. Must be from 1 to 9999, or 0 to
+   * specify a date without a year.
+   * @opt_param int pageSize The maximum number of accounts to return. If the page
+   * size is unset, page size will default to 1000. Maximum page_size is 10000.
+   * Optional.
+   * @opt_param string pageToken The `next_page_token` value returned from a
+   * previous request to SearchDetailedLeadReports that indicates where listing
+   * should continue. Optional.
    * @opt_param string query A query string for searching for account reports.
    * Caller must provide a customer id of their MCC account with an associated
    * Gaia Mint that allows read permission on their linked accounts. Search
@@ -48,16 +58,6 @@ class Google_Service_Localservices_Resource_DetailedLeadReports extends Google_S
    * where the day isn't significant.
    * @opt_param int startDate.month Month of a year. Must be from 1 to 12, or 0 to
    * specify a year without a month and day.
-   * @opt_param int pageSize The maximum number of accounts to return. If the page
-   * size is unset, page size will default to 1000. Maximum page_size is 10000.
-   * Optional.
-   * @opt_param int endDate.month Month of a year. Must be from 1 to 12, or 0 to
-   * specify a year without a month and day.
-   * @opt_param int endDate.year Year of the date. Must be from 1 to 9999, or 0 to
-   * specify a date without a year.
-   * @opt_param string pageToken The `next_page_token` value returned from a
-   * previous request to SearchDetailedLeadReports that indicates where listing
-   * should continue. Optional.
    * @opt_param int startDate.year Year of the date. Must be from 1 to 9999, or 0
    * to specify a date without a year.
    * @return Google_Service_Localservices_GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse

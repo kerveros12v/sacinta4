@@ -47,6 +47,8 @@ class Google_Service_DisplayVideo_Resource_CustomLists extends Google_Service_Re
    *
    * @param array $optParams Optional parameters.
    *
+   * @opt_param string advertiserId The ID of the DV360 advertiser that has access
+   * to the fetched custom lists.
    * @opt_param string filter Allows filtering by custom list fields. Supported
    * syntax: * Filter expressions for custom lists currently can only contain at
    * most one restriction. * A restriction has the form of `{field} {operator}
@@ -58,8 +60,6 @@ class Google_Service_DisplayVideo_Resource_CustomLists extends Google_Service_Re
    * are: * `customListId` (default) * `displayName` The default sorting order is
    * ascending. To specify descending order for a field, a suffix "desc" should be
    * added to the field name. Example: `displayName desc`.
-   * @opt_param string advertiserId The ID of the DV360 advertiser that has access
-   * to the fetched custom lists.
    * @opt_param int pageSize Requested page size. Must be between `1` and `100`.
    * If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
    * if an invalid value is specified.
