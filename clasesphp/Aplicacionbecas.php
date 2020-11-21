@@ -494,4 +494,30 @@ class Aplicacionbecas
 
 		return $this;
 	}
+	public function __toString()
+	{
+		return  "idAplicacionBecas{" . $this->idAplicacionBecas . "}aplicacionbecascodigo{" .
+			$this->aplicacionbecascodigo . "}fktipoBecaId{" .
+			$this->fktipoBecaId . "}fkfinanciamientoBecaid{" .
+			$this->fkfinanciamientoBecaid . "}montoBeca{" .
+			$this->montoBeca . "}porcientoBecaCoberturaManuntencion{" .
+			$this->porcientoBecaCoberturaManuntencion . "}porcientoBecaCoberturaArancel{" .
+			$this->porcientoBecaCoberturaArancel . "}fkprimeraRazonBecaId{" .
+			$this->fkprimeraRazonBecaId . "}fksegundaRazonBecaId{" .
+			$this->fksegundaRazonBecaId . "}fkterceraRazonBecaId{" .
+			$this->fkterceraRazonBecaId . "}fkcuartaRazonBecaId{" .
+			$this->fkcuartaRazonBecaId . "}fkquintaRazonBecaId{" .
+			$this->fkquintaRazonBecaId . "}fksextaRazonBecaId{" .
+			$this->fksextaRazonBecaId . "}fknumeroIdentificacion{" .
+			$this->fknumeroIdentificacion . "}aplicacionbecasOculto{" .
+			$this->aplicacionbecasOculto . "}aplicacionbecasAccion{" .
+			$this->aplicacionbecasAccion . "}aplicacionbecasfecha{" .
+			$this->aplicacionbecasfecha . "}aplicacionbecasuser{" .
+			$this->aplicacionbecasuser . "}abfechainicio{" .
+			$this->abfechainicio . "}abfechafin{" .
+			$this->abfechafin . "}abperiodo{" .
+			$this->abperiodo . "}abobservaciones{" .
+			$this->abobservaciones . "}abactivo{" .
+			$this->abactivo . "}";
+	}
 }

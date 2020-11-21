@@ -98,10 +98,15 @@ class CrudAplicacionbecas
 
 		return $listabecao;
 	}
+	/**
+	 *Retorna un existe (1: verdadero, 0:falso) tomando como parametro el id del registro
+	 * @param [type] $id
+	 * @return void
+	 */
 	public  function existe($id)
 	{
 		$db = Db::conectar();
-		$select = $db->prepare("SELECT * FROM aplicacionbecas where fknumeroIdentificacion=:id");
+		$select = $db->prepare("SELECT * FROM aplicacionbecas where idAplicacionBecas=:id");
 		$select->bindValue('id', $id);
 		$select->execute();
 		if ($select->fetch() == 0) return 0;

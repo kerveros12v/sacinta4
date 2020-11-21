@@ -25,9 +25,9 @@ function cargarformulariobeca($id)
 
 	$r = "";
 	$activo = '';
-
 	if ($crud->existe($id) == 1) {
 		$dato = $crud->obtenerBeca($id);
+
 		//echo $dato;
 		$activo = '<input type="button" class="btnunico" value="Eliminar" onclick=eliminarbeca(' . $dato->getIdAplicacionBecas() . ')>';
 	}
@@ -355,7 +355,7 @@ function cargarformulariobeca($id)
 													</tr>
 													<tr>
 														<th>
-															<label class="etiqueta1">COBERTURA DE ARANCEL </label>
+															<label class="etiqueta1">OBSERVACIONES </label>
 														</th>
 													</tr>
 												</table>

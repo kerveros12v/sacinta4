@@ -21,6 +21,7 @@ function cargarbecaestudiantes($opt)
             "(" .
             boolestadoactualdetalle($beca1->getAbactivo()) .
             ")</label></option>";
+        //echo "<script>console.log('" . $beca1 . "');</script>";
     }
     return $lista;
 }
