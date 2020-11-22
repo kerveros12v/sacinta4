@@ -24,7 +24,7 @@ document.location=\"$PHP_SELF?ancho=\"+screen.width+\"&alto=\"+screen.height;
   <title>Administracion</title>
   <link rel="stylesheet" type="text/css" href="../css/cssmenusec.css" />
   <script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
-  <script type="text/javascript" src="../js/ajaxsadministracionGeneral.js"></script>
+  <script type="text/javascript" src="../js/ajaxsadministraciondocentes.js"></script>
 </head>
 
 <body>

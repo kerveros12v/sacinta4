@@ -66,30 +66,26 @@ document.location=\"$PHP_SELF?ancho=\"+screen.width+\"&alto=\"+screen.height;
 </head>
 
 <body>
-  <div id="dialog" style="display: none;" title="Respuesta del servidor">
-    <p id="dialog-confirm"></p>
-  </div>
-  <div class="sidebar1">
-    <a href="Bienvenida.php" target="contenedor"><img src="../img/logo-principal.png" name="logo" width="110" height="60" id="logo" /></a>
-    <ul class="nav">
-      <li><a href="Bienvenida.php" target="contenedor">INICIO</a></li>
-    </ul>
-    <ul class="nav" id="nav">
-    </ul>
-    <ul class="nav-derecho">
-      <li><a id="usuario"><?php echo $nomb; ?></a></li>
-      <li><a id="salir" onclick="salir()">Salir</a></li>
-    </ul>
+  <nav>
+    <div class="sidebar1">
+      <a href="Bienvenida.php" target="contenedor"><img src="../img/logo-principal.png" name="logo" width="110" height="60" id="logo" /></a>
+      <ul class="nav">
+        <li><a href="Bienvenida.php" target="contenedor">INICIO</a></li>
+      </ul>
+      <ul class="nav" id="nav">
+      </ul>
+      <ul class="nav-derecho">
+        <li><a id="usuario"><?php echo $nomb; ?></a></li>
+        <li><a id="salir" onclick="salir()">Salir</a></li>
+      </ul>
 
 
-    <!-- end .sidebar1 -->
-  </div>
+      <!-- end .sidebar1 -->
+    </div>
+  </nav>
 
+  <iframe id="contenedor" name="contenedor" style="width: 100%; height:<?php echo ($_GET['alto'] - 230); ?>; border: none;" src="Bienvenida.php"></iframe>
 
-
-  <div class="content">
-    <iframe id="contenedor" name="contenedor" style="width: 100%; height:<?php echo ($_GET['alto'] - 235); ?>; border: none;"></iframe>
-  </div>
   <!--
   <div class="footer" >
   <a href="#"><img src="../img/pie-de-pagina-1.png" name="pie" width="30%" height="2%" id="pie"  /></a>

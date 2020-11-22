@@ -128,12 +128,14 @@ ul, ol {
 	text-decoration:none;
 	padding:10px 12px;
 	display:block;
-	font-size: 15pt;
+	font-size: 10pt;
+	align-items: flex-end;
 
 }
 
 .nav li a:hover {
 	background-color:crimson;
+
 }
 
 .nav li ul {
