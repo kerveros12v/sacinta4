@@ -10,7 +10,6 @@ if ($_SESSION['campbuscarperiodo'] == "") {
 	$crudperiodoaca = new CrudPeriodoacademico();
 	$periodo1 = $crudperiodoaca->obtenerPeriodoAcademicoActual();
 	$_SESSION['campbuscarperiodo'] = $periodo1->getPeriodoacademicoId();
-	echo imprimecooke();
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

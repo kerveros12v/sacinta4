@@ -11,6 +11,7 @@ class Harealizadopracticaspreprofesionales
 	private $hppAccion;
 	private $hppfecha;
 	private $hppuser;
+	private $hppbool;
 	/**
 	 * Class constructor.
 	 */
@@ -154,6 +155,26 @@ class Harealizadopracticaspreprofesionales
 	public function setHppuser($hppuser)
 	{
 		$this->hppuser = $hppuser;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of hppbool
+	 */
+	public function getHppbool()
+	{
+		return $this->hppbool;
+	}
+
+	/**
+	 * Set the value of hppbool
+	 *
+	 * @return  self
+	 */
+	public function setHppbool($hppbool)
+	{
+		$this->hppbool = $hppbool;
 
 		return $this;
 	}

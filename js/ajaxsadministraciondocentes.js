@@ -7,7 +7,7 @@ function cargarmenu(){
     var c=$('#cedula').val();
     $.ajax({
       type: 'POST',
-      url: '../ajax/ajaxsmenusecundariobachillerato.php',
+      url: '../ajax/ajaxsmenusecundarioadministraciondocentes.php',
       data:{'a':id,'c':c}
     })
     .done(function(cargar){

@@ -1,53 +1,83 @@
-<?php
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="web/css/css10.css">
   <title>SAC-INT</title>
-
-  <link rel="stylesheet" type="text/css" href="../css/cssfinal.css" />
-
 </head>
 
-
-
 <body>
+  <form method="POST">
+    <table>
 
-  <table width="100%" border="0" cellspacing="0">
+      <tr>
 
-    <tr>
+        <td class="label_center"><img src="img/EsCayambe.png" name="logoindex" width="600" height="250" id="logoindex" /></td>
 
-      <td><img src="img/EsCayambe.png" name="logoindex" width="600" height="250" id="logoindex" /></td>
+      </tr>
 
+      <tr>
+
+        <td class="label_center">
+          <table>
+            <tr>
+              <a href="Templates/opcionesMatriculacion.php">
+                <td class="m1login label_center">
+                  <table>
+                    <tr>
+                      <td>
+                        <button type="submit" class="btnimg" name="accionmenu" value="matricula"><img src="img/ic_launfjgkfcher.png" class="btnimg" width="300px" height="300px" /></button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label>Matriculacion Estudiantes</label>
+                      </td>
+                    </tr>
+                  </table>
+              </a>
+        </td>
+        <td class="m1login label_center">
+          <a href="Templates/visorSetec.php">
+            <table>
+              <tr>
+                <td>
+                  <button type="submit" class="btnimg" name="accionmenu" value="setec"><img src="img/xfhgf.png" class="btnimg" width="300px" height="300px" /></button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Postulante Setec</label>
+                </td>
+              </tr>
+            </table>
+          </a>
+        </td>
+        <td class="m1login label_center">
+          <a href="Templates/login.php">
+            <table>
+              <tr>
+                <td>
+                  <button type="submit" class="btnimg" name="accionmenu" value="sistema"><img src="img/ic_launche3r.png" class="btnimg" width="300px" height="300px" /></button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Sistema Academico</label>
+                </td>
+              </tr>
+            </table>
+          </a>
+        </td>
+      </tr>
+    </table>
+    </td>
     </tr>
+    </table>
+  </form>
 
-    <tr>
-
-      <td>
-        <table width="100%" border="0" cellspacing="0">
-          <tr>
-
-            <td class="m1login"><a href="Templates/opcionesMatriculacion.php"><img src="img/matricula_1.png" width="419" height="185" />Matriculacion</a></td>
-
-            <td class="m1login"><a href="Templates/opcionesSetecAspirante.php"><img src="img/logo2018setec.jpg" width="419" height="185" />Setec</a></td>
-
-            <td><a href="Templates/login.php">Acceso sistema</a></td>
-
-          </tr>
-
-        </table>
-      </td>
-
-    </tr>
-
-
-
-  </table>
 </body>
 
 </html>

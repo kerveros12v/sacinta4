@@ -4,7 +4,9 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Proceso de Matriculacion</title>
-  <link rel="stylesheet" type="text/css" href="../css/csslogin.css" />
+  <!--
+    <link rel="stylesheet" type="text/css" href="../css/csslogin.css" />
+-->
   <script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
   <script type="text/javascript" src="../js/validaciones.js"></script>
 </head>
